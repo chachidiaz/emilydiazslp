@@ -1,32 +1,46 @@
 # emilydiazslp.com
 
-The main website for **Emily Diaz, MS, CCC-SLP**: AAC evaluations, therapy, consulting, and workshops for teens and young adults.
+Built with [Eleventy](https://www.11ty.dev/). The header and footer are each written once and shared by every page.
 
-It's a plain static site (no build step):
+## Where things live
 
-- `index.html` – page content
-- `styles.css` – styles
-- `script.js` – mobile menu
-- `assets/` – favicon and images
-- `CNAME` – custom domain for GitHub Pages
-
-## Preview locally
-
-```bash
-python3 -m http.server 8000
+```
+src/
+├── _includes/
+│   ├── partials/
+│   │   ├── header.njk     ← edit the header here (applies to every page)
+│   │   └── footer.njk     ← edit the footer here (applies to every page)
+│   └── layouts/
+│       └── base.njk       ← page shell: <head>, header, main content, footer
+├── _data/
+│   ├── site.json          ← site name, URL, and the navigation menu links
+│   └── year.js            ← current year for the footer
+├── assets/
+│   ├── css/main.css       ← styles (header and footer sections are labeled)
+│   └── images/
+├── index.njk              ← Home page
+└── about.njk              ← About page
 ```
 
-Then open http://localhost:8000.
+## Adding a page
 
-## Before launch
+Create a file in `src/`, e.g. `src/services.njk`:
 
-Search `index.html` for `TODO` and update:
+```
+---
+layout: layouts/base.njk
+title: Services
+permalink: /services/
+---
+<h1>Services</h1>
+```
 
-- Headshot (`assets/emily.jpg`) to replace the photo placeholder
-- Contact email (currently `hello@emilydiazslp.com`)
-- Contact form action (connect Formspree, Netlify Forms, etc.)
-- YouTube channel URL
+It gets the shared header and footer automatically. To show it in the menu, add it to `nav` in `src/_data/site.json`.
 
-## Deploying
+## Commands
 
-Works on any static host. For GitHub Pages: Settings → Pages → deploy from the `main` branch root, then point the domain's DNS at GitHub Pages. The `CNAME` file sets the custom domain.
+```bash
+npm install     # once
+npm start       # live preview at http://localhost:8080
+npm run build   # build the site into _site/ for hosting
+```

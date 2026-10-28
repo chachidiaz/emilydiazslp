@@ -1,0 +1,13 @@
+{
+  "name": "emilydiazslp",
+  "private": true,
+  "type": "module",
+  "description": "Website for emilydiazslp.com",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7"
+  }
+}
