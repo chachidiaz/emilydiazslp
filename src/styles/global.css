@@ -1,0 +1,9 @@
+/* Site-wide base styles. Header and footer styles live in their own components. */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  padding: 2rem;
+}

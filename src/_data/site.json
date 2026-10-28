@@ -1,9 +1,0 @@
-{
-  "title": "Emily Diaz, SLP",
-  "url": "https://emilydiazslp.com",
-  "description": "",
-  "nav": [
-    { "label": "Home", "url": "/" },
-    { "label": "About", "url": "/about/" }
-  ]
-}

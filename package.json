@@ -1,13 +1,17 @@
 {
   "name": "emilydiazslp",
-  "private": true,
   "type": "module",
+  "private": true,
   "description": "Website for emilydiazslp.com",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "devDependencies": {
-    "@11ty/eleventy": "^3.1.7"
+  "dependencies": {
+    "astro": "^7.4.3"
+  },
+  "engines": {
+    "node": ">=22.23.4"
   }
 }

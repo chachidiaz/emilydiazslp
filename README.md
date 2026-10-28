@@ -1,46 +1,51 @@
 # emilydiazslp.com
 
-Built with [Eleventy](https://www.11ty.dev/). The header and footer are each written once and shared by every page.
+Built with [Astro](https://astro.build/). The header and footer are each a component, written once and shared by every page.
 
 ## Where things live
 
 ```
 src/
-├── _includes/
-│   ├── partials/
-│   │   ├── header.njk     ← edit the header here (applies to every page)
-│   │   └── footer.njk     ← edit the footer here (applies to every page)
-│   └── layouts/
-│       └── base.njk       ← page shell: <head>, header, main content, footer
-├── _data/
-│   ├── site.json          ← site name, URL, and the navigation menu links
-│   └── year.js            ← current year for the footer
-├── assets/
-│   ├── css/main.css       ← styles (header and footer sections are labeled)
-│   └── images/
-├── index.njk              ← Home page
-└── about.njk              ← About page
+├── components/
+│   ├── Header.astro       ← edit the header here (applies to every page)
+│   └── Footer.astro       ← edit the footer here (applies to every page)
+├── layouts/
+│   └── BaseLayout.astro   ← page shell: <head>, Header, page content, Footer
+├── data/
+│   └── site.ts            ← site name, description, and the menu links
+├── styles/
+│   └── global.css         ← site-wide styles
+└── pages/                 ← one file per page (the file name becomes the URL)
+    ├── index.astro        ← /
+    └── about.astro        ← /about/
+public/                    ← files copied as-is (favicon, images, etc.)
 ```
+
+Header and footer styles live inside their own `.astro` files and only affect that component.
 
 ## Adding a page
 
-Create a file in `src/`, e.g. `src/services.njk`:
+Create a file in `src/pages/`, e.g. `src/pages/services.astro` (becomes `/services/`):
 
-```
+```astro
 ---
-layout: layouts/base.njk
-title: Services
-permalink: /services/
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<h1>Services</h1>
+
+<BaseLayout title="Services">
+  <h1>Services</h1>
+</BaseLayout>
 ```
 
-It gets the shared header and footer automatically. To show it in the menu, add it to `nav` in `src/_data/site.json`.
+It gets the shared header and footer automatically. To show it in the menu, add it to `nav` in `src/data/site.ts`.
 
 ## Commands
 
+Requires Node.js 22.23.4 or newer.
+
 ```bash
-npm install     # once
-npm start       # live preview at http://localhost:8080
-npm run build   # build the site into _site/ for hosting
+npm install       # once
+npm run dev       # live preview at http://localhost:4321
+npm run build     # build the site into dist/ for hosting
+npm run preview   # preview the built site
 ```
