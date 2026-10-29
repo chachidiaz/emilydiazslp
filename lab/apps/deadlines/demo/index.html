@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Deadline Demo Funnel</title>
+  <link rel="stylesheet" href="/brand/styles.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <main class="wrap">
+    <div class="demo-note">This is a practice funnel for the deadline timers. It uses the demo campaign, so create it first from the <a href="../">dashboard</a>. Nothing here is a real offer.</div>
+
+    <p class="eyebrow">Step 1 · the freebie</p>
+    <h1>Get the free AAC starter checklist</h1>
+    <p>Enter any email. You'll land on the thank-you page, where your 7-day fast-action countdown starts.</p>
+    <form class="optin" id="optin">
+      <input type="email" id="email" placeholder="you@example.com" required aria-label="Email">
+      <button class="btn">send me the checklist</button>
+    </form>
+
+    <div class="card">
+      <p class="eyebrow">Step 2 · your email sequence</p>
+      <p>These stand in for your Flodesk emails. Each link carries your email, just like <code>?email={{ subscriber.email }}</code> will.</p>
+      <ul class="inbox" id="inbox">
+        <li><span><span class="day">Day 1</span><strong>Here's your checklist</strong> (and a little surprise)</span><a class="btn btn-rose" data-email-link href="sales.html">open link</a></li>
+        <li><span><span class="day">Day 3</span><strong>The mistake I made with my first AAC device</strong></span><a class="btn btn-rose" data-email-link href="sales.html">open link</a></li>
+        <li><span><span class="day">Day 6</span><strong>Your discount ends tomorrow</strong></span><a class="btn btn-rose" data-email-link href="sales.html">open link</a></li>
+      </ul>
+      <p class="small" id="inbox-note">Sign up in step 1 to fill in these links.</p>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Step 3 · try it like a subscriber</p>
+      <p>Copy an email link and open it in a private window or on your phone. The countdown matches, because the deadline follows the email, not the browser.</p>
+      <p>To start over, use <strong>clear my timer</strong> or <strong>clear all timers</strong> on the demo campaign, or open any demo page with <code>?dl_reset=1</code> while you're logged in.</p>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var key = 'dl-demo-email', email = null;
+      try { email = localStorage.getItem(key); } catch (e) {}
+      function fill() {
+        if (!email) return;
+        document.querySelectorAll('[data-email-link]').forEach(function (a) {
+          a.href = 'sales.html?email=' + encodeURIComponent(email);
+        });
+        document.getElementById('inbox-note').textContent = 'Links are set up for ' + email + '.';
+      }
+      document.getElementById('optin').addEventListener('submit', function (e) {
+        e.preventDefault();
+        email = document.getElementById('email').value.trim();
+        try { localStorage.setItem(key, email); } catch (err) {}
+        location.href = 'thank-you.html?email=' + encodeURIComponent(email);
+      });
+      fill();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* Demo funnel pages. Colors and type come from /brand/styles.css. */
+.wrap { max-width: var(--container-narrow); margin: 0 auto; padding: var(--space-8) var(--gutter) var(--space-9); }
+.demo-note { background: var(--blush-100); color: var(--plum-900); border-radius: var(--radius-md); padding: var(--space-3) var(--space-5); font-size: var(--text-body-sm); margin-bottom: var(--space-6); }
+.card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6); margin: var(--space-5) 0; }
+.script { font-size: var(--text-script-lg); color: var(--rose-500); margin: 0 0 var(--space-3); }
+.btn { display: inline-flex; font: inherit; font-weight: var(--weight-bold); letter-spacing: var(--tracking-nav); text-transform: lowercase; background: var(--plum-700); color: var(--cream-50); border: 0; border-radius: var(--radius-pill); padding: 14px 30px; cursor: pointer; text-decoration: none; transition: background var(--dur-base) var(--ease-standard); }
+.btn:hover { background: var(--plum-900); color: var(--cream-50); }
+.btn-rose { background: var(--rose-500); }
+.btn-rose:hover { background: #AB4A7B; }
+input[type=email] { font: inherit; border: 1px solid var(--ink-200); border-radius: var(--radius-pill); padding: 12px 20px; min-width: 0; flex: 1; }
+input[type=email]:focus { outline: none; border-color: var(--rose-500); box-shadow: var(--shadow-focus); }
+form.optin { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.inbox { list-style: none; padding: 0; margin: 0; }
+.inbox li { border-top: 1px solid var(--ink-200); padding: var(--space-4) 0; display: flex; justify-content: space-between; gap: var(--space-4); align-items: center; flex-wrap: wrap; }
+.inbox li:first-child { border-top: 0; }
+.inbox .day { font-size: var(--text-micro); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--rose-500); display: block; }
+.inbox strong { color: var(--plum-700); }
+.price { font-size: var(--text-h2); font-weight: var(--weight-bold); color: var(--plum-700); }
+.price s { color: var(--ink-500); font-weight: var(--weight-regular); font-size: var(--text-h4); margin-left: var(--space-2); }
+.center { text-align: center; }
+.small { font-size: var(--text-body-sm); color: var(--text-muted); }
+@media (max-width: 560px) { .wrap { padding: var(--space-7) 16px var(--space-8); } }

@@ -9,6 +9,7 @@ Kept separate from the main Astro site in `src/`; nothing here affects `emilydia
 lab/
 ├── index.html        ← subdomain home page (/)
 ├── brand/            ← brand design system: colors, fonts, logo, components (/brand/)
+├── apps/             ← small PHP apps, e.g. apps/deadlines/ (countdown timers)
 ├── artifacts/        ← Claude artifacts (one folder per artifact)
 ├── docs/             ← docs and guides
 └── landing-pages/    ← landing pages
