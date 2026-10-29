@@ -1,0 +1,1240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AAC Assessment Hub · Save $100 for a limited time</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="The AAC Assessment Hub is Emily Diaz's step-by-step training for AAC assessments — from referral to funding approval — with data sheets, downloads, and a growing library of resources.">
+<meta property="og:title" content="The AAC Assessment Hub">
+<meta property="og:description" content="Your step-by-step training for AAC assessments, from referral to funding approval.">
+<meta property="og:image" content="assets/img/aac-hub-mockup.png">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preload" href="assets/fonts/tommy-soft-regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="assets/fonts/tommy-soft-bold.otf" as="font" type="font/otf" crossorigin>
+<style>
+@font-face{font-family:"Tommy";src:url(assets/fonts/tommy-soft-regular.otf);font-weight:400;font-display:swap}
+@font-face{font-family:"Tommy";src:url(assets/fonts/tommy-soft-medium.otf);font-weight:500;font-display:swap}
+@font-face{font-family:"Tommy";src:url(assets/fonts/tommy-soft-bold.otf);font-weight:700;font-display:swap}
+@font-face{font-family:"OL Script";src:url(assets/fonts/oranges-and-lemons-script.otf);font-weight:400;font-display:swap}
+body{margin:0;background:#f6d9e7}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:84px}
+@media (min-width: 1024px){.page-scale{zoom:.9}}
+@media (min-width: 760px){.one-line{white-space:nowrap}}
+.topbar,.topbar span,.topbar a{transition:background-color .35s ease,color .35s ease}
+.page-scale{container-type:inline-size;container-name:page}
+.bar-short{display:none}
+/* ---------- mobile (phone-width container) ---------- */
+@container page (max-width: 640px){
+.topbar{font-size:11px !important;padding:8px 12px !important;gap:6px 10px !important;letter-spacing:.05em !important}
+.topbar .bar-long{display:none}.topbar .bar-short{display:inline}
+.topbar [role="timer"] > span{padding:4px 6px !important}
+.topbar .topbar-link{display:none}
+nav{justify-content:center !important;padding-top:16px !important;padding-bottom:8px !important}
+.nav-links,.nav-cta{display:none !important}
+.nav-logo{height:64px !important;width:auto !important}
+.hero-visual{zoom:.72;flex-basis:100% !important}
+/* headlines */
+main h1{font-size:38px !important}
+main h2{font-size:28px !important}
+main h3{font-size:21px !important}
+.intro-title{font-size:34px !important}
+.nicole-quote > p:first-of-type{font-size:22px !important}
+main blockquote{font-size:17px !important}
+.lesson summary,.faq-q{font-size:16px !important}
+/* body text */
+main [style*="font-size: 16px"]{font-size:14.5px !important}
+main [style*="font-size: 17px"],main [style*="font-size: 18px"]{font-size:15px !important}
+main [style*="font-size: 19px"]{font-size:16px !important}
+main [style*="font-size: 22px"]{font-size:17px !important}
+/* inside, you'll learn: tighter cards */
+#inside [style*="min-height: 280px"]{min-height:0 !important;justify-content:flex-start !important;gap:16px !important;padding:20px !important}
+/* nicole: centered, eyebrow first */
+.nicole{flex-direction:column !important;align-items:center !important;text-align:center !important;gap:20px !important}
+.nicole-person{align-items:center !important;order:2}
+.nicole-quote{display:contents !important}
+.nicole-chip{order:1;align-self:center !important}
+.nicole-quote > p{order:3}
+/* curriculum: keep lessons inside their colored card */
+#curriculum [style*="flex: 2 1 560px"]{min-width:0 !important;flex-basis:100% !important}
+#curriculum [style*="flex: 1 1 300px"]{min-width:0 !important}
+.lesson summary{min-width:0}
+.lesson summary > span:first-child{min-width:0;overflow-wrap:anywhere}
+/* live cohort button: rectangular */
+#live-cohort .btn{border-radius:16px !important}
+#live-cohort .btn .dot{border-radius:12px !important}
+/* pricing: full-width countdown, pill CTA, stacked price */
+#purchase{padding-left:16px !important;padding-right:16px !important}
+#purchase > [role="timer"]{display:grid !important;grid-template-columns:repeat(4, minmax(0, 1fr));width:100%;gap:8px !important}
+#purchase > [role="timer"] > div{width:auto !important;height:84px !important;border-radius:18px !important}
+#purchase > [role="timer"] > div > span:first-child{font-size:30px !important}
+#purchase > [role="timer"] > div > span:last-child{font-size:10px !important}
+#purchase [style*="align-items: baseline; gap: 16px"]{flex-direction:column !important;align-items:center !important;gap:2px !important}
+#purchase [style*="align-items: baseline; gap: 16px"] > span:first-child{font-size:24px !important}
+#purchase [style*="align-items: baseline; gap: 16px"] > span:last-child{font-size:68px !important}
+#purchase .btn.btn-lg{border-radius:999px !important;font-size:13px !important;letter-spacing:.03em !important;padding:8px 8px 8px 24px !important}
+/* buttons */
+.btn.btn-lg{font-size:13.5px;min-height:64px;padding:8px 8px 8px 22px;gap:12px;letter-spacing:.03em}
+.btn.btn-lg .dot{width:48px;height:48px}
+.btn-rect{border-radius:16px !important}
+.btn-rect .dot{border-radius:12px !important}
+figcaption{flex-wrap:wrap}
+}
+
+/* scroll stacking: pinned section + sheet that slides over it */
+main > .stack-pair{width:100%;max-width:none;display:flex;flex-direction:column}
+.stack-pair > .stick{position:sticky;top:72px;z-index:1;box-sizing:border-box;width:calc(100% - 2 * clamp(20px, 6vw, 96px));max-width:1120px;margin-left:auto;margin-right:auto;transform-origin:50% 0;will-change:transform,opacity}
+.stack-pair > .stick.full{width:calc(100% - 2 * clamp(16px, 3vw, 48px));max-width:1600px}
+.stack-cover{position:relative;z-index:2;background:#ffffff;border-radius:clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px) 0 0;box-shadow:0 -28px 50px -30px #4a233859;margin-top:clamp(64px, 8vw, 120px);padding-top:clamp(56px, 7vw, 104px);display:flex;flex-direction:column;gap:clamp(88px, 10vw, 140px)}
+.stack-cover > *{box-sizing:border-box;width:calc(100% - 2 * clamp(20px, 6vw, 96px));max-width:1120px;margin-left:auto;margin-right:auto}
+.stack-cover > .full{width:calc(100% - 2 * clamp(16px, 3vw, 48px));max-width:1600px}
+@media (prefers-reduced-motion: reduce){.stack-pair > .stick{position:relative;top:0}}
+
+main > *{box-sizing:border-box;width:calc(100% - 2 * clamp(20px, 6vw, 96px));max-width:1120px;margin-left:auto;margin-right:auto}
+main > .full{width:calc(100% - 2 * clamp(16px, 3vw, 48px));max-width:1600px}
+.btn.btn-lg{font-size:19px;min-height:78px;padding:10px 10px 10px 34px;gap:20px;letter-spacing:.05em}
+.btn.btn-lg .dot{width:58px;height:58px}
+.btn.btn-lg .dot svg{width:24px;height:24px}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.rv-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}a{color:#743e5a}a:hover{color:#4a2338}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1.5px solid currentColor;border-radius:999px;font:500 12px/1 "Tommy",sans-serif;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:8px 8px 8px 26px;min-height:60px;box-sizing:border-box;border-radius:999px;font:700 15px/1.2 "Tommy",sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex:none}
+.arrow{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;text-decoration:none;flex:none;transition:transform .2s ease}
+.arrow:hover{transform:rotate(-30deg)}
+.script{font-family:"OL Script",cursive;font-weight:400;letter-spacing:0;text-transform:none}
+.faq-q{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 24px;cursor:pointer;font:700 19px/1.35 "Tommy",sans-serif;color:#743e5a}
+.faq-q:focus-visible{outline:3px solid #ff81a0;outline-offset:2px;border-radius:22px}
+.lesson summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;font:700 19px/1.35 "Tommy",sans-serif;color:#743e5a}
+.lesson summary::-webkit-details-marker{display:none}
+.lesson summary:focus-visible{outline:3px solid #ff81a0;outline-offset:4px;border-radius:12px}
+.lesson-plus{width:36px;height:36px;border-radius:50%;background:#743e5a;color:#fff;display:grid;place-items:center;flex:none;transition:transform .25s ease}
+.lesson[open] .lesson-plus{transform:rotate(45deg)}
+.lesson[open] ul{animation:lessonIn .35s ease}
+@keyframes lessonIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.ipad{animation:ipadFloat 7s ease-in-out infinite;transform-style:preserve-3d}
+@keyframes ipadFloat{0%,100%{transform:perspective(1800px) rotateY(-16deg) rotateX(8deg) rotateZ(3deg) translateY(0)}50%{transform:perspective(1800px) rotateY(-12deg) rotateX(6deg) rotateZ(2deg) translateY(-18px)}}
+.ipad-shadow{animation:shadowPulse 7s ease-in-out infinite}
+@keyframes shadowPulse{0%,100%{transform:scaleX(1);opacity:.55}50%{transform:scaleX(.82);opacity:.32}}
+.toast{animation:toastPop 9s cubic-bezier(.2,.9,.25,1.2) infinite both}
+@keyframes toastPop{0%{opacity:0;transform:translateY(18px) scale(.9)}7%{opacity:1;transform:translateY(0) scale(1)}82%{opacity:1;transform:translateY(0) scale(1)}90%,100%{opacity:0;transform:translateY(-10px) scale(.97)}}
+.ping{animation:ping 1.8s ease-out infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.9);opacity:0}}
+@media (prefers-reduced-motion: reduce){.ipad,.ipad-shadow,.toast,.ping{animation:none}}
+
+.wiggle{animation:wiggle 3s ease-in-out infinite}
+@keyframes wiggle{0%,78%,100%{rotate:0deg}82%{rotate:-1deg}86%{rotate:1deg}90%{rotate:-.6deg}94%{rotate:.4deg}}
+@media (prefers-reduced-motion: reduce){.wiggle{animation:none}}
+
+/* static export: hide unresolved template holes until the page script runs */
+html:not(.dc-ready) #dc-root{visibility:hidden}
+</style>
+<noscript><style>html:not(.dc-ready) #dc-root{visibility:visible}</style></noscript>
+</head>
+<body>
+<div id="dc-root">
+<div class="page-scale" style="padding: clamp(8px, 1.4vw, 20px); font-family: 'Tommy', sans-serif; color: #743e5a; background: #f6d9e7">
+<div style="background-color: #ffffff; background-image: radial-gradient(55% 38% at 12% 4%, #ff81a038 0%, #ff81a000 100%), radial-gradient(50% 36% at 90% 8%, #ffa28340 0%, #ffa28300 100%), radial-gradient(85% 55% at 50% 22%, #f6d9e7b3 0%, #ffefe966 45%, #ffffff00 100%); background-repeat: no-repeat; background-size: 100% 1500px; border-radius: clamp(24px, 3vw, 44px); overflow: clip">
+
+<!-- ANNOUNCEMENT (sticky countdown) -->
+<div class="topbar" style="position: sticky; top: 0; z-index: 50; background: #743e5a; color: #ffffff; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 18px; padding: 12px 20px; font-size: 14px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; text-align: center; box-shadow: 0 8px 24px -12px #4a233880">
+<span class="bar-long">Private extension: save $100 + get the bonuses before Friday, Oct 30, 11:59 PM CT</span><span class="bar-short">$100 off + bonuses · ends Fri</span>
+<span role="timer" aria-label="Time left in this offer" style="display: inline-flex; gap: 6px; font-weight: 700; letter-spacing: .04em; font-variant-numeric: tabular-nums">
+<span style="background: #ffffff24; padding: 5px 9px; border-radius: 8px">{{cdD}}d</span><span style="background: #ffffff24; padding: 5px 9px; border-radius: 8px">{{cdH}}h</span><span style="background: #ffffff24; padding: 5px 9px; border-radius: 8px">{{cdM}}m</span><span class="cd-sec" style="background: #ff81a0; color: #4a2338; padding: 5px 9px; border-radius: 8px">{{cdS}}s</span>
+</span>
+<a class="topbar-link" href="https://learn.emilydiazslp.com/offers/wSGfoUxH" style="color: #ffffff; text-decoration: underline; text-underline-offset: 3px">Enroll Now</a>
+</div>
+
+<!-- NAV -->
+<nav style="max-width: 1120px; margin: 0 auto; padding: 22px clamp(20px, 6vw, 96px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<img class="nav-logo" src="assets/img/logo.png" alt="The AAC Assessment Hub" style="height: 97px; width: 129px; display: block">
+<div class="nav-links" style="display: flex; flex-wrap: wrap; gap: 6px 26px; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">
+<a href="#inside" style="text-decoration: none; padding: 10px 0; border-bottom: 2px solid #743e5a">What's inside</a>
+<a href="#curriculum" style="text-decoration: none; padding: 10px 0; color: #743e5aaa">Curriculum</a>
+<a href="#faq" style="text-decoration: none; padding: 10px 0; color: #743e5aaa">FAQ</a>
+</div>
+<a href="https://learn.emilydiazslp.com/offers/wSGfoUxH" class="btn nav-cta" style="background: #ff81a0; color: #ffffff; min-height: 52px; padding: 6px 6px 6px 22px; font-size: 13px">Enroll now<span class="dot" style="width: 40px; height: 40px; background: #743e5a; color: #ffffff"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+</nav>
+
+<main style="margin: 0 auto; padding: 0 0 48px; display: flex; flex-direction: column; gap: clamp(88px, 10vw, 140px)">
+
+<!-- SCROLL STACK 1: hero pins, next content slides over -->
+<div class="stack-pair" data-stack="1">
+<!-- HERO -->
+<section class="stick" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; padding-top: 24px">
+<div style="flex: 1.05 1 480px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span class="chip">Limited-time offer</span>
+<span class="chip" style="background: #743e5a; border-color: #743e5a; color: #ffffff">Save $100</span>
+</div>
+<h1 style="margin: 0; font-size: clamp(46px, 5.4vw, 76px); line-height: .98; font-weight: 700; letter-spacing: -.02em">Say <span class="script" style="color: #e0577d; font-size: 1.5em; line-height: .6">hello</span> to confident AAC assessments</h1>
+<p style="margin: 0; max-width: 540px; font-size: 19px; line-height: 1.6">Wave goodbye to late night Googling and overwhelm and finally find all your AAC assessment answers in one spot. <b>The AAC Assessment Hub provides a step-by-step process for conducting assessments</b> along with data sheets, downloads, and more.</p>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; padding-top: 4px">
+<a href="#inside" class="btn" style="background: #ff81a0; color: #ffffff">See what's inside the AAC Hub<span class="dot" style="background: #743e5a; color: #ffffff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></span></a>
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="display: flex; align-items: baseline; gap: 10px"><span style="font-size: 20px; text-decoration: line-through; opacity: .7">$247</span><span style="font-size: 32px; font-weight: 700">$147</span></div><span style="font-size: 13px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase">$100 off for a limited time</span></div>
+</div>
+</div>
+
+<!-- HERO VISUAL: floating iPad + notifications -->
+<div class="hero-visual" style="flex: 1 1 500px; min-height: 700px; position: relative; display: flex; align-items: center; justify-content: center; padding: 40px 0 60px; perspective: {{persp}}">
+
+<div class="ipad-shadow" aria-hidden="true" style="position: absolute; left: 18%; right: 18%; bottom: 18px; height: 40px; border-radius: 50%; background: radial-gradient(closest-side, #743e5a59, #743e5a00)"></div>
+
+<div class="{{ipadClass}}" role="img" aria-label="An iPad showing an AAC evaluation report being completed step by step, from referral to funding approval" style="position: relative; width: min(430px, 84%); aspect-ratio: 3 / 4; background: #2c1622; border-radius: 40px; padding: 16px; box-sizing: border-box; box-shadow: 0 40px 80px -20px #743e5a66, inset 0 0 0 2px #5a3047; transform-style: preserve-3d; transform: {{ipadTf}}; transition: {{ipadTr}}">
+<div aria-hidden="true" style="position: absolute; inset: 0; border-radius: 40px; background: #743e5a; box-shadow: inset 0 0 0 2px #5a3047; transform: rotateY(180deg) translateZ(1px); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: grid; place-items: center"><img src="assets/img/logo-on-maroon.png" alt="" style="width: 58%; height: auto; display: block"></div>
+<div style="position: absolute; top: 50%; left: 6px; width: 4px; height: 4px; border-radius: 50%; background: #5a3047; transform: translateY(-50%)"></div>
+<div style="position: relative; width: 100%; height: 100%; background: #ffffff; border-radius: 26px; overflow: {{scrOv}}; transform-style: {{scrTs}}; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; font-family: 'Tommy', sans-serif; color: #743e5a">
+
+<!-- report header + live stepper -->
+<div style="padding: 14px 16px 12px; background: #ffefe9; border-radius: 26px 26px 0 0; display: flex; flex-direction: column; gap: 12px; backface-visibility: hidden">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 30px; height: 30px; border-radius: 9px; background: #ff81a0; display: grid; place-items: center; color: #4a2338"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"></path><path d="M9 11h6M9 15h4"></path></svg></span>
+<div><div style="font-size: 13px; font-weight: 700; line-height: 1.1">AAC Evaluation Report</div><div style="font-size: 10px; margin-top: 3px; opacity: .75">{{statusText}}</div></div>
+</div>
+<span style="font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; background: {{badgeBg}}; color: {{badgeFg}}; transition: background .4s, color .4s; white-space: nowrap">{{badgeText}}</span>
+</div>
+
+<div style="position: relative; display: flex; justify-content: space-between">
+<div style="position: absolute; top: 12px; left: 10%; right: 10%; height: 2px; background: #f6d9e7; border-radius: 2px"></div>
+<div style="position: absolute; top: 12px; left: 10%; width: {{prog}}; height: 2px; background: #743e5a; border-radius: 2px; transition: width .6s ease"></div>
+
+<div style="position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px">
+<span style="position: relative; width: 26px; height: 26px; border-radius: 50%; background: {{s1bg}}; color: {{s1fg}}; box-shadow: {{s1ring}}; display: grid; place-items: center; transition: background .4s, color .4s, box-shadow .4s">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s1i}}; transition: opacity .3s"><rect x="6" y="4" width="12" height="17" rx="2"></rect><path d="M9 4h6v3H9zM9 12h6M9 16h4"></path></svg>
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s1c}}; transform: scale({{s1c}}); transition: opacity .3s, transform .45s cubic-bezier(.2,.9,.25,1.6)"><path d="M5 13l4 4L19 7"></path></svg>
+</span>
+<span style="font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase">Referral</span>
+</div>
+<div style="position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px">
+<span style="position: relative; width: 26px; height: 26px; border-radius: 50%; background: {{s2bg}}; color: {{s2fg}}; box-shadow: {{s2ring}}; display: grid; place-items: center; transition: background .4s, color .4s, box-shadow .4s">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s2i}}; transition: opacity .3s"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg>
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s2c}}; transform: scale({{s2c}}); transition: opacity .3s, transform .45s cubic-bezier(.2,.9,.25,1.6)"><path d="M5 13l4 4L19 7"></path></svg>
+</span>
+<span style="font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase">Assess</span>
+</div>
+<div style="position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px">
+<span style="position: relative; width: 26px; height: 26px; border-radius: 50%; background: {{s3bg}}; color: {{s3fg}}; box-shadow: {{s3ring}}; display: grid; place-items: center; transition: background .4s, color .4s, box-shadow .4s">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s3i}}; transition: opacity .3s"><rect x="5" y="3" width="14" height="18" rx="2.5"></rect><path d="M9 8h2v2H9zM13 8h2v2h-2zM9 13h2v2H9zM13 13h2v2h-2z"></path></svg>
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s3c}}; transform: scale({{s3c}}); transition: opacity .3s, transform .45s cubic-bezier(.2,.9,.25,1.6)"><path d="M5 13l4 4L19 7"></path></svg>
+</span>
+<span style="font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase">Trial</span>
+</div>
+<div style="position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px">
+<span style="position: relative; width: 26px; height: 26px; border-radius: 50%; background: {{s4bg}}; color: {{s4fg}}; box-shadow: {{s4ring}}; display: grid; place-items: center; transition: background .4s, color .4s, box-shadow .4s">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s4i}}; transition: opacity .3s"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s4c}}; transform: scale({{s4c}}); transition: opacity .3s, transform .45s cubic-bezier(.2,.9,.25,1.6)"><path d="M5 13l4 4L19 7"></path></svg>
+</span>
+<span style="font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase">Decide</span>
+</div>
+<div style="position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px">
+<span style="position: relative; width: 26px; height: 26px; border-radius: 50%; background: {{s5bg}}; color: {{s5fg}}; box-shadow: {{s5ring}}; display: grid; place-items: center; transition: background .4s, color .4s, box-shadow .4s">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s5i}}; transition: opacity .3s"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path></svg>
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: {{s5c}}; transform: scale({{s5c}}); transition: opacity .3s, transform .45s cubic-bezier(.2,.9,.25,1.6)"><path d="M5 13l4 4L19 7"></path></svg>
+</span>
+<span style="font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase">Fund</span>
+</div>
+</div>
+</div>
+
+<div style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 10px; flex: 1; transform-style: {{scrTs}}">
+
+<!-- client fields fill in -->
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; font-size: 10px; line-height: 1.3; background: #ffffff; border-radius: 12px; backface-visibility: hidden; transform: {{zA}}; box-shadow: {{shA}}; transition: transform .6s cubic-bezier(.2,.9,.25,1.3), box-shadow .5s">
+<div><div style="opacity: .65">Client</div><div style="font-weight: 700; font-size: 11px; opacity: {{fo}}; transform: {{ft}}; transition: opacity .4s, transform .4s">Student A · Age 7</div></div>
+<div><div style="opacity: .65">Setting</div><div style="font-weight: 700; font-size: 11px; opacity: {{fo}}; transform: {{ft}}; transition: opacity .4s .12s, transform .4s .12s">School-based</div></div>
+<div><div style="opacity: .65">Evaluator</div><div style="font-weight: 700; font-size: 11px; opacity: {{fo}}; transform: {{ft}}; transition: opacity .4s .24s, transform .4s .24s">You, M.S., CCC-SLP</div></div>
+<div><div style="opacity: .65">Referral</div><div style="font-weight: 700; font-size: 11px; opacity: {{fo}}; transform: {{ft}}; transition: opacity .4s .36s, transform .4s .36s">AAC assessment</div></div>
+</div>
+
+<!-- checklist ticks off -->
+<div style="border-top: 1.5px solid #f6d9e7; padding-top: 9px; display: flex; flex-direction: column; gap: 6px; background: #ffffff; border-radius: 0 0 12px 12px; backface-visibility: hidden; transform: {{zB}}; box-shadow: {{shB}}; transition: transform .6s cubic-bezier(.2,.9,.25,1.3), box-shadow .5s">
+<div style="font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase">Assessment summary</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 11px; opacity: {{ra1}}; transition: opacity .4s"><span style="position: relative; width: 16px; height: 16px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px #f6d9e7; flex: none"><span style="position: absolute; inset: 0; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; transform: scale({{c1}}); transition: transform .45s cubic-bezier(.2,.9,.25,1.6)"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span></span>Referral &amp; pre-assessment</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 11px; opacity: {{ra2}}; transition: opacity .4s"><span style="position: relative; width: 16px; height: 16px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px #f6d9e7; flex: none"><span style="position: absolute; inset: 0; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; transform: scale({{c2}}); transition: transform .45s cubic-bezier(.2,.9,.25,1.6)"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span></span>Feature matching</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 11px; opacity: {{ra3}}; transition: opacity .4s"><span style="position: relative; width: 16px; height: 16px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px #f6d9e7; flex: none"><span style="position: absolute; inset: 0; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; transform: scale({{c3}}); transition: transform .45s cubic-bezier(.2,.9,.25,1.6)"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span></span>Device trials · 3 systems</div>
+</div>
+
+<!-- trial data grows -->
+<div style="background: #ffefe9; border-radius: 14px; padding: 9px 12px; display: flex; flex-direction: column; gap: 6px; backface-visibility: hidden; transform: {{zC}}; box-shadow: {{shC}}; transition: transform .6s cubic-bezier(.2,.9,.25,1.3), box-shadow .5s">
+<div style="display: flex; justify-content: space-between; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase"><span>Trial data</span><span style="opacity: .65">Successful attempts</span></div>
+<div style="display: flex; align-items: flex-end; gap: 10px; height: 70px">
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; height: 100%"><div style="width: 100%; height: {{b1}}; background: #f6d9e7; border-radius: 6px 6px 3px 3px; transition: height .7s cubic-bezier(.2,.8,.2,1)"></div><span style="font-size: 9px">System A</span></div>
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; height: 100%"><div style="width: 100%; height: {{b2}}; background: #ffa283; border-radius: 6px 6px 3px 3px; transition: height .7s cubic-bezier(.2,.8,.2,1) .15s"></div><span style="font-size: 9px">System B</span></div>
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; height: 100%; position: relative">
+<span style="position: absolute; top: -4px; display: inline-flex; align-items: center; gap: 3px; font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: #ff81a0; color: #4a2338; padding: 3px 6px; border-radius: 999px; white-space: nowrap; opacity: {{best}}; transform: scale({{best}}); transition: opacity .3s, transform .45s cubic-bezier(.2,.9,.25,1.6)"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9z"></path></svg>Best match</span>
+<div style="width: 100%; height: {{b3}}; background: #743e5a; border-radius: 6px 6px 3px 3px; transition: height .7s cubic-bezier(.2,.8,.2,1) .3s"></div><span style="font-size: 9px; font-weight: 700">System C</span></div>
+</div>
+</div>
+
+<!-- justification writes itself -->
+<div style="display: flex; flex-direction: column; gap: 5px; background: #ffffff; border-radius: 12px; backface-visibility: hidden; transform: {{zD}}; box-shadow: {{shD}}; transition: transform .6s cubic-bezier(.2,.9,.25,1.3), box-shadow .5s">
+<div style="font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase">Clinical justification</div>
+<div style="height: 6px; border-radius: 3px; background: #f6d9e7; width: {{l1}}; transition: width .6s ease"></div>
+<div style="height: 6px; border-radius: 3px; background: #f6d9e7; width: {{l2}}; transition: width .6s ease"></div>
+<div style="height: 6px; border-radius: 3px; background: #f6d9e7; width: {{l3}}; transition: width .6s ease .2s"></div>
+</div>
+
+<!-- recommendation lands -->
+<div style="margin-top: auto; background: #f6d9e7; border-radius: 14px; padding: 9px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; opacity: {{ro}}; transform: {{rt}}; box-shadow: {{shE}}; backface-visibility: hidden; transition: opacity .45s, transform .6s cubic-bezier(.2,.9,.25,1.3), box-shadow .5s">
+<div style="display: flex; align-items: center; gap: 9px">
+<span style="width: 26px; height: 26px; border-radius: 8px; background: #ffffff; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"></path><path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0012 3z"></path></svg></span>
+<div><div style="font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase">Recommendation</div><div style="font-size: 12px; font-weight: 700; margin-top: 2px">System C · robust core vocabulary</div></div>
+</div>
+<span style="width: 26px; height: 26px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none; transform: scale({{rc}}); transition: transform .45s cubic-bezier(.2,.9,.25,1.6) .25s"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
+</div>
+</div>
+</div>
+</div>
+
+<div style="position: absolute; left: 0; top: 34%; width: 236px; background: #ffffff; border-radius: 20px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 18px 40px -12px #743e5a40, inset 0 0 0 1px #f6d9e7; opacity: {{t0o}}; transform: {{t0t}}; transition: opacity .45s, transform .5s cubic-bezier(.2,.9,.25,1.25)">
+<span style="width: 38px; height: 38px; border-radius: 12px; background: #ffefe9; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"></path><path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0012 3z"></path></svg></span>
+<div style="min-width: 0"><div style="font-size: 14px; font-weight: 700">Clear next step</div><div style="font-size: 12px; margin-top: 2px">Assessment plan ready</div></div>
+</div>
+
+<div style="position: absolute; left: 0; bottom: 110px; width: 250px; background: #ffffff; border-radius: 20px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 18px 40px -12px #743e5a40, inset 0 0 0 1px #f6d9e7; opacity: {{t1o}}; transform: {{t1t}}; transition: opacity .45s, transform .5s cubic-bezier(.2,.9,.25,1.25)">
+<span style="width: 38px; height: 38px; border-radius: 12px; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg></span>
+<div style="min-width: 0"><div style="font-size: 14px; font-weight: 700">Best match found</div><div style="font-size: 12px; margin-top: 2px">3 of 3 systems trialed</div></div>
+</div>
+
+<div style="position: absolute; right: 0; bottom: 64px; width: 256px; background: #ffffff; border-radius: 20px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 18px 40px -12px #743e5a40, inset 0 0 0 1px #f6d9e7; opacity: {{t2o}}; transform: {{t2t}}; transition: opacity .45s, transform .5s cubic-bezier(.2,.9,.25,1.25)">
+<span style="width: 38px; height: 38px; border-radius: 12px; background: #f6d9e7; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+<div style="min-width: 0"><div style="font-size: 14px; font-weight: 700">Report submitted</div><div style="font-size: 12px; margin-top: 2px">Sent with confidence</div></div>
+</div>
+
+<div style="opacity: {{t3o}}; transform: {{t3t}}; transition: opacity .45s, transform .55s cubic-bezier(.2,.9,.25,1.3); position: absolute; right: 2%; top: 30px; width: 300px; background: #743e5a; color: #ffffff; border-radius: 22px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; box-shadow: 0 24px 50px -14px #743e5a80">
+<span style="position: relative; width: 44px; height: 44px; flex: none">
+<span class="ping" style="position: absolute; inset: 0; border-radius: 14px; background: #ff81a0"></span>
+<span style="position: absolute; inset: 0; border-radius: 14px; background: #ff81a0; color: #4a2338; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+</span>
+<div style="min-width: 0"><div style="display: flex; justify-content: space-between; gap: 8px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #f6d9e7"><span>Funding update</span><span>now</span></div><div style="font-size: 16px; font-weight: 700; line-height: 1.3; margin-top: 4px">Your device funding has been approved!</div></div>
+</div>
+
+</div>
+</section>
+<div class="stack-cover">
+<!-- PAIN POINTS -->
+<section style="display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px">
+<div style="flex: 1.3 1 440px; display: flex; flex-direction: column; gap: 20px">
+<span class="chip" style="align-self: flex-start"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M8.5 16c1-1.3 2.2-2 3.5-2s2.5.7 3.5 2M9 9.5h.01M15 9.5h.01"></path></svg>Sound familiar?</span>
+<h2 style="margin: 0; font-size: clamp(34px, 4vw, 56px); line-height: 1.04; font-weight: 700; letter-spacing: -.015em">Struggling to navigate AAC assessments <span style="color: #e0577d">on your own?</span></h2>
+</div>
+<p style="flex: 1 1 360px; margin: 0; font-size: 18px; line-height: 1.65">The world of AAC can sometimes feel like the wild, wild west. With no formal or standardized assessment processes in place, moving forward with complete confidence is just plain hard. <b>If you’ve ever felt lost when it comes to conducting an AAC assessment, you 👏 are 👏 not 👏 alone.</b></p>
+</div>
+
+<div style="display: flex; align-items: center; gap: 14px; font-size: 14px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase"><span>Many SLPs face the exact same challenges</span></div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px">
+<div style="border-top: 1.5px solid #f6d9e7; padding: 26px 4px 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; justify-content: space-between"><span style="width: 46px; height: 46px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><g><g><g><path d="m504.203 214.312-3.928-1.964c-23.025-11.512-51.032-3.1-63.904 19.193l-39.187 67.872-48.545-84.083c-7.354-12.738-19.991-21.312-34.233-23.658-16.255 12.136-36.406 19.328-58.206 19.328-21.797 0-41.945-7.191-58.2-19.323-14.231 2.353-26.856 10.924-34.205 23.654l-48.545 84.083-39.723-68.801c-13.438-23.274-43.198-31.249-66.473-17.811l-2.003 1.156c-6.744 3.893-9.054 12.516-5.161 19.26l71.179 123.282c8.685 15.043 24.728 24.318 42.098 24.338h.069c17.4.02 33.486-9.254 42.186-24.323l10.948-18.962v113.447c0 8.284 6.716 15 15 15h145.697c8.284 0 15-6.716 15-15v-113.571l11.064 19.103c8.699 15.021 24.742 24.27 42.1 24.273 17.388.003 33.457-9.272 42.151-24.331l70.727-122.502c4.058-7.031 1.356-16.029-5.906-19.66z"></path></g><path d="m256.2 181c-37.22 0-67.5-30.28-67.5-67.5s30.281-67.5 67.5-67.5 67.5 30.28 67.5 67.5-30.28 67.5-67.5 67.5z"></path></g></g></svg></span></div>
+<h3 style="margin: 0; font-size: 24px; line-height: 1.15; font-weight: 700">Deer in headlights</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">You're unsure where to start when an AAC referral comes in, leaving you l<b>ooking like a deer in headlights</b> when parents and clients are looking to you for guidance.</p>
+</div>
+<div style="border-top: 1.5px solid #f6d9e7; padding: 26px 4px 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; justify-content: space-between"><span style="width: 46px; height: 46px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center"><svg width="26" height="26" viewBox="0 0 500 500" fill="currentColor" aria-hidden="true"><g id="Layer_2"></g><g id="Layer_1"></g><g id="Layer_3"><g><path d="m397.039 358.966-74.436-2.255-19.554-35.091 19.921-111.242 42.084 6.778c1.454.234 2.904.349 4.342.349 10.013 0 19.379-5.533 24.132-14.611 5.437-10.384 3.625-23.079-4.499-31.529l-56.648-58.914c3.635 12.415 3.658 25.624-.106 38.322-8.755 29.538-35.908 48.703-65.256 48.703-6.386 0-12.874-.906-19.302-2.811-3.607-1.07-5.665-4.861-4.596-8.468 1.07-3.607 4.86-5.664 8.468-4.596 13.934 4.129 28.64 2.585 41.412-4.344 12.772-6.932 22.081-18.422 26.21-32.355 8.525-28.761-7.938-59.096-36.699-67.621-.414-.123-.802-.29-1.173-.48-4.472-1.271-9.186-1.967-14.066-1.967-7.771 0-15.135 1.729-21.74 4.813 13.754 14.206 14.895 36.857 1.976 52.407l-22.026 26.515c-1.347 1.622-3.289 2.459-5.245 2.459-1.534 0-3.077-.515-4.349-1.573-2.895-2.404-3.291-6.699-.887-9.594l22.027-26.515c9.042-10.882 7.544-27.091-3.338-36.132-5.179-4.302-11.704-6.357-18.395-5.829-6.5.89-12.7 4.106-17.225 9.554l-62.074 74.716c-7.124 8.573-8.307 20.622-2.987 30.419 4.805 8.847 14.039 14.247 23.939 14.247 1.061 0 2.13-.062 3.202-.189l22.889-2.701-22.265 124.336c0 .886.042 1.762.102 2.632-.764 8.889 2.829 17.973 10.395 23.862l2.246 1.748c1.212 1.072 2.489 2.073 3.833 2.983l10.436 8.122-82.963 9.805c-14.947 1.766-25.631 15.314-23.864 30.26 1.638 13.859 13.407 24.056 27.028 24.055 1.066 0 2.147-.063 3.232-.192l123.263-14.568 18.793-5.309c16.772-4.738 28.486-20.221 28.486-37.649 0-11.438-4.982-22.266-13.668-29.71l-23.043-19.744c-2.857-2.448-3.189-6.749-.741-9.606s6.749-3.19 9.605-.741l23.044 19.743c11.712 10.034 18.429 24.635 18.429 40.056 0 8.936-2.289 17.489-6.363 25.014 4.587 3.771 10.355 6.005 16.476 6.191l89.889 2.725c.281.008.561.012.841.012 14.666 0 26.776-11.664 27.223-26.424.454-15.045-11.372-27.61-26.415-28.066z"></path><path d="m130.521 325.248c1.505 0 2.976-.605 4.037-1.677 1.061-1.06 1.665-2.52 1.665-4.024 0-.376-.034-.753-.114-1.118-.068-.365-.183-.718-.32-1.06-.148-.354-.319-.685-.524-.992-.205-.308-.445-.594-.707-.866-1.06-1.061-2.531-1.665-4.037-1.665-1.505 0-2.964.604-4.025 1.665-.274.273-.502.558-.718.866-.205.307-.376.638-.524.992-.137.342-.251.695-.32 1.06-.08.365-.114.742-.114 1.118 0 1.504.605 2.964 1.676 4.024 1.061 1.073 2.532 1.677 4.025 1.677z"></path><path d="m132.904 308.589c.41.091.821.126 1.22.126 2.622 0 4.983-1.814 5.564-4.493.673-3.068-1.288-6.112-4.367-6.774-3.067-.673-6.112 1.277-6.773 4.356-.672 3.079 1.278 6.112 4.356 6.785z"></path><path d="m132.141 285.271c-.673 3.079 1.277 6.123 4.356 6.785.41.091.821.137 1.22.137 2.623 0 4.983-1.825 5.565-4.493.673-3.079-1.289-6.111-4.356-6.785-3.08-.673-6.125 1.277-6.785 4.356z"></path><path d="m145.333 273.983c1.061-1.061 1.676-2.532 1.676-4.025 0-.376-.045-.753-.114-1.118-.08-.364-.183-.718-.331-1.06-.137-.353-.32-.684-.524-.992-.205-.307-.445-.605-.707-.866-.262-.263-.559-.502-.867-.707s-.638-.376-.98-.524c-.342-.137-.707-.251-1.072-.32-.73-.148-1.494-.148-2.224 0-.365.069-.729.183-1.072.32-.342.148-.673.32-.98.524-.308.205-.604.444-.866.707-.262.262-.502.559-.707.866-.205.308-.388.639-.524.992-.149.342-.251.696-.331 1.06-.068.365-.103.742-.103 1.118 0 1.493.605 2.964 1.665 4.025 1.06 1.071 2.531 1.676 4.036 1.676 1.493 0 2.964-.605 4.025-1.676z"></path><path d="m150.67 116.047c1.037.798 2.258 1.186 3.478 1.186 1.71 0 3.398-.764 4.515-2.224 1.927-2.485 1.459-6.065-1.038-7.993-2.485-1.926-6.066-1.46-7.993 1.038-1.916 2.485-1.46 6.066 1.038 7.993z"></path><path d="m174.341 85.351c1.038.798 2.269 1.186 3.478 1.186 1.71 0 3.398-.764 4.516-2.224 1.927-2.497 1.47-6.078-1.027-7.993-2.497-1.926-6.078-1.46-7.993 1.027-1.927 2.497-1.471 6.078 1.026 8.004z"></path><path d="m162.505 100.699c1.037.798 2.258 1.186 3.478 1.186 1.71 0 3.398-.764 4.515-2.224 1.927-2.485 1.46-6.078-1.026-7.993-2.497-1.926-6.078-1.46-8.005 1.027-1.915 2.497-1.459 6.078 1.038 8.004z"></path><path d="m278.869 62.307c.194 0 .314-.011.509-.035 3.136-.307 5.242-3.101 4.923-6.237-.308-3.125-6.3-5.416-6.3-5.097 0-.011 0-.011 0-.011-3 .318-5.353 3.112-5.045 6.248.295 2.943 3.017 5.132 5.913 5.132z"></path><path d="m296.552 63.858c.467.114.935.17 1.391.17 2.554 0 4.869-1.722 5.519-4.309.775-3.044-1.083-6.147-4.128-6.922-3.056-.764-6.157 1.095-6.922 4.139-.774 3.056 1.084 6.158 4.14 6.922z"></path><path d="m311.717 71h-.011c1.06 1 2.326 1.273 3.58 1.273 1.665 0 3.318-.635 4.447-2.026 1.973-2.452 1.585-6.129-.867-8.102-2.463-1.984-6.043-1.562-8.016.901-1.971 2.452-1.596 6.954.867 7.954z"></path><path d="m338.091 270.539c.696-3.068-1.232-6.123-4.299-6.818-3.078-.696-6.123 1.23-6.819 4.309-.695 3.068 1.232 6.123 4.299 6.819.422.091.844.137 1.266.137 2.6 0 4.96-1.802 5.553-4.447z"></path><path d="m325.241 301.542c-3.067-.696-6.123 1.219-6.819 4.298-.695 3.068 1.232 6.123 4.299 6.819.422.091.844.136 1.266.136 2.6 0 4.96-1.789 5.553-4.435.695-3.078-1.232-6.134-4.299-6.818z"></path><path d="m333.815 289.444c.696-3.068-1.232-6.123-4.299-6.819-3.078-.695-6.123 1.232-6.819 4.31-.695 3.068 1.232 6.123 4.299 6.819.422.091.855.137 1.266.137 2.611 0 4.96-1.801 5.553-4.447z"></path><path d="m324.397 431.541c-3.147-.228-5.872 2.132-6.1 5.279-.228 3.136 2.132 5.873 5.268 6.1.148 0 .285.012.422.012 2.964 0 5.461-2.293 5.678-5.291.228-3.135-2.132-5.871-5.268-6.1z"></path><path d="m363.063 434.346c-3.147-.228-5.873 2.132-6.1 5.279-.228 3.136 2.132 5.86 5.268 6.1.149 0 .285.012.422.012 2.965 0 5.462-2.293 5.678-5.291.228-3.135-2.132-5.871-5.268-6.1z"></path><path d="m343.724 432.943c-3.136-.227-5.872 2.132-6.1 5.279-.228 3.136 2.132 5.873 5.279 6.101.137 0 .273.011.422.011 2.953 0 5.462-2.292 5.678-5.29.228-3.135-2.132-5.872-5.279-6.101z"></path><path d="m382.39 435.748c-3.136-.227-5.872 2.132-6.1 5.28-.217 3.136 2.144 5.872 5.28 6.1.136 0 .285.011.421.011 2.954 0 5.462-2.292 5.678-5.29.228-3.135-2.132-5.872-5.279-6.101z"></path><path d="m416.996 171.759c.912 0 1.847-.228 2.703-.684 2.77-1.494 3.808-4.961 2.314-7.731-1.494-2.772-4.96-3.808-7.731-2.315-2.771 1.505-3.809 4.96-2.303 7.731 1.026 1.905 2.987 2.999 5.017 2.999z"></path><path d="m405.297 156.343c1.539 0 3.091-.627 4.208-1.858 2.121-2.326 1.961-5.928-.365-8.05-2.326-2.121-5.941-1.961-8.061.365s-1.95 5.941.376 8.061c1.095.992 2.462 1.482 3.842 1.482z"></path><path d="m422.207 178.783c-3.147.137-5.575 2.805-5.439 5.952.126 3.055 2.657 5.451 5.69 5.451.08 0 .171 0 .251-.011 3.147-.137 5.588-2.794 5.451-5.942-.138-3.147-2.806-5.586-5.953-5.45z"></path><path d="m420.656 198.087c-2.725-1.585-6.215-.661-7.799 2.064-1.585 2.714-.65 6.202 2.064 7.787.9.524 1.892.776 2.862.776 1.961 0 3.877-1.016 4.937-2.839 1.585-2.724.662-6.214-2.064-7.788z"></path></g></g></svg></span></div>
+<h3 style="margin: 0; font-size: 24px; line-height: 1.15; font-weight: 700">Afraid of the wrong call</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">You don’t know how to trial devices or make feature-matching decisions and <b>making the wrong decision or not educating yourself first feels catastrophic and unethical.</b></p>
+</div>
+<div style="border-top: 1.5px solid #f6d9e7; padding: 26px 4px 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; justify-content: space-between"><span style="width: 46px; height: 46px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center"><svg width="26" height="26" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><g><path d="m497 90.991h-49.442c-105.278 0-179.228-19.819-276.991-58.931-4.585-1.816-9.829-1.26-13.975 1.509-4.116 2.798-6.592 7.442-6.592 12.422v210c0 6.138 3.735 11.645 9.434 13.931 101.309 40.518 179.008 61.069 288.124 61.069h49.442c8.291 0 15-6.709 15-15v-210c0-8.291-6.709-15-15-15z"></path><path d="m15 480.991h331c8.291 0 15-6.709 15-15v-30h-271c-24.814 0-45-20.186-45-45v-150h-30c-8.291 0-15 6.709-15 15v210c0 8.291 6.709 15 15 15z"></path><path d="m120 255.991v-90h-30c-8.291 0-15 6.709-15 15v210c0 8.291 6.709 15 15 15h331c8.291 0 15-6.709 15-15v-30.293c-110.931-1.518-191.02-24.245-287.714-62.915-17.197-6.899-28.286-23.305-28.286-41.792z"></path></g></svg></span></div>
+<h3 style="margin: 0; font-size: 24px; line-height: 1.15; font-weight: 700">Buried in paperwork</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">Writing a report and securing funding <b>feels like a maze of paperwork</b> on top of a caseload we both know is more than you signed up for.</p>
+</div>
+<div style="border-top: 1.5px solid #f6d9e7; padding: 26px 4px 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; justify-content: space-between"><span style="width: 46px; height: 46px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center"><svg width="26" height="26" viewBox="0 0 612 612" fill="currentColor" aria-hidden="true"><g><path clip-rule="evenodd" d="m362.517 556.361c0-11.023 8.934-19.957 19.957-19.957h229.527v-119.812h-229.528c-11.023 0-19.957-8.934-19.957-19.957 0-28.917 0-81.576 0-105.131 0-7.351 4.045-14.109 10.524-17.588 47.224-25.331 237.316-127.316 237.316-127.316v-135.471s-164.794 88.407-218.451 117.191c-6.18 3.319-13.657 3.146-19.677-.459-6.027-3.605-9.712-10.105-9.712-17.123 0-41.576 0-107.22 0-107.22h-119.38v192.674c0 7.357-4.045 14.116-10.524 17.588-46.657 25.033-232.612 124.796-232.612 124.796v135.478s161.162-86.465 213.748-114.677c6.187-3.319 13.657-3.14 19.677.459 6.027 3.605 9.712 10.111 9.712 17.129v231.516h119.38zm-69.668-22.444v23.409c0 5.508 4.47 9.978 9.978 9.978s9.978-4.47 9.978-9.978v-23.409c0-5.508-4.47-9.978-9.978-9.978s-9.978 4.47-9.978 9.978zm67.925-47.444h59.87c5.508 0 9.978-4.47 9.978-9.978s-4.47-9.978-9.978-9.978h-59.87c-5.508 0-9.978 4.47-9.978 9.978s4.47 9.978 9.978 9.978zm119.739 0h59.87c5.508 0 9.978-4.47 9.978-9.978s-4.47-9.978-9.978-9.978h-59.87c-5.508 0-9.978 4.47-9.978 9.978s4.47 9.978 9.978 9.978zm-187.664-72.295v59.87c0 5.508 4.47 9.978 9.978 9.978s9.978-4.47 9.978-9.978v-59.87c0-5.508-4.47-9.978-9.978-9.978s-9.978 4.47-9.978 9.978zm-159.06-90.962c-20.868 11.189-40.179 21.553-52.758 28.298-4.849 2.608-6.679 8.661-4.071 13.511 2.601 4.856 8.654 6.679 13.511 4.078 12.573-6.745 31.891-17.109 52.752-28.305 4.856-2.601 6.679-8.654 4.078-13.511-2.603-4.849-8.656-6.679-13.512-4.071zm159.06-28.777v59.87c0 5.508 4.47 9.978 9.978 9.978s9.978-4.47 9.978-9.978v-59.87c0-5.508-4.47-9.978-9.978-9.978s-9.978 4.47-9.978 9.978zm-53.544-27.833s-23.283 12.486-52.758 28.305c-4.856 2.601-6.679 8.654-4.078 13.511 2.608 4.849 8.661 6.679 13.511 4.078 29.482-15.819 52.758-28.305 52.758-28.305 4.849-2.608 6.679-8.661 4.078-13.511-2.608-4.856-8.661-6.679-13.511-4.078zm53.544-91.907v59.87c0 5.508 4.47 9.978 9.978 9.978s9.978-4.47 9.978-9.978v-59.87c0-5.508-4.47-9.978-9.978-9.978s-9.978 4.47-9.978 9.978zm137.367-10.517c-19.205 10.304-37.851 20.309-52.758 28.305-4.849 2.608-6.679 8.661-4.078 13.511 2.608 4.856 8.661 6.679 13.511 4.078 14.914-8.003 33.554-18.001 52.758-28.305 4.856-2.601 6.679-8.654 4.078-13.511-2.608-4.849-8.662-6.679-13.511-4.078zm105.51-56.603s-22.863 12.267-52.752 28.305c-4.856 2.601-6.679 8.654-4.078 13.511 2.601 4.849 8.654 6.679 13.511 4.071 29.888-16.032 52.758-28.305 52.758-28.305 4.849-2.601 6.679-8.654 4.071-13.504-2.6-4.856-8.654-6.686-13.51-4.078zm-242.877-52.619v59.87c0 5.508 4.47 9.978 9.978 9.978s9.978-4.47 9.978-9.978v-59.87c0-5.508-4.47-9.978-9.978-9.978s-9.978 4.47-9.978 9.978z" fill-rule="evenodd"></path></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></span></div>
+<h3 style="margin: 0; font-size: 24px; line-height: 1.15; font-weight: 700">No clear roadmap</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">You want to support your clients effectively but don’t have a structured approach and without one, <b>you fear your clients might end up regressing</b> or not make progress at all.</p>
+</div>
+</div>
+</section>
+
+<!-- STORY -->
+<section id="story" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px clamp(32px, 5vw, 72px)">
+<div style="flex: 1 1 340px; max-width: 520px; align-self: stretch; min-height: 440px; border-radius: 28px; overflow: hidden; position: relative; background: #ffefe9">
+<img src="assets/img/emily-diaz.jpg" alt="Emily Diaz, M.S., CCC-SLP, smiling and holding an iPad" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%"></div>
+<div style="flex: 2 1 480px; display: flex; flex-direction: column; gap: 16px">
+<span class="chip" style="align-self: flex-start">Hi, I’m Emily, and trust me when I say…</span>
+<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 44px); line-height: 1; font-weight: 700; letter-spacing: -.015em">Been there. <span class="script" style="color: #e0577d; font-size: 1.5em; line-height: .6">Done that.</span></h2>
+<p style="margin: 0; font-size: 16.5px; line-height: 1.6">When that first AAC assessment came across my desk, I might have panicked. Just a little 🤏. So, I did what everyone does.</p>
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px 20px">
+<li style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; line-height: 1.35"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></span><span>I Googled.</span></li>
+<li style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; line-height: 1.35"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></span><span>I searched in textbooks from grad school.</span></li>
+<li style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; line-height: 1.35"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></span><span>I Instagrammed.</span></li>
+<li style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; line-height: 1.35"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></span><span>I made phone calls to previous mentors.</span></li>
+</ul>
+<p style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 700">But nothing made me feel confident in what I was doing.</p>
+<p style="margin: 0; font-size: 16.5px; line-height: 1.6">That feeling is beyond overwhelming! But here’s the good news: <strong>You don’t need to be an AAC specialist to conduct a solid assessment and make informed recommendations.</strong> With expert guidance, practical tools, and clear workflows, you can build confidence and competence in AAC evaluations.</p>
+<p style="margin: 0; font-size: 16.5px; line-height: 1.6">I’ve been an SLP for a decade, given presentations on both national and international stages, become a sought after leader in AAC, and I’ve finally created the assessment tool I wish I had when I first got started with AAC assessments.</p>
+<div style="display: flex; flex-direction: column; gap: 4px; padding-top: 4px">
+<p style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 700">No need to turn over every proverbial rock to find the AAC assessment solution.</p>
+<p class="script" style="margin: 0; font-size: clamp(44px, 4.2vw, 60px); line-height: .95; color: #e0577d">it’s finally here.</p></div>
+</div>
+</section>
+</div>
+</div>
+
+<!-- INTRODUCING -->
+<section id="inside" style="display: flex; flex-direction: column; gap: 16px">
+<div style="background: #ffefe9; color: #743e5a; border-radius: 36px; padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 72px) clamp(40px, 6vw, 88px); display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden">
+<span class="chip">Introducing…</span>
+<h2 style="margin: 22px 0 0; font-size: 52px; line-height: 1; font-weight: 700; letter-spacing: -.02em; color: #743e5a" class="intro-title">The AAC Assessment Hub</h2>
+<img src="assets/img/aac-hub-mockup.png" alt="The AAC Assessment Hub course on desktop and laptop with downloadable resources" style="width: 100%; max-width: 1000px; height: auto; display: block; margin-top: clamp(28px, 4vw, 48px)">
+<h3 style="margin: clamp(28px, 4vw, 48px) 0 0; max-width: 820px; font-size: 31px; line-height: 1.12; font-weight: 700; letter-spacing: -.01em">Your step-by-step training for AAC assessments along with a growing library of resources and support.</h3>
+<p style="margin: 22px 0 0; max-width: 680px; font-size: 18px; line-height: 1.7">The AAC Assessment Hub is a comprehensive, practical training program designed to take you from <b>referral to funding approval with confidence and ease.</b> This program removes the guesswork and delivers a clear process with additional resources so you’ll always be up to date on the latest in AAC.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; padding-top: 40px">
+<h3 style="margin: 0 0 8px; font-size: clamp(28px, 3vw, 40px); font-weight: 700; text-align: center">Inside, you’ll learn how to…</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px">
+<div style="min-height: 280px; background: #f6d9e7; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span style="width: 52px; height: 52px; border-radius: 16px; background: #ffffff; display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path clip-rule="evenodd" d="m9.49998 1c-.82843 0-1.5.67157-1.5 1.5s.67157 1.5 1.5 1.5h5.00002c.8284 0 1.5-.67157 1.5-1.5s-.6716-1.5-1.5-1.5zm-.49996 5c-1.65685 0-3-1.34315-3-3v-.57143c0-.23669-.19188-.42857-.42857-.42857-1.42018 0-2.57145 1.15128-2.57145 2.57145l.00002 15.42855c0 1.6569 1.34314 3 3 3h11.99998c1.6569 0 3-1.3431 3-3v-15.41943c0-1.42518-1.1554-2.58048-2.5806-2.58037-.2375.00002-.43.19256-.43.43007v.60058c-.0169 1.64473-1.355 2.96915-2.9998 2.96915zm6.70708 4.2929c.3905.3905.3905 1.0237 0 1.4142l-4 4c-.3905.3905-1.0237.3905-1.4142 0l-2-2c-.39053-.3905-.39054-1.0237-.00002-1.4142s1.02369-.3905 1.41422 0l1.2929 1.2928 3.2929-3.2928c.3905-.39053 1.0237-.39053 1.4142 0z" fill-rule="evenodd"></path></svg></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span></div>
+<div><div style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px">You'll learn to</div><p style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 700">Conduct a structured AAC assessment with clarity &amp; confidence.</p></div>
+</div>
+<div style="min-height: 280px; background: #ffa283; color: #4a2338; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span style="width: 52px; height: 52px; border-radius: 16px; background: #ffffff; display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M57,12a1,1,0,0,0-2,0v5h2Z"></path><path d="M10,51H46V11H10Zm19-3H27V46h2Zm6-34h6v6H35Zm0,10h6v6H35Zm0,10h6v6H35ZM33,48H31V46h2ZM25,14h6v6H25Zm0,10h6v6H25Zm0,10h6v6H25ZM23,46h2v2H23ZM15,14h6v6H15Zm0,10h6v6H15Zm0,10h6v6H15Z"></path><rect x="55" y="19" width="2" height="8"></rect><rect x="52" y="29" width="6" height="6"></rect><path d="M46,3H10A4,4,0,0,0,6,7V57a4,4,0,0,0,4,4H46a4,4,0,0,0,4-4V7A4,4,0,0,0,46,3ZM31,5h2V7H31ZM23,5h6V7H23Zm7,54H26a2,2,0,0,1,0-4h4a2,2,0,0,1,0,4Zm18-7a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V10A1,1,0,0,1,9,9H47a1,1,0,0,1,1,1Z"></path><polygon points="55 49.764 56 51.764 57 49.764 57 37 55 37 55 49.764"></polygon></svg></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span></div>
+<div><div style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px">You'll learn to</div><p style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 700">Trial multiple AAC systems and collect meaningful data.</p></div>
+</div>
+<div style="min-height: 280px; background: #ffefe9; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span style="width: 52px; height: 52px; border-radius: 16px; background: #ffffff; display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><g id="Icon"><path d="m16 9.25c3.725 0 6.75 3.025 6.75 6.75s-3.025 6.75-6.75 6.75-6.75-3.025-6.75-6.75 3.025-6.75 6.75-6.75zm-3.23 7.28 1.8 1.8c.293.293.767.293 1.06 0l3.6-3.6c.293-.292.293-.768 0-1.06-.292-.293-.768-.293-1.06 0l-3.07 3.069-1.27-1.269c-.292-.293-.768-.293-1.06 0-.293.292-.293.768 0 1.06z"></path><path d="m8.352 14.741c-.117.006-.234.009-.352.009-3.725 0-6.75-3.025-6.75-6.75s3.025-6.75 6.75-6.75 6.75 3.025 6.75 6.75c0 .118-.003.235-.009.352-3.27.535-5.854 3.119-6.389 6.389zm-1.413-6.741-1.269 1.27c-.293.292-.293.768 0 1.06.292.293.768.293 1.06 0l1.27-1.269 1.27 1.269c.292.293.768.293 1.06 0 .293-.292.293-.768 0-1.06l-1.269-1.27 1.269-1.27c.293-.292.293-.768 0-1.06-.292-.293-.768-.293-1.06 0l-1.27 1.269-1.27-1.269c-.292-.293-.768-.293-1.06 0-.293.292-.293.768 0 1.06z"></path></g></svg></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span></div>
+<div><div style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px">You'll learn to</div><p style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 700">Make informed feature-matching decisions.</p></div>
+</div>
+<div style="min-height: 280px; background: #ff81a0; color: #4a2338; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span style="width: 52px; height: 52px; border-radius: 16px; background: #ffffff; display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><g><path d="m497 189.948h-32c-8.284 0-15 6.716-15 15v220c0 8.284 6.716 15 15 15h32c8.284 0 15-6.716 15-15v-220c0-8.284-6.716-15-15-15z"></path><path d="m290.04 95.281 25-43.301c5.523-9.566 2.245-21.798-7.321-27.321l-17.32-10c-9.566-5.523-21.798-2.245-27.32 7.321l-25 43.301z"></path><path d="m17.817 351.301c8.571 4.886 19.508 1.695 24.441-6.849l122.581-212.316c-11.435-2.717-23.639-.3-33.242 6.902l-42.467 31.85c-12.358 9.269-22.626 21.037-30.134 34.537l-54.543 98.076c-9.363 16.836-3.49 38.07 13.193 47.702.057.033.114.065.171.098z"></path><path d="m106.76 300.092h65.032l103.248-178.831-51.962-30-120.661 208.993c1.437-.096 2.882-.162 4.343-.162z"></path><path d="m48.437 393.75-15.519 26.88c-.73 1.264-1.271 2.628-1.607 4.049l-14.311 60.532c-2.739 11.585 11.244 19.658 19.908 11.494l45.268-42.659c1.062-1.001 1.973-2.152 2.703-3.417l12.27-21.252c-21.421-3.188-39.457-16.867-48.712-35.627z"></path><path d="m226.13 430.092h-94.753l-19.798 34.29c6.366 6.598 15.293 10.709 25.185 10.709 19.33 0 35-15.67 35-35 0 19.33 15.67 35 35 35 19.33 0 35-15.67 35-35v-2.285c-3.631-1.661-11.946-5.885-15.634-7.714z"></path><path d="m285.815 162.597-79.383 137.495h23.568c8.284 0 15 6.716 15 15 0 8.283-6.714 14.999-14.998 15h-123.242c-19.33 0-35 15.67-35 35 0 19.33 15.67 35 35 35h126.448l16.59 8.288c28.39 14.196 60.191 21.711 91.964 21.711 26.323 0 53.534-5.173 78.239-15.015v-194.987h-23.641z"></path></g></svg></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span></div>
+<div><div style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px">You'll learn to</div><p style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 700">Write clear, persuasive reports for funding approval.</p></div>
+</div>
+<div style="min-height: 280px; background: #f6d9e7; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span style="width: 52px; height: 52px; border-radius: 16px; background: #ffffff; display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><g id="Process"><path d="m150.142 65.858-40-40c-7.811-7.811-20.474-7.811-28.284 0s-7.811 20.474 0 28.284l5.858 5.858h-67.716c-11.046 0-20 8.954-20 20s8.954 20 20 20h67.716l-5.858 5.858c-7.811 7.811-7.811 20.474 0 28.284 7.811 7.811 20.474 7.811 28.284 0l40-40c7.811-7.81 7.811-20.474 0-28.284z"></path><path d="m511.9 433.979c.13-1.316.13-2.641 0-3.957-.472-4.787-2.718-9.169-5.758-12.164l-40-40c-7.811-7.811-20.475-7.811-28.285 0s-7.811 20.474 0 28.284l5.858 5.858h-110.246c-8.903-34.466-40.26-60-77.469-60s-68.565 25.534-77.469 60h-78.531c-11.028 0-20-8.972-20-20v-56c37.209 0 68.565-25.534 77.469-60h197.063c8.903 34.466 40.26 60 77.469 60 44.112 0 80-35.888 80-80 0-29.546-16.112-55.383-40-69.237v-66.763c0-33.084-26.916-60-60-60h-78.531c-8.905-34.466-40.261-60-77.47-60-44.112 0-80 35.888-80 80s35.888 80 80 80c37.209 0 68.565-25.534 77.469-60h78.531c11.028 0 20 8.972 20 20v56c-37.209 0-68.565 25.534-77.469 60h-197.062c-8.903-34.466-40.26-60-77.469-60-44.112 0-80 35.888-80 80 0 29.546 16.112 55.383 40 69.237v66.763c0 33.084 26.916 60 60 60h78.531c8.903 34.466 40.26 60 77.469 60s68.565-25.534 77.469-60h110.247l-5.858 5.858c-7.811 7.811-7.811 20.474 0 28.284 7.81 7.81 20.475 7.81 28.285 0l40-40c3.038-2.993 5.291-7.438 5.757-12.163zm-255.9-313.979c-22.056 0-40-17.944-40-40s17.944-40 40-40 40 17.944 40 40-17.944 40-40 40zm176 96c22.056 0 40 17.944 40 40s-17.944 40-40 40-40-17.944-40-40 17.944-40 40-40zm-352 0c22.056 0 40 17.944 40 40s-17.944 40-40 40-40-17.944-40-40 17.944-40 40-40zm176 256c-22.056 0-40-17.944-40-40s17.944-40 40-40 40 17.944 40 40-17.944 40-40 40z"></path></g></svg></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span></div>
+<div><div style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px">You'll learn to</div><p style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 700">Streamline the entire process without unnecessary stress.</p></div>
+</div>
+</div>
+<figure style="margin: 40px auto 8px; max-width: 820px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="#e0577d" aria-hidden="true"><path d="M4 11c0-3.3 2-5.6 5-6.5l.6 1.5C7.8 6.8 7 8.2 7 10h3v8H4zm10 0c0-3.3 2-5.6 5-6.5l.6 1.5c-1.8.8-2.6 2.2-2.6 4h3v8h-6z"></path></svg>
+<blockquote style="margin: 0; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.4"><strong>Emily, thank you for sharing such practical and affordable tools for assessing and implementing AAC.</strong> I can't wait to continue learning with the rest of the course!!</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700"><span style="width: 36px; height: 36px; border-radius: 50%; background: #f6d9e7; display: grid; place-items: center; font-size: 13px">JW</span>Jennifer W. <span style="font-weight: 500">· AAC Assessment Hub student</span></figcaption>
+</figure>
+<div style="display: flex; justify-content: center; padding-top: 24px">
+<a href="https://learn.emilydiazslp.com/offers/wSGfoUxH" class="btn btn-lg" style="background: #743e5a; color: #ffffff">Yes! Enroll me for $147<span class="dot" style="background: #ff81a0; color: #4a2338"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+</div>
+</div>
+</section>
+
+<!-- SCROLL STACK 2: nicole pins, next content slides over -->
+<div class="stack-pair" data-stack="2">
+<!-- NICOLE -->
+<section class="stick nicole" style="background: #ffefe9; border-radius: 36px; padding: clamp(28px, 5vw, 72px); display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+<div class="nicole-person" style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 14px">
+<img src="assets/img/nicole-casey.webp" alt="Nicole Casey" style="width: 148px; height: 148px; border-radius: 50%; object-fit: cover; display: block">
+<div><div style="font-weight: 700; font-size: 18px">Nicole Casey</div><div style="font-size: 15px; margin-top: 4px">@thechildledslp</div></div>
+</div>
+<div class="nicole-quote" style="flex: 1 1 480px; display: flex; flex-direction: column; gap: 22px">
+<span class="chip nicole-chip" style="align-self: flex-start">SLP recommendation</span>
+<p style="margin: 0; font-size: clamp(26px, 3vw, 40px); line-height: 1.15; font-weight: 700; letter-spacing: -.01em">“This course is a must have for any busy SLP who wants to feel confident with AAC!</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; max-width: 760px">Emily walks you through the entire process from start to finish, and the information she shares is truly invaluable as it will help you take action immediately! <b>You don’t have the be an AAC specialist to give your students access to robust communication,</b> and Emily’s course will have you wondering why you didn’t start introducing AAC sooner!!”</p>
+</div>
+</section>
+<div class="stack-cover">
+<!-- CURRICULUM -->
+<section id="curriculum" class="full" style="display: flex; flex-direction: column; gap: 48px">
+<div style="max-width: 1120px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px">
+<img src="assets/img/logo.png" alt="The AAC Assessment Hub" style="height: clamp(130px, 15vw, 220px); width: auto; max-width: 100%; display: block; margin-bottom: 8px">
+<span class="chip">The curriculum</span>
+<h2 class="one-line" style="margin: 0; font-size: clamp(36px, 4.4vw, 60px); line-height: 1.05; font-weight: 700; letter-spacing: -.015em">Here's what you'll learn inside</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="background: #ff81a0; color: #4a2338; border-radius: 32px; padding: 8px; display: flex; flex-wrap: wrap; gap: 8px">
+<div style="flex: 1 1 300px; padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Module 01</span><svg width="30" height="30" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><g id="Process"><path d="m150.142 65.858-40-40c-7.811-7.811-20.474-7.811-28.284 0s-7.811 20.474 0 28.284l5.858 5.858h-67.716c-11.046 0-20 8.954-20 20s8.954 20 20 20h67.716l-5.858 5.858c-7.811 7.811-7.811 20.474 0 28.284 7.811 7.811 20.474 7.811 28.284 0l40-40c7.811-7.81 7.811-20.474 0-28.284z"></path><path d="m511.9 433.979c.13-1.316.13-2.641 0-3.957-.472-4.787-2.718-9.169-5.758-12.164l-40-40c-7.811-7.811-20.475-7.811-28.285 0s-7.811 20.474 0 28.284l5.858 5.858h-110.246c-8.903-34.466-40.26-60-77.469-60s-68.565 25.534-77.469 60h-78.531c-11.028 0-20-8.972-20-20v-56c37.209 0 68.565-25.534 77.469-60h197.063c8.903 34.466 40.26 60 77.469 60 44.112 0 80-35.888 80-80 0-29.546-16.112-55.383-40-69.237v-66.763c0-33.084-26.916-60-60-60h-78.531c-8.905-34.466-40.261-60-77.47-60-44.112 0-80 35.888-80 80s35.888 80 80 80c37.209 0 68.565-25.534 77.469-60h78.531c11.028 0 20 8.972 20 20v56c-37.209 0-68.565 25.534-77.469 60h-197.062c-8.903-34.466-40.26-60-77.469-60-44.112 0-80 35.888-80 80 0 29.546 16.112 55.383 40 69.237v66.763c0 33.084 26.916 60 60 60h78.531c8.903 34.466 40.26 60 77.469 60s68.565-25.534 77.469-60h110.247l-5.858 5.858c-7.811 7.811-7.811 20.474 0 28.284 7.81 7.81 20.475 7.81 28.285 0l40-40c3.038-2.993 5.291-7.438 5.757-12.163zm-255.9-313.979c-22.056 0-40-17.944-40-40s17.944-40 40-40 40 17.944 40 40-17.944 40-40 40zm176 96c22.056 0 40 17.944 40 40s-17.944 40-40 40-40-17.944-40-40 17.944-40 40-40zm-352 0c22.056 0 40 17.944 40 40s-17.944 40-40 40-40-17.944-40-40 17.944-40 40-40zm176 256c-22.056 0-40-17.944-40-40s17.944-40 40-40 40 17.944 40 40-17.944 40-40 40z"></path></g></svg></div>
+<div><h3 style="margin: 0; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.08; font-weight: 700">Understanding the AAC Assessment Process</h3><p style="margin: 12px 0 0; font-size: 14px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">3 lessons · tap a lesson to see inside</p></div>
+</div>
+<div style="flex: 2 1 560px; background: #ffffff; color: #743e5a; border-radius: 26px; padding: 6px clamp(16px, 2.4vw, 28px)">
+<details class="lesson" style="border-bottom: 1.5px solid #f6d9e7;">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 1</span><span>AAC Assessment Overview</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>A complete start-to-finish roadmap</b> you'll follow throughout the course and in each AAC assessment, so that you always know exactly where you are and what’s coming next.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>What the research says makes AAC assessment so complex </b>and the major difference between AAC clinical specialists and general practice SLPs when it comes to AAC assessment.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>A simplified scope of an AAC assessment covering domains from communication to motor skills and cognition,</b> so that you don’t miss a single piece of information because you didn’t know what to look for.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>An overview of stakeholders and their unique roles in the AAC assessment process,</b> because the SLP isn’t the only one on the team.</span></li>
+</ul>
+</details>
+<details class="lesson" style="border-bottom: 1.5px solid #f6d9e7;">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 2</span><span>AAC Pre-Assessment</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>The referral process across settings and ages, </b>so you know exactly how to get started no matter where you are working.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>A Caregiver Mock Interview plus an 8-page questionnaire t</b>o guide you through getting those family-centered insights you wouldn’t get otherwise during your assessment.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>How to obtain loaner devices to trial during the assessment </b>by utilizing AAC companies &amp; manufacturers, school district lending libraries, state assistive tech programs, and non-profit organizations.</span></li>
+</ul>
+</details>
+<details class="lesson" style="">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 3</span><span>Executing the Evaluation</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>The exact skills you should be observing during the assessment</b> and how to do this across both structured and unstructured opportunities for communication.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>Real-life video example with a detailed case study </b>that explains my thoughts during the AAC assessment, so that you can see what this looks like in action.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>Your complete assessment toolkit including SETT, DAGG-3, Communication Matrix, and the WATI Communication Form,</b> all taught with when-to-use guidance, so that you’re never stuck defaulting to the one tool you vaguely remember from your grad school practicum.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>How to document your data to support your funding report later</b>, including access to my AAC data collection form so you can follow a template and capture every detail.</span></li>
+</ul>
+</details>
+</div>
+</div>
+<div style="background: #ffa283; color: #4a2338; border-radius: 32px; padding: 8px; display: flex; flex-wrap: wrap; gap: 8px">
+<div style="flex: 1 1 300px; padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Module 02</span><svg width="30" height="30" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M57,12a1,1,0,0,0-2,0v5h2Z"></path><path d="M10,51H46V11H10Zm19-3H27V46h2Zm6-34h6v6H35Zm0,10h6v6H35Zm0,10h6v6H35ZM33,48H31V46h2ZM25,14h6v6H25Zm0,10h6v6H25Zm0,10h6v6H25ZM23,46h2v2H23ZM15,14h6v6H15Zm0,10h6v6H15Zm0,10h6v6H15Z"></path><rect x="55" y="19" width="2" height="8"></rect><rect x="52" y="29" width="6" height="6"></rect><path d="M46,3H10A4,4,0,0,0,6,7V57a4,4,0,0,0,4,4H46a4,4,0,0,0,4-4V7A4,4,0,0,0,46,3ZM31,5h2V7H31ZM23,5h6V7H23Zm7,54H26a2,2,0,0,1,0-4h4a2,2,0,0,1,0,4Zm18-7a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V10A1,1,0,0,1,9,9H47a1,1,0,0,1,1,1Z"></path><polygon points="55 49.764 56 51.764 57 49.764 57 37 55 37 55 49.764"></polygon></svg></div>
+<div><h3 style="margin: 0; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.08; font-weight: 700">Key Considerations for AAC Selection</h3><p style="margin: 12px 0 0; font-size: 14px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">3 lessons · tap a lesson to see inside</p></div>
+</div>
+<div style="flex: 2 1 560px; background: #ffffff; color: #743e5a; border-radius: 26px; padding: 6px clamp(16px, 2.4vw, 28px)">
+<details class="lesson" style="border-bottom: 1.5px solid #f6d9e7;">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 1</span><span>Feature Matching Essentials</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>A complete overview of the key principles of feature matching </b>along with The Five Key Components of Feature Matching (McNaughton &amp; Light, 2013).</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>A massive deep dive on feature matching</b> to include funding sources, access, symbols, linguistics, display and editing, grid size, voice, diversity and inclusion, along with a mega list of questions to ask yourself so that you can analyze each feature with as much detail as I do.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>My exact feature matching method </b>covering the core design and accessibility components that actually help you make a decision, so that your recommendation is defensible to a team, to a funding source, and to yourself when you start to second-guess it.</span></li>
+</ul>
+</details>
+<details class="lesson" style="border-bottom: 1.5px solid #f6d9e7;">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 2</span><span>Overview of Common Software/Hardware Options</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>Live, screen-shared walkthroughs of 7 major apps </b>(Proloquo2Go, TouchChat, LAMP, TD Snap, Avaz, Grid for iPad, and Unity), plus recommendations for text-based systems.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>Hardware options for vendors like TobiiDynavox, PRC-Saltillo, Smartbox, Control Bionics, AbleNet,</b> so you know what your device options are based on your feature matching data.</span></li>
+</ul>
+</details>
+<details class="lesson" style="">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 3</span><span>Making a Decision &amp; Final Recommendation</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>The AAC Trials Decision-Making Matrix for synthesizing AAC assessment and trial data</b> to make a confident, data-driven final recommendation backed by real-world case studies to show how it works in practice, so that “I think this one’s probably right” becomes “here’s why I chose this system and why.”</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>3 real-life case studies that walk you through the entire assessment </b>with my exact thoughts and justification for final device recommendations, so that you can see it in action.</span></li>
+</ul>
+</details>
+</div>
+</div>
+<div style="background: #f6d9e7; color: #743e5a; border-radius: 32px; padding: 8px; display: flex; flex-wrap: wrap; gap: 8px">
+<div style="flex: 1 1 300px; padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Module 03</span><svg width="30" height="30" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path clip-rule="evenodd" d="m51.671 358.259c.8 5.42-2.947 10.451-8.342 11.245-5.445.795-10.441-2.957-11.24-8.378-.799-5.41 2.947-10.451 8.342-11.245 5.445-.784 10.491 2.962 11.24 8.378zm269.922-211.539c27.592 30.618 48.183 57.206 61.768 81.06 25.763 45.235 19.387 90.834-5.872 124.212l-22.522 13.118c-6.06 3.529-12.234 5.766-18.615 6.86 2.662-3.538 4.722-7.771 6.047-12.681 5.01-18.569-6.104-36.932-23.946-43.115l-1.155-.4-1.202-.22c-4.124-.755-8.223-1.608-12.299-2.544 3.642-4.871 5.779-10.87 5.606-18.095-.03-1.243-.101-2.337-.214-3.271-1.444-11.898-7.881-19.643-16.416-24.796-7.497-4.527-16.488-6.781-24.731-8.134-5.945-.976-12.207-2.628-16.793-5.622-3.553-2.32-6.102-5.678-6.34-10.589-.258-5.314 2.062-9.6 5.717-12.572 2.863-2.328 6.516-3.945 10.476-4.742 1.593-.321 3.233-.506 4.888-.549.175.01.352.016.53.016.214 0 .427-.008.637-.023 2.189.032 4.394.313 6.548.859 6.621 1.678 12.649 6.042 15.824 13.603 1.902 4.534 7.121 6.669 11.655 4.766 4.534-1.902 6.669-7.121 4.767-11.656-5.59-13.313-16.233-21.005-27.932-23.971-.858-.217-1.723-.408-2.592-.573v-6.902c0-4.919-3.988-8.907-8.907-8.907s-8.907 3.988-8.907 8.907v7.035c-6.748 1.361-13.085 4.209-18.19 8.359-7.845 6.378-12.819 15.638-12.258 27.185.563 11.601 6.352 19.383 14.412 24.645 7.026 4.587 15.655 6.96 23.612 8.266 6.391 1.049 13.214 2.708 18.399 5.838 4.146 2.503 7.261 6.162 7.927 11.644.088.731.136 1.262.144 1.601.103 4.359-1.982 7.68-5.113 10.057-1.063.806-2.242 1.523-3.506 2.152-23.006-6.767-44.38-15.539-67.099-22.909-23.718-7.696-45.821 1.013-66.312 12.884l-13.956 8.086c-4.441-24.348-.44-51.146 14.752-77.821 13.586-23.853 34.177-50.442 61.768-81.059 3.462 1.128 7.154 1.74 10.984 1.74h87.433c3.829-.001 7.52-.614 10.983-1.742zm-98.417-14.259h87.433c10.78 0 19.599-8.82 19.599-19.597 0-10.78-8.818-19.598-19.599-19.598h-87.433c-10.78 0-19.598 8.818-19.598 19.597-.001 10.779 8.818 19.598 19.598 19.598zm-.713-55.187-16.097-16.097c-7.832-7.832-7.832-20.649 0-28.481 6.662-6.662 17.207-7.788 25.135-2.7 2.944 1.89 6.326 2.191 9.558.854 3.231-1.339 5.408-3.942 6.155-7.361 1.974-9.041 10.068-15.864 19.68-15.866 9.438 0 17.669 6.653 19.681 15.866.746 3.419 2.924 6.022 6.155 7.361 3.232 1.339 6.613 1.036 9.556-.854 7.787-4.998 18.338-4.097 25.135 2.698v.002c7.832 7.832 7.832 20.649 0 28.481l-16.097 16.097c-.237-.005-.475-.009-.714-.009h-87.433c-.239 0-.477.005-.714.009zm-138.851 276.978 53.372 94.182 20.082-11.59c1.948-1.129 4.247-1.429 6.445-.844l126.122 27.777c16.685 4.462 32.372 2.258 46.709-6.554l153.155-95.185c8.343-5.115 10.89-20.133 5.146-29.749-8.343-13.928-30.423-12.284-59.098 4.406l-72.525 42.24c-15.087 8.813-31.373 11.665-49.707 8.728-3.347-.54-6.644-1.115-9.891-1.739-.7-.05-61.697-15.906-68.69-17.79-4.546-1.209-7.244-5.855-5.995-10.365 1.199-4.526 5.845-7.204 10.341-5.995 7.144 1.913 50.406 14.177 66.642 17.335 8.293.529 17.934-1.779 21.232-13.988 2.698-10.011-3.198-20.177-13.738-23.829-29.624-5.425-58.25-15.761-81.23-24.083-8.043-2.903-14.987-5.411-20.982-7.359-18.884-6.124-36.818 1.914-53.354 11.51zm51.437 125.306-81.63-144.24c-.799-1.409-2.098-2.419-3.697-2.863-.549-.145-1.098-.22-1.649-.22-1.048 0-2.048.265-2.947.775l-27.776 15.711c-2.947 1.664-3.947 5.395-2.299 8.318l81.63 144.239c1.649 2.933 5.396 3.962 8.293 2.309l27.776-15.716c1.399-.795 2.398-2.108 2.847-3.682.451-1.579.251-3.222-.548-4.631z" fill-rule="evenodd"></path></svg></div>
+<div><h3 style="margin: 0; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.08; font-weight: 700">Navigating AAC Funding</h3><p style="margin: 12px 0 0; font-size: 14px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">3 lessons · tap a lesson to see inside</p></div>
+</div>
+<div style="flex: 2 1 560px; background: #ffffff; color: #743e5a; border-radius: 26px; padding: 6px clamp(16px, 2.4vw, 28px)">
+<details class="lesson" style="border-bottom: 1.5px solid #f6d9e7;">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 1</span><span>Navigating AAC Funding</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>A full breakdown of the school-based funding process </b>including an overview of special education law and common challenges like “we don’t have the budget for that” along with solutions so that your device actually gets funded.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>A full breakdown of the insurance-based funding process</b> including terminology like DME, SGD, E-codes for billing, and letter of medical necessity along with common challenges and how to navigate that like a pro.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>Alternate funding options like self-pay and grants</b> so that you don’t leave families hanging when someone decides they aren’t going to pay for an AAC device.</span></li>
+</ul>
+</details>
+<details class="lesson" style="border-bottom: 1.5px solid #f6d9e7;">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 2</span><span>Essential Documentation for Funding</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>A real funding portal walkthrough, broken down step-by-step,</b> so that you’re writing a report that includes every nitty gritty detail insurance is looking for.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>The funding report template library </b>with real, pre-formatted report shells so that you’re editing a report someone already got approved, not starting from scratch every time.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>Your personal denial response playbook</b> to navigate writing an addendum, filing an appeal, and escalating to peer-to-peer review so that a denial letter doesn’t feel like the end of the world.</span></li>
+</ul>
+</details>
+<details class="lesson" style="">
+<summary><span style="display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; opacity: .75">Lesson 3</span><span>Next Steps - Implementation and Support</span></span><span class="lesson-plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+<ul style="list-style: none; margin: 0; padding: 0 0 22px; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>Key steps in setting up and programming a new AAC system</b> so that it’s ready to use and customized exactly to what your user needs.</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>How to develop meaningful goals across the four AAC competency areas </b>so you aren’t just writing goals for requesting “more goldfish please.”</span></li>
+<li style="display: flex; gap: 12px; font-size: 16px; line-height: 1.6"><span style="width: 22px; height: 22px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; margin-top: 2px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span><span><b>Tips for integrating the AAC device into daily routines </b>and how to create a support plan that gets the whole team involved.</span></li>
+</ul>
+</details>
+</div>
+</div>
+</div>
+
+<div id="downloads" style="background: #ffefe9; color: #743e5a; border-radius: 32px; padding: clamp(24px, 4vw, 52px); display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 40px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+<span class="chip" style="align-self: flex-start"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>Course downloads</span>
+<h3 style="margin: 0; font-size: clamp(28px, 3vw, 42px); line-height: 1.08; font-weight: 700; letter-spacing: -.01em">Plus every form, guide &amp; template you need to <span class="script" style="font-size: 1.45em; line-height: .6; color: #e0577d">actually</span> use it</h3>
+</div>
+<p style="margin: 0; font-size: 15px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">8 ready-to-use downloads</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 12px">
+<div style="background: #ffffff; border-radius: 22px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; min-height: 76px"><span style="width: 42px; height: 42px; border-radius: 14px; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span style="font-size: 17px; line-height: 1.3; font-weight: 700">AAC Assessment Workflow Guide</span></div>
+<div style="background: #ffffff; border-radius: 22px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; min-height: 76px"><span style="width: 42px; height: 42px; border-radius: 14px; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span style="font-size: 17px; line-height: 1.3; font-weight: 700">Stakeholder Roles &amp; Responsibilities</span></div>
+<div style="background: #ffffff; border-radius: 22px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; min-height: 76px"><span style="width: 42px; height: 42px; border-radius: 14px; background: #f6d9e7; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span style="font-size: 17px; line-height: 1.3; font-weight: 700">AAC Caregiver Interview Questionnaire</span></div>
+<div style="background: #ffffff; border-radius: 22px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; min-height: 76px"><span style="width: 42px; height: 42px; border-radius: 14px; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span style="font-size: 17px; line-height: 1.3; font-weight: 700">AAC Data Collection Form</span></div>
+<div style="background: #ffffff; border-radius: 22px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; min-height: 76px"><span style="width: 42px; height: 42px; border-radius: 14px; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span style="font-size: 17px; line-height: 1.3; font-weight: 700">Feature Matching Questions to Ask Yourself</span></div>
+<div style="background: #ffffff; border-radius: 22px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; min-height: 76px"><span style="width: 42px; height: 42px; border-radius: 14px; background: #f6d9e7; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span style="font-size: 17px; line-height: 1.3; font-weight: 700">Final AAC Decisions &amp; Recommendation Summary</span></div>
+<div style="background: #ffffff; border-radius: 22px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; min-height: 76px"><span style="width: 42px; height: 42px; border-radius: 14px; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span style="font-size: 17px; line-height: 1.3; font-weight: 700">AAC Implementation Checklist</span></div>
+<div style="background: #ffffff; border-radius: 22px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; min-height: 76px"><span style="width: 42px; height: 42px; border-radius: 14px; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg></span><span style="font-size: 17px; line-height: 1.3; font-weight: 700">3 Sample AAC Evaluation Funding Reports</span></div>
+</div>
+</div>
+
+<figure style="margin: 24px 0 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px 32px; padding: 0 clamp(0px, 4vw, 56px)">
+<svg width="56" height="56" viewBox="0 0 24 24" fill="#ff81a0" aria-hidden="true" style="flex: none"><path d="M4 11c0-3.3 2-5.6 5-6.5l.6 1.5C7.8 6.8 7 8.2 7 10h3v8H4zm10 0c0-3.3 2-5.6 5-6.5l.6 1.5c-1.8.8-2.6 2.2-2.6 4h3v8h-6z"></path></svg>
+<div style="flex: 1 1 480px; display: flex; flex-direction: column; gap: 14px">
+<blockquote style="margin: 0; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.4"><strong>I just started the feature matching modules!!! My mind is blown!!</strong> Emily you are providing what I have always looked for in an AAC course!! I’ve taken so many courses at this point, but <strong>this was the missing piece!</strong> I am beyond nerding out 😁😁</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700"><span style="width: 36px; height: 36px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; font-size: 13px">CW</span>Chiquita G W <span style="font-weight: 500">· AAC Assessment Hub student</span></figcaption>
+</div>
+</figure>
+
+<!-- FOUR NEW BONUS MODULES -->
+<div style="width: 100%; max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; padding-top: 32px">
+<div style="max-width: 760px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px">
+<span class="chip" style="background: #743e5a; border-color: #743e5a; color: #ffffff"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9z"></path></svg>Introducing</span>
+<h3 style="margin: 0; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.05; font-weight: 700; letter-spacing: -.015em">Four <span class="script" style="color: #e0577d; font-size: 1.5em; line-height: .6">new</span> bonus modules!</h3>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 16px">
+
+<article style=" display: flex; flex-direction: column">
+<div style="background: #ffefe9; border-radius: 28px; padding: 18px; display: grid; place-items: center"><img src="assets/img/bonus-aac-glp.webp" alt="AAC &amp; GLP Assessment bonus module on a laptop" style="width: 100%; height: auto; display: block"></div>
+<div style="padding: 22px 4px 4px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Bonus 01</span></div>
+<h4 style="margin: 0; font-size: 26px; line-height: 1.12; font-weight: 700">AAC &amp; GLP Assessment</h4>
+<p style="margin: 0; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">Presented by Laura Hayes, M.S., CCC-SLP</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">Working with gestalt language processors can feel like walking through a maze without a map — especially when AAC gets thrown into the mix. This bonus module breaks it down so you can actually see the path forward. You’ll learn what makes GLPs tick, how AAC can support their natural language journey.</p>
+</div>
+</article>
+
+<article style=" display: flex; flex-direction: column">
+<div style="background: #ffefe9; border-radius: 28px; padding: 18px; display: grid; place-items: center"><img src="assets/img/bonus-complex-access.webp" alt="Assessing Complex Alternative Access for AAC bonus module on a laptop" style="width: 100%; height: auto; display: block"></div>
+<div style="padding: 22px 4px 4px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Bonus 02</span></div>
+<h4 style="margin: 0; font-size: 26px; line-height: 1.12; font-weight: 700">Assessing Complex Alternative Access for AAC</h4>
+<p style="margin: 0; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">Presented by Cici Fritts, M.S., CCC-SLP</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">Eye gaze, switches, head tracking—oh my. When it comes to complex access, things can get complicated fast. This module helps you figure out what actually works for each communicator so nobody gets left out of the AAC conversation.</p>
+</div>
+</article>
+
+<article style=" display: flex; flex-direction: column">
+<div style="background: #ffefe9; border-radius: 28px; padding: 18px; display: grid; place-items: center"><img src="assets/img/bonus-bilingual.webp" alt="Bilingual &amp; Cultural Considerations in AAC Assessments bonus module on a laptop" style="width: 100%; height: auto; display: block"></div>
+<div style="padding: 22px 4px 4px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Bonus 03</span></div>
+<h4 style="margin: 0; font-size: 26px; line-height: 1.12; font-weight: 700">Bilingual &amp; Cultural Considerations in AAC Assessments</h4>
+<p style="margin: 0; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">Presented by Bianca De Leon, M.A., CCC-SLP</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">Bilingual families shouldn’t have to choose which language gets to “count.” In this bonus, we’ll bust the biggest myths about bilingual AAC and show you how to create assessments that celebrate, not erase culture and language. Because when families feel seen and understood, communication blooms.</p>
+</div>
+</article>
+
+<article style=" display: flex; flex-direction: column">
+<div style="background: #ffefe9; border-radius: 28px; padding: 18px; display: grid; place-items: center"><img src="assets/img/bonus-uk.webp" alt="UK Considerations for AAC Assessment bonus module on a laptop" style="width: 100%; height: auto; display: block"></div>
+<div style="padding: 22px 4px 4px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Bonus 04</span></div>
+<h4 style="margin: 0; font-size: 26px; line-height: 1.12; font-weight: 700">UK Considerations for AAC Assessment</h4>
+<p style="margin: 0; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase">Presented by Charlie Danger, MSc, OT, ATP</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">AAC looks a little different across the pond, and this bonus walks you through what that means for assessment, funding, and real-world support in the UK. You’ll get an inside look at how England, Scotland, Wales, and Northern Ireland each approach AAC—and how to help families navigate those systems without losing their minds.</p>
+</div>
+</article>
+
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+<div style="flex: 1.3 1 440px; background: #ffefe9; border-radius: 32px; padding: clamp(28px, 3.5vw, 44px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 28px">
+<div style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 18px">
+<span class="chip" style="align-self: flex-start; background: #743e5a; border-color: #743e5a; color: #ffffff">Bonus</span>
+<p style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 700">Lifetime access to downloads and new resources to support you along the way</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">Next week or next year, it’s all here whenever you need it. No time limits, ever.</p>
+</div>
+<img src="assets/img/downloads.webp" alt="Downloadable AAC assessment resources" style="flex: 0 1 220px; width: 220px; max-width: 100%; height: auto; display: block">
+</div>
+</div>
+
+<!-- SURPRISE BONUS: VIRTUAL AAC ASSESSMENT CONSIDERATIONS -->
+<div id="surprise-bonus" class="wiggle" style="outline: 3px dashed #ff81a0; outline-offset: 8px; background: #743e5a; color: #ffffff; border-radius: 36px; padding: clamp(28px, 5vw, 64px); box-sizing: border-box; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 32px 48px">
+<div style="flex: 1.2 1 420px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span class="chip" style="background: #ff81a0; border-color: #ff81a0; color: #4a2338"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"></path></svg>Surprise bonus</span>
+<span class="chip" style="color: #f6d9e7">Brand-new course</span>
+</div>
+<h3 style="margin: 0; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.04; font-weight: 700; letter-spacing: -.015em">Surprise! You also get <span class="script" style="font-size: 1.5em; line-height: .6; color: #ff81a0">Virtual</span> AAC Assessment Considerations</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; max-width: 600px">Stop turning families away because of distance, health, or scheduling. Run confident AAC assessments from anywhere, see how kids really communicate in their everyday routines, and walk away with parents who can model and troubleshoot long after you log off.</p>
+</div>
+<div style="flex: 1 1 340px; display: grid; place-items: center">
+<img src="assets/img/virtual-aac-mockup.png" alt="Virtual AAC Assessment Considerations course on a laptop" style="width: 100%; max-width: 520px; height: auto; display: block">
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 14px; font-size: 14px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: #f6d9e7"><span>Inside, you’ll learn how to</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px">
+<div style="background: #ffffff1a; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 12px; background: #ff81a0; color: #4a2338; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span><p style="margin: 0; font-size: 19px; line-height: 1.3; font-weight: 700">Decide if virtual is the right fit</p></div>
+<div style="background: #ffffff1a; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 12px; background: #ffa283; color: #4a2338; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></span><p style="margin: 0; font-size: 19px; line-height: 1.3; font-weight: 700">Nail the tech setup</p></div>
+<div style="background: #ffffff1a; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 12px; background: #f6d9e7; color: #4a2338; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 14.2c.8-.4 1.6-.7 2.5-.7 2.5 0 4 2 4 4.5"></path></svg></span><p style="margin: 0; font-size: 19px; line-height: 1.3; font-weight: 700">Coach the caregiver as your co-assessor</p></div>
+<div style="background: #ffffff1a; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 12px; background: #ff81a0; color: #4a2338; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"></path><path d="M16 16l2 2 4-4"></path></svg></span><p style="margin: 0; font-size: 19px; line-height: 1.3; font-weight: 700">Run the 5-step framework remotely</p></div>
+</div>
+</div>
+
+<!-- LIMITED-TIME BONUS: LIVE COHORT -->
+<div id="live-cohort" style="background: #ff81a0; color: #4a2338; border-radius: 36px; padding: clamp(28px, 5vw, 64px); display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 28px 48px">
+<div style="flex: 1.3 1 440px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span class="chip" style="background: #4a2338; border-color: #4a2338; color: #ffffff"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9z"></path></svg>Limited-time bonus</span>
+<span class="chip">Expires Oct 30</span>
+</div>
+<h3 style="margin: 0; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.04; font-weight: 700; letter-spacing: -.015em">The Assessment Hub now has a <span class="script" style="font-size: 1.5em; line-height: .6; color: #ffffff">live</span> 3-week cohort!</h3>
+<p style="margin: 0; font-size: 22px; line-height: 1.35; font-weight: 700; max-width: 600px">Three weeks. Three live calls. Bring your most challenging case.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; max-width: 600px">Each call follows a module, but instead of more slides I’ll bring what’s been on my mind about that part of the process: things I’ve learned the hard way, what I’m seeing in my own caseload, and the stuff that never made it into the course. Then we spend the rest of the time on you.</p>
+</div>
+<div style="flex: 1 1 300px; background: #ffffff; color: #743e5a; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2M9 2h6"></path></svg>Bonus closes in</div>
+<div role="timer" aria-label="Time left to claim the live cohort bonus" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; font-variant-numeric: tabular-nums">
+<div style="background: #ffefe9; border-radius: 16px; padding: 12px 4px; text-align: center"><div style="font-size: 28px; font-weight: 700; line-height: 1">{{cdD}}</div><div style="font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-top: 6px">Days</div></div>
+<div style="background: #ffefe9; border-radius: 16px; padding: 12px 4px; text-align: center"><div style="font-size: 28px; font-weight: 700; line-height: 1">{{cdH}}</div><div style="font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-top: 6px">Hrs</div></div>
+<div style="background: #ffefe9; border-radius: 16px; padding: 12px 4px; text-align: center"><div style="font-size: 28px; font-weight: 700; line-height: 1">{{cdM}}</div><div style="font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-top: 6px">Min</div></div>
+<div style="background: #743e5a; color: #ffffff; border-radius: 16px; padding: 12px 4px; text-align: center"><div style="font-size: 28px; font-weight: 700; line-height: 1">{{cdS}}</div><div style="font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin-top: 6px">Sec</div></div>
+</div>
+<a href="https://learn.emilydiazslp.com/offers/wSGfoUxH" class="btn btn-lg" style="background: #743e5a; color: #ffffff; justify-content: space-between">Claim my spot for $147<span class="dot" style="background: #ff81a0; color: #4a2338"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<div style="background: #ffffffb3; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase">Week 1</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg></div><p style="margin: 0; font-size: 19px; line-height: 1.3; font-weight: 700">Referrals, starting points, and that “okay… now what” feeling.</p><p style="margin: 0; font-size: 16px; line-height: 1.55">Bring the case you’ve been putting off and your questions about assessment tools &amp; loaners.</p></div>
+<div style="background: #ffffffb3; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase">Week 2</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg></div><p style="margin: 0; font-size: 19px; line-height: 1.3; font-weight: 700">Feature matching, trials, and decisions.</p><p style="margin: 0; font-size: 16px; line-height: 1.55">Bring your data, your doubts, and the case you can’t stop going back and forth on.</p></div>
+<div style="background: #ffffffb3; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase">Week 3</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></div><p style="margin: 0; font-size: 19px; line-height: 1.3; font-weight: 700">Reports and funding.</p><p style="margin: 0; font-size: 16px; line-height: 1.55">Bring your draft, your denial, or your blank page. We’re getting devices funded, baby!</p></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: flex-start">
+<p style="flex: 1.4 1 380px; margin: 0; font-size: 17px; line-height: 1.6"><strong>No two calls will look the same.</strong> That’s kind of the point. Join all three or pick &amp; choose. It’s up to you.</p>
+<div style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; font-weight: 700">
+<span style="display: flex; align-items: center; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.7L3 8"></path><path d="M3 3v5h5"></path></svg>Replays will always be available</span>
+<span style="display: flex; align-items: center; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"></path><path d="M9.5 9.5a2.5 2.5 0 114 2c-.8.5-1.5 1-1.5 2M12 16.5h.01"></path></svg>Submit your questions ahead of time</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+
+<!-- SCROLL STACK 3: pricing pins, next content slides over -->
+<div class="stack-pair" data-stack="3">
+<!-- PRICING -->
+<section class="stick" id="purchase" style="background: #f6d9e7; border-radius: 36px; padding: clamp(28px, 5vw, 72px) clamp(16px, 4vw, 56px); display: flex; flex-direction: column; align-items: center; gap: 32px; text-align: center">
+<span class="chip" style="background: #743e5a; border-color: #743e5a; color: #ffffff">Limited-time offer</span>
+<h2 style="margin: 0; max-width: 820px; font-size: clamp(34px, 4vw, 56px); line-height: 1.05; font-weight: 700; letter-spacing: -.015em">Save $100 when you purchase before the timer hits zero!</h2>
+<div role="timer" aria-label="Time left in this offer" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; font-variant-numeric: tabular-nums">
+<div style="width: 96px; height: 104px; background: #ffffff; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px"><span style="font-size: 40px; font-weight: 700; line-height: 1">{{cdD}}</span><span style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase">Days</span></div>
+<div style="width: 96px; height: 104px; background: #ffffff; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px"><span style="font-size: 40px; font-weight: 700; line-height: 1">{{cdH}}</span><span style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase">Hours</span></div>
+<div style="width: 96px; height: 104px; background: #ffffff; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px"><span style="font-size: 40px; font-weight: 700; line-height: 1">{{cdM}}</span><span style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase">Minutes</span></div>
+<div style="width: 96px; height: 104px; background: #ff81a0; color: #4a2338; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px"><span style="font-size: 40px; font-weight: 700; line-height: 1">{{cdS}}</span><span style="font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase">Seconds</span></div>
+</div>
+<p style="margin: -12px 0 0; font-size: 14px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase">Offer ends Friday, October 30 at 11:59 PM Central</p>
+<div style="width: 100%; max-width: 560px; background: #ffffff; border-radius: 32px; padding: clamp(24px, 4vw, 44px); box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #ff81a0; color: #4a2338; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2M9 2h6"></path></svg>$100 off for a limited time</span>
+<p style="margin: 0; font-size: 19px; line-height: 1.5">Gain full access to the AAC Assessment Hub for</p>
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="font-size: 32px; text-decoration: line-through; opacity: .6">$247</span><span style="font-size: 88px; font-weight: 700; line-height: 1; letter-spacing: -.02em">$147</span></div>
+<a href="https://learn.emilydiazslp.com/offers/wSGfoUxH" class="btn btn-lg" style="background: #743e5a; color: #ffffff; justify-content: space-between; width: 100%">I want the AAC Assessment Hub for $147!<span class="dot" style="background: #ff81a0; color: #4a2338"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>2-week money-back guarantee</div>
+</div>
+<figure style="margin: 8px 0 0; max-width: 620px; display: flex; flex-direction: column; align-items: center; gap: 12px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="#e0577d" aria-hidden="true"><path d="M4 11c0-3.3 2-5.6 5-6.5l.6 1.5C7.8 6.8 7 8.2 7 10h3v8H4zm10 0c0-3.3 2-5.6 5-6.5l.6 1.5c-1.8.8-2.6 2.2-2.6 4h3v8h-6z"></path></svg>
+<blockquote style="margin: 0; font-size: 17px; line-height: 1.55">Hi Emily! <strong>I just finished your AAC evaluation course and it was AMAZING!</strong> Thank you so much for creating this resource! I just joined the facebook group and I’m excited to have that resource as well! Thanks again!</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700"><span style="width: 34px; height: 34px; border-radius: 50%; background: #ffffff; display: grid; place-items: center; font-size: 12px">EM</span>Emily M. <span style="font-weight: 500">· AAC Assessment Hub student</span></figcaption>
+</figure>
+<!-- FUTURE-PROOF PURCHASE (inside pricing) -->
+<div style="width: 100%; background: #ffffff; border-radius: 32px; padding: clamp(24px, 4vw, 48px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 28px clamp(28px, 4vw, 56px); text-align: left">
+<svg viewBox="0 0 240 240" role="img" aria-label="Future Proof Purchase badge" style="width: min(200px, 56vw); height: auto; display: block; flex: none">
+<polygon points="120.0,2.0 131.9,14.7 146.3,5.0 155.0,19.9 171.2,13.7 176.4,30.2 193.6,27.7 195.0,45.0 212.3,46.4 209.8,63.6 226.3,68.8 220.1,85.0 235.0,93.7 225.3,108.1 238.0,120.0 225.3,131.9 235.0,146.3 220.1,155.0 226.3,171.2 209.8,176.4 212.3,193.6 195.0,195.0 193.6,212.3 176.4,209.8 171.2,226.3 155.0,220.1 146.3,235.0 131.9,225.3 120.0,238.0 108.1,225.3 93.7,235.0 85.0,220.1 68.8,226.3 63.6,209.8 46.4,212.3 45.0,195.0 27.7,193.6 30.2,176.4 13.7,171.2 19.9,155.0 5.0,146.3 14.7,131.9 2.0,120.0 14.7,108.1 5.0,93.7 19.9,85.0 13.7,68.8 30.2,63.6 27.7,46.4 45.0,45.0 46.4,27.7 63.6,30.2 68.8,13.7 85.0,19.9 93.7,5.0 108.1,14.7" fill="#ff81a0"></polygon>
+<circle cx="120" cy="120" r="96" fill="#743e5a"></circle>
+<circle cx="120" cy="120" r="88" fill="none" stroke="#f6d9e7" stroke-width="1.5" stroke-dasharray="3 5"></circle>
+<defs><path id="fppRing" d="M120,120 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"></path></defs>
+<text font-family="Tommy, sans-serif" font-size="15" font-weight="700" letter-spacing="3.2" fill="#ffffff"><textPath href="#fppRing" startOffset="0">FUTURE PROOF PURCHASE • FUTURE PROOF PURCHASE •</textPath></text>
+<g transform="translate(96 92)" fill="none" stroke="#ff81a0" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 2l18 7v14c0 11-8 19-18 23C14 42 6 34 6 23V9z"></path><path d="M16 24l6 6 11-12"></path></g>
+</svg>
+<div style="flex: 1 1 520px; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px clamp(32px, 5vw, 64px)">
+<div style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 20px">
+<span class="chip" style="align-self: flex-start; background: #f6d9e7; border-color: #f6d9e7">Future-proof purchase</span>
+<h2 style="margin: 0; font-size: clamp(28px, 3vw, 40px); line-height: 1.05; font-weight: 700; letter-spacing: -.015em">Buy it once. <span class="script" style="color: #e0577d; font-size: 1.5em; line-height: .6">Keep</span> getting more.</h2>
+</div>
+<p style="flex: 1.2 1 360px; margin: 0; font-size: 18px; line-height: 1.6">You get the AAC Hub right now at $147. For any future updates, any additional bonuses, or any live experiences related to the AAC Assessment Hub, you’ll automatically receive instant access to those things at no additional cost.</p>
+</div>
+</div>
+</section>
+<div class="stack-cover">
+<!-- IMAGINE + COURTNEY -->
+<section style="display: flex; flex-wrap: wrap; gap: 16px">
+<div style="flex: 1.35 1 480px; background: #ffefe9; border-radius: 32px; padding: clamp(28px, 4vw, 56px); box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<span class="chip" style="align-self: flex-start">Can you imagine?</span>
+<h2 style="margin: 0; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.05; font-weight: 700; letter-spacing: -.015em">Be completely confident in every AAC assessment you conduct</h2>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="background: #ffffff; border-radius: 20px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; font-size: 18px; line-height: 1.4"><span style="width: 36px; height: 36px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>You know exactly what to do when an AAC referral comes in.</div>
+<div style="background: #ffffff; border-radius: 20px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; font-size: 18px; line-height: 1.4"><span style="width: 36px; height: 36px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>You can confidently trial multiple devices and make data-driven recommendations.</div>
+<div style="background: #ffffff; border-radius: 20px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; font-size: 18px; line-height: 1.4"><span style="width: 36px; height: 36px; border-radius: 50%; background: #f6d9e7; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>You write funding reports that get results without unnecessary revisions.</div>
+<div style="background: #ffffff; border-radius: 20px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; font-size: 18px; line-height: 1.4"><span style="width: 36px; height: 36px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>You no longer feel the need to refer out to a specialist due to lack of experience.</div>
+</div>
+<p style="margin: 0; font-size: 20px; font-weight: 700">That’s what’s waiting for you inside The AAC Assessment Hub!</p>
+</div>
+<div style="flex: 1 1 340px; padding: clamp(8px, 2vw, 24px) 0 clamp(8px, 2vw, 24px) clamp(0px, 3vw, 40px); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Parent &amp; advocate</span><svg width="40" height="40" viewBox="0 0 24 24" fill="#ff81a0" aria-hidden="true"><path d="M4 11c0-3.3 2-5.6 5-6.5l.6 1.5C7.8 6.8 7 8.2 7 10h3v8H4zm10 0c0-3.3 2-5.6 5-6.5l.6 1.5c-1.8.8-2.6 2.2-2.6 4h3v8h-6z"></path></svg></div>
+<p style="margin: 0; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.15; font-weight: 700">“Emily is down to earth, and teaches in such an easy to understand way.”</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.6">I love how Emily brought up stakeholders, as a parent to a non speaking child who is now an adult getting family In put and then carryover is very important for the success of the AAC user. I also loved the lesson on referral process across settings very helpful. Emily is down to earth, and teaches in such an easy to understand way. She is very humble but also a badass AAC SLP.</p>
+<div style="display: flex; align-items: center; gap: 14px">
+<img src="assets/img/courtney-burnett.webp" alt="Courtney Burnett and family" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; display: block">
+<div><div style="font-weight: 700; font-size: 16px">Courtney Burnett</div><div style="font-size: 14px; margin-top: 3px">@courtneyburnettadvocate</div></div>
+</div>
+</div>
+</section>
+
+<!-- OBJECTIONS -->
+<section style="display: flex; flex-direction: column; gap: 48px">
+<div style="max-width: 760px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px">
+<span class="chip">Real talk</span>
+<h2 style="margin: 0; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; font-weight: 700; letter-spacing: -.015em">Worried About Time, Cost, or Experience Level?</h2>
+<p class="script" style="margin: 0; font-size: clamp(54px, 5.4vw, 76px); line-height: .95; color: #e0577d">Let's talk about it.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px">
+<div style="background: #ffa283; color: #4a2338; border-radius: 32px; padding: clamp(28px, 3.5vw, 44px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 460px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Time</span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>
+<p style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.2; font-weight: 700">“I have a big caseload and I'm juggling multiple things. I don’t have time for a long course.”</p>
+<div style="background: #ffffff; color: #743e5a; border-radius: 24px; padding: 24px"><p style="margin: 0; font-size: 17px; line-height: 1.6">The lessons are bite-sized and packed with actionable insights, so you can learn at your own pace. You also have lifetime access to the program so take it over the summer, take bits and pieces at a time, whatever your schedule allows.</p></div>
+</div>
+<div style="background: #f6d9e7; border-radius: 32px; padding: clamp(28px, 3.5vw, 44px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 460px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span class="chip">Experience level</span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h4v-6H3zM10 20h4V9h-4zM17 20h4V4h-4z"></path></svg></div>
+<p style="margin: 0; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.2; font-weight: 700">“I’m not an AAC specialist. Will I even understand the material?”</p>
+<div style="background: #ffffff; border-radius: 24px; padding: 24px"><p style="margin: 0; font-size: 17px; line-height: 1.6">You don’t need to be an AAC Specialist! This course is designed for any SLP who wants to improve their AAC assessment skills. You can use this course to jump start your AAC specialization or use it as a go-to resource whenever an AAC assessment hits your desk.</p></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+
+<!-- KATIE QUOTE -->
+<figure style="margin: 0 auto; max-width: 820px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="#e0577d" aria-hidden="true"><path d="M4 11c0-3.3 2-5.6 5-6.5l.6 1.5C7.8 6.8 7 8.2 7 10h3v8H4zm10 0c0-3.3 2-5.6 5-6.5l.6 1.5c-1.8.8-2.6 2.2-2.6 4h3v8h-6z"></path></svg>
+<blockquote style="margin: 0; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.4"><strong>Um can I just say this is amazing? This is such a gift!</strong> The info is synthesized so beautifully... Thank you Emily! I'm excited to rework my school-based SLP PD materials to be more clear and digestible like yours. <strong>I'm in awe, and truly so grateful.</strong> ❤️❤️❤️❤️🔥✊</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700"><span style="width: 36px; height: 36px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; font-size: 13px">KM</span>Katie M. <span style="font-weight: 500">· AAC Assessment Hub student</span></figcaption>
+</figure>
+
+<!-- SCROLL STACK 4: laura pins, next content slides over -->
+<div class="stack-pair" data-stack="4">
+<!-- LAURA -->
+<section class="stick" style="background: #743e5a; color: #ffffff; border-radius: 36px; padding: clamp(28px, 5vw, 72px); display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div style="display: flex; align-items: center; gap: 18px">
+<img src="assets/img/laura-hayes.webp" alt="Laura Hayes" style="width: 84px; height: 84px; border-radius: 50%; object-fit: cover; display: block">
+<div><div style="font-weight: 700; font-size: 19px">Laura Hayes</div><div style="font-size: 15px; margin-top: 4px; color: #f6d9e7">@aac_innovations</div></div>
+</div>
+<span class="chip">Seasoned SLP review</span>
+</div>
+<p style="margin: 0; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; font-weight: 700; max-width: 980px; letter-spacing: -.01em">“For any professional seeking to elevate their AAC practice, this course is an <span style="color: #ff81a0">absolute must!</span>”</p>
+<div style="column-width: 360px; column-gap: 48px; font-size: 16px; line-height: 1.7; color: #ffefe9">
+<p style="margin: 0 0 14px">As a seasoned speech-language pathologist, I cannot overstate the transformative impact of this groundbreaking AAC assessment course.</p>
+<p style="margin: 0">What sets this training apart is its meticulously crafted roadmap that takes clinicians from novice to expert in every critical aspect of augmentative and alternative communication assessment. The course's innovative approach to evaluation for AAC systems provides crystal-clear guidance on conducting thorough evaluations, with hands-on techniques for precise trials and data collection that are immediately applicable across school and medical settings. The comprehensive module on device selection and feature matching offers clinicians a strategic framework for matching communication technologies to individual client needs. The funding and report writing sections are a game-changer, providing the complex landscape of insurance submissions and educational documentation with practical, step-by-step strategies that will consistently help provide faster access to AAC devices for users and communication partners who support them. It finishes with therapeutic implementation support, including goal ideas, to take the next steps once a device is obtained. For any professional seeking to elevate their AAC practice, this course is an absolute must!</p>
+</div>
+</section>
+<div class="stack-cover">
+<!-- VALUE STACK -->
+<section id="everything" style="display: flex; flex-direction: column; gap: 40px">
+<div style="max-width: 760px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px">
+<span class="chip">Everything you get</span>
+<h2 style="margin: 0; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; font-weight: 700; letter-spacing: -.015em">One more time. Here’s everything you get inside the Hub.</h2>
+</div>
+<div style="width: 100%; max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+<div style="background: #ffefe9; border-radius: 32px; padding: clamp(20px, 3vw, 40px); box-sizing: border-box; display: grid; place-items: center"><img src="assets/img/aac-hub-mockup.png" alt="The AAC Assessment Hub course, downloads and resources on desktop and laptop" style="width: 100%; height: auto; display: block"></div>
+<div style="display: flex; flex-direction: column">
+<div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1.5px solid #f6d9e7">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+<div style="flex: 1"><div style="font-size: 18px; font-weight: 700">3 core modules</div><div style="font-size: 15px; line-height: 1.5; margin-top: 4px">Understanding the AAC Assessment Process · Key Considerations for AAC Selection · Navigating AAC Funding</div></div>
+</div>
+<div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1.5px solid #f6d9e7">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+<div style="flex: 1"><div style="font-size: 18px; font-weight: 700">10 printable &amp; downloadable tools and resources</div><div style="font-size: 15px; line-height: 1.5; margin-top: 4px">AAC data collection forms, AAC caregiver interview questionnaires, sample AAC eval reports, and more</div></div>
+</div>
+<div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1.5px solid #f6d9e7">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #f6d9e7; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+<div style="flex: 1"><div style="font-size: 18px; font-weight: 700">4 bonus modules</div><div style="font-size: 15px; line-height: 1.5; margin-top: 4px">AAC &amp; GLP Assessment · Assessing Complex Alternative Access · Bilingual &amp; Cultural Considerations · UK Considerations</div></div>
+</div>
+<div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1.5px solid #f6d9e7">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+<div style="flex: 1"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 18px; font-weight: 700">The 3-week live cohort experience</span><span style="font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; background: #ff81a0; color: #4a2338">Order before Oct 30</span></div><div style="font-size: 15px; line-height: 1.5; margin-top: 4px">A limited-time bonus for everyone who enrolls before October 30</div></div>
+</div>
+<div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1.5px solid #f6d9e7">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+<div style="flex: 1"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 18px; font-weight: 700">Virtual AAC Assessment Considerations</span><span style="font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; background: #743e5a; color: #ffffff">Surprise bonus</span></div><div style="font-size: 15px; line-height: 1.5; margin-top: 4px">A brand-new course on running AAC assessments remotely</div></div>
+</div>
+<div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1.5px solid #f6d9e7">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #ffefe9; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+<div style="flex: 1"><div style="font-size: 18px; font-weight: 700">Future-proof purchase</div><div style="font-size: 15px; line-height: 1.5; margin-top: 4px">Receive all future updates to the AAC Assessment Hub at no additional cost</div></div>
+</div>
+<div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1.5px solid #f6d9e7">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+<div style="flex: 1"><div style="font-size: 18px; font-weight: 700">2-week money-back guarantee</div><div style="font-size: 15px; line-height: 1.5; margin-top: 4px">Try it risk-free for two weeks</div></div>
+</div>
+<div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1.5px solid #f6d9e7">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+<div style="flex: 1"><div style="font-size: 18px; font-weight: 700">Lifetime access to the course &amp; tools</div><div style="font-size: 15px; line-height: 1.5; margin-top: 4px">Whether you need it next week or a year from now, there are no restrictions on when or how long you can use or access the course.</div></div>
+</div>
+<div style="border-top: 1.5px solid #f6d9e7; padding-top: 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px">
+<a href="https://learn.emilydiazslp.com/offers/wSGfoUxH" class="btn btn-lg" style="background: #743e5a; color: #ffffff; width: 100%; box-sizing: border-box; justify-content: center; text-align: center; position: relative; padding-left: 80px; padding-right: 80px">Get it all for $147<span class="dot" style="background: #ff81a0; color: #4a2338; position: absolute; right: 10px; top: 50%; transform: translateY(-50%)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<span style="font-size: 14px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase"><span style="text-decoration: line-through; opacity: .7">$247</span> · $100 off for a limited time</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<div style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 24px">
+<span class="chip" style="align-self: flex-start">Here's some answers to</span>
+<h2 style="margin: 0; font-size: clamp(34px, 4vw, 54px); line-height: 1.02; font-weight: 700; letter-spacing: -.015em">Frequently Asked Questions</h2>
+<div style="background: #f6d9e7; border-radius: 32px; padding: 32px; display: flex; flex-direction: column; gap: 20px; margin-top: 12px">
+<p style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700">“I knew this course would be invaluable.”</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.65">Despite having almost 10 years of experience as an SLP, I’m continually reminded of how much there is to learn, particularly when it comes to AAC assessments. I’ve been following Emily on Instagram forever, and have always enjoyed her AAC tips and content. So when I found out she was launching a course on AAC assessments, I knew this course would be invaluable. I especially enjoyed the real-life application case studies within the course (next best thing to getting that hands-on experience), as well as how she tailored her guidance for different settings, which was incredibly helpful given my roles in both school-based and private practice environments. I highly recommend this course to any SLP seeking to strengthen their AAC assessment skills! 🙌</p>
+<div style="background: #ffffff; border-radius: 22px; padding: 10px; display: flex; align-items: center; gap: 14px">
+<img src="assets/img/abby.webp" alt="Abby, the Type B SLP" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; display: block">
+<div><div style="font-weight: 700; font-size: 16px">Abby</div><div style="font-size: 14px; margin-top: 3px">@the.type.b.slp</div></div>
+</div>
+</div>
+</div>
+<div style="flex: 1.6 1 480px; display: flex; flex-direction: column; gap: 10px">
+<div style="border-radius: 24px; box-shadow: inset 0 0 0 1.5px #f6d9e7; background: {{bg0}}">
+<button class="faq-q" onClick="{{t0}}" aria-expanded="{{o0}}">Will this course earn me ASHA Professional Development Hours (PDHs)?<span style="width: 40px; height: 40px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none; transform: {{r0}}; transition: transform .2s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
+<sc-if value="{{o0}}" hint-placeholder-val="{{ true }}"><p style="margin: 0; padding: 0 24px 26px; font-size: 17px; line-height: 1.65">Yes! This course can earn you 8 hours of PDHs. After completion of the course, you’ll be asked to take a short quiz to ensure you’ve gone through the course. Upon passing the quiz, a certificate of completion will be sent to your inbox.</p></sc-if>
+</div>
+<div style="border-radius: 24px; box-shadow: inset 0 0 0 1.5px #f6d9e7; background: {{bg1}}">
+<button class="faq-q" onClick="{{t1}}" aria-expanded="{{o1}}">Do I have to take this course within a specific timeframe? Will the course expire?<span style="width: 40px; height: 40px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none; transform: {{r1}}; transition: transform .2s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
+<sc-if value="{{o1}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 24px 26px; font-size: 17px; line-height: 1.65">Nope! You have lifetime access to the course and the course does not expire. In addition, you have access to all future iterations of the course so any updates, new resources, or tools that we create will automatically be added to your course portal. You can access the course at any point in time in the future.</p></sc-if>
+</div>
+<div style="border-radius: 24px; box-shadow: inset 0 0 0 1.5px #f6d9e7; background: {{bg2}}">
+<button class="faq-q" onClick="{{t2}}" aria-expanded="{{o2}}">Do you accept purchase orders?<span style="width: 40px; height: 40px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none; transform: {{r2}}; transition: transform .2s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
+<sc-if value="{{o2}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 24px 26px; font-size: 17px; line-height: 1.65">Yes we do! However, we only accept purchase orders on 3 or more purchases. In addition, there is a $20 processing fee added onto the order. If you need 3 or more purchases, please <a href="#faq">fill out this form</a> to start the process. Terms are NET30.</p></sc-if>
+</div>
+<div style="border-radius: 24px; box-shadow: inset 0 0 0 1.5px #f6d9e7; background: {{bg3}}">
+<button class="faq-q" onClick="{{t3}}" aria-expanded="{{o3}}">Do I have to be an SLP to take this course?<span style="width: 40px; height: 40px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none; transform: {{r3}}; transition: transform .2s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
+<sc-if value="{{o3}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 24px 26px; font-size: 17px; line-height: 1.65">No, anyone can take this course! However, only SLPs are allowed to sign and submit funding reports to insurance.</p></sc-if>
+</div>
+<div style="border-radius: 24px; box-shadow: inset 0 0 0 1.5px #f6d9e7; background: {{bg4}}">
+<button class="faq-q" onClick="{{t4}}" aria-expanded="{{o4}}">What makes this course different than other AAC Assessment courses on the market?<span style="width: 40px; height: 40px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none; transform: {{r4}}; transition: transform .2s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
+<sc-if value="{{o4}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 24px 26px; font-size: 17px; line-height: 1.65">This course goes beyond just conducting an AAC assessment—it also guides you through the entire funding process, ensuring you can complete the referral from start to finish. Unlike other courses that focus primarily on the evaluation itself, this course covers essential technical aspects such as feature matching, hardware/software options, and securing loaner devices. Additionally, enrollment includes access to a free community group, providing ongoing support and collaboration—something not commonly offered elsewhere. Whether you’re new to AAC or an experienced SLP looking to build confidence in assessments, this course is designed to help you independently navigate the full assessment-to-funding journey.</p></sc-if>
+</div>
+</div>
+</section>
+</div>
+</div>
+
+<!-- CLOSING -->
+<section class="full" style="background: #743e5a; color: #ffffff; border-radius: 36px; padding: clamp(28px, 5vw, 80px); display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1.3 1 440px; display: flex; flex-direction: column; gap: 24px">
+<span class="chip" style="align-self: flex-start">From confusion to clarity</span>
+<h2 style="margin: 0; font-size: clamp(36px, 4.4vw, 60px); line-height: 1.02; font-weight: 700; letter-spacing: -.015em">Let's change the way you assess AAC <span class="script" style="color: #ff81a0; font-size: 1.5em; line-height: .6">forever.</span></h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #ffefe9">Don’t let uncertainty hold you back from helping your clients communicate effectively. The AAC Assessment Hub gives you everything you need to take control of the process and provide life-changing recommendations.</p>
+<figure style="margin: 4px 0 0; display: flex; align-items: flex-start; gap: 14px; padding-top: 22px; border-top: 1.5px solid #ffffff33">
+<span style="width: 42px; height: 42px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none; font-size: 14px; font-weight: 700">AM</span>
+<div><blockquote style="margin: 0; font-size: 17px; line-height: 1.5; color: #ffffff">“<strong>Currently doing Emily’s AAC Assessment course and I highly recommend it!</strong> Very thorough!”</blockquote><figcaption style="margin-top: 6px; font-size: 14px; font-weight: 700; color: #f6d9e7">Ali M. <span style="font-weight: 500">· AAC Assessment Hub student</span></figcaption></div>
+</figure>
+</div>
+<div style="flex: 1 1 380px; background: #ffffff; color: #743e5a; border-radius: 32px; padding: clamp(24px, 3vw, 36px); box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
+<li style="display: flex; gap: 14px; align-items: flex-start; font-size: 17px; line-height: 1.45"><span style="width: 28px; height: 28px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>All three modules with 10 complete video lessons</li>
+<li style="display: flex; gap: 14px; align-items: flex-start; font-size: 17px; line-height: 1.45"><span style="width: 28px; height: 28px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>A growing library of downloadable cheat sheets, templates, and data collection tools</li>
+<li style="display: flex; gap: 14px; align-items: flex-start; font-size: 17px; line-height: 1.45"><span style="width: 28px; height: 28px; border-radius: 50%; background: #f6d9e7; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>BONUS: The 3-week live cohort experience (enroll by October 30)</li>
+<li style="display: flex; gap: 14px; align-items: flex-start; font-size: 17px; line-height: 1.45"><span style="width: 28px; height: 28px; border-radius: 50%; background: #743e5a; color: #ffffff; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>SURPRISE BONUS: Virtual AAC Assessment Considerations, a brand-new course on running AAC assessments remotely</li>
+<li style="display: flex; gap: 14px; align-items: flex-start; font-size: 17px; line-height: 1.45"><span style="width: 28px; height: 28px; border-radius: 50%; background: #ff81a0; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>Future-proof: all future updates to the AAC Assessment Hub at no additional cost</li>
+<li style="display: flex; gap: 14px; align-items: flex-start; font-size: 17px; line-height: 1.45"><span style="width: 28px; height: 28px; border-radius: 50%; background: #ffa283; color: #4a2338; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>Lifetime Access to learn at your own pace</li>
+</ul>
+<div style="border-top: 1.5px solid #f6d9e7; padding-top: 20px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 18px; font-weight: 700">Get the AAC Assessment Hub for $147 during this one-time offer!</p>
+<a href="https://learn.emilydiazslp.com/offers/wSGfoUxH" class="btn btn-lg btn-rect" style="background: #743e5a; color: #ffffff; justify-content: space-between">Start assessing with confidence for $147<span class="dot" style="background: #ff81a0; color: #4a2338"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer style="max-width: 1120px; margin: 0 auto; padding: 32px clamp(20px, 6vw, 96px) 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; font-size: 14px; border-top: 1.5px solid #f6d9e7">
+<img src="assets/img/logo.png" alt="The AAC Assessment Hub" style="height: 44px; width: auto; display: block">
+<span>© 2024 Emily Diaz, SLP | All rights Reserved.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 20px">
+<a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Website Disclaimer</a><a href="#">Student Login</a>
+</div>
+</footer>
+
+</div>
+</div>
+</div>
+<script>
+/* Minimal static runtime for the exported Design Component page.
+   Binds {{holes}} in text and attributes, <sc-if>, and onX="{{fn}}" handlers,
+   then re-applies values whenever setState() is called. */
+(function () {
+  var HOLE = /\{\{\s*([^}]+?)\s*\}\}/g;
+  function lookup(vals, path) {
+    if (path === 'true') return true;
+    if (path === 'false') return false;
+    if (/^-?\d+(\.\d+)?$/.test(path)) return parseFloat(path);
+    var cur = vals;
+    path.split('.').forEach(function (k) { cur = cur == null ? undefined : cur[k]; });
+    return cur;
+  }
+  function interp(tpl, vals) {
+    var whole = tpl.match(/^\{\{\s*([^}]+?)\s*\}\}$/);
+    if (whole) { var v = lookup(vals, whole[1]); return v == null ? '' : v; }
+    return tpl.replace(HOLE, function (_, p) { var v = lookup(vals, p); return v == null ? '' : String(v); });
+  }
+  window.DCLogic = function DCLogic(props) { this.props = props || {}; this.state = {}; };
+  DCLogic.prototype.setState = function (u) {
+    var patch = typeof u === 'function' ? u(this.state, this.props) : u;
+    this.state = Object.assign({}, this.state, patch || {});
+    if (this.__schedule) this.__schedule();
+  };
+  DCLogic.prototype.forceUpdate = function () { if (this.__schedule) this.__schedule(); };
+
+  window.DCStatic = {
+    mount: function (root, Comp, propSpec) {
+      var props = {};
+      Object.keys(propSpec || {}).forEach(function (k) { if (k.charAt(0) !== '$' && 'default' in propSpec[k]) props[k] = propSpec[k].default; });
+      var texts = [], attrs = [], ifs = [], events = [];
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+      var n, all = [];
+      while ((n = walker.nextNode())) all.push(n);
+      all.forEach(function (node) {
+        if (node.nodeType === 3) {
+          if (node.nodeValue.indexOf('{{') > -1) texts.push({ node: node, tpl: node.nodeValue });
+          return;
+        }
+        var el = node;
+        if (el.tagName === 'SC-IF') {
+          ifs.push({ el: el, path: (el.getAttribute('value') || '').replace(/^\{\{\s*|\s*\}\}$/g, '') });
+          el.removeAttribute('value');
+        }
+        Array.prototype.slice.call(el.attributes).forEach(function (a) {
+          if (a.name.indexOf('hint-') === 0) { el.removeAttribute(a.name); return; }
+          if (a.value.indexOf('{{') === -1) return;
+          if (/^on[a-z]+$/i.test(a.name)) {
+            var key = a.value.replace(/^\{\{\s*|\s*\}\}$/g, '');
+            events.push({ el: el, type: a.name.slice(2).toLowerCase(), key: key });
+            el.removeAttribute(a.name);
+            return;
+          }
+          var name = a.name === 'classname' ? 'class' : a.name;
+          attrs.push({ el: el, name: name, tpl: a.value });
+        });
+      });
+      var comp = new Comp(props);
+      if (!comp.props) comp.props = props;
+      if (!comp.state) comp.state = {};
+      var vals = {};
+      function render() {
+        vals = comp.renderVals ? (comp.renderVals() || {}) : {};
+        texts.forEach(function (b) { var v = String(interp(b.tpl, vals)); if (b.node.nodeValue !== v) b.node.nodeValue = v; });
+        attrs.forEach(function (b) { var v = String(interp(b.tpl, vals)); if (b.el.getAttribute(b.name) !== v) b.el.setAttribute(b.name, v); });
+        ifs.forEach(function (b) { b.el.style.display = lookup(vals, b.path) ? 'contents' : 'none'; });
+      }
+      events.forEach(function (b) {
+        b.el.addEventListener(b.type, function (e) { var f = lookup(vals, b.key); if (typeof f === 'function') f(e); });
+      });
+      var pending = false;
+      comp.__schedule = function () {
+        if (pending) return; pending = true;
+        (window.requestAnimationFrame || setTimeout)(function () { pending = false; render(); });
+      };
+      render();
+      document.documentElement.classList.add('dc-ready');
+      if (comp.componentDidMount) comp.componentDidMount();
+      return comp;
+    }
+  };
+})();
+
+</script>
+<script>
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: 0, step: 0, turns: 0 };
+  }
+  componentDidMount() {
+    var self = this;
+    // scroll-in reveal (fade + rise) for everything below the hero
+    try {
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var sel = 'main > section:not(:first-child) > *, main > figure, main > section:not(:first-child) [style*="grid-template-columns"] > *, .stack-cover > section > *, .stack-cover > figure, .stack-cover > section [style*="grid-template-columns"] > *, main > .stack-pair:not(:first-child) > .stick > *';
+        var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+        self.revealIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('rv-in'); self.revealIO.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+        els.forEach(function (el) {
+          var sibs = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+          if (el.parentElement && /grid-template-columns/.test(el.parentElement.getAttribute('style') || '')) el.style.transitionDelay = Math.min(sibs, 5) * 90 + 'ms';
+          el.classList.add('rv');
+          self.revealIO.observe(el);
+        });
+      }
+    } catch (e) {}
+    // scroll stacking: pin each .stick, slide its .stack-cover over it, and ease the pinned one back
+    try {
+      var reduceS = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var pairs = Array.prototype.slice.call(document.querySelectorAll('.stack-pair'));
+      if (pairs.length) {
+        var styleEl = document.createElement('style');
+        document.head.appendChild(styleEl);
+        self.stackStyle = styleEl;
+        var bar = document.querySelector('.topbar');
+        var ticking = false;
+        var update = function () {
+          ticking = false;
+          var scaleEl = document.querySelector('.page-scale');
+          var z = parseFloat(getComputedStyle(scaleEl).zoom) || 1;
+          var vh = window.innerHeight / z;
+          var barH = bar ? bar.offsetHeight + 16 : 72;
+          var css = '';
+          pairs.forEach(function (p) {
+            var n = p.getAttribute('data-stack');
+            var st = p.querySelector(':scope > .stick'), cv = p.querySelector(':scope > .stack-cover');
+            if (!st || !cv) return;
+            var h = st.offsetHeight;
+            var top = Math.min(barH, Math.round(vh - h - 24));
+            var sel = '.stack-pair[data-stack="' + n + '"]';
+            css += sel + ' > .stick{top:' + top + 'px}';
+            css += sel + ' > .stack-cover{min-height:' + (h + 80) + 'px}';
+            if (!reduceS) {
+              var sr = st.getBoundingClientRect(), cr = cv.getBoundingClientRect();
+              var pr = Math.max(0, Math.min(1, (sr.bottom - cr.top) / Math.max(1, sr.height)));
+              css += sel + ' > .stick{transform:scale(' + (1 - 0.06 * pr).toFixed(4) + ');opacity:' + (1 - 0.55 * pr).toFixed(3) + '}';
+            }
+          });
+          // sticky bar: maroon at rest, lipstick pink once it pins to the top
+          if (bar && bar.getBoundingClientRect().top <= 1) {
+            css += '.topbar{background:#ff81a0 !important;color:#4a2338 !important}';
+            css += '.topbar [role="timer"] > span{background:#ffffff73 !important}';
+            css += '.topbar [role="timer"] > .cd-sec{background:#743e5a !important;color:#ffffff !important}';
+            css += '.topbar .topbar-link{color:#4a2338 !important}';
+          }
+          styleEl.textContent = css;
+        };
+        self.onStackScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+        window.addEventListener('scroll', self.onStackScroll, { passive: true });
+        window.addEventListener('resize', self.onStackScroll);
+        document.addEventListener('scroll', self.onStackScroll, { passive: true, capture: true });
+        update();
+        setTimeout(update, 600);
+      }
+    } catch (e) {}
+    // countdown: Oct 30, 2026 11:59 PM Central (CDT, UTC-5)
+    this.cdTimer = setInterval(function () { self.setState({ now: Date.now() }); }, 1000);
+    var reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (reduce) { this.setState({ step: 14 }); return; }
+    this.timer = setInterval(function () {
+      self.setState(function (s) {
+        var next = s.step >= 21 ? 0 : s.step + 1;
+        var turned = self.stageOf(next) !== self.stageOf(s.step);
+        return { step: next, turns: s.turns + (turned ? 1 : 0) };
+      });
+    }, 850);
+  }
+  stageOf(step) {
+    var doneAt = [2, 4, 6, 9, 12];
+    var st = 0;
+    for (var i = 0; i < doneAt.length; i++) { if (step >= doneAt[i]) st = i + 1; }
+    return st;
+  }
+  componentWillUnmount() {
+    if (this.timer) clearInterval(this.timer);
+    if (this.cdTimer) clearInterval(this.cdTimer);
+    if (this.revealIO) this.revealIO.disconnect();
+    if (this.onStackScroll) { window.removeEventListener('scroll', this.onStackScroll); window.removeEventListener('resize', this.onStackScroll); document.removeEventListener('scroll', this.onStackScroll, true); }
+    if (this.stackStyle && this.stackStyle.parentNode) this.stackStyle.parentNode.removeChild(this.stackStyle);
+  }
+  renderVals() {
+    var open = this.state.open;
+    var self = this;
+    var v = {};
+
+    // ---- countdown to Oct 30, 2026 11:59 PM Central ----
+    var deadline = Date.UTC(2026, 9, 31, 4, 59, 0);
+    var left = Math.max(0, Math.floor((deadline - (this.state.now || Date.now())) / 1000));
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    v.cdD = pad(Math.floor(left / 86400));
+    v.cdH = pad(Math.floor((left % 86400) / 3600));
+    v.cdM = pad(Math.floor((left % 3600) / 60));
+    v.cdS = pad(left % 60);
+
+    // ---- hero report animation: fills out step by step ----
+    var s = this.state.step;
+    var on = function (n) { return s >= n; };
+    var showToasts = s < 20;
+    var doneAt = [2, 4, 6, 9, 12];
+    var stage = 0;
+    for (var d = 0; d < doneAt.length; d++) { if (on(doneAt[d])) stage = d + 1; }
+    var labels = ['Reviewing the referral', 'Running assessment tasks', 'Trialing AAC systems', 'Making the recommendation', 'Submitting for funding'];
+    v.statusText = stage < 5 ? ('Step ' + (stage + 1) + ' of 5 · ' + labels[stage]) : 'All 5 steps complete';
+    v.prog = (stage / 4 * 80 > 80 ? 80 : stage / 4 * 80) + '%';
+    v.badgeText = on(10) ? 'Complete' : 'In progress';
+    v.badgeBg = on(10) ? '#743e5a' : '#ffffff';
+    v.badgeFg = on(10) ? '#ffffff' : '#743e5a';
+    for (var k = 1; k <= 5; k++) {
+      var done = on(doneAt[k - 1]);
+      var active = !done && stage === k - 1 && s >= 1;
+      v['s' + k + 'bg'] = done ? '#743e5a' : (active ? '#ff81a0' : '#ffffff');
+      v['s' + k + 'fg'] = done ? '#ffffff' : '#743e5a';
+      v['s' + k + 'ring'] = active ? '0 0 0 4px #ff81a04d' : (done ? 'none' : 'inset 0 0 0 1.5px #f6d9e7');
+      v['s' + k + 'i'] = done ? '0' : (active ? '1' : '.45');
+      v['s' + k + 'c'] = done ? '1' : '0';
+    }
+    v.fo = on(1) ? '1' : '0';
+    v.ft = on(1) ? 'none' : 'translateY(6px)';
+    v.c1 = on(2) ? '1' : '0'; v.ra1 = on(1) ? '1' : '.4';
+    v.c2 = on(3) ? '1' : '0'; v.ra2 = on(2) ? '1' : '.4';
+    v.c3 = on(4) ? '1' : '0'; v.ra3 = on(3) ? '1' : '.4';
+    v.b1 = on(5) ? '34%' : '4%';
+    v.b2 = on(5) ? '50%' : '4%';
+    v.b3 = on(5) ? '74%' : '4%';
+    v.best = on(6) ? '1' : '0';
+    v.l1 = on(7) ? '100%' : '0%';
+    v.l2 = on(8) ? '92%' : '0%';
+    v.l3 = on(8) ? '62%' : '0%';
+    v.ro = on(9) ? '1' : '0';
+    v.rt = on(9) ? 'none' : 'translateY(10px) scale(.96)';
+
+    // ---- hero animation style: "Rotate" (3D spin per step) or "Subtle" (original float) ----
+    var rotate = (this.props.heroAnimation ?? 'Subtle') === 'Rotate';
+    var popZ = 'translateZ(56px) scale(1.04)';
+    var popSh = '0 0 0 7px #ffffff, 0 0 0 8.5px #ff81a0, 0 26px 40px -10px #743e5a66';
+    var popShTinted = '0 0 0 1.5px #ff81a0, 0 26px 40px -10px #743e5a66';
+    var activeSec = ['A', 'B', 'C', 'D', 'E', 'E'][stage];
+    ['A', 'B', 'C', 'D'].forEach(function (id) {
+      var act = rotate && activeSec === id;
+      v['z' + id] = act ? popZ : 'none';
+      v['sh' + id] = act ? (id === 'C' ? popShTinted : popSh) : 'none';
+    });
+    v.shE = (rotate && activeSec === 'E' && on(9)) ? popShTinted : 'none';
+    if (rotate && activeSec === 'E' && on(9)) v.rt = popZ;
+    if (rotate) {
+      var swing = stage === 5 ? 0 : (stage % 2 === 0 ? -20 : 20);
+      var tilt = stage === 5 ? 2 : 8;
+      var lift = stage === 5 ? -10 : (stage % 2 === 0 ? 0 : -12);
+      v.ipadClass = 'ipad-rot';
+      v.ipadTf = 'translateY(' + lift + 'px) rotateX(' + tilt + 'deg) rotateY(' + (this.state.turns * 360 + swing) + 'deg) scale(' + (stage === 5 ? 1.04 : 1) + ')';
+      v.ipadTr = 'transform 1.25s cubic-bezier(.65,0,.2,1.12)';
+      v.persp = '1600px';
+      v.scrOv = 'visible';
+      v.scrTs = 'preserve-3d';
+    } else {
+      v.ipadClass = 'ipad';
+      v.ipadTf = 'none';
+      v.ipadTr = 'none';
+      v.persp = 'none';
+      v.scrOv = 'hidden';
+      v.scrTs = 'flat';
+    }
+    v.rc = on(10) ? '1' : '0';
+    var toastAt = [4, 6, 10, 12];
+    for (var t = 0; t < 4; t++) {
+      var vis = showToasts && on(toastAt[t]);
+      v['t' + t + 'o'] = vis ? '1' : '0';
+      v['t' + t + 't'] = vis ? 'translateY(0) scale(1)' : 'translateY(16px) scale(.9)';
+    }
+    for (var i = 0; i < 5; i++) {
+      (function (n) {
+        var isOpen = open === n;
+        v['o' + n] = isOpen;
+        v['bg' + n] = isOpen ? '#ffefe9' : '#ffffff';
+        v['r' + n] = isOpen ? 'rotate(45deg)' : 'none';
+        v['t' + n] = function () { self.setState({ open: isOpen ? -1 : n }); };
+      })(i);
+    }
+    return v;
+  }
+}
+
+DCStatic.mount(document.getElementById('dc-root'), Component, {"heroAnimation":{"editor":"enum","options":["Subtle","Rotate"],"default":"Subtle","section":"Hero"},"$preview":{"width":1440,"height":10400}});
+</script>
+</body>
+</html>

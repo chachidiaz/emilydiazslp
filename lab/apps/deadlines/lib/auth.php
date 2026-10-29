@@ -14,9 +14,10 @@ function dl_session_start(): void
         return;
     }
     session_name('dl_admin');
+    // Path "/" so one login covers the deadline timers app and the lab dashboard at /admin.
     session_set_cookie_params([
         'lifetime' => 0,
-        'path' => DL_COOKIE_PATH,
+        'path' => '/',
         'secure' => dl_is_https(),
         'httponly' => true,
         'samesite' => 'Lax',

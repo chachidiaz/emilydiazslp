@@ -19,6 +19,12 @@ function dl_list_param(string $name): array
     return array_slice(array_values(array_unique($items)), 0, 20);
 }
 
+// Sandboxed previews (like the thumbnails on /admin) send "Origin: null". Don't track them.
+if (($_SERVER['HTTP_ORIGIN'] ?? '') === 'null') {
+    echo json_encode(['now' => time(), 'campaigns' => [], 'timers' => []]);
+    exit;
+}
+
 $now = time();
 $email = dl_normalize_email($_GET['email'] ?? null);
 $url = (string) ($_GET['u'] ?? ($_SERVER['HTTP_REFERER'] ?? ''));

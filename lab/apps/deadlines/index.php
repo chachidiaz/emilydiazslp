@@ -290,6 +290,7 @@ function head(string $title): void
       <a class="brand" href="<?= dl_h($appUrl) ?>"><img src="/brand/assets/logo-maroon.png" alt="Emily Diaz, SLP"><span>deadline timers</span></a>
       <?php if (dl_is_admin()): ?>
       <nav>
+        <a href="/admin/">lab admin</a>
         <a href="<?= dl_h($appUrl) ?>">campaigns</a>
         <a href="<?= dl_h($appUrl) ?>demo/">demo funnel</a>
         <a href="<?= dl_h($appUrl) ?>?p=settings">settings</a>

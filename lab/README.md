@@ -8,6 +8,7 @@ Kept separate from the main Astro site in `src/`; nothing here affects `emilydia
 ```
 lab/
 ├── index.html        ← subdomain home page (/)
+├── admin/            ← password-protected dashboard of everything in the lab (/admin/)
 ├── brand/            ← brand design system: colors, fonts, logo, components (/brand/)
 ├── apps/             ← small PHP apps, e.g. apps/deadlines/ (countdown timers)
 ├── artifacts/        ← Claude artifacts (one folder per artifact)
@@ -27,7 +28,7 @@ is served at `/docs/intake-guide/`.
 
 1. Create a folder in the right section, e.g. `lab/landing-pages/fall-workshop/`.
 2. Put the page in it as `index.html` (plus any images next to it).
-3. Add a link to it in `lab/index.html`.
+3. Add a link to it in `lab/index.html`. (The dashboard at `/admin/` finds new pages on its own.)
 
 ## Publishing
 
