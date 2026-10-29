@@ -17,6 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # The FTP action requires server-dir to end with "/".
+      - name: Normalize server folder
+        id: dir
+        env:
+          FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+        run: echo "path=${FTP_SERVER_DIR%/}/" >> "$GITHUB_OUTPUT"
+
       - name: Upload lab/ over FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -24,7 +31,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./lab/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: ${{ steps.dir.outputs.path }}
           exclude: |
             **/.git*
             **/.git*/**
