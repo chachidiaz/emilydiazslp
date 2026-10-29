@@ -16,8 +16,6 @@ const LAB_SECTIONS = [
     'artifacts' => ['Artifacts', 'Pages made with Claude.'],
 ];
 const LAB_REPO = 'https://github.com/chachidiaz/emilydiazslp';
-const LAB_REPO_NAME = 'chachidiaz/emilydiazslp';
-const LAB_CLAUDE_NEW = 'https://claude.ai/code/new'; // documented: ?q= prompt, &repo=owner/name
 const LAB_TYPES = ['sales' => 'sales page', 'optin' => 'freebie opt-in', 'other' => 'other'];
 
 $root = dirname(__DIR__);
@@ -336,10 +334,20 @@ function lab_card(array $p, array $org, bool $organize = false): void
         <?php endif; ?>
         <div class="row">
           <a class="btn btn-sm" href="<?= dl_h($p['url']) ?>" target="_blank" rel="noopener">open</a>
-          <button type="button" class="btn btn-sm btn-outline" data-edit-claude data-id="<?= dl_h($p['id']) ?>" data-file="lab<?= dl_h($p['file']) ?>" data-url="<?= dl_h($p['url']) ?>" data-name="<?= dl_h($name) ?>">edit with claude</button>
           <button type="button" class="linkish" data-copy-url="<?= dl_h($p['url']) ?>">copy link</button>
           <a class="linkish" href="<?= LAB_REPO ?>/blob/main/lab<?= dl_h($p['file']) ?>" target="_blank" rel="noopener">source</a>
         </div>
+        <details class="claude-box" data-id="<?= dl_h($p['id']) ?>" data-file="lab<?= dl_h($p['file']) ?>" data-url="<?= dl_h($p['url']) ?>" data-name="<?= dl_h($name) ?>">
+          <summary class="btn btn-sm btn-outline">edit with claude</summary>
+          <label>What would you like to change?
+            <textarea rows="3" placeholder="e.g. change the headline to “Your 30-minute bonus”"></textarea>
+          </label>
+          <div class="row">
+            <button type="button" class="btn btn-sm" data-copy-claude>copy for claude</button>
+            <span class="hint" role="status"></span>
+          </div>
+          <p class="hint">Copies this page's ID and your request. Paste it into a new Claude Code session in the desktop app.</p>
+        </details>
         <details class="card-menu">
           <summary class="linkish">rename or delete</summary>
           <form method="post" class="row">
@@ -426,54 +434,27 @@ function page_end(): void
         });
       });
     });
-    // "Edit with claude": opens a new Claude Code session (desktop app or web) with the page already named.
-    // The choice and the repo folder are per computer, so they live in this browser.
-    (function () {
-      var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-                    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
-      var panel = document.getElementById('claude-settings');
-      var folder = document.getElementById('claude-folder');
-      function mode() { return store.get('lab-claude-mode') || 'desktop'; }
-      function sync() {
-        var m = mode(), f = store.get('lab-claude-folder') || '';
-        panel.querySelectorAll('[name=claude_mode]').forEach(function (r) { r.checked = r.value === m; });
-        panel.querySelectorAll('[data-claude-desktop]').forEach(function (n) { n.hidden = m !== 'desktop'; });
-        folder.value = f;
-        document.getElementById('claude-summary').textContent = m === 'web' ? 'opens Claude on the web' : (f ? 'opens the desktop app in ' + f : 'opens the desktop app · set your repo folder');
-      }
-      panel.addEventListener('change', function (e) {
-        if (e.target.name === 'claude_mode') store.set('lab-claude-mode', e.target.value);
-        if (e.target === folder) store.set('lab-claude-folder', decodeURIComponent(folder.value.trim().replace(/^['"]|['"]$/g, '').replace(/^file:\/\//, '')));
-        sync();
-      });
-      sync();
-
-      document.querySelectorAll('[data-edit-claude]').forEach(function (b) {
-        b.addEventListener('click', function () {
-          var m = mode(), f = store.get('lab-claude-folder') || '';
-          if (m === 'desktop' && !f) {
-            panel.open = true;
-            panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            folder.focus();
-            return;
-          }
-          var ask = prompt('What would you like to change on "' + b.getAttribute('data-name') + '"?\n(Leave blank to explain in the new session.)');
-          if (ask === null) return;
-          var id = b.getAttribute('data-id');
-          var text = 'Edit the lab page ' + (id ? id + ' ' : '') + '("' + b.getAttribute('data-name') + '").\n' +
-            'File: ' + b.getAttribute('data-file') + '\n' +
-            'Live: ' + location.origin + b.getAttribute('data-url') + '\n\n' +
-            (ask.trim() ? 'What to change: ' + ask.trim() : "I'll tell you what to change.") + '\n\n' +
-            'Follow CLAUDE.md. Pull the latest main first. Show me the change before publishing.';
-          if (m === 'desktop') {
-            // Documented: claude://code/new?q=<prompt>&folder=<absolute path>
-            location.href = 'claude://code/new?q=' + encodeURIComponent(text) + '&folder=' + encodeURIComponent(f);
-          } else {
-            window.open(<?= json_encode(LAB_CLAUDE_NEW) ?> + '?repo=' + encodeURIComponent(<?= json_encode(LAB_REPO_NAME) ?>) + '&q=' + encodeURIComponent(text), '_blank', 'noopener');
-          }
+    // "Edit with claude": copies the page's ID and the request, to paste into a new Claude session.
+    document.querySelectorAll('.claude-box').forEach(function (box) {
+      var area = box.querySelector('textarea'), note = box.querySelector('[role=status]');
+      box.addEventListener('toggle', function () { if (box.open) area.focus(); });
+      box.querySelector('[data-copy-claude]').addEventListener('click', function () {
+        var id = box.getAttribute('data-id'), ask = area.value.trim();
+        var text = 'Edit lab page ' + (id || '(no ID yet)') + ' ("' + box.getAttribute('data-name') + '").\n' +
+          'File: ' + box.getAttribute('data-file') + '\n' +
+          'Live: ' + location.origin + box.getAttribute('data-url') + '\n\n' +
+          (ask ? 'What to change: ' + ask : "I'll tell you what to change.") + '\n\n' +
+          'Follow CLAUDE.md. Pull the latest main first. Show me the change before publishing.';
+        navigator.clipboard.writeText(text).then(function () {
+          note.textContent = 'Copied. Paste it into Claude.';
+        }, function () {
+          // Clipboard blocked: show the text selected so Cmd+C copies it.
+          area.value = text;
+          area.select();
+          note.textContent = 'Press Cmd+C (Ctrl+C on Windows) to copy.';
         });
       });
-    })();
+    });
     // Find: narrow every section to cards whose ID, name or address matches.
     (function () {
       var box = document.getElementById('find');
@@ -631,20 +612,6 @@ page_start('Lab admin');
       <p class="hint" id="find-none" hidden>Nothing matches. IDs look like LP-001 (landing pages), DOC-001 (docs) or ART-001 (artifacts).</p>
     </div>
 
-    <details class="card claude-settings" id="claude-settings">
-      <summary><strong>Edit with claude</strong> <span class="muted small" id="claude-summary"></span></summary>
-      <div class="stack">
-        <fieldset class="choice inline-choice">
-          <legend>Open in</legend>
-          <label class="radio"><input type="radio" name="claude_mode" value="desktop"><span><strong>Claude desktop app</strong> on this computer</span></label>
-          <label class="radio"><input type="radio" name="claude_mode" value="web"><span><strong>Claude on the web</strong> (claude.ai/code)</span></label>
-        </fieldset>
-        <label data-claude-desktop>The repo folder on this computer
-          <input id="claude-folder" placeholder="/Users/you/emilydiazslp" autocomplete="off" spellcheck="false">
-        </label>
-        <p class="hint" data-claude-desktop>The full path to your copy of the emilydiazslp repo. On a Mac: in Finder, right-click the folder, hold Option, and choose <strong>Copy … as Pathname</strong>, then paste it here. This browser remembers it. The desktop app asks you to confirm the folder each time a link opens it.</p>
-      </div>
-    </details>
 
     <?php if ($missingCount): ?>
       <div class="flash warn" role="status"><?= $missingCount ?> page<?= $missingCount === 1 ? ' is' : 's are' ?> missing images or fonts. Look for the red label below.</div>
