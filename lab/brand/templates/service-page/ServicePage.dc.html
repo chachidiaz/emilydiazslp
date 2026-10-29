@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Service / offer page" description="Emily Diaz, SLP landing page: script hero, service cards, plum CTA band, opt-in form" -->
+<helmet><script src="./ds-base.js"></script><link rel="preconnect" href="https://fonts.gstatic.com"><style>body{margin:0}</style></helmet>
+<div style="background:#FFFBFD;font-family:Poppins,sans-serif;color:#5A4A53">
+<header style="background:#743E5A;color:#FFFBFD;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;text-align:right;padding:10px 24px">member login</header>
+<nav style="background:#fff;box-shadow:0 1px 2px rgba(74,39,57,.06);padding:18px 24px;display:flex;align-items:center;gap:32px"><img src="../../assets/logo-maroon.png" alt="Emily Diaz, SLP" style="width:150px;display:block"><div style="margin-left:auto;display:flex;gap:32px;align-items:center;font-weight:700;font-size:15px;letter-spacing:.04em;color:#743E5A"><a href="#" style="color:#743E5A;text-decoration:none">about me</a><a href="#" style="color:#743E5A;text-decoration:none">services</a><a href="#" style="color:#743E5A;text-decoration:none">aac courses + guides</a><a href="#" style="color:#743E5A;text-decoration:none">contact me</a><x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.Button" variant="secondary" size="sm" hint-size="180px,42px">Free AAC Resources</x-import></div></nav>
+<section style="max-width:1160px;margin:0 auto;padding:64px 24px 96px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center">
+<div><div style="font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#C45B8F">how can i help?</div><h1 style="font-size:52px;font-weight:700;line-height:1.15;color:#743E5A;margin:12px 0 4px">Everyone deserves a</h1><div style="font-family:'Oranges And Lemons Script',cursive;font-size:104px;line-height:.85;color:#C45B8F">voice.</div><p style="font-size:18px;line-height:1.75;max-width:52ch;margin:16px 0 24px">Replace this paragraph with the promise of the page — who it's for, what changes, and what happens next. Keep it warm, plain and first person.</p><div style="display:flex;gap:12px;flex-wrap:wrap"><x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.Button" variant="primary" size="lg" hint-size="220px,58px">book a free consult</x-import><x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.Button" variant="outline" size="lg" hint-size="200px,58px">see all services</x-import></div></div>
+<div style="position:relative"><div style="position:absolute;inset:10% 4% 4% 4%;background:#F6D9E7;border-radius:48% 52% 44% 56%/54% 44% 56% 46%"></div><div style="position:relative;height:380px;border-radius:32px;background:#FFFFFF;box-shadow:0 20px 48px rgba(74,39,57,.12);display:grid;place-items:center;color:#8B7C84;font-size:14px">drop a cut-out photo of Emily here</div></div>
+</section>
+<section style="background:#743E5A;padding:96px 24px"><div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center"><h2 style="font-size:34px;font-weight:700;color:#FFFBFD;margin:0;line-height:1.25">Name the hard thing your reader is living with right now.</h2><p style="font-size:18px;line-height:1.75;color:rgba(255,251,253,.85);margin:0">Then offer the turn — the "or you could let us guide you along the way" beat. One short paragraph, no bullet points.</p></div></section>
+<section style="max-width:1160px;margin:0 auto;padding:96px 24px"><div style="text-align:center;max-width:720px;margin:0 auto 48px"><div style="font-family:'Oranges And Lemons Script',cursive;font-size:40px;line-height:.95;color:#C45B8F">here's how I can help.</div><h2 style="font-size:34px;font-weight:700;color:#743E5A;margin:8px 0 0">Three ways to work together</h2></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+<x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.ServiceCard" title="AAC Evaluations" body="A 60-minute play-based evaluation, a 4–6 week trial of a few options, then help navigating the funding process." cta-label="book a free consult" hint-size="100%,320px"></x-import>
+<x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.ServiceCard" title="Speech &amp; Language Therapy" body="Individualized therapy across AAC, gestalt language processing and social communication — in-home and virtual." cta-label="request more info" hint-size="100%,320px"></x-import>
+<x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.ServiceCard" tone="tint" title="School Contracts" body="Training, classroom support, AAC evaluations and IEE support for districts across the United States." cta-label="request my pricing guide" hint-size="100%,320px"></x-import>
+</div></section>
+<section style="background:#F6D9E7;padding:96px 24px"><div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center"><div><div style="font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#C45B8F">free aac resources</div><div style="font-family:'Oranges And Lemons Script',cursive;font-size:56px;line-height:.95;color:#743E5A;margin:8px 0 16px">start here, for free.</div><p style="font-size:18px;line-height:1.75;color:#4A2739;margin:0;max-width:46ch">Swap in the lead magnet you're offering and what the reader gets in their inbox.</p></div>
+<div style="background:#fff;border-radius:20px;padding:48px;box-shadow:0 20px 48px rgba(74,39,57,.12);display:flex;flex-direction:column;gap:16px"><h3 style="margin:0;font-size:20px;font-weight:700;color:#743E5A">Send me the free resources</h3>
+<x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.Input" label="First name" placeholder="Emily" hint-size="100%,78px"></x-import>
+<x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.Input" label="Email" type="email" placeholder="you@school.org" hint-size="100%,78px"></x-import>
+<x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.Checkbox" label="Send me occasional AAC tips by email" hint-size="100%,28px"></x-import>
+<x-import component-from-global-scope="EmilyDiazSLPDesignSystem_218dc8.Button" variant="secondary" size="lg" full-width="{{ true }}" hint-size="100%,58px">send them to me</x-import></div></div></section>
+<footer style="background:#743E5A;color:#FFFBFD;padding:64px 24px 24px"><div style="max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:32px"><img src="../../assets/logo-maroon.png" alt="Emily Diaz, SLP" style="width:170px;filter:brightness(0) invert(1)"><div style="font-size:12px;opacity:.75">© 2024 Emily Diaz, SLP | All rights Reserved.</div></div></footer>
+</div>
+</x-dc>
+</body>
+</html>

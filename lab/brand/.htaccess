@@ -1,0 +1,6 @@
+# Let pages on other domains (e.g. emilydiazslp.com) load the brand fonts and styles.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(otf|css)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>

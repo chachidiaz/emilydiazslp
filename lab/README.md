@@ -8,6 +8,7 @@ Kept separate from the main Astro site in `src/`; nothing here affects `emilydia
 ```
 lab/
 ├── index.html        ← subdomain home page (/)
+├── brand/            ← brand design system: colors, fonts, logo, components (/brand/)
 ├── artifacts/        ← Claude artifacts (one folder per artifact)
 ├── docs/             ← docs and guides
 └── landing-pages/    ← landing pages
@@ -15,6 +16,11 @@ lab/
 
 Plain static files, no build step. A file at `lab/docs/intake-guide/index.html`
 is served at `/docs/intake-guide/`.
+
+## Brand
+
+`brand/` holds the design system. Its `README.md` has the rules; link
+`/brand/styles.css` from any page to get the colors, fonts and base styles.
 
 ## Adding something
 

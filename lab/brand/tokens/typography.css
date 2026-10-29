@@ -1,0 +1,37 @@
+:root{
+--font-script:"Oranges And Lemons Script","Oranges And Lemons Script Upright",cursive;
+--font-script-upright:"Oranges And Lemons Script Upright","Oranges And Lemons Script",cursive;
+--font-caps:"Oranges And Lemons Caps","Oranges And Lemons Script",cursive;
+--font-sans:"Poppins","Helvetica Neue",Arial,sans-serif;
+
+--weight-light:300;
+--weight-regular:400;
+--weight-medium:500;
+--weight-semibold:600;
+--weight-bold:700;
+
+--text-script-xl:clamp(64px,7vw,116px);
+--text-script-lg:clamp(48px,5vw,76px);
+--text-script-md:40px;
+
+--text-display:clamp(38px,4.2vw,60px);
+--text-h1:44px;
+--text-h2:34px;
+--text-h3:26px;
+--text-h4:20px;
+--text-lead:20px;
+--text-body-lg:18px;
+--text-body-md:16px;
+--text-body-sm:14px;
+--text-eyebrow:13px;
+--text-micro:12px;
+
+--leading-tight:1.05;
+--leading-snug:1.25;
+--leading-normal:1.5;
+--leading-loose:1.75;
+
+--tracking-eyebrow:.16em;
+--tracking-nav:.04em;
+--tracking-tight:-.01em;
+}

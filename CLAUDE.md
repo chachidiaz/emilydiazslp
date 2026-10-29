@@ -1,5 +1,12 @@
 # Notes for Claude
 
+## Brand
+
+Everything made for Emily Diaz SLP (documents, landing pages, apps, tools, artifacts)
+uses the brand design system in `lab/brand/`. Load the `emily-diaz-slp-design` skill
+(`.claude/skills/emily-diaz-slp-design/SKILL.md`) and read `lab/brand/README.md` before
+designing or writing copy.
+
 ## lab.emilydiazslp.com
 
 `lab/` holds Claude artifacts, docs, and landing pages for lab.emilydiazslp.com (see `lab/README.md`).
