@@ -17,21 +17,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The FTP action requires server-dir to end with "/".
-      - name: Normalize server folder
-        id: dir
+      # Tolerate common secret typos: "ftp://" or a trailing "/" or spaces on
+      # the host, and a missing trailing "/" on the folder (the action requires it).
+      - name: Normalize FTP settings
+        id: ftp
         env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
-        run: echo "path=${FTP_SERVER_DIR%/}/" >> "$GITHUB_OUTPUT"
+        run: |
+          host=$(printf '%s' "$FTP_SERVER" | tr -d '[:space:]' | sed -E 's#^[a-z]+://##; s#/.*$##')
+          dir=$(printf '%s' "$FTP_SERVER_DIR" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')
+          echo "host=$host" >> "$GITHUB_OUTPUT"
+          echo "dir=${dir%/}/" >> "$GITHUB_OUTPUT"
 
       - name: Upload lab/ over FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ steps.ftp.outputs.host }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./lab/
-          server-dir: ${{ steps.dir.outputs.path }}
+          server-dir: ${{ steps.ftp.outputs.dir }}
           exclude: |
             **/.git*
             **/.git*/**
