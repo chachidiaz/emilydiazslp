@@ -26,35 +26,86 @@
   var EMAIL_PARAMS = ['email', 'em', 'e'];
   var UNITS = [['days', 86400], ['hours', 3600], ['minutes', 60], ['seconds', 1]];
 
+  // Google Fonts offered in the dashboard, with the weights each one has.
+  // Any other Google Fonts name also works; it loads in its regular weight.
+  var FONTS = {
+    'Poppins': '400;600;700', 'Montserrat': '400;600;700', 'Lato': '400;700', 'Open Sans': '400;600;700',
+    'Raleway': '400;600;700', 'Nunito': '400;600;700', 'Quicksand': '400;600;700', 'DM Sans': '400;600;700',
+    'Work Sans': '400;600;700', 'Josefin Sans': '400;600;700', 'Inter': '400;600;700', 'Space Grotesk': '400;600;700',
+    'Playfair Display': '400;600;700', 'Lora': '400;600;700', 'Libre Baskerville': '400;700', 'Oswald': '400;600;700',
+    'Bebas Neue': '400', 'Archivo Black': '400', 'Abril Fatface': '400', 'Roboto Mono': '400;600;700',
+    'Pacifico': '400', 'Dancing Script': '400;600;700'
+  };
+  var BRAND_FONT = 'Oranges And Lemons Script';
+  var SANS = '"Helvetica Neue",Arial,sans-serif';
+
   var CSS = [
     '[data-deadline-show]{display:none!important}',
     '[data-deadline-show].dlt-on{display:revert!important}',
-    '.dlt{font-family:Poppins,"Helvetica Neue",Arial,sans-serif;box-sizing:border-box;line-height:1.3}',
+    '.dlt{font-family:var(--dlt-font);box-sizing:border-box;line-height:1.3}',
     '.dlt *{box-sizing:border-box}',
-    '.dlt-bar{position:fixed;left:0;right:0;z-index:2147483000;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 20px;padding:10px 16px;box-shadow:0 2px 8px rgba(74,39,57,.12)}',
+    '.dlt-bar{position:fixed;left:0;right:0;z-index:2147483000;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 20px;padding:var(--dlt-pad-y) 16px;box-shadow:0 2px 8px rgba(74,39,57,.12)}',
     '.dlt-bar.dlt-top{top:0}.dlt-bar.dlt-bottom{bottom:0}',
     '.dlt-bar.dlt-static{position:relative}',
-    '.dlt-bar .dlt-head{font-weight:600;font-size:15px}',
-    '.dlt-bar .dlt-digits{gap:6px}',
-    '.dlt-bar .dlt-unit{min-width:46px;padding:4px 6px;border-radius:8px}',
-    '.dlt-bar .dlt-num{font-size:18px}',
-    '.dlt-bar .dlt-label{font-size:10px}',
-    '.dlt-bar .dlt-btn{padding:8px 20px;font-size:14px}',
-    '.dlt-inline{padding:28px 24px;border-radius:20px;box-shadow:0 2px 8px rgba(74,39,57,.07);display:flex;flex-direction:column;gap:16px}',
+    '.dlt-head{font-size:var(--dlt-head);font-weight:700}',
+    '.dlt-bar .dlt-head{font-weight:600}',
+    '.dlt-inline{padding:var(--dlt-pad-y) 24px;border-radius:20px;box-shadow:0 2px 8px rgba(74,39,57,.07);display:flex;flex-direction:column;gap:16px}',
     '.dlt-inline.dlt-center{align-items:center;text-align:center}.dlt-inline.dlt-left{align-items:flex-start;text-align:left}',
-    '.dlt-inline .dlt-head{font-weight:700;font-size:20px}',
-    '.dlt-digits{display:flex;gap:12px;flex-wrap:wrap}',
+    '.dlt-digits{display:flex;gap:calc(var(--dlt-num) * .3);flex-wrap:wrap}',
     '.dlt-center .dlt-digits{justify-content:center}',
-    '.dlt-unit{display:flex;flex-direction:column;align-items:center;min-width:76px;padding:12px 10px;border-radius:12px}',
-    '.dlt-num{font-weight:700;font-size:36px;line-height:1.05;font-variant-numeric:tabular-nums}',
-    '.dlt-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.85;margin-top:4px}',
-    '.dlt-sm .dlt-unit{min-width:58px;padding:8px}.dlt-sm .dlt-num{font-size:24px}.dlt-sm .dlt-head{font-size:16px}',
-    '.dlt-lg .dlt-unit{min-width:96px;padding:16px 12px}.dlt-lg .dlt-num{font-size:52px}.dlt-lg .dlt-head{font-size:26px}',
-    '.dlt-btn{display:inline-block;border-radius:999px;padding:14px 30px;font-weight:700;letter-spacing:.04em;text-transform:lowercase;text-decoration:none;transition:filter .2s cubic-bezier(.22,.61,.36,1)}',
+    '.dlt-unit{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:calc(var(--dlt-num) * 2.1);padding:var(--dlt-box-pad) calc(var(--dlt-num) * .25);border-radius:12px}',
+    '.dlt-bar .dlt-unit{border-radius:8px}',
+    '.dlt-num{font-family:var(--dlt-num-font);font-weight:700;font-size:var(--dlt-num);line-height:1.05;font-variant-numeric:tabular-nums}',
+    '.dlt-label{font-size:var(--dlt-label);letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.85;margin-top:2px}',
+    '.dlt-btn{display:inline-block;border-radius:999px;padding:.85em 1.9em;font-size:max(14px,calc(var(--dlt-head) * .85));font-weight:700;letter-spacing:.04em;text-transform:lowercase;text-decoration:none;transition:filter .2s cubic-bezier(.22,.61,.36,1)}',
+    '.dlt-bar .dlt-btn{padding:.55em 1.4em}',
     '.dlt-btn:hover{filter:brightness(.9)}',
-    '.dlt-expired{font-weight:600}',
-    '@media (max-width:520px){.dlt-unit{min-width:60px;padding:8px 6px}.dlt-num{font-size:26px}.dlt-bar .dlt-unit{min-width:40px}.dlt-bar .dlt-num{font-size:16px}}'
+    '.dlt-expired{font-weight:600;font-size:var(--dlt-head)}',
+    '@media (max-width:520px){',
+    // Shrink to fit four boxes across a phone screen, however big they are on desktop.
+    '.dlt-num{font-size:min(calc(var(--dlt-num) * .72),10vw)}',
+    '.dlt-unit{min-width:min(calc(var(--dlt-num) * 1.55),18vw);padding:calc(var(--dlt-box-pad) * .7) 4px}',
+    '.dlt-label{font-size:min(var(--dlt-label),2.8vw);letter-spacing:.06em}',
+    '.dlt-head{font-size:calc(var(--dlt-head) * .88)}',
+    '.dlt-digits{gap:min(calc(var(--dlt-num) * .2),2vw)}',
+    '.dlt-inline{padding:calc(var(--dlt-pad-y) * .75) 16px}',
+    '}'
   ].join('');
+
+  function fontStack(name) {
+    if (!name) return 'inherit';
+    return '"' + name + '",' + (name === BRAND_FONT ? 'cursive' : SANS);
+  }
+
+  // Adds the stylesheet for a Google Font (or the brand script) once per page.
+  function loadFont(name) {
+    if (!name) return;
+    var id = 'dlt-font-' + name.replace(/\W+/g, '-').toLowerCase();
+    if (document.getElementById(id)) return;
+    var head = document.head || document.documentElement;
+    if (name === BRAND_FONT) {
+      var st = document.createElement('style');
+      st.id = id;
+      st.textContent = '@font-face{font-family:"' + BRAND_FONT + '";src:url("/brand/assets/fonts/OrangesAndLemonsScript.otf") format("opentype");font-display:swap}';
+      head.appendChild(st);
+      return;
+    }
+    var link = document.createElement('link');
+    link.id = id;
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(name).replace(/%20/g, '+') +
+      (FONTS[name] ? ':wght@' + FONTS[name] : '') + '&display=swap';
+    head.appendChild(link);
+  }
+
+  function cleanFont(name) {
+    return String(name || '').replace(/[^A-Za-z0-9 ]+/g, '').trim().slice(0, 40);
+  }
+
+  function px(v, fallback) {
+    var n = parseInt(v, 10);
+    return (isNaN(n) ? fallback : n) + 'px';
+  }
 
   function injectCss() {
     if (document.getElementById('dlt-css')) return;
@@ -94,10 +145,21 @@
   // Builds one timer. Returns an object with update(secondsLeft) and expire(message).
   function build(host, type, s, opts) {
     opts = opts || {};
-    var root = el('div', 'dlt ' + (type === 'bar' ? 'dlt-bar dlt-' + (s.position || 'top') : 'dlt-inline dlt-' + (s.size || 'md') + ' dlt-' + (s.align || 'center')));
+    var root = el('div', 'dlt ' + (type === 'bar' ? 'dlt-bar dlt-' + (s.position || 'top') : 'dlt-inline dlt-' + (s.align || 'center')));
     if (type === 'bar' && opts.static) root.className += ' dlt-static';
     root.style.background = s.bg;
     root.style.color = s.fg;
+    var font = cleanFont(s.font), numFont = cleanFont(s.digit_font) || font;
+    loadFont(font);
+    loadFont(numFont);
+    var bar = type === 'bar';
+    root.style.setProperty('--dlt-font', fontStack(font));
+    root.style.setProperty('--dlt-num-font', fontStack(numFont));
+    root.style.setProperty('--dlt-head', px(s.head_size, bar ? 15 : 20));
+    root.style.setProperty('--dlt-num', px(s.digit_size, bar ? 18 : 36));
+    root.style.setProperty('--dlt-label', px(s.label_size, bar ? 10 : 12));
+    root.style.setProperty('--dlt-pad-y', px(s.pad_y, bar ? 10 : 28));
+    root.style.setProperty('--dlt-box-pad', px(s.box_pad, bar ? 4 : 12));
     root.setAttribute('role', 'timer');
 
     if (s.headline) root.appendChild(el('div', 'dlt-head', s.headline));
@@ -268,6 +330,7 @@
 
   // Used by the dashboard's live preview.
   window.DeadlineTimers = {
+    fonts: Object.keys(FONTS).concat([BRAND_FONT]),
     preview: function (host, type, settings, secondsLeft, expiredMsg) {
       var v = build(host, type, settings, { static: true });
       if (secondsLeft > 0) v.update(secondsLeft); else v.expire(expiredMsg);

@@ -156,3 +156,12 @@ td.url { white-space: normal; word-break: break-all; }
   .tabs [role=tab][aria-selected=true] { padding-top: 12px; padding-bottom: 18px; }
   .tabs .count { display: none; }
 }
+
+/* Timer editor: size sliders */
+.range-row { display: flex; align-items: center; gap: var(--space-3); }
+.range-row input[type=range] { flex: 1; accent-color: var(--plum-700); }
+.range-row output { min-width: 48px; text-align: right; font-weight: var(--weight-semibold); color: var(--plum-700); font-variant-numeric: tabular-nums; }
+.save-bar { position: sticky; bottom: var(--space-4); z-index: 5; box-shadow: var(--shadow-lg); padding: var(--space-4) var(--space-5); }
+@media (min-width: 901px) and (min-height: 820px) {
+  .preview-card { position: sticky; top: 88px; z-index: 6; box-shadow: var(--shadow-md); }
+}

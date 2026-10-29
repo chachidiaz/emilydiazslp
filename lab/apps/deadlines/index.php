@@ -208,6 +208,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach (dl_timer_defaults($t['type']) as $k => $default) {
                 if (is_bool($default)) {
                     $settings[$k] = !empty($_POST[$k]);
+                } elseif (isset(DL_SIZE_RANGES[$k])) {
+                    [$min, $max] = DL_SIZE_RANGES[$k];
+                    $settings[$k] = max($min, min($max, (int) post($k, (string) $default)));
+                } elseif ($k === 'font' || $k === 'digit_font') {
+                    $settings[$k] = dl_clean_font(post($k));
                 } else {
                     $v = post($k, (string) $default);
                     if (str_ends_with($k, 'bg') || str_ends_with($k, 'fg')) {
@@ -764,6 +769,13 @@ if ($page === 'timer') {
         return '<label class="color">' . dl_h($label) . '<input type="color" name="' . $key . '" value="' . dl_h($s[$key]) . '" list="brand-colors"></label>';
     };
 
+    $range = function (string $key, string $label, string $hint = '') use ($s): string {
+        [$min, $max] = DL_SIZE_RANGES[$key];
+        return '<label class="range">' . dl_h($label) . ($hint ? ' <span class="hint">' . dl_h($hint) . '</span>' : '')
+            . '<span class="range-row"><input type="range" name="' . $key . '" min="' . $min . '" max="' . $max . '" value="' . (int) $s[$key] . '">'
+            . '<output>' . (int) $s[$key] . 'px</output></span></label>';
+    };
+
     head($t['name']);
     ?>
     <p class="crumbs"><a href="?">campaigns</a> / <a href="?p=campaign&amp;id=<?= (int) $c['id'] ?>&amp;tab=timers"><?= dl_h($c['name']) ?></a> /</p>
@@ -784,9 +796,10 @@ if ($page === 'timer') {
       <div class="preview-stage <?= $isBar ? 'is-bar' : '' ?>"><div id="preview"></div></div>
     </section>
 
-    <form method="post" class="two-col" id="timer-form">
+    <form method="post" class="stack-lg" id="timer-form">
       <?= csrf_field() ?>
       <input type="hidden" name="id" value="<?= (int) $t['id'] ?>">
+      <div class="two-col">
       <section class="card stack">
         <h2>Words</h2>
         <label>Timer name <span class="hint">only you see this</span><input name="name" value="<?= dl_h($t['name']) ?>"></label>
@@ -808,14 +821,27 @@ if ($page === 'timer') {
           </fieldset>
         <?php else: ?>
           <div class="cols">
-            <label>Size
-              <select name="size"><?php foreach (['sm' => 'small', 'md' => 'medium', 'lg' => 'large'] as $k => $l): ?><option value="<?= $k ?>" <?= $s['size'] === $k ? 'selected' : '' ?>><?= $l ?></option><?php endforeach; ?></select>
-            </label>
             <label>Alignment
               <select name="align"><?php foreach (['center' => 'centered', 'left' => 'left'] as $k => $l): ?><option value="<?= $k ?>" <?= $s['align'] === $k ? 'selected' : '' ?>><?= $l ?></option><?php endforeach; ?></select>
             </label>
           </div>
         <?php endif; ?>
+      </section>
+      <div class="stack-lg">
+      <section class="card stack">
+        <h2>Fonts &amp; sizes</h2>
+        <div class="cols">
+          <label>Text font <input name="font" list="google-fonts" value="<?= dl_h($s['font']) ?>" placeholder="the page's font" autocomplete="off"></label>
+          <label>Number font <input name="digit_font" list="google-fonts" value="<?= dl_h($s['digit_font']) ?>" placeholder="same as text" autocomplete="off"></label>
+        </div>
+        <p class="hint">Pick from the list or type any font name from <a href="https://fonts.google.com" target="_blank" rel="noopener">Google Fonts</a>, spelled the way it's shown there.</p>
+        <datalist id="google-fonts"></datalist>
+        <?= $range('head_size', 'Headline size') ?>
+        <?= $range('digit_size', 'Number size') ?>
+        <?= $range('label_size', 'Label size', 'days, hours, minutes') ?>
+        <?= $range('pad_y', $isBar ? 'Bar height' : 'Timer height', 'space above and below') ?>
+        <?= $range('box_pad', 'Number box height') ?>
+        <button type="button" class="linkish" id="reset-sizes">reset sizes</button>
       </section>
       <section class="card stack">
         <h2>Colors</h2>
@@ -828,13 +854,18 @@ if ($page === 'timer') {
           <?= $color('button_fg', 'Button text') ?>
         </div>
         <p class="hint">The color pickers suggest the brand colors first.</p>
-        <h2>Embed code</h2>
-        <textarea id="embed" class="code" rows="3" readonly><?= dl_h(embed_code($t)) ?></textarea>
-        <button type="button" class="linkish" data-copy="embed">copy embed code</button>
-        <div class="row-between">
-          <button class="btn" name="action" value="save_timer">save timer</button>
-        </div>
       </section>
+      </div>
+      </div>
+      <section class="card stack">
+        <h2>Embed code</h2>
+        <textarea id="embed" class="code" rows="2" readonly><?= dl_h(embed_code($t)) ?></textarea>
+        <button type="button" class="linkish" data-copy="embed">copy embed code</button>
+      </section>
+      <div class="card save-bar row-between">
+        <span class="muted">Changes show on your pages after you save.</span>
+        <button class="btn" name="action" value="save_timer">save timer</button>
+      </div>
     </form>
     <div class="row end">
       <?= action_button('delete_timer', (int) $t['id'], 'delete timer', 'btn btn-outline btn-sm danger', 'Delete this timer? Pages using its embed code will show nothing.') ?>
@@ -866,7 +897,24 @@ if ($page === 'timer') {
           view = DeadlineTimers.preview(document.getElementById('preview'), type, s, expired.checked ? 0 : left, msg);
           if (!expired.checked) timer = setInterval(function () { view.update(--left); }, 1000);
         }
-        form.addEventListener('input', render);
+        var list = document.getElementById('google-fonts');
+        DeadlineTimers.fonts.forEach(function (f) {
+          var o = document.createElement('option');
+          o.value = f;
+          list.appendChild(o);
+        });
+        function syncOutputs() {
+          form.querySelectorAll('input[type=range]').forEach(function (r) {
+            r.nextElementSibling.textContent = r.value + 'px';
+          });
+        }
+        var defaults = <?= json_encode(array_intersect_key(dl_timer_defaults($t['type']), DL_SIZE_RANGES)) ?>;
+        document.getElementById('reset-sizes').addEventListener('click', function () {
+          Object.keys(defaults).forEach(function (k) { form.elements[k].value = defaults[k]; });
+          syncOutputs();
+          render();
+        });
+        form.addEventListener('input', function () { syncOutputs(); render(); });
         form.addEventListener('change', render);
         expired.addEventListener('change', render);
         render();

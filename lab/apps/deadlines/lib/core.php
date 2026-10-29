@@ -273,8 +273,12 @@ function dl_timer_defaults(string $type): array
         'button_bg' => '#E192B9',
         'button_fg' => '#4A2739',
     ];
+    $shared += ['font' => 'Poppins', 'digit_font' => ''];
     if ($type === 'bar') {
-        return $shared + ['position' => 'top'];
+        return $shared + [
+            'position' => 'top',
+            'head_size' => 15, 'digit_size' => 18, 'label_size' => 10, 'pad_y' => 10, 'box_pad' => 4,
+        ];
     }
     return array_merge($shared, [
         'headline' => 'This offer ends in',
@@ -284,15 +288,40 @@ function dl_timer_defaults(string $type): array
         'digit_fg' => '#FFFBFD',
         'button_bg' => '#743E5A',
         'button_fg' => '#FFFBFD',
-        'size' => 'md',
         'align' => 'center',
+        'head_size' => 20, 'digit_size' => 36, 'label_size' => 12, 'pad_y' => 28, 'box_pad' => 12,
     ]);
+}
+
+// Allowed range for each size setting, in px: [min, max].
+const DL_SIZE_RANGES = [
+    'head_size' => [10, 48],
+    'digit_size' => [12, 96],
+    'label_size' => [8, 24],
+    'pad_y' => [0, 80],
+    'box_pad' => [0, 40],
+];
+
+// Font names go into a Google Fonts URL and CSS, so keep them to plain names.
+function dl_clean_font(string $name): string
+{
+    return substr(trim(preg_replace('/[^A-Za-z0-9 ]+/', '', $name)), 0, 40);
 }
 
 function dl_timer_settings(array $t): array
 {
     $saved = json_decode($t['settings'] ?: '{}', true) ?: [];
-    return array_merge(dl_timer_defaults($t['type']), $saved);
+    // Inline timers saved before the size sliders had a small / medium / large choice.
+    $legacy = ['sm' => ['head_size' => 16, 'digit_size' => 24, 'box_pad' => 8], 'lg' => ['head_size' => 26, 'digit_size' => 52, 'box_pad' => 16]];
+    if (isset($saved['size'])) {
+        $saved = array_merge($legacy[$saved['size']] ?? [], $saved);
+        unset($saved['size']);
+    }
+    $s = array_merge(dl_timer_defaults($t['type']), $saved);
+    foreach (DL_SIZE_RANGES as $k => [$min, $max]) {
+        $s[$k] = max($min, min($max, (int) $s[$k]));
+    }
+    return $s;
 }
 
 function dl_campaign_timers(int $campaignId): array
