@@ -1,0 +1,31 @@
+# Publishes lab/ to lab.emilydiazslp.com (Hostinger) on every push to main that changes it.
+name: Deploy lab
+
+on:
+  push:
+    branches: [main]
+    paths: ["lab/**"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-lab
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload lab/ over FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./lab/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            README.md
