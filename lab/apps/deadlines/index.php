@@ -498,16 +498,16 @@ if ($page === 'campaign') {
       </div>
     </div>
 
-    <nav class="tabs" aria-label="Campaign sections">
+    <div class="tabs" role="tablist" aria-label="Campaign sections">
       <?php foreach ($tabs as $key => $label): ?>
-        <a href="<?= $tabUrl($key) ?>"<?= $key === $tab ? ' aria-current="page"' : '' ?>><?= $label ?><?php
+        <a role="tab" id="tab-<?= $key ?>" data-tab="<?= $key ?>" aria-controls="panel-<?= $key ?>" href="<?= $tabUrl($key) ?>" aria-selected="<?= $key === $tab ? 'true' : 'false' ?>" tabindex="<?= $key === $tab ? '0' : '-1' ?>"><?= $label ?><?php
           if ($key === 'timers') echo ' <span class="count">' . count($timers) . '</span>';
           if ($key === 'people') echo ' <span class="count">' . (int) $counts['total'] . '</span>';
         ?></a>
       <?php endforeach; ?>
-    </nav>
+    </div>
 
-    <?php if ($tab === 'deadline'): ?>
+    <div class="tab-panel" role="tabpanel" id="panel-deadline" aria-labelledby="tab-deadline"<?= $tab !== 'deadline' ? ' hidden' : '' ?>>
       <section class="card">
         <form method="post" class="stack" id="campaign-form">
           <?= csrf_field() ?>
@@ -589,9 +589,9 @@ if ($page === 'campaign') {
           sync();
         })();
       </script>
-    <?php endif; ?>
+    </div>
 
-    <?php if ($tab === 'timers'): ?>
+    <div class="tab-panel" role="tabpanel" id="panel-timers" aria-labelledby="tab-timers"<?= $tab !== 'timers' ? ' hidden' : '' ?>>
       <section class="card">
         <div class="row-between">
           <h2>Timers</h2>
@@ -629,9 +629,9 @@ if ($page === 'campaign') {
         <textarea id="showhide" class="code" rows="3" readonly><?= dl_h('<a href="CHECKOUT-DISCOUNT-LINK" data-deadline-campaign="' . $c['slug'] . '" data-deadline-show="active">claim my discount</a>' . "\n" . '<a href="CHECKOUT-FULL-PRICE-LINK" data-deadline-campaign="' . $c['slug'] . '" data-deadline-show="expired">enroll now</a>') ?></textarea>
         <button type="button" class="linkish" data-copy="showhide">copy code</button>
       </section>
-    <?php endif; ?>
+    </div>
 
-    <?php if ($tab === 'links'): ?>
+    <div class="tab-panel" role="tabpanel" id="panel-links" aria-labelledby="tab-links"<?= $tab !== 'links' ? ' hidden' : '' ?>>
       <section class="card stack">
         <h2>Email links</h2>
         <p>Add your subscriber's email to every link in your Flodesk emails. That's what keeps their deadline the same on every device.</p>
@@ -652,9 +652,9 @@ if ($page === 'campaign') {
           });
         })();
       </script>
-    <?php endif; ?>
+    </div>
 
-    <?php if ($tab === 'people'): ?>
+    <div class="tab-panel" role="tabpanel" id="panel-people" aria-labelledby="tab-people"<?= $tab !== 'people' ? ' hidden' : '' ?>>
       <section class="card">
         <div class="row-between">
           <div>
@@ -706,7 +706,34 @@ if ($page === 'campaign') {
         ?></p>
         <?= action_button('clear_mine', $cid, 'clear my timer') ?>
       </section>
-    <?php endif; ?>
+    </div>
+
+    <script>
+      // Switch tabs without reloading, so unsaved edits stay put. ?tab= keeps links and redirects working.
+      (function () {
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role=tab]'));
+        function select(tab, focus) {
+          tabs.forEach(function (t) {
+            var on = t === tab;
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+            t.tabIndex = on ? 0 : -1;
+            document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+          });
+          if (focus) tab.focus();
+          var url = new URL(location.href);
+          url.searchParams.set('tab', tab.getAttribute('data-tab'));
+          url.searchParams.delete('q');
+          history.replaceState(null, '', url.href);
+        }
+        tabs.forEach(function (t, i) {
+          t.addEventListener('click', function (e) { e.preventDefault(); select(t); });
+          t.addEventListener('keydown', function (e) {
+            var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+            if (d) { e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length], true); }
+          });
+        });
+      })();
+    </script>
     <?php
     foot();
     exit;
