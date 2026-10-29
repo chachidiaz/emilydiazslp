@@ -15,4 +15,10 @@ designing or writing copy.
 - When the user says to **publish**, commit the change, merge it into `main`, and push `main`.
   `.github/workflows/deploy-lab.yml` then uploads `lab/` to Hostinger over FTP.
 - Add a link to every new page in `lab/index.html`.
+- Give every new page in `lab/landing-pages/`, `lab/docs/` and `lab/artifacts/` an ID right after
+  `<meta charset>`: `<meta name="lab-id" content="LP-004">`. Prefixes: `LP-` landing pages, `DOC-` docs,
+  `ART-` artifacts. Use the next unused number (`grep -rho --include='*.htm*' 'lab-id" content="[A-Z]*-[0-9]*' lab`).
+  When the user names an ID (e.g. "edit LP-002"), find the page with that grep. Fixed IDs: APP-001 deadline
+  timers app (`lab/apps/deadlines/`), APP-002 its demo funnel, BR-001 design system, BR-002 website UI kit,
+  BR-003 service page template (all under `lab/brand/`), plus the lab dashboard at `lab/admin/`.
 - This repo is public: anything committed is visible on GitHub even before it is published.

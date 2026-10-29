@@ -82,3 +82,12 @@
 .card-menu .row input { flex: 1; min-width: 0; padding: 6px 10px; font-size: var(--text-body-sm); }
 #trash .plain-list li { flex-direction: row; }
 #trash .plain-list li > div:first-child { display: flex; flex-direction: column; }
+
+/* IDs: what you tell Claude to point at a page */
+.lab-id { align-self: flex-start; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--plum-900); background: var(--blush-100); border: 1px solid var(--blush-300); border-radius: var(--radius-sm); padding: 2px 8px; cursor: pointer; transition: background var(--dur-base) var(--ease-standard); }
+button.lab-id:hover { background: var(--blush-300); }
+.lab-id.missing-id { font-family: var(--font-sans); font-weight: var(--weight-semibold); color: var(--ink-500); background: transparent; border-style: dashed; border-color: var(--ink-300); cursor: help; }
+.lab-id.small-id { font-size: 11px; cursor: default; }
+.find input { font-size: var(--text-body-lg); padding: 14px 20px; border-radius: var(--radius-pill); }
+.find .hint { margin-top: var(--space-2); }
+.find-hide { display: none !important; }

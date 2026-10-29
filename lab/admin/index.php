@@ -16,6 +16,8 @@ const LAB_SECTIONS = [
     'artifacts' => ['Artifacts', 'Pages made with Claude.'],
 ];
 const LAB_REPO = 'https://github.com/chachidiaz/emilydiazslp';
+const LAB_REPO_NAME = 'chachidiaz/emilydiazslp';
+const LAB_CLAUDE_NEW = 'https://claude.ai/code/new'; // documented: ?q= prompt, &repo=owner/name
 const LAB_TYPES = ['sales' => 'sales page', 'optin' => 'freebie opt-in', 'other' => 'other'];
 
 $root = dirname(__DIR__);
@@ -258,7 +260,10 @@ function lab_page_info(string $root, string $rel): array
         }
     }
 
+    preg_match('#<meta[^>]+name=["\']lab-id["\'][^>]+content=["\']([A-Z]+-\d+)["\']#i', $html, $idm);
+
     return [
+        'id' => strtoupper($idm[1] ?? ''),
         'title' => $title,
         'url' => $url,
         'file' => $rel,
@@ -284,7 +289,7 @@ function lab_card(array $p, array $org, bool $organize = false): void
     $type = $org['meta'][$p['url']]['type'] ?? null;
     $folder = (int) ($org['meta'][$p['url']]['folder_id'] ?? 0);
     ?>
-    <article class="card page-card" id="page-<?= md5($p['url']) ?>" data-type="<?= $type ?? 'unsorted' ?>">
+    <article class="card page-card" id="page-<?= md5($p['url']) ?>" data-type="<?= $type ?? 'unsorted' ?>" data-find="<?= dl_h(strtolower($p['id'] . ' ' . $name . ' ' . $p['title'] . ' ' . $p['url'])) ?>">
       <a class="thumb" href="<?= dl_h($p['url']) ?>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
         <iframe data-src="<?= dl_h($p['url']) ?>" title="" sandbox="allow-scripts" loading="lazy" scrolling="no"></iframe>
       </a>
@@ -295,6 +300,11 @@ function lab_card(array $p, array $org, bool $organize = false): void
           <?php if ($p['deadline_app']): ?><span class="badge">deadline timer</span><?php elseif ($p['countdown']): ?><span class="badge">built-in countdown</span><?php endif; ?>
           <?php if ($p['missing']): ?><span class="badge badge-error" title="<?= dl_h(implode("\n", $p['missing'])) ?>"><?= count($p['missing']) ?> missing files</span><?php endif; ?>
         </div>
+        <?php if ($p['id']): ?>
+          <button type="button" class="lab-id" data-copy-text="<?= dl_h($p['id']) ?>" title="Copy this ID to tell Claude which page to edit"><?= dl_h($p['id']) ?></button>
+        <?php else: ?>
+          <span class="lab-id missing-id" title="Ask Claude to give this page an ID">no ID yet</span>
+        <?php endif; ?>
         <h3><a href="<?= dl_h($p['url']) ?>" target="_blank" rel="noopener"><?= dl_h($name) ?></a></h3>
         <?php if ($name !== $p['title']): ?><p class="muted small">Page title: <?= dl_h($p['title']) ?></p><?php endif; ?>
         <p class="path"><?= dl_h($p['url']) ?></p>
@@ -326,6 +336,7 @@ function lab_card(array $p, array $org, bool $organize = false): void
         <?php endif; ?>
         <div class="row">
           <a class="btn btn-sm" href="<?= dl_h($p['url']) ?>" target="_blank" rel="noopener">open</a>
+          <button type="button" class="btn btn-sm btn-outline" data-edit-claude data-id="<?= dl_h($p['id']) ?>" data-file="lab<?= dl_h($p['file']) ?>" data-url="<?= dl_h($p['url']) ?>" data-name="<?= dl_h($name) ?>">edit with claude</button>
           <button type="button" class="linkish" data-copy-url="<?= dl_h($p['url']) ?>">copy link</button>
           <a class="linkish" href="<?= LAB_REPO ?>/blob/main/lab<?= dl_h($p['file']) ?>" target="_blank" rel="noopener">source</a>
         </div>
@@ -408,6 +419,46 @@ function page_end(): void
         });
       });
     });
+    document.querySelectorAll('[data-copy-text]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        navigator.clipboard.writeText(b.getAttribute('data-copy-text')).then(function () {
+          var t = b.textContent; b.textContent = 'copied'; setTimeout(function () { b.textContent = t; }, 1200);
+        });
+      });
+    });
+    // "Edit with claude": opens a new Claude Code session on the repo with the page already named.
+    document.querySelectorAll('[data-edit-claude]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var ask = prompt('What would you like to change on "' + b.getAttribute('data-name') + '"?\n(Leave blank to explain in the new session.)');
+        if (ask === null) return;
+        var id = b.getAttribute('data-id');
+        var text = 'Edit the lab page ' + (id ? id + ' ' : '') + '("' + b.getAttribute('data-name') + '").\n' +
+          'File: ' + b.getAttribute('data-file') + '\n' +
+          'Live: ' + location.origin + b.getAttribute('data-url') + '\n\n' +
+          (ask.trim() ? 'What to change: ' + ask.trim() : "I'll tell you what to change.") + '\n\n' +
+          'Follow CLAUDE.md. Show me the change before publishing.';
+        window.open(<?= json_encode(LAB_CLAUDE_NEW) ?> + '?repo=' + encodeURIComponent(<?= json_encode(LAB_REPO_NAME) ?>) + '&q=' + encodeURIComponent(text), '_blank', 'noopener');
+      });
+    });
+    // Find: narrow every section to cards whose ID, name or address matches.
+    (function () {
+      var box = document.getElementById('find');
+      if (!box) return;
+      box.addEventListener('input', function () {
+        var q = box.value.trim().toLowerCase(), hits = 0;
+        document.querySelectorAll('.page-card').forEach(function (c) {
+          var on = !q || c.getAttribute('data-find').indexOf(q) >= 0;
+          c.classList.toggle('find-hide', !on);
+          if (on) hits++;
+        });
+        document.querySelectorAll('.folder').forEach(function (f) {
+          f.classList.toggle('find-hide', !!q && !f.querySelector('.page-card:not(.find-hide)'));
+        });
+        document.getElementById('find-none').hidden = !q || hits > 0;
+        var first = q && document.querySelector('.page-card:not(.find-hide)');
+        if (first && /^[a-z]+-\d+$/.test(q)) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    })();
     // Type filters: show only matching cards, and hide folders with none left.
     document.querySelectorAll('[data-filter]').forEach(function (chip) {
       chip.addEventListener('click', function () {
@@ -541,6 +592,11 @@ page_start('Lab admin');
       <a class="card stat" href="#timers"><strong><?= $visits7 ?></strong><span>timer views, last 7 days</span></a>
     </div>
 
+    <div class="find">
+      <input type="search" id="find" placeholder="Find a page by ID or name, e.g. LP-002" aria-label="Find a page by ID or name" autocomplete="off">
+      <p class="hint" id="find-none" hidden>Nothing matches. IDs look like LP-001 (landing pages), DOC-001 (docs) or ART-001 (artifacts).</p>
+    </div>
+
     <?php if ($missingCount): ?>
       <div class="flash warn" role="status"><?= $missingCount ?> page<?= $missingCount === 1 ? ' is' : 's are' ?> missing images or fonts. Look for the red label below.</div>
     <?php endif; ?>
@@ -645,7 +701,7 @@ page_start('Lab admin');
     <section class="lab-section" id="timers">
       <div class="section-head row-between">
         <div>
-          <h2>Deadline timers <span class="count"><?= count($campaigns) ?></span></h2>
+          <h2><span class="lab-id small-id">APP-001</span> Deadline timers <span class="count"><?= count($campaigns) ?></span></h2>
           <p class="muted">Active campaigns and the latest timer views.</p>
         </div>
         <a class="btn btn-sm" href="/apps/deadlines/">open deadline timers</a>
@@ -692,10 +748,10 @@ page_start('Lab admin');
         <h2>Brand &amp; tools</h2>
       </div>
       <div class="link-grid">
-        <a class="card link-card" href="/brand/thumbnail.html" target="_blank" rel="noopener"><strong>Design system</strong><span class="muted small">colors, fonts, logo</span></a>
-        <a class="card link-card" href="/brand/ui_kits/website/" target="_blank" rel="noopener"><strong>Website UI kit</strong><span class="muted small">click-through site recreation</span></a>
-        <a class="card link-card" href="/brand/templates/service-page/ServicePage.dc.html" target="_blank" rel="noopener"><strong>Service page template</strong><span class="muted small">copy-and-fill landing page</span></a>
-        <a class="card link-card" href="/apps/deadlines/demo/" target="_blank" rel="noopener"><strong>Deadline demo funnel</strong><span class="muted small">practice opt-in and sales pages</span></a>
+        <a class="card link-card" href="/brand/thumbnail.html" target="_blank" rel="noopener"><span class="lab-id small-id">BR-001</span><strong>Design system</strong><span class="muted small">colors, fonts, logo</span></a>
+        <a class="card link-card" href="/brand/ui_kits/website/" target="_blank" rel="noopener"><span class="lab-id small-id">BR-002</span><strong>Website UI kit</strong><span class="muted small">click-through site recreation</span></a>
+        <a class="card link-card" href="/brand/templates/service-page/ServicePage.dc.html" target="_blank" rel="noopener"><span class="lab-id small-id">BR-003</span><strong>Service page template</strong><span class="muted small">copy-and-fill landing page</span></a>
+        <a class="card link-card" href="/apps/deadlines/demo/" target="_blank" rel="noopener"><span class="lab-id small-id">APP-002</span><strong>Deadline demo funnel</strong><span class="muted small">practice opt-in and sales pages</span></a>
         <a class="card link-card" href="/" target="_blank" rel="noopener"><strong>Public lab home</strong><span class="muted small">lab.emilydiazslp.com</span></a>
         <a class="card link-card" href="<?= LAB_REPO ?>" target="_blank" rel="noopener"><strong>GitHub repo</strong><span class="muted small">every file and change</span></a>
       </div>

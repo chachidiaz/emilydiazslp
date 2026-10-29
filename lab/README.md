@@ -28,7 +28,9 @@ is served at `/docs/intake-guide/`.
 
 1. Create a folder in the right section, e.g. `lab/landing-pages/fall-workshop/`.
 2. Put the page in it as `index.html` (plus any images next to it).
-3. Add a link to it in `lab/index.html`. (The dashboard at `/admin/` finds new pages on its own.)
+3. Give it an ID: `<meta name="lab-id" content="LP-004">` right after `<meta charset>` (`LP-` landing pages,
+   `DOC-` docs, `ART-` artifacts; next unused number). The dashboard shows it, and it's how you point Claude at a page.
+4. Add a link to it in `lab/index.html`. (The dashboard at `/admin/` finds new pages on its own.)
 
 ## Publishing
 
