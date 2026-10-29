@@ -426,20 +426,54 @@ function page_end(): void
         });
       });
     });
-    // "Edit with claude": opens a new Claude Code session on the repo with the page already named.
-    document.querySelectorAll('[data-edit-claude]').forEach(function (b) {
-      b.addEventListener('click', function () {
-        var ask = prompt('What would you like to change on "' + b.getAttribute('data-name') + '"?\n(Leave blank to explain in the new session.)');
-        if (ask === null) return;
-        var id = b.getAttribute('data-id');
-        var text = 'Edit the lab page ' + (id ? id + ' ' : '') + '("' + b.getAttribute('data-name') + '").\n' +
-          'File: ' + b.getAttribute('data-file') + '\n' +
-          'Live: ' + location.origin + b.getAttribute('data-url') + '\n\n' +
-          (ask.trim() ? 'What to change: ' + ask.trim() : "I'll tell you what to change.") + '\n\n' +
-          'Follow CLAUDE.md. Show me the change before publishing.';
-        window.open(<?= json_encode(LAB_CLAUDE_NEW) ?> + '?repo=' + encodeURIComponent(<?= json_encode(LAB_REPO_NAME) ?>) + '&q=' + encodeURIComponent(text), '_blank', 'noopener');
+    // "Edit with claude": opens a new Claude Code session (desktop app or web) with the page already named.
+    // The choice and the repo folder are per computer, so they live in this browser.
+    (function () {
+      var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+                    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+      var panel = document.getElementById('claude-settings');
+      var folder = document.getElementById('claude-folder');
+      function mode() { return store.get('lab-claude-mode') || 'desktop'; }
+      function sync() {
+        var m = mode(), f = store.get('lab-claude-folder') || '';
+        panel.querySelectorAll('[name=claude_mode]').forEach(function (r) { r.checked = r.value === m; });
+        panel.querySelectorAll('[data-claude-desktop]').forEach(function (n) { n.hidden = m !== 'desktop'; });
+        folder.value = f;
+        document.getElementById('claude-summary').textContent = m === 'web' ? 'opens Claude on the web' : (f ? 'opens the desktop app in ' + f : 'opens the desktop app · set your repo folder');
+      }
+      panel.addEventListener('change', function (e) {
+        if (e.target.name === 'claude_mode') store.set('lab-claude-mode', e.target.value);
+        if (e.target === folder) store.set('lab-claude-folder', decodeURIComponent(folder.value.trim().replace(/^['"]|['"]$/g, '').replace(/^file:\/\//, '')));
+        sync();
       });
-    });
+      sync();
+
+      document.querySelectorAll('[data-edit-claude]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var m = mode(), f = store.get('lab-claude-folder') || '';
+          if (m === 'desktop' && !f) {
+            panel.open = true;
+            panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            folder.focus();
+            return;
+          }
+          var ask = prompt('What would you like to change on "' + b.getAttribute('data-name') + '"?\n(Leave blank to explain in the new session.)');
+          if (ask === null) return;
+          var id = b.getAttribute('data-id');
+          var text = 'Edit the lab page ' + (id ? id + ' ' : '') + '("' + b.getAttribute('data-name') + '").\n' +
+            'File: ' + b.getAttribute('data-file') + '\n' +
+            'Live: ' + location.origin + b.getAttribute('data-url') + '\n\n' +
+            (ask.trim() ? 'What to change: ' + ask.trim() : "I'll tell you what to change.") + '\n\n' +
+            'Follow CLAUDE.md. Pull the latest main first. Show me the change before publishing.';
+          if (m === 'desktop') {
+            // Documented: claude://code/new?q=<prompt>&folder=<absolute path>
+            location.href = 'claude://code/new?q=' + encodeURIComponent(text) + '&folder=' + encodeURIComponent(f);
+          } else {
+            window.open(<?= json_encode(LAB_CLAUDE_NEW) ?> + '?repo=' + encodeURIComponent(<?= json_encode(LAB_REPO_NAME) ?>) + '&q=' + encodeURIComponent(text), '_blank', 'noopener');
+          }
+        });
+      });
+    })();
     // Find: narrow every section to cards whose ID, name or address matches.
     (function () {
       var box = document.getElementById('find');
@@ -596,6 +630,21 @@ page_start('Lab admin');
       <input type="search" id="find" placeholder="Find a page by ID or name, e.g. LP-002" aria-label="Find a page by ID or name" autocomplete="off">
       <p class="hint" id="find-none" hidden>Nothing matches. IDs look like LP-001 (landing pages), DOC-001 (docs) or ART-001 (artifacts).</p>
     </div>
+
+    <details class="card claude-settings" id="claude-settings">
+      <summary><strong>Edit with claude</strong> <span class="muted small" id="claude-summary"></span></summary>
+      <div class="stack">
+        <fieldset class="choice inline-choice">
+          <legend>Open in</legend>
+          <label class="radio"><input type="radio" name="claude_mode" value="desktop"><span><strong>Claude desktop app</strong> on this computer</span></label>
+          <label class="radio"><input type="radio" name="claude_mode" value="web"><span><strong>Claude on the web</strong> (claude.ai/code)</span></label>
+        </fieldset>
+        <label data-claude-desktop>The repo folder on this computer
+          <input id="claude-folder" placeholder="/Users/you/emilydiazslp" autocomplete="off" spellcheck="false">
+        </label>
+        <p class="hint" data-claude-desktop>The full path to your copy of the emilydiazslp repo. On a Mac: in Finder, right-click the folder, hold Option, and choose <strong>Copy … as Pathname</strong>, then paste it here. This browser remembers it. The desktop app asks you to confirm the folder each time a link opens it.</p>
+      </div>
+    </details>
 
     <?php if ($missingCount): ?>
       <div class="flash warn" role="status"><?= $missingCount ?> page<?= $missingCount === 1 ? ' is' : 's are' ?> missing images or fonts. Look for the red label below.</div>

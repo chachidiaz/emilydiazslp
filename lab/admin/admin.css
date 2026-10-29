@@ -91,3 +91,9 @@ button.lab-id:hover { background: var(--blush-300); }
 .find input { font-size: var(--text-body-lg); padding: 14px 20px; border-radius: var(--radius-pill); }
 .find .hint { margin-top: var(--space-2); }
 .find-hide { display: none !important; }
+
+/* Edit with claude settings */
+.claude-settings { padding: var(--space-4) var(--space-5); }
+.claude-settings summary { cursor: pointer; color: var(--plum-700); display: flex; gap: var(--space-3); align-items: baseline; flex-wrap: wrap; }
+.claude-settings[open] summary { margin-bottom: var(--space-4); }
+.claude-settings #claude-folder { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
