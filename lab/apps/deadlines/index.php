@@ -224,24 +224,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $st->execute([$id]);
             $cid = (int) $st->fetchColumn();
             $db->prepare('DELETE FROM timers WHERE id = ?')->execute([$id]);
-            go('p=campaign&id=' . $cid, 'Timer deleted. Remove its embed code from your pages too.');
+            go('p=campaign&id=' . $cid . '&tab=timers', 'Timer deleted. Remove its embed code from your pages too.');
 
         case 'clear_person':
             $st = $db->prepare('SELECT campaign_id FROM visitors WHERE id = ?');
             $st->execute([$id]);
             $cid = (int) $st->fetchColumn();
             $db->prepare('DELETE FROM visitors WHERE id = ?')->execute([$id]);
-            go('p=campaign&id=' . $cid . '#people', 'Timer cleared. They get a fresh deadline on their next visit.');
+            go('p=campaign&id=' . $cid . '&tab=people', 'Timer cleared. They get a fresh deadline on their next visit.');
 
         case 'clear_campaign':
             $db->prepare('DELETE FROM visitors WHERE campaign_id = ?')->execute([$id]);
-            go('p=campaign&id=' . $id . '#people', 'All timers in this campaign were cleared.');
+            go('p=campaign&id=' . $id . '&tab=people', 'All timers in this campaign were cleared.');
 
         case 'clear_mine':
             $c = dl_campaign($id) or go();
             $token = $_COOKIE[dl_cookie_name($c)] ?? '';
             $db->prepare('DELETE FROM visitors WHERE campaign_id = ? AND token = ?')->execute([$id, $token]);
-            go('p=campaign&id=' . $id, 'Your browser\'s timer was cleared. Reload a page with this campaign to start fresh.');
+            go('p=campaign&id=' . $id . '&tab=people', 'Your browser\'s timer was cleared. Reload a page with this campaign to start fresh.');
 
         case 'save_settings':
             $tag = post('merge_tag') ?: DL_DEFAULT_MERGE_TAG;
@@ -416,20 +416,42 @@ if ($page === 'campaigns') {
       </section>
     <?php endif; ?>
 
-    <div class="grid">
-      <?php foreach ($rows as $c): ?>
-        <a class="card campaign-card<?= $c['archived'] ? ' is-archived' : '' ?>" href="?p=campaign&amp;id=<?= (int) $c['id'] ?>">
-          <div class="row-between">
-            <span class="badge <?= $c['mode'] === 'fixed' ? 'badge-rose' : '' ?>"><?= $c['mode'] === 'fixed' ? 'fixed date' : 'evergreen' ?></span>
-            <?php if ($c['archived']): ?><span class="badge badge-muted">paused</span><?php endif; ?>
-            <?php if ($c['mode'] === 'fixed' && $c['fixed_deadline'] <= $now): ?><span class="badge badge-muted">ended</span><?php endif; ?>
-          </div>
-          <h3><?= dl_h($c['name']) ?></h3>
-          <p class="muted"><?= dl_h(campaign_summary($c)) ?></p>
-          <p class="stats"><strong><?= (int) $c['people'] ?></strong> people · <strong><?= (int) $c['emails'] ?></strong> with email</p>
-        </a>
-      <?php endforeach; ?>
-    </div>
+    <?php if ($rows):
+        $sections = [
+            'evergreen' => ['Evergreen timers', 'Each person gets their own countdown from their first visit.'],
+            'fixed' => ['Fixed-date timers', 'Everyone counts down to the same date and time.'],
+        ];
+        foreach ($sections as $mode => [$title, $blurb]):
+            $list = array_filter($rows, fn ($c) => $c['mode'] === $mode);
+    ?>
+      <section class="campaign-section">
+        <div class="section-head">
+          <h2><?= $title ?> <span class="count"><?= count($list) ?></span></h2>
+          <p class="muted"><?= $blurb ?></p>
+        </div>
+        <?php if (!$list): ?>
+          <p class="muted empty-section">No <?= $mode === 'fixed' ? 'fixed-date' : 'evergreen' ?> campaigns yet. Create one above, then pick <strong><?= $mode === 'fixed' ? 'Fixed date' : 'Evergreen' ?></strong> in its deadline settings.</p>
+        <?php else: ?>
+        <div class="grid">
+          <?php foreach ($list as $c): ?>
+            <a class="card campaign-card<?= $c['archived'] ? ' is-archived' : '' ?>" href="?p=campaign&amp;id=<?= (int) $c['id'] ?>">
+              <?php if ($c['archived'] || $mode === 'fixed'): ?>
+              <div class="row">
+                <?php if ($c['archived']): ?><span class="badge badge-muted">paused</span><?php endif; ?>
+                <?php if ($mode === 'fixed'): ?>
+                  <span class="badge <?= $c['fixed_deadline'] && $c['fixed_deadline'] <= $now ? 'badge-muted' : 'badge-live' ?>"><?= $c['fixed_deadline'] && $c['fixed_deadline'] <= $now ? 'ended' : ($c['fixed_deadline'] ? fmt_left((int) $c['fixed_deadline'] - $now) : 'no date set') ?></span>
+                <?php endif; ?>
+              </div>
+              <?php endif; ?>
+              <h3><?= dl_h($c['name']) ?></h3>
+              <p class="muted"><?= dl_h(campaign_summary($c)) ?></p>
+              <p class="stats"><strong><?= (int) $c['people'] ?></strong> people · <strong><?= (int) $c['emails'] ?></strong> with email</p>
+            </a>
+          <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+      </section>
+    <?php endforeach; endif; ?>
     <?php
     foot();
     exit;
@@ -441,6 +463,8 @@ if ($page === 'campaign') {
     $c = dl_campaign((int) ($_GET['id'] ?? 0)) or go();
     $cid = (int) $c['id'];
     $tz = $c['timezone'];
+    $tabs = ['deadline' => 'deadline', 'timers' => 'timers', 'links' => 'email links', 'people' => 'people'];
+    $tab = isset($tabs[$_GET['tab'] ?? '']) ? $_GET['tab'] : 'deadline';
     $timers = dl_campaign_timers($cid);
     $search = trim((string) ($_GET['q'] ?? ''));
     $sql = 'SELECT * FROM visitors WHERE campaign_id = ?';
@@ -457,6 +481,7 @@ if ($page === 'campaign') {
     $counts = $counts->fetch();
     $mins = (int) $c['duration_minutes'];
     $myToken = $_COOKIE[dl_cookie_name($c)] ?? '';
+    $tabUrl = fn (string $t): string => '?p=campaign&amp;id=' . $cid . '&amp;tab=' . $t;
 
     head($c['name']);
     ?>
@@ -473,9 +498,17 @@ if ($page === 'campaign') {
       </div>
     </div>
 
-    <div class="two-col">
+    <nav class="tabs" aria-label="Campaign sections">
+      <?php foreach ($tabs as $key => $label): ?>
+        <a href="<?= $tabUrl($key) ?>"<?= $key === $tab ? ' aria-current="page"' : '' ?>><?= $label ?><?php
+          if ($key === 'timers') echo ' <span class="count">' . count($timers) . '</span>';
+          if ($key === 'people') echo ' <span class="count">' . (int) $counts['total'] . '</span>';
+        ?></a>
+      <?php endforeach; ?>
+    </nav>
+
+    <?php if ($tab === 'deadline'): ?>
       <section class="card">
-        <h2>Deadline</h2>
         <form method="post" class="stack" id="campaign-form">
           <?= csrf_field() ?>
           <input type="hidden" name="id" value="<?= $cid ?>">
@@ -484,184 +517,196 @@ if ($page === 'campaign') {
             <label>Short name <span class="hint">used in show/hide code</span><input name="slug" value="<?= dl_h($c['slug']) ?>" pattern="[a-z0-9-]+" required></label>
           </div>
 
-          <fieldset class="choice">
-            <legend>Type of deadline</legend>
-            <label class="radio"><input type="radio" name="mode" value="evergreen" <?= $c['mode'] === 'evergreen' ? 'checked' : '' ?>>
-              <span><strong>Evergreen</strong> Each person gets their own countdown, starting the first time they see a timer.</span></label>
-            <label class="radio"><input type="radio" name="mode" value="fixed" <?= $c['mode'] === 'fixed' ? 'checked' : '' ?>>
-              <span><strong>Fixed date</strong> Everyone counts down to the same date and time.</span></label>
-          </fieldset>
+          <div class="form-cols">
+            <div class="stack">
+              <h2>When it ends</h2>
+              <fieldset class="choice">
+                <legend>Type of deadline</legend>
+                <label class="radio"><input type="radio" name="mode" value="evergreen" <?= $c['mode'] === 'evergreen' ? 'checked' : '' ?>>
+                  <span><strong>Evergreen</strong> Each person gets their own countdown, starting the first time they see a timer.</span></label>
+                <label class="radio"><input type="radio" name="mode" value="fixed" <?= $c['mode'] === 'fixed' ? 'checked' : '' ?>>
+                  <span><strong>Fixed date</strong> Everyone counts down to the same date and time.</span></label>
+              </fieldset>
 
-          <div data-mode="evergreen">
-            <p class="label">Countdown length</p>
-            <div class="cols three">
-              <label>Days <input type="number" name="days" min="0" value="<?= intdiv($mins, 1440) ?>"></label>
-              <label>Hours <input type="number" name="hours" min="0" max="23" value="<?= intdiv($mins % 1440, 60) ?>"></label>
-              <label>Minutes <input type="number" name="minutes" min="0" max="59" value="<?= $mins % 60 ?>"></label>
+              <div data-mode="evergreen">
+                <p class="label">Countdown length</p>
+                <div class="cols three">
+                  <label>Days <input type="number" name="days" min="0" value="<?= intdiv($mins, 1440) ?>"></label>
+                  <label>Hours <input type="number" name="hours" min="0" max="23" value="<?= intdiv($mins % 1440, 60) ?>"></label>
+                  <label>Minutes <input type="number" name="minutes" min="0" max="59" value="<?= $mins % 60 ?>"></label>
+                </div>
+              </div>
+              <div data-mode="fixed">
+                <label>Ends on <input type="datetime-local" name="fixed_deadline" value="<?= dl_h(local_input($c['fixed_deadline'] ? (int) $c['fixed_deadline'] : null, $tz)) ?>"></label>
+              </div>
+              <label>Time zone
+                <select name="timezone">
+                  <?php foreach (DateTimeZone::listIdentifiers() as $zone): ?>
+                    <option <?= $zone === $tz ? 'selected' : '' ?>><?= dl_h($zone) ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </label>
+            </div>
+
+            <div class="stack">
+              <h2>After it ends</h2>
+              <fieldset class="choice">
+                <legend>When the deadline passes</legend>
+                <label class="radio"><input type="radio" name="expired_action" value="message" <?= $c['expired_action'] === 'message' ? 'checked' : '' ?>><span><strong>Show a message</strong> in place of the countdown</span></label>
+                <label class="radio"><input type="radio" name="expired_action" value="hide" <?= $c['expired_action'] === 'hide' ? 'checked' : '' ?>><span><strong>Hide the timers</strong></span></label>
+                <label class="radio"><input type="radio" name="expired_action" value="redirect" <?= $c['expired_action'] === 'redirect' ? 'checked' : '' ?>><span><strong>Send them to another page</strong>, like your full-price page</span></label>
+              </fieldset>
+              <label data-expired="message">Message <input name="expired_message" value="<?= dl_h($c['expired_message']) ?>"></label>
+              <label data-expired="redirect">Page to send them to <input name="redirect_url" value="<?= dl_h($c['redirect_url']) ?>" placeholder="/landing-pages/aac-handbook/"></label>
+
+              <label>Reset a person's timer <span class="hint">days after their deadline passes · 0 = never</span>
+                <input type="number" name="reset_days" min="0" value="<?= (int) $c['reset_days'] ?>">
+              </label>
+              <p class="hint">After this many days, someone who comes back gets a brand-new countdown, as if they were new. Their browser cookie lasts this long too. Leave it at 0 if the discount should never come back for them.</p>
             </div>
           </div>
-          <div data-mode="fixed">
-            <label>Ends on <input type="datetime-local" name="fixed_deadline" value="<?= dl_h(local_input($c['fixed_deadline'] ? (int) $c['fixed_deadline'] : null, $tz)) ?>"></label>
-          </div>
-          <label>Time zone
-            <select name="timezone">
-              <?php foreach (DateTimeZone::listIdentifiers() as $zone): ?>
-                <option <?= $zone === $tz ? 'selected' : '' ?>><?= dl_h($zone) ?></option>
-              <?php endforeach; ?>
-            </select>
-          </label>
-
-          <label>Reset a person's timer <span class="hint">days after their deadline passes · 0 = never</span>
-            <input type="number" name="reset_days" min="0" value="<?= (int) $c['reset_days'] ?>">
-          </label>
-          <p class="hint">After this many days, someone who comes back gets a brand-new countdown, as if they were new. Their browser cookie lasts this long too. Leave it at 0 if the discount should never come back for them.</p>
-
-          <fieldset class="choice">
-            <legend>When the deadline passes</legend>
-            <label class="radio"><input type="radio" name="expired_action" value="message" <?= $c['expired_action'] === 'message' ? 'checked' : '' ?>><span><strong>Show a message</strong> in place of the countdown</span></label>
-            <label class="radio"><input type="radio" name="expired_action" value="hide" <?= $c['expired_action'] === 'hide' ? 'checked' : '' ?>><span><strong>Hide the timers</strong></span></label>
-            <label class="radio"><input type="radio" name="expired_action" value="redirect" <?= $c['expired_action'] === 'redirect' ? 'checked' : '' ?>><span><strong>Send them to another page</strong>, like your full-price page</span></label>
-          </fieldset>
-          <label data-expired="message">Message <input name="expired_message" value="<?= dl_h($c['expired_message']) ?>"></label>
-          <label data-expired="redirect">Page to send them to <input name="redirect_url" value="<?= dl_h($c['redirect_url']) ?>" placeholder="/landing-pages/aac-handbook/"></label>
 
           <button class="btn" name="action" value="save_campaign">save deadline</button>
         </form>
       </section>
 
-      <div class="stack-lg">
-        <section class="card">
-          <div class="row-between">
-            <h2>Timers</h2>
-            <div class="row">
-              <?php foreach (['bar' => '+ bar', 'inline' => '+ inline'] as $type => $label): ?>
-                <form method="post" class="inline-form">
-                  <?= csrf_field() ?><input type="hidden" name="id" value="<?= $cid ?>"><input type="hidden" name="type" value="<?= $type ?>">
-                  <button class="btn btn-outline btn-sm" name="action" value="create_timer"><?= $label ?></button>
-                </form>
-              <?php endforeach; ?>
-            </div>
-          </div>
-          <?php if (!$timers): ?><p class="muted">No timers yet. Add an announcement bar or an inline timer.</p><?php endif; ?>
-          <ul class="timer-list">
-            <?php foreach ($timers as $t): ?>
-              <li>
-                <div class="row-between">
-                  <div>
-                    <span class="badge"><?= $t['type'] === 'bar' ? 'announcement bar' : 'inline' ?></span>
-                    <strong><?= dl_h($t['name']) ?></strong>
-                  </div>
-                  <a class="btn btn-sm" href="?p=timer&amp;id=<?= (int) $t['id'] ?>">edit</a>
-                </div>
-                <textarea id="embed-<?= (int) $t['id'] ?>" class="code" rows="2" readonly><?= dl_h(embed_code($t)) ?></textarea>
-                <button type="button" class="linkish" data-copy="embed-<?= (int) $t['id'] ?>">copy embed code</button>
-              </li>
+      <section class="card danger-zone">
+        <h2>Delete campaign</h2>
+        <p>Deletes the campaign, its timers and everyone tracked in it. Pages with its embed codes will show nothing.</p>
+        <?= action_button('delete_campaign', $cid, 'delete campaign', 'btn btn-outline btn-sm danger', 'Delete "' . $c['name'] . '" and everyone tracked in it? This can\'t be undone.') ?>
+      </section>
+
+      <script>
+        (function () {
+          var form = document.getElementById('campaign-form');
+          function sync() {
+            var mode = form.querySelector('[name=mode]:checked').value;
+            var exp = form.querySelector('[name=expired_action]:checked').value;
+            form.querySelectorAll('[data-mode]').forEach(function (n) { n.hidden = n.getAttribute('data-mode') !== mode; });
+            form.querySelectorAll('[data-expired]').forEach(function (n) { n.hidden = n.getAttribute('data-expired') !== exp; });
+          }
+          form.addEventListener('change', sync);
+          sync();
+        })();
+      </script>
+    <?php endif; ?>
+
+    <?php if ($tab === 'timers'): ?>
+      <section class="card">
+        <div class="row-between">
+          <h2>Timers</h2>
+          <div class="row">
+            <?php foreach (['bar' => '+ announcement bar', 'inline' => '+ inline timer'] as $type => $label): ?>
+              <form method="post" class="inline-form">
+                <?= csrf_field() ?><input type="hidden" name="id" value="<?= $cid ?>"><input type="hidden" name="type" value="<?= $type ?>">
+                <button class="btn btn-outline btn-sm" name="action" value="create_timer"><?= $label ?></button>
+              </form>
             <?php endforeach; ?>
-          </ul>
-          <p class="hint">Paste the embed code into any page on lab.emilydiazslp.com. With several timers on one page, the <code>&lt;script&gt;</code> line is needed only once.</p>
-        </section>
-
-        <section class="card">
-          <h2>Email links</h2>
-          <p>Add your subscriber's email to every link in your Flodesk emails. That's what keeps their deadline the same on every device.</p>
-          <label>Page link <input id="link-in" placeholder="https://lab.emilydiazslp.com/landing-pages/aac-handbook/"></label>
-          <label>Use this in Flodesk <textarea id="link-out" class="code" rows="2" readonly></textarea></label>
-          <button type="button" class="linkish" data-copy="link-out">copy link</button>
-          <p class="hint">The email tag is <code><?= dl_h(merge_tag()) ?></code>. Send yourself a test email and check that the link shows your address. You can change the tag in <a href="?p=settings">settings</a>.</p>
-        </section>
-
-        <section class="card">
-          <h2>Show or hide content</h2>
-          <p>Wrap any button or section so it appears only before, or only after, the deadline.</p>
-          <textarea id="showhide" class="code" rows="4" readonly><?= dl_h('<a href="CHECKOUT-DISCOUNT-LINK" data-deadline-campaign="' . $c['slug'] . '" data-deadline-show="active">claim my discount</a>' . "\n" . '<a href="CHECKOUT-FULL-PRICE-LINK" data-deadline-campaign="' . $c['slug'] . '" data-deadline-show="expired">enroll now</a>') ?></textarea>
-          <button type="button" class="linkish" data-copy="showhide">copy code</button>
-        </section>
-
-        <section class="card">
-          <h2>Test it</h2>
-          <p>Add <code>?dl_reset=1</code> to any page with this campaign's timers to restart your own countdown. It only works while you're logged in here.</p>
-          <p class="muted">Your browser: <?php
-            $mine = $myToken ? dl_find_visitor('token', $cid, $myToken) : null;
-            echo $mine ? dl_h(fmt_left(dl_visitor_deadline($c, $mine) - $now)) . ($mine['email'] ? ' · ' . dl_h($mine['email']) : '') : 'no timer yet';
-          ?></p>
-          <?= action_button('clear_mine', $cid, 'clear my timer') ?>
-        </section>
-      </div>
-    </div>
-
-    <section class="card" id="people">
-      <div class="row-between">
-        <div>
-          <h2>People</h2>
-          <p class="muted"><?= (int) $counts['total'] ?> tracked · <?= (int) $counts['emails'] ?> with email</p>
+          </div>
         </div>
-        <div class="row">
-          <form class="row" method="get">
-            <input type="hidden" name="p" value="campaign"><input type="hidden" name="id" value="<?= $cid ?>">
-            <input type="search" name="q" value="<?= dl_h($search) ?>" placeholder="search by email" aria-label="Search by email">
-          </form>
-          <?= action_button('clear_campaign', $cid, 'clear all timers', 'btn btn-outline btn-sm danger', 'Clear every timer in this campaign? Everyone gets a fresh deadline on their next visit. This can\'t be undone.') ?>
-        </div>
-      </div>
-      <?php if (!$people): ?>
-        <p class="muted"><?= $search !== '' ? 'Nobody matches that search.' : 'Nobody yet. People appear here the first time they load a page with this campaign\'s timer.' ?></p>
-      <?php else: ?>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Person</th><th>Started</th><th>Deadline</th><th>Status</th><th>Visits</th><th>Last seen</th><th></th></tr></thead>
-          <tbody>
-          <?php foreach ($people as $v):
-              $deadline = dl_visitor_deadline($c, $v);
-              $left = $deadline - $now;
-              $status = $left > 0 ? fmt_left($left) : (dl_reset_due($c, $v, $now) ? 'resets on next visit' : 'expired');
-          ?>
-            <tr>
-              <td><a href="?p=person&amp;id=<?= (int) $v['id'] ?>"><?= $v['email'] ? dl_h($v['email']) : '<span class="muted">no email yet</span>' ?></a><?= $v['token'] === $myToken ? ' <span class="badge">you</span>' : '' ?></td>
-              <td><?= dl_h(fmt_time((int) $v['started_at'], $tz)) ?></td>
-              <td><?= dl_h(fmt_time($deadline, $tz)) ?></td>
-              <td><span class="badge <?= $left > 0 ? 'badge-live' : 'badge-muted' ?>"><?= dl_h($status) ?></span></td>
-              <td><?= (int) $v['visits'] ?></td>
-              <td><?= dl_h(fmt_time((int) $v['last_seen'], $tz)) ?></td>
-              <td><?= action_button('clear_person', (int) $v['id'], 'clear', 'linkish danger', 'Clear this person\'s timer? They get a fresh deadline on their next visit.') ?></td>
-            </tr>
+        <?php if (!$timers): ?><p class="muted">No timers yet. Add an announcement bar or an inline timer.</p><?php endif; ?>
+        <ul class="timer-list">
+          <?php foreach ($timers as $t): ?>
+            <li>
+              <div class="row-between">
+                <div>
+                  <span class="badge"><?= $t['type'] === 'bar' ? 'announcement bar' : 'inline' ?></span>
+                  <strong><?= dl_h($t['name']) ?></strong>
+                </div>
+                <a class="btn btn-sm" href="?p=timer&amp;id=<?= (int) $t['id'] ?>">edit</a>
+              </div>
+              <textarea id="embed-<?= (int) $t['id'] ?>" class="code" rows="2" readonly><?= dl_h(embed_code($t)) ?></textarea>
+              <button type="button" class="linkish" data-copy="embed-<?= (int) $t['id'] ?>">copy embed code</button>
+            </li>
           <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
-      <?php endif; ?>
-    </section>
+        </ul>
+        <p class="hint">Paste the embed code into any page on lab.emilydiazslp.com. With several timers on one page, the <code>&lt;script&gt;</code> line is needed only once.</p>
+      </section>
 
-    <section class="card danger-zone">
-      <h2>Delete campaign</h2>
-      <p>Deletes the campaign, its timers and everyone tracked in it. Pages with its embed codes will show nothing.</p>
-      <?= action_button('delete_campaign', $cid, 'delete campaign', 'btn btn-outline btn-sm danger', 'Delete "' . $c['name'] . '" and everyone tracked in it? This can\'t be undone.') ?>
-    </section>
+      <section class="card">
+        <h2>Show or hide content</h2>
+        <p>Wrap any button or section so it appears only before, or only after, the deadline.</p>
+        <textarea id="showhide" class="code" rows="3" readonly><?= dl_h('<a href="CHECKOUT-DISCOUNT-LINK" data-deadline-campaign="' . $c['slug'] . '" data-deadline-show="active">claim my discount</a>' . "\n" . '<a href="CHECKOUT-FULL-PRICE-LINK" data-deadline-campaign="' . $c['slug'] . '" data-deadline-show="expired">enroll now</a>') ?></textarea>
+        <button type="button" class="linkish" data-copy="showhide">copy code</button>
+      </section>
+    <?php endif; ?>
 
-    <script>
-      (function () {
-        var form = document.getElementById('campaign-form');
-        function sync() {
-          var mode = form.querySelector('[name=mode]:checked').value;
-          var exp = form.querySelector('[name=expired_action]:checked').value;
-          form.querySelectorAll('[data-mode]').forEach(function (n) { n.hidden = n.getAttribute('data-mode') !== mode; });
-          form.querySelectorAll('[data-expired]').forEach(function (n) { n.hidden = n.getAttribute('data-expired') !== exp; });
-        }
-        form.addEventListener('change', sync);
-        sync();
+    <?php if ($tab === 'links'): ?>
+      <section class="card stack">
+        <h2>Email links</h2>
+        <p>Add your subscriber's email to every link in your Flodesk emails. That's what keeps their deadline the same on every device.</p>
+        <label>Page link <input id="link-in" placeholder="https://lab.emilydiazslp.com/landing-pages/aac-handbook/"></label>
+        <label>Use this in Flodesk <textarea id="link-out" class="code" rows="2" readonly></textarea></label>
+        <button type="button" class="linkish" data-copy="link-out">copy link</button>
+        <p class="hint">The email tag is <code><?= dl_h(merge_tag()) ?></code>. Send yourself a test email and check that the link shows your address. You can change the tag in <a href="?p=settings">settings</a>.</p>
+      </section>
+      <script>
+        (function () {
+          var tag = <?= json_encode(merge_tag()) ?>;
+          var input = document.getElementById('link-in'), out = document.getElementById('link-out');
+          input.addEventListener('input', function () {
+            var u = input.value.trim(), hash = '', i = u.indexOf('#');
+            if (!u) { out.value = ''; return; }
+            if (i >= 0) { hash = u.slice(i); u = u.slice(0, i); }
+            out.value = u + (u.indexOf('?') >= 0 ? '&' : '?') + 'email=' + tag + hash;
+          });
+        })();
+      </script>
+    <?php endif; ?>
 
-        var tag = <?= json_encode(merge_tag()) ?>;
-        var input = document.getElementById('link-in'), out = document.getElementById('link-out');
-        function build() {
-          var u = input.value.trim();
-          if (!u) { out.value = ''; return; }
-          var hash = '';
-          var i = u.indexOf('#');
-          if (i >= 0) { hash = u.slice(i); u = u.slice(0, i); }
-          out.value = u + (u.indexOf('?') >= 0 ? '&' : '?') + 'email=' + tag + hash;
-        }
-        input.addEventListener('input', build);
-      })();
-    </script>
+    <?php if ($tab === 'people'): ?>
+      <section class="card">
+        <div class="row-between">
+          <div>
+            <h2>People</h2>
+            <p class="muted"><?= (int) $counts['total'] ?> tracked · <?= (int) $counts['emails'] ?> with email</p>
+          </div>
+          <div class="row">
+            <form class="row" method="get">
+              <input type="hidden" name="p" value="campaign"><input type="hidden" name="id" value="<?= $cid ?>"><input type="hidden" name="tab" value="people">
+              <input type="search" name="q" value="<?= dl_h($search) ?>" placeholder="search by email" aria-label="Search by email">
+            </form>
+            <?= action_button('clear_campaign', $cid, 'clear all timers', 'btn btn-outline btn-sm danger', 'Clear every timer in this campaign? Everyone gets a fresh deadline on their next visit. This can\'t be undone.') ?>
+          </div>
+        </div>
+        <?php if (!$people): ?>
+          <p class="muted"><?= $search !== '' ? 'Nobody matches that search.' : 'Nobody yet. People appear here the first time they load a page with this campaign\'s timer.' ?></p>
+        <?php else: ?>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Person</th><th>Started</th><th>Deadline</th><th>Status</th><th>Visits</th><th>Last seen</th><th></th></tr></thead>
+            <tbody>
+            <?php foreach ($people as $v):
+                $deadline = dl_visitor_deadline($c, $v);
+                $left = $deadline - $now;
+                $status = $left > 0 ? fmt_left($left) : (dl_reset_due($c, $v, $now) ? 'resets on next visit' : 'expired');
+            ?>
+              <tr>
+                <td><a href="?p=person&amp;id=<?= (int) $v['id'] ?>"><?= $v['email'] ? dl_h($v['email']) : '<span class="muted">no email yet</span>' ?></a><?= $v['token'] === $myToken ? ' <span class="badge">you</span>' : '' ?></td>
+                <td><?= dl_h(fmt_time((int) $v['started_at'], $tz)) ?></td>
+                <td><?= dl_h(fmt_time($deadline, $tz)) ?></td>
+                <td><span class="badge <?= $left > 0 ? 'badge-live' : 'badge-muted' ?>"><?= dl_h($status) ?></span></td>
+                <td><?= (int) $v['visits'] ?></td>
+                <td><?= dl_h(fmt_time((int) $v['last_seen'], $tz)) ?></td>
+                <td><?= action_button('clear_person', (int) $v['id'], 'clear', 'linkish danger', 'Clear this person\'s timer? They get a fresh deadline on their next visit.') ?></td>
+              </tr>
+            <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+        <?php endif; ?>
+      </section>
+
+      <section class="card">
+        <h2>Test it</h2>
+        <p>Add <code>?dl_reset=1</code> to any page with this campaign's timers to restart your own countdown. It only works while you're logged in here.</p>
+        <p class="muted">Your browser: <?php
+          $mine = $myToken ? dl_find_visitor('token', $cid, $myToken) : null;
+          echo $mine ? dl_h(fmt_left(dl_visitor_deadline($c, $mine) - $now)) . ($mine['email'] ? ' · ' . dl_h($mine['email']) : '') : 'no timer yet';
+        ?></p>
+        <?= action_button('clear_mine', $cid, 'clear my timer') ?>
+      </section>
+    <?php endif; ?>
     <?php
     foot();
     exit;
@@ -683,7 +728,7 @@ if ($page === 'timer') {
 
     head($t['name']);
     ?>
-    <p class="crumbs"><a href="?">campaigns</a> / <a href="?p=campaign&amp;id=<?= (int) $c['id'] ?>"><?= dl_h($c['name']) ?></a> /</p>
+    <p class="crumbs"><a href="?">campaigns</a> / <a href="?p=campaign&amp;id=<?= (int) $c['id'] ?>&amp;tab=timers"><?= dl_h($c['name']) ?></a> /</p>
     <div class="page-head">
       <div>
         <p class="eyebrow"><?= $isBar ? 'Announcement bar' : 'Inline timer' ?></p>
@@ -809,7 +854,7 @@ if ($page === 'person') {
 
     head($v['email'] ?: 'Visitor');
     ?>
-    <p class="crumbs"><a href="?">campaigns</a> / <a href="?p=campaign&amp;id=<?= (int) $c['id'] ?>#people"><?= dl_h($c['name']) ?></a> /</p>
+    <p class="crumbs"><a href="?">campaigns</a> / <a href="?p=campaign&amp;id=<?= (int) $c['id'] ?>&amp;tab=people"><?= dl_h($c['name']) ?></a> /</p>
     <div class="page-head">
       <div>
         <p class="eyebrow">Person</p>
