@@ -1,0 +1,6 @@
+# Let timer and dashboard updates reach visitors within minutes instead of the host's default week.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+</IfModule>

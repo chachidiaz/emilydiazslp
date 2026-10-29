@@ -92,6 +92,7 @@ function create_demo(): int
 {
     $db = dl_db();
     if ($c = dl_campaign_by_slug('demo')) {
+        $db->prepare('UPDATE campaigns SET archived = 0 WHERE id = ?')->execute([$c['id']]);
         return (int) $c['id'];
     }
     $db->prepare('INSERT INTO campaigns (slug, name, mode, duration_minutes, timezone, reset_days, expired_action, expired_message, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')
@@ -452,6 +453,16 @@ if ($page === 'campaigns') {
         <?php endif; ?>
       </section>
     <?php endforeach; endif; ?>
+
+    <?php if ($rows && !dl_campaign_by_slug('demo')): ?>
+      <section class="card row-between">
+        <div>
+          <h2>Practice funnel</h2>
+          <p class="muted">The <a href="demo/">demo pages</a> need the demo campaign. Create it to click through a freebie funnel without touching your real campaigns.</p>
+        </div>
+        <form method="post"><?= csrf_field() ?><button class="btn btn-outline btn-sm" name="action" value="create_demo">create the demo campaign</button></form>
+      </section>
+    <?php endif; ?>
     <?php
     foot();
     exit;

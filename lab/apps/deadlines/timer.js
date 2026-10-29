@@ -12,6 +12,8 @@
  *   <a data-deadline-campaign="SLUG" data-deadline-show="active" href="...">claim the discount</a>
  *   <p data-deadline-campaign="SLUG" data-deadline-show="expired">The discount has ended.</p>
  *
+ * The page receives a "deadline:loaded" event (detail: the API response) once timers load.
+ *
  * Links from emails should carry the subscriber's email (?email=...) so the same
  * deadline follows them across devices. The email is removed from the address bar
  * after the page loads.
@@ -256,8 +258,12 @@
         Object.keys(data.campaigns).forEach(function (slug) {
           applyCampaign(data.campaigns[slug], data.now, byCampaign[slug]);
         });
+        document.dispatchEvent(new CustomEvent('deadline:loaded', { detail: data }));
       })
-      .catch(function (err) { if (window.console) console.warn('Deadline timers could not load', err); });
+      .catch(function (err) {
+        if (window.console) console.warn('Deadline timers could not load', err);
+        document.dispatchEvent(new CustomEvent('deadline:error', { detail: err }));
+      });
   }
 
   // Used by the dashboard's live preview.

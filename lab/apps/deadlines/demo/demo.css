@@ -1,6 +1,8 @@
 /* Demo funnel pages. Colors and type come from /brand/styles.css. */
 .wrap { max-width: var(--container-narrow); margin: 0 auto; padding: var(--space-8) var(--gutter) var(--space-9); }
 .demo-note { background: var(--blush-100); color: var(--plum-900); border-radius: var(--radius-md); padding: var(--space-3) var(--space-5); font-size: var(--text-body-sm); margin-bottom: var(--space-6); }
+.demo-note.demo-warn { background: var(--status-error); color: var(--white); }
+.demo-warn a { color: var(--white); text-decoration: underline; }
 .card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6); margin: var(--space-5) 0; }
 .script { font-size: var(--text-script-lg); color: var(--rose-500); margin: 0 0 var(--space-3); }
 .btn { display: inline-flex; font: inherit; font-weight: var(--weight-bold); letter-spacing: var(--tracking-nav); text-transform: lowercase; background: var(--plum-700); color: var(--cream-50); border: 0; border-radius: var(--radius-pill); padding: 14px 30px; cursor: pointer; text-decoration: none; transition: background var(--dur-base) var(--ease-standard); }
