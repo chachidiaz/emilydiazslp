@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="lab-id" content="LP-004">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Managing AAC in the Classroom — Special Offer | Emily Diaz, SLP</title>
+<meta name="description" content="Get the 2-hour Managing AAC in the Classroom video training for $12 (normally $47). Limited-time offer.">
+<link rel="icon" href="assets/images/emily-diaz-logo-plum.png">
+<style>
+/* ===== Fonts (licensed brand fonts — see HANDOFF.md) ===== */
+@font-face{font-family:"Oranges And Lemons Script";src:url("assets/fonts/Oranges_And_Lemons_Script.otf") format("opentype");font-display:swap}
+@font-face{font-family:"Oranges And Lemons Caps";src:url("assets/fonts/OrangesAndLemonsCaps.otf") format("opentype");font-display:swap}
+@font-face{font-family:"MADE Tommy Soft";src:url("assets/fonts/MADE_Tommy_Soft_Light.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:"MADE Tommy Soft";src:url("assets/fonts/MADE_Tommy_Soft_Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MADE Tommy Soft";src:url("assets/fonts/MADE_Tommy_Soft_Medium.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:"MADE Tommy Soft";src:url("assets/fonts/MADE_Tommy_Soft_Bold.otf") format("opentype");font-weight:700;font-display:swap}
+@font-face{font-family:"MADE Tommy Soft";src:url("assets/fonts/MADE_Tommy_Soft_ExtraBold.otf") format("opentype");font-weight:800;font-display:swap}
+
+/* ===== Tokens ===== */
+:root{
+  --wine:#562239;      /* primary ink, dark bands, buttons */
+  --plum:#743e5a;      /* "confident" headline ink */
+  --caramel:#ad6939;   /* primary CTA, icons, stars, highlight */
+  --linen:#f9ebe1;     /* text on wine, light cards */
+  --pink:#f1cadd;      /* mindset band, cards, pills */
+  --blush:#f6d9e7;     /* footer */
+  --berry:#c45b8f;     /* closing CTA button */
+  --coupon:#fbf4ee;    /* price box fill */
+  --muted:#7a4a5e;     /* strikethrough price */
+  --white:#ffffff;
+  --font-sans:"MADE Tommy Soft", ui-rounded, system-ui, sans-serif;
+  --font-script:"Oranges And Lemons Script", "Brush Script MT", cursive;
+  --font-caps:"Oranges And Lemons Caps", "MADE Tommy Soft", sans-serif;
+  --radius-sm:12px; --radius-md:16px; --radius-lg:24px; --radius-pill:999px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font-sans);color:var(--wine);background:var(--white);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--wine)} a:hover{color:#3d1828}
+a:focus-visible{outline:2px solid var(--wine);outline-offset:2px}
+.script{font-family:var(--font-script);font-weight:400}
+.eyebrow{font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ===== Buttons ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:60px;padding:0 44px;border-radius:var(--radius-pill);color:var(--white);font-weight:700;letter-spacing:.04em;text-decoration:none;text-align:center;transition:transform .15s ease,filter .15s ease}
+.btn:hover{color:var(--white);filter:brightness(.95);transform:translateY(-1px)}
+.btn--caramel{background:var(--caramel);font-size:20px;line-height:24px;min-width:272px;min-height:77px}
+.btn--berry{background:var(--berry);font-size:26px;line-height:30px;min-width:321px;min-height:96px}
+.decline{font-weight:500;color:inherit}
+
+/* ===== 1. Countdown bar ===== */
+.countdown{background:var(--wine);color:var(--linen);padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 24px;text-align:center}
+.countdown__label{font-size:14px;line-height:20px}
+.countdown__clock{display:flex;align-items:center;gap:10px}
+.countdown__unit{display:inline-flex;align-items:baseline;gap:6px;background:var(--linen);color:var(--wine);border-radius:var(--radius-sm);padding:8px 14px}
+.countdown__num{font-size:30px;line-height:1;font-weight:800;font-variant-numeric:tabular-nums}
+.countdown__lbl{font-size:12px;line-height:16px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.countdown__sep{font-size:28px;line-height:1;font-weight:800}
+
+/* ===== 2. Hero ===== */
+.hero{
+  padding:35px 24px 71px;
+  background-color:#fbf6f1;
+  background-image:
+    radial-gradient(ellipse 60% 65% at 50% 50%,rgba(255,255,255,.88) 0%,rgba(255,255,255,.7) 55%,rgba(255,255,255,.35) 100%),
+    linear-gradient(rgba(255,255,255,.35),rgba(255,255,255,.35)),
+    url("assets/images/hero-desk-flatlay.jpg");
+  background-size:100% 100%,100% 100%,cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+.hero__inner{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.hero__logo{width:92px;height:auto}
+.hero__kicker{margin:0;font-size:25px;line-height:1.2;font-weight:400}
+.hero__headline{margin:-11px 0 0;max-width:822px;font-size:clamp(36px,6.2vw,70px);line-height:.85;font-weight:400}
+@media (max-width:700px){.hero__headline{line-height:1.05;margin-top:0}}
+.hl{font-weight:700;background-image:linear-gradient(180deg,transparent 58%,rgba(173,105,57,.4) 58%,rgba(173,105,57,.4) 92%,transparent 92%);background-repeat:no-repeat;background-size:0% 100%;-webkit-box-decoration-break:clone;box-decoration-break:clone;animation:highlight 1.4s ease-out .6s forwards}
+@keyframes highlight{from{background-size:0% 100%}to{background-size:100% 100%}}
+
+/* ===== 3. Offer (two columns) ===== */
+.offer{max-width:1040px;margin:0 auto;padding:72px 24px 80px}
+.offer__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px;align-items:center;margin-top:8px}
+.offer__col{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.offer__media{position:relative;width:100%}
+.offer__media img{width:100%;height:auto}
+.pill{font-weight:700;font-size:20px;line-height:26px;letter-spacing:.04em;background:var(--wine);color:var(--linen);border-radius:var(--radius-pill);padding:10px 24px;white-space:nowrap}
+.offer p{margin:0;font-size:18px;line-height:28px}
+.offer__title{margin:0;font-size:clamp(48px,6vw,77px);line-height:.85;text-align:center;color:var(--wine)}
+
+/* Rotating badge */
+.badge{position:absolute;top:-52px;left:-40px;width:120px;height:120px;border-radius:50%;background:#572239;color:var(--white)}
+.badge__ring{position:absolute;inset:0;animation:spin 14s linear infinite;transform-origin:50% 50%}
+.badge__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.badge__pct{font-size:29px;line-height:1;font-weight:800}
+.badge__off{font-size:13px;line-height:16px;font-weight:700;letter-spacing:.14em}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:600px){.badge{top:-36px;left:-8px;width:96px;height:96px}.badge__ring{width:96px;height:96px}.badge__pct{font-size:23px}.badge__off{font-size:11px}}
+
+/* Price coupon */
+.price{background:var(--coupon);border:2px dashed var(--caramel);border-radius:var(--radius-lg);padding:28px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;text-align:center}
+.price__name{font-size:19px;line-height:22px}
+.price__row{display:flex;align-items:baseline;justify-content:center;gap:18px}
+.price__was{font-size:28px;line-height:1;font-weight:500;color:var(--muted);text-decoration:line-through}
+.price__now{font-size:80px;line-height:1;font-weight:800;color:var(--wine)}
+.price .decline{font-size:19px;line-height:22px}
+
+/* ===== 4. Mindset ===== */
+.mindset{background:var(--pink)}
+.mindset__inner{max-width:880px;margin:0 auto;padding:80px 24px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.mindset__title{margin:0;font-size:65px;line-height:1.2;color:var(--plum);width:max-content;max-width:calc(100vw - 48px);white-space:nowrap;transform:translate(0,1px) rotate(-2deg) scaleX(1.02)}
+@media (max-width:1100px){.mindset__title{white-space:normal;width:auto;font-size:clamp(40px,7vw,65px)}}
+.confident{display:inline-block;font-size:2.8em;line-height:1;vertical-align:baseline;margin:0 .22em;padding:.1em 0;color:var(--white);text-shadow:0 2px 0 rgba(86,34,57,.55),0 0 18px rgba(86,34,57,.25)}
+@media (max-width:600px){.confident{display:block;margin:.05em auto}}
+.confident__box{display:inline-block;position:relative}
+.confident__ghost{visibility:hidden}
+.confident__typed{position:absolute;left:0;top:0;white-space:nowrap;text-align:left}
+.caret{display:inline-block;width:.06em;height:.8em;margin-left:.06em;vertical-align:-.05em;background:var(--caramel);border-radius:2px;animation:blink .9s steps(1) infinite}
+@keyframes blink{0%{opacity:1}50%{opacity:0}}
+.mindset__intro{margin:0;max-width:680px;font-size:20px;line-height:32px}
+.xlist{list-style:none;margin:0;padding:0;width:100%;max-width:680px;display:flex;flex-direction:column;gap:12px;text-align:left}
+.xlist li{background:var(--white);border-radius:var(--radius-md);padding:20px 28px;display:flex;gap:18px;align-items:center;font-size:19px;line-height:28px}
+.xlist svg{flex:none}
+.done{width:100%;max-width:680px;background:var(--wine);color:var(--linen);border-radius:var(--radius-lg);padding:44px 40px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.done h3{margin:0;font-size:60px;line-height:1.05;color:var(--linen)}
+.done p{margin:0}
+.done__lead{font-size:22px;line-height:32px;font-weight:700}
+.done__sub{font-size:18px;line-height:28px;font-weight:300}
+
+/* ===== 5. Testimonials ===== */
+.reviews{background:var(--white);padding:80px 24px}
+.reviews__inner{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.reviews__head{display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center}
+.reviews__head h2{margin:0;font-size:clamp(48px,7vw,91px);line-height:1.05}
+.reviews__head span{font-size:19px;line-height:20px}
+.reviews__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
+.review{margin:0;border-radius:var(--radius-lg);padding:36px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:20px;text-align:center}
+.review--linen{background:var(--linen)} .review--pink{background:var(--pink)}
+.stars{display:flex;justify-content:center;gap:4px}
+.review blockquote{margin:0;font-size:18px;line-height:28px}
+.review figcaption{font-size:14px;line-height:20px}
+
+/* ===== 6. Closing offer ===== */
+.closing{background:var(--wine);color:var(--linen);padding:88px 24px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.closing__tag{font-family:var(--font-caps);font-size:22px;line-height:26px;letter-spacing:.08em;background:var(--pink);color:var(--wine);border-radius:var(--radius-pill);padding:8px 20px}
+.closing h2{margin:0;max-width:900px;font-size:clamp(56px,8vw,107px);line-height:1.05;color:var(--white)}
+.closing p{margin:0;max-width:640px;font-size:20px;line-height:32px;color:var(--white)}
+.closing .price__row .price__was{color:inherit;opacity:.85}
+.closing .price__now{color:inherit}
+.closing .decline{font-size:15px;line-height:22px;color:var(--linen)}
+
+/* ===== 7. Footer ===== */
+.footer{background:var(--blush);padding:40px 24px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.footer img{width:130px;height:auto}
+.footer small{font-size:13px;line-height:18px;font-weight:500}
+
+@media (prefers-reduced-motion: reduce){
+  .hl{animation:none;background-size:100% 100%}
+  .badge__ring{animation:none}
+  .caret{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. Countdown -->
+<section class="countdown" role="timer" aria-label="Offer countdown">
+  <span class="countdown__label eyebrow">This special offer is only available for the next…</span>
+  <div class="countdown__clock">
+    <span class="countdown__unit"><span class="countdown__num" data-cd="h">00</span><span class="countdown__lbl">Hrs</span></span>
+    <span class="countdown__sep" aria-hidden="true">:</span>
+    <span class="countdown__unit"><span class="countdown__num" data-cd="m">15</span><span class="countdown__lbl">Min</span></span>
+    <span class="countdown__sep" aria-hidden="true">:</span>
+    <span class="countdown__unit"><span class="countdown__num" data-cd="s">00</span><span class="countdown__lbl">Sec</span></span>
+  </div>
+</section>
+
+<!-- 2. Hero -->
+<header class="hero">
+  <div class="hero__inner">
+    <img class="hero__logo" src="assets/images/emily-diaz-logo-plum.png" alt="Emily Diaz" width="92" height="53">
+    <h1 class="hero__kicker">Your free resources are in your inbox, but before you go...</h1>
+    <p class="hero__headline">Imagine having the strategies you need to <b class="hl">actually be successful in the classroom</b> when it comes to AAC.</p>
+  </div>
+</header>
+
+<main>
+<!-- 3. Offer -->
+<section class="offer" aria-labelledby="offer-title">
+  <div class="offer__grid">
+    <div class="offer__col">
+      <div class="offer__media">
+        <img src="assets/images/workshop-laptop-mockup.webp" alt="Managing AAC Therapy in the Classroom workshop shown on a laptop" width="1708" height="1034">
+        <div class="badge" role="img" aria-label="Limited-time offer: 70% off">
+          <svg class="badge__ring" aria-hidden="true" viewBox="0 0 156 156" width="100%" height="100%">
+            <defs><path id="badge-ring" d="M78,78 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"/></defs>
+            <circle cx="78" cy="78" r="47" fill="none" stroke="#f9ebe1" stroke-opacity=".35" stroke-width="1" stroke-dasharray="2 4"/>
+            <text fill="#f9ebe1" style="font-family:'MADE Tommy Soft',ui-rounded,system-ui,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.12em"><textPath href="#badge-ring" textLength="372" lengthAdjust="spacing">LIMITED-TIME OFFER • LIMITED-TIME OFFER •</textPath></text>
+          </svg>
+          <div class="badge__center" aria-hidden="true"><span class="badge__pct">70%</span><span class="badge__off">OFF</span></div>
+        </div>
+      </div>
+      <span class="pill">2 Hour Video Training</span>
+      <p>I've put together a comprehensive two-hour training so you can get the strategies you need to be successful in the classroom!</p>
+      <p>Best of all, I want you to have it for a special discount.</p>
+      <p><strong>But you gotta hurry! This is only available for the next 15 minutes.</strong></p>
+    </div>
+
+    <div class="offer__col">
+      <h2 class="offer__title script" id="offer-title">Become the AAC Rockstar your students need.</h2>
+      <div class="price">
+        <span class="price__name eyebrow">Managing AAC in the Classroom</span>
+        <div class="price__row">
+          <span class="price__was"><span class="sr-only">Regular price </span>$47</span>
+          <span class="price__now"><span class="sr-only">Now </span>$12</span>
+        </div>
+        <a class="btn btn--caramel" href="https://resources.emilydiazslp.com/aac-in-the-classroom/">Yes! I want this!</a>
+        <a class="decline" href="https://emilydiazslp.com/free-resource-library">No thanks. I just want the free resources.</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Mindset -->
+<section class="mindset">
+  <div class="mindset__inner">
+    <h2 class="mindset__title script" aria-label="I want you to be confident when it comes to AAC therapy.">
+      <span aria-hidden="true">I want you to be </span><span class="confident" aria-hidden="true" data-typewriter="confident"><span class="confident__box"><span class="confident__ghost">confident</span><span class="confident__typed"><span data-typed></span><span class="caret"></span></span></span></span><span aria-hidden="true"> when it comes to AAC therapy.</span>
+    </h2>
+    <p class="mindset__intro">It took me four years to become a confident AAC SLP. For most of that time, I was stuck in the traditional mindset:</p>
+    <ul class="xlist">
+      <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ad6939" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>You schedule groups of students.</li>
+      <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ad6939" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>You pull them out of class.</li>
+      <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ad6939" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>You wait and see if therapy is even helping.</li>
+      <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ad6939" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>When you pop into a classroom it feels like the equivalent of initiating a war.</li>
+      <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ad6939" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>… and naturally, you let the teacher win.</li>
+    </ul>
+    <div class="done">
+      <h3 class="script">That's done now!</h3>
+      <p class="done__lead">You're about to start showing up like an AAC SLP.</p>
+      <p class="done__sub">Following the research, not personal opinion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Testimonials -->
+<section class="reviews" aria-labelledby="reviews-title">
+  <div class="reviews__inner">
+    <div class="reviews__head">
+      <h2 class="script" id="reviews-title">This is what others are saying</h2>
+      <span class="eyebrow">about my trainings and resources</span>
+    </div>
+    <div class="reviews__grid">
+      <figure class="review review--linen">
+        <div class="stars" role="img" aria-label="5 out of 5 stars"></div>
+        <blockquote>“I've just discovered your resources and am so grateful for what you are doing! Thanks for sharing and therefore making the world a little easier for our AAC clients and their families.”</blockquote>
+        <figcaption class="eyebrow">Julie H., SLP</figcaption>
+      </figure>
+      <figure class="review review--pink">
+        <div class="stars" role="img" aria-label="5 out of 5 stars"></div>
+        <blockquote>“This is so so great. Thanks for all the resources I think I've followed every page lol.”</blockquote>
+        <figcaption class="eyebrow">Celina T., SLP</figcaption>
+      </figure>
+      <figure class="review review--pink">
+        <div class="stars" role="img" aria-label="5 out of 5 stars"></div>
+        <blockquote>“This so great! Definitely sharing with my families!”</blockquote>
+        <figcaption class="eyebrow">Help Me Grow Speech, SLP</figcaption>
+      </figure>
+      <figure class="review review--linen">
+        <div class="stars" role="img" aria-label="5 out of 5 stars"></div>
+        <blockquote>“Such a wonderful resource!! Thank you for doing this!”</blockquote>
+        <figcaption class="eyebrow">Jen H., SLP</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Closing offer -->
+<section class="closing" aria-labelledby="closing-title">
+  <span class="closing__tag">One time offer</span>
+  <h2 class="script" id="closing-title">Get my workshop for over 70% off!</h2>
+  <p>Managing AAC in the Classroom is only available for $12 for the next fifteen minutes.</p>
+  <div class="price__row">
+    <span class="price__was"><span class="sr-only">Regular price </span>$47</span>
+    <span class="price__now"><span class="sr-only">Now </span>$12</span>
+  </div>
+  <a class="btn btn--berry" href="https://resources.emilydiazslp.com/aac-in-the-classroom/">That's a steal. I'm in!</a>
+  <a class="decline" href="https://emilydiazslp.com/free-resource-library">No thanks. I just want the free resources.</a>
+</section>
+</main>
+
+<!-- 7. Footer -->
+<footer class="footer">
+  <img src="assets/images/emily-diaz-logo-plum.png" alt="Emily Diaz" width="130" height="73">
+  <small>© Emily Diaz, M.S., CCC-SLP · emilydiazslp.com</small>
+</footer>
+
+<script>
+(function () {
+  var OFFER_MINUTES = 15;                       // countdown length
+  var STORAGE_KEY = 'ed_specialoffer_started';  // persists start time across reloads
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Stars (same SVG x5) */
+  var STAR = '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ad6939" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>';
+  document.querySelectorAll('.stars').forEach(function (el) { el.innerHTML = STAR + STAR + STAR + STAR + STAR; });
+
+  /* Countdown — start time saved so a refresh doesn't reset it */
+  var started = Date.now();
+  try {
+    var saved = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+    if (saved && !isNaN(saved)) started = saved; else localStorage.setItem(STORAGE_KEY, String(started));
+  } catch (e) { /* storage blocked: fall back to per-visit timer */ }
+  var total = OFFER_MINUTES * 60;
+  var hEl = document.querySelector('[data-cd="h"]'), mEl = document.querySelector('[data-cd="m"]'), sEl = document.querySelector('[data-cd="s"]');
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tick() {
+    var left = Math.max(0, total - Math.floor((Date.now() - started) / 1000));
+    hEl.textContent = pad(Math.floor(left / 3600));
+    mEl.textContent = pad(Math.floor((left % 3600) / 60));
+    sEl.textContent = pad(left % 60);
+    // TODO (product decision): what happens at 00:00? e.g. swap price to $47 or redirect. See HANDOFF.md.
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* Typewriter "confident" — loops once the section scrolls into view */
+  var tw = document.querySelector('[data-typewriter]');
+  if (tw) {
+    var word = tw.getAttribute('data-typewriter');
+    var out = tw.querySelector('[data-typed]');
+    if (reduceMotion) { out.textContent = word; }
+    else {
+      var start = function () {
+        var n = 0, dir = 1, hold = 0;
+        setInterval(function () {
+          if (hold > 0) { hold--; return; }
+          n = Math.max(0, Math.min(word.length, n + dir));
+          out.textContent = word.slice(0, n);
+          if (dir === 1 && n >= word.length) { dir = -1; hold = 34; }      // hold ~2.4s
+          else if (dir === -1 && n <= 0) { dir = 1; hold = 8; }            // pause ~0.6s
+          else if (dir === 1) { hold = 1; }                                 // type ~140ms/letter, delete 70ms/letter
+        }, 70);
+      };
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); setTimeout(start, 300); }
+        }, { threshold: 0.6 });
+        io.observe(tw);
+      } else { start(); }
+    }
+  }
+})();
+</script>
+</body>
+</html>
