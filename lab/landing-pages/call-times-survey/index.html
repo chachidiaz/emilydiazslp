@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="lab-id" content="LP-005">
+<meta name="lab-published" content="2026-11-04">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Call Times Survey | Emily Diaz, SLP</title>
+<link rel="icon" href="/brand/assets/logo-maroon.png">
+<link rel="stylesheet" href="/brand/styles.css">
+<style>
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:var(--font-sans);color:var(--text-body);background:var(--surface-page)}
+
+/* The page is a dimmed backdrop with one card centered on it, so it reads as a pop-up. */
+.backdrop{min-height:100%;background:var(--overlay-plum);display:flex;align-items:center;justify-content:center;padding:16px}
+.modal{position:relative;width:100%;max-width:500px;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:28px 28px 24px;animation:pop var(--dur-slow) var(--ease-standard)}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.modal{animation:none}}
+
+.close{position:absolute;top:12px;right:12px;width:36px;height:36px;border:0;border-radius:var(--radius-pill);background:transparent;color:var(--ink-500);font:400 24px/1 var(--font-sans);cursor:pointer;transition:background var(--dur-base) var(--ease-standard),color var(--dur-base) var(--ease-standard)}
+.close:hover{background:var(--ink-100);color:var(--plum-700)}
+.close:focus-visible,.chip input:focus-visible+span,textarea:focus-visible,.send:focus-visible{outline:0;box-shadow:var(--shadow-focus)}
+
+.logo{display:block;height:34px;width:auto;margin-bottom:12px}
+h1{margin:4px 0 6px;font-size:22px;line-height:var(--leading-snug);color:var(--text-heading);padding-right:28px}
+.note{margin:0 0 20px;font-size:var(--text-body-sm);line-height:var(--leading-normal);color:var(--text-body)}
+
+fieldset{margin:0 0 18px;padding:0;border:0;min-width:0}
+legend,.q{display:block;padding:0;margin:0 0 8px;font-weight:700;font-size:15px;line-height:var(--leading-snug);color:var(--ink-900)}
+.hint{font-weight:400;color:var(--text-muted);font-size:var(--text-micro)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.chip span{display:inline-block;padding:8px 14px;border:var(--border-thick) solid var(--ink-200);border-radius:var(--radius-pill);font-size:var(--text-body-sm);font-weight:500;line-height:1.3;color:var(--ink-700);background:var(--white);transition:background var(--dur-base) var(--ease-standard),border-color var(--dur-base) var(--ease-standard),color var(--dur-base) var(--ease-standard)}
+.chip:hover span{border-color:var(--blush-300)}
+.chip input:checked+span{background:var(--plum-700);border-color:var(--plum-700);color:var(--white)}
+.chip input:checked+span::before{content:"✓ "}
+.times .chip{flex:1 1 calc(50% - 4px)}
+.times .chip span{display:block;text-align:center;padding:8px 10px}
+
+textarea{display:block;width:100%;min-height:72px;resize:vertical;padding:10px 14px;border:1px solid var(--border-soft);border-radius:var(--radius-md);font:400 var(--text-body-sm)/var(--leading-normal) var(--font-sans);color:var(--ink-900);background:var(--white);transition:border-color var(--dur-base) var(--ease-standard)}
+textarea:focus{border-color:var(--rose-500)}
+textarea::placeholder{color:var(--ink-500)}
+
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.error{min-height:0;margin:0 0 10px;font-size:var(--text-body-sm);color:var(--status-error)}
+.error:empty{display:none}
+.send{display:block;width:100%;padding:14px 24px;border:0;border-radius:var(--radius-pill);background:var(--action-primary);color:var(--white);font:700 15px/1.2 var(--font-sans);cursor:pointer;transition:background var(--dur-base) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+.send:hover{background:var(--action-primary-hover)}
+.send:active{transform:scale(.97)}
+.send[disabled]{opacity:.45;cursor:default;transform:none}
+
+.thanks{text-align:center;padding:16px 0 8px}
+.thanks .script{font-size:var(--text-script-md);margin:0 auto 12px}
+.thanks p{margin:0 auto;max-width:34ch;line-height:var(--leading-loose)}
+
+@media (max-width:420px){.modal{padding:24px 20px 20px}.times .chip{flex-basis:100%}}
+</style>
+</head>
+<body>
+<div class="backdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="title">
+    <button class="close" type="button" aria-label="Close">×</button>
+
+    <form id="survey" novalidate>
+      <img class="logo" src="/brand/assets/logo-maroon.png" alt="Emily Diaz, SLP">
+      <p class="eyebrow">Quick survey</p>
+      <h1 id="title">Help me pick our call times</h1>
+      <p class="note">Don’t worry, every call will be recorded in case you can’t make it live.</p>
+
+      <input type="hidden" name="survey" value="call-times">
+      <input type="hidden" name="email" id="email">
+      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <fieldset>
+        <legend>1. Which days work best for you? <span class="hint">Pick any</span></legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="days[]" value="monday"><span>Monday</span></label>
+          <label class="chip"><input type="checkbox" name="days[]" value="tuesday"><span>Tuesday</span></label>
+          <label class="chip"><input type="checkbox" name="days[]" value="wednesday"><span>Wednesday</span></label>
+          <label class="chip"><input type="checkbox" name="days[]" value="thursday"><span>Thursday</span></label>
+          <label class="chip"><input type="checkbox" name="days[]" value="friday"><span>Friday</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. What time of day? <span class="hint">Central Time · pick any</span></legend>
+        <div class="chips times">
+          <label class="chip"><input type="checkbox" name="times[]" value="morning"><span>Mornings (9–11am)</span></label>
+          <label class="chip"><input type="checkbox" name="times[]" value="lunch"><span>Lunch break (12–2pm)</span></label>
+          <label class="chip"><input type="checkbox" name="times[]" value="after-school"><span>Right after school (3:30–5pm)</span></label>
+          <label class="chip"><input type="checkbox" name="times[]" value="evening"><span>Evening (6–7:30pm)</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <label class="q" for="situation">3. What’s one AAC eval situation you’d love help with on a call?</label>
+        <textarea id="situation" name="situation" maxlength="2000" placeholder="e.g. a student with limited motor access…"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Would you be interested in attending a bonus call on the topic of starting an AAC-niched business/practice?</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="bonus" value="yes"><span>Yes</span></label>
+          <label class="chip"><input type="radio" name="bonus" value="maybe"><span>Maybe</span></label>
+          <label class="chip"><input type="radio" name="bonus" value="no"><span>No</span></label>
+        </div>
+      </fieldset>
+
+      <p class="error" id="error" role="alert"></p>
+      <button class="send" type="submit">send my answers</button>
+    </form>
+
+    <div class="thanks" id="thanks" hidden>
+      <p class="script">thank you!</p>
+      <p>Your answers are in. I’ll use them to set the call schedule, and every call will be recorded for you.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('survey');
+  var error = document.getElementById('error');
+  var send = form.querySelector('.send');
+
+  // Flodesk links carry ?email={{ subscriber.email }}. Keep it, then clear it from the address bar.
+  var params = new URLSearchParams(location.search);
+  var email = params.get('email') || '';
+  if (/\{\{|%7B/.test(email)) email = ''; // merge tag didn't fill in (e.g. a test send)
+  document.getElementById('email').value = email;
+  if (params.has('email')) {
+    params.delete('email');
+    var qs = params.toString();
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+  }
+
+  // A tab opened from an email can't always close itself; fall back to the main site.
+  document.querySelector('.close').addEventListener('click', function () {
+    window.close();
+    setTimeout(function () { location.href = 'https://emilydiazslp.com'; }, 150);
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    error.textContent = '';
+    var data = new FormData(form);
+    var answered = data.getAll('days[]').length || data.getAll('times[]').length ||
+      (data.get('situation') || '').trim() || data.get('bonus');
+    if (!answered) {
+      error.textContent = 'Answer at least one question first.';
+      return;
+    }
+    send.disabled = true;
+    send.textContent = 'sending…';
+    fetch('/apps/surveys/submit.php', { method: 'POST', body: data })
+      .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.error || '');
+        form.hidden = true;
+        document.getElementById('thanks').hidden = false;
+      })
+      .catch(function (err) {
+        error.textContent = err.message || 'Something went wrong. Check your connection and try again.';
+        send.disabled = false;
+        send.textContent = 'send my answers';
+      });
+  });
+})();
+</script>
+</body>
+</html>
