@@ -44,7 +44,8 @@ a{color:#FFABF7}a:hover{color:#FFF2B1}
 .bf-new{animation:bf-new-pulse 2.4s ease-in-out infinite}
 @keyframes bf-spin{to{transform:rotate(360deg)}}
 @keyframes bf-new-pulse{0%,100%{transform:rotate(-10deg) scale(1)}50%{transform:rotate(-10deg) scale(1.08)}}
-@media (max-width: 700px){.bf-rays-doodle{display:none}}
+@media (min-width: 1060px){.bf-card{max-width:calc(50% - 16px)}}
+@media (max-width: 700px){.bf-rays-doodle{display:none}.bf-new{zoom:.68}}
 @media (prefers-reduced-motion: reduce){.bf-heart,.bf-ray,.bf-star,.bf-new{animation:none}.bf-spark{display:none}}
 </style>
 </head>
@@ -158,9 +159,26 @@ a{color:#FFABF7}a:hover{color:#FFF2B1}
 <p style="margin: 0; font-size: 18px; line-height: 28px; color: #CDBFC7">Click through to any course and enter <span style="color: #FFF2B1; font-weight: 700">FRIEND10</span> at checkout.</p>
 </div>
 
-<div style="display: flex; flex-wrap: wrap; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 32px">
 
-<article style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
+<article class="bf-featured" style="flex: 1 1 100%; min-width: 0; display: flex; flex-wrap: wrap; border-radius: 16px; background: #22191F; border: 2px solid #FFABF7; overflow: hidden">
+<div style="position: relative; flex: 1 1 560px; min-width: 0; aspect-ratio: 1160 / 640; background: #F6D9E7">
+<img src="assets/images/thumbnails/virtual-aac-assessment-considerations.webp" srcset="assets/images/thumbnails/virtual-aac-assessment-considerations-580.webp 580w, assets/images/thumbnails/virtual-aac-assessment-considerations.webp 1160w" sizes="(max-width: 1100px) 100vw, 720px" width="1160" height="640" loading="lazy" decoding="async" alt="Virtual AAC Assessment Considerations" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span class="bf-new" style="position: absolute; left: 10px; bottom: 10px; width: 124px; height: 124px; color: #141014; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(-10deg); box-sizing: border-box"><span class="bf-star" aria-hidden="true"></span><span style="position: relative; font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase">Brand</span><span style="position: relative; font-size: 28px; line-height: 1; font-weight: 900; text-transform: uppercase">new!</span></span>
+<span style="position: absolute; top: 16px; right: 16px; padding: 8px 14px; border-radius: 999px; background: #FFF2B1; color: #141014; font-size: 15px; line-height: 20px; font-weight: 900; text-transform: uppercase">10% off</span>
+</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 16px; padding: 40px 36px">
+<span style="font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #FFABF7">Just launched</span>
+<h3 style="margin: 0; font-size: 40px; line-height: 46px; font-weight: 700">Virtual AAC Assessment Considerations</h3>
+<p style="margin: 0; font-size: 18px; line-height: 28px; color: #CDBFC7">[SHORT DESCRIPTION: what this course covers and who it's for]</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; border-top: 1px solid #3A2C35">
+<span style="font-size: 15px; line-height: 20px; color: #CDBFC7">Code <span style="color: #FFF2B1; font-weight: 700">FRIEND10</span></span>
+<a class="bf-btn bf-btn--secondary" href="#">Learn more</a>
+</div>
+</div>
+</article>
+
+<article class="bf-card" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
 <div style="position: relative; aspect-ratio: 1160 / 640; background: #F6D9E7">
 <img src="assets/images/thumbnails/aac-assessment-hub.webp" srcset="assets/images/thumbnails/aac-assessment-hub-580.webp 580w, assets/images/thumbnails/aac-assessment-hub.webp 1160w" sizes="(max-width: 1100px) 100vw, 600px" width="1160" height="640" loading="lazy" decoding="async" alt="The AAC Assessment Hub" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block">
 <span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 8px; background: #743E5A; color: #FFFFFF; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase">Signature course</span>
@@ -176,7 +194,7 @@ a{color:#FFABF7}a:hover{color:#FFF2B1}
 </div>
 </article>
 
-<article style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
+<article class="bf-card" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
 <div style="position: relative; aspect-ratio: 1160 / 640; background: #FFDBC9">
 <img src="assets/images/thumbnails/aac-handbook.webp" srcset="assets/images/thumbnails/aac-handbook-580.webp 580w, assets/images/thumbnails/aac-handbook.webp 1160w" sizes="(max-width: 1100px) 100vw, 600px" width="1160" height="640" loading="lazy" decoding="async" alt="The AAC Handbook" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block">
 <span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 8px; background: #743E5A; color: #FFFFFF; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase">PDF download</span>
@@ -192,7 +210,7 @@ a{color:#FFABF7}a:hover{color:#FFF2B1}
 </div>
 </article>
 
-<article style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
+<article class="bf-card" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
 <div style="position: relative; aspect-ratio: 1160 / 640; background: #FFC4DF">
 <img src="assets/images/thumbnails/when-aac-isnt-working.webp" srcset="assets/images/thumbnails/when-aac-isnt-working-580.webp 580w, assets/images/thumbnails/when-aac-isnt-working.webp 1160w" sizes="(max-width: 1100px) 100vw, 600px" width="1160" height="640" loading="lazy" decoding="async" alt="When AAC Isn't Working" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block">
 <span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 8px; background: #743E5A; color: #FFFFFF; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase">Workshop</span>
@@ -208,7 +226,7 @@ a{color:#FFABF7}a:hover{color:#FFF2B1}
 </div>
 </article>
 
-<article style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
+<article class="bf-card" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
 <div style="position: relative; aspect-ratio: 1160 / 640; background: #FFF2B1">
 <img src="assets/images/thumbnails/aac-for-glp.webp" srcset="assets/images/thumbnails/aac-for-glp-580.webp 580w, assets/images/thumbnails/aac-for-glp.webp 1160w" sizes="(max-width: 1100px) 100vw, 600px" width="1160" height="640" loading="lazy" decoding="async" alt="An Introduction to AAC for Gestalt Language Processors" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block">
 <span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 8px; background: #743E5A; color: #FFFFFF; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase">Workshop</span>
@@ -224,7 +242,7 @@ a{color:#FFABF7}a:hover{color:#FFF2B1}
 </div>
 </article>
 
-<article style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
+<article class="bf-card" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
 <div style="position: relative; aspect-ratio: 1160 / 640; background: #FDF6E3">
 <img src="assets/images/thumbnails/recalibrating-aac.webp" srcset="assets/images/thumbnails/recalibrating-aac-580.webp 580w, assets/images/thumbnails/recalibrating-aac.webp 1160w" sizes="(max-width: 1100px) 100vw, 600px" width="1160" height="640" loading="lazy" decoding="async" alt="Recalibrating AAC for Classroom Teams" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block">
 <span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 8px; background: #743E5A; color: #FFFFFF; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase">Online course</span>
@@ -240,21 +258,6 @@ a{color:#FFABF7}a:hover{color:#FFF2B1}
 </div>
 </article>
 
-<article style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; border-radius: 16px; background: #22191F; border: 1px solid #3A2C35; overflow: hidden">
-<div style="position: relative; aspect-ratio: 1160 / 640; background: #F6D9E7">
-<img src="assets/images/thumbnails/virtual-aac-assessment-considerations.webp" srcset="assets/images/thumbnails/virtual-aac-assessment-considerations-580.webp 580w, assets/images/thumbnails/virtual-aac-assessment-considerations.webp 1160w" sizes="(max-width: 1100px) 100vw, 600px" width="1160" height="640" loading="lazy" decoding="async" alt="Virtual AAC Assessment Considerations" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block">
-<span class="bf-new" style="position: absolute; left: 10px; bottom: 10px; width: 124px; height: 124px; color: #141014; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(-10deg); box-sizing: border-box"><span class="bf-star" aria-hidden="true"></span><span style="position: relative; font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase">Brand</span><span style="position: relative; font-size: 28px; line-height: 1; font-weight: 900; text-transform: uppercase">new!</span></span>
-<span style="position: absolute; top: 16px; right: 16px; padding: 8px 14px; border-radius: 999px; background: #FFF2B1; color: #141014; font-size: 15px; line-height: 20px; font-weight: 900; text-transform: uppercase">10% off</span>
-</div>
-<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px; padding: 28px">
-<h3 style="margin: 0; font-size: 32px; line-height: 38px; font-weight: 700">Virtual AAC Assessment Considerations</h3>
-<p style="margin: 0; font-size: 15px; line-height: 24px; color: #CDBFC7; flex-grow: 1">[SHORT DESCRIPTION: what this course covers and who it's for]</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; border-top: 1px solid #3A2C35">
-<span style="font-size: 15px; line-height: 20px; color: #CDBFC7">Code <span style="color: #FFF2B1; font-weight: 700">FRIEND10</span></span>
-<a class="bf-btn bf-btn--secondary" href="#">Learn more</a>
-</div>
-</div>
-</article>
 
 </div>
 </section>
