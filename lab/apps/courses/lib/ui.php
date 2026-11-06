@@ -191,3 +191,50 @@ function icon(string $name, int $size = 20): string
     $vb = $name === 'external' ? '0 0 16 16' : ($name === 'play' ? '0 0 24 24' : '0 0 20 20');
     return '<svg width="' . $size . '" height="' . $size . '" viewBox="' . $vb . '" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . ($paths[$name] ?? '') . '</svg>';
 }
+
+/** Centered layout for login, sign up, confirmations. Close with auth_shell_end(). */
+function auth_shell_start(string $logoSize = ''): void
+{
+    echo '<div class="page"><div class="auth-top">' . logo(url('login.php'), $logoSize) . '</div><main class="auth-main">';
+}
+
+function auth_shell_end(string $footerHtml): void
+{
+    echo '</main>';
+    if ($footerHtml !== '') {
+        echo '<footer class="auth-foot">' . $footerHtml . '</footer>';
+    }
+    echo '</div>';
+}
+
+function legal_line(): string
+{
+    return '<div style="margin-top:6px;font-size:13px">By continuing, you agree to our <a href="' . e(MAIN_SITE) . '/terms">terms</a> and <a href="' . e(MAIN_SITE) . '/privacy">privacy policy</a>.</div>';
+}
+
+function alert(?string $message, string $kind = 'danger'): string
+{
+    return $message ? '<div class="alert alert-' . $kind . '" role="' . ($kind === 'danger' ? 'alert' : 'status') . '">' . e($message) . '</div>' : '';
+}
+
+/** Labelled input with an optional error under it. */
+function field(string $id, string $name, string $label, string $type, string $value = '', ?string $error = null, array $attrs = []): string
+{
+    $extra = '';
+    foreach ($attrs as $k => $v) {
+        $extra .= ' ' . e($k) . '="' . e((string) $v) . '"';
+    }
+    $err = $error ? ' aria-invalid="true" aria-describedby="' . e($id) . '-msg"' : '';
+    return '<div class="field' . ($error ? ' field-error' : '') . '"><label class="label" for="' . e($id) . '">' . e($label) . '</label>'
+        . '<input class="input" id="' . e($id) . '" name="' . e($name) . '" type="' . e($type) . '"' . ($type !== 'password' ? ' value="' . e($value) . '"' : '') . $err . $extra . '>'
+        . ($error ? '<div class="field-msg" id="' . e($id) . '-msg">' . e($error) . '</div>' : '') . '</div>';
+}
+
+/** A "check your email" panel used by forgot password and magic link. */
+function check_email_box(string $title, string $text, string $backHref): string
+{
+    return '<div class="auth-box" style="text-align:center;align-items:center">'
+        . '<span class="done-mark">' . icon('magic', 32) . '</span>'
+        . '<div><h1 class="serif title-xl" style="margin-bottom:12px">' . e($title) . '</h1><p class="muted" style="font-size:17px">' . e($text) . '</p></div>'
+        . '<a class="btn btn-lg btn-block" href="' . e($backHref) . '">Back to sign in</a></div>';
+}

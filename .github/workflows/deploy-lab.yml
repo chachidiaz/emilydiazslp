@@ -30,6 +30,33 @@ jobs:
           echo "host=$host" >> "$GITHUB_OUTPUT"
           echo "dir=${dir%/}/" >> "$GITHUB_OUTPUT"
 
+      # The course app reads its database and sign-in settings from data/config.php.
+      # Written here from secrets so they never sit in this public repo. Skipped until
+      # the COURSES_DB_NAME secret exists.
+      - name: Write course app config
+        env:
+          DB_HOST: ${{ secrets.COURSES_DB_HOST }}
+          DB_NAME: ${{ secrets.COURSES_DB_NAME }}
+          DB_USER: ${{ secrets.COURSES_DB_USER }}
+          DB_PASS: ${{ secrets.COURSES_DB_PASSWORD }}
+          ADMIN_EMAILS: ${{ secrets.COURSES_ADMIN_EMAILS }}
+          MAIL_FROM: ${{ secrets.COURSES_MAIL_FROM }}
+          GOOGLE_ID: ${{ secrets.COURSES_GOOGLE_CLIENT_ID }}
+          GOOGLE_SECRET: ${{ secrets.COURSES_GOOGLE_CLIENT_SECRET }}
+        run: |
+          if [ -z "$DB_NAME" ]; then echo "COURSES_DB_NAME not set; skipping."; exit 0; fi
+          php -r '
+            $c = [
+              "db" => ["host" => getenv("DB_HOST") ?: "localhost", "name" => getenv("DB_NAME"),
+                       "user" => getenv("DB_USER"), "pass" => getenv("DB_PASS")],
+              "base_url" => "https://lab.emilydiazslp.com",
+              "admin_emails" => getenv("ADMIN_EMAILS"),
+              "mail_from" => getenv("MAIL_FROM") ?: "hello@emilydiazslp.com",
+              "google" => ["client_id" => getenv("GOOGLE_ID"), "client_secret" => getenv("GOOGLE_SECRET")],
+            ];
+            file_put_contents("lab/apps/courses/data/config.php", "<?php\nreturn " . var_export($c, true) . ";\n");
+          '
+
       - name: Upload lab/ over FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

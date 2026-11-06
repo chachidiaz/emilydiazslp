@@ -122,6 +122,11 @@ select.input{appearance:none;padding-right:40px;background-image:url("data:image
 .split{display:grid;grid-template-columns:1fr 1fr}
 .split>*+*{border-left:1px solid var(--line)}
 
+/* ---------- Alerts ---------- */
+.alert{padding:14px 16px;border-radius:var(--radius-md);border:1px solid var(--line);background:var(--surface);font-size:14px;text-align:left}
+.alert-danger{border-color:var(--danger-line);background:var(--danger-soft);color:var(--danger)}
+.alert-ok{border-color:var(--accent-line);background:var(--accent-soft);color:var(--accent-ink)}
+
 /* ---------- Cards ---------- */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card)}
 .card-pad{padding:32px}
