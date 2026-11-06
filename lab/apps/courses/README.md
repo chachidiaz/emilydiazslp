@@ -16,7 +16,7 @@ plum `#743E5A` as the only accent). This differs on purpose from the brand syste
 
 1. ~~Tokens and shared components~~ (`assets/app.css`, `assets/app.js`, `lib/ui.php`, `components.php`)
 2. ~~Authentication and roles: login, sign up, confirmation, password reset~~
-3. Student area: My courses, Lesson with progress, Settings
+3. ~~Student area: My courses, Lesson with progress, Settings~~
 4. Purchase: Checkout with order bump, Upsell, Order confirmation, enrollment on payment
 5. Admin: Students and Student detail, then Orders
 6. Undesigned states: errors, empty states, loading, mobile
@@ -36,7 +36,28 @@ plum `#743E5A` as the only accent). This differs on purpose from the brand syste
 | `magic.php` | Magic link sign-in (link works once, for 15 minutes) |
 | `google.php` | Continue with Google (hidden until the Google secrets are set) |
 | `logout.php` | Sign out |
-| `index.php`, `admin/index.php` | Placeholders for My courses (step 3) and Students (step 5) |
+| `lib/catalog.php` | Courses, lessons, access, progress, downloads, student preferences |
+| `lib/sample_catalog.php` | SAMPLE courses from the canvas, loaded once. Replace before launch |
+| `index.php` | Screen 2 · My courses: continue card, filters, course cards, empty state |
+| `lesson.php`, `assets/lesson.js` | Screen 3 · Lesson: video, mark as completed, outline, downloads |
+| `progress.php` | Saves "completed" and the video resume position |
+| `downloads.php`, `download.php` | All course downloads; serves a file only to students with access |
+| `certificate.php` | Printable certificate once every lesson is complete |
+| `settings.php`, `confirm-email.php`, `avatar.php` | Screen 4 · Settings; email change confirmation; profile photos |
+| `admin/index.php` | Placeholder for Students (step 5) |
+
+## Courses, videos and files
+
+- **Access**: students see courses where their enrollment has access on. Turning access off
+  hides the course but keeps progress. Admins can open every course to preview it.
+- **Videos**: set `lessons.video_url` to a YouTube or Vimeo link (embedded) or a direct video file
+  URL (played in the page, with resume position, default speed, captions from `captions_url`, and
+  autoplay-next from the student's Playback settings). Resume works for direct files only. A
+  lesson without a video shows "coming soon". Watching to the end marks the lesson complete.
+- **Downloads**: set `downloads.file` to an `https://` link, or upload the file over FTP to
+  `data/files/` (private) and put just its file name there.
+- **Profile photos** are cropped to 256px squares, re-saved as JPEG in `data/avatars/` (private).
+
 
 ## Setup (live site)
 

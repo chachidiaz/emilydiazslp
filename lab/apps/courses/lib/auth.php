@@ -147,6 +147,7 @@ function set_password(array $user, string $password): void
 function bump_session_version(array $user): void
 {
     q('UPDATE users SET session_version = session_version + 1 WHERE id = ?', [$user['id']]);
+    q('DELETE FROM user_sessions WHERE user_id = ?', [$user['id']]);
 }
 
 /**
@@ -162,6 +163,7 @@ function mark_email_verified(array $user, bool $passwordJustSet): array
         // Someone else may have signed up with this address first. Drop their password and
         // sessions so only the real owner keeps access to the admin account.
         q('UPDATE users SET role = ?, session_version = session_version + 1' . ($passwordJustSet ? '' : ', password_hash = NULL') . ' WHERE id = ?', ['admin', $user['id']]);
+        q('DELETE FROM user_sessions WHERE user_id = ?', [$user['id']]);
     }
     return find_user((int) $user['id']);
 }
@@ -203,7 +205,67 @@ function current_user(): ?array
         flash(suspended_message());
         return $cache = null;
     }
+    touch_device($user);
     return $cache = $user;
+}
+
+// ---------- Signed-in devices ----------
+
+function session_hash(): string
+{
+    return hash('sha256', session_id());
+}
+
+/** Records this browser as a signed-in device (at most one write every 5 minutes). */
+function touch_device(array $user): void
+{
+    $seen = (int) ($_SESSION['dev_seen'] ?? 0);
+    if ($seen > time() - 300 && ($_SESSION['dev_sid'] ?? '') === session_id()) {
+        return;
+    }
+    q('INSERT INTO user_sessions (user_id, sid_hash, user_agent, created_at, last_seen_at) VALUES (?, ?, ?, ?, ?)
+       ON DUPLICATE KEY UPDATE last_seen_at = VALUES(last_seen_at), user_id = VALUES(user_id)',
+        [$user['id'], session_hash(), substr((string) ($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 255), now_utc(), now_utc()]);
+    $_SESSION['dev_seen'] = time();
+    $_SESSION['dev_sid'] = session_id();
+}
+
+/** Devices whose sessions are still valid, newest first. */
+function user_devices(array $user): array
+{
+    return q('SELECT * FROM user_sessions WHERE user_id = ? AND last_seen_at > ? ORDER BY last_seen_at DESC', [
+        $user['id'], gmdate('Y-m-d H:i:s', time() - 60 * 60 * 24 * 30),
+    ])->fetchAll();
+}
+
+/** Ends every other session for this user and keeps this one signed in. */
+function sign_out_others(array $user): void
+{
+    bump_session_version($user); // also clears the device list
+    sign_in($user);
+    touch_device(find_user((int) $user['id']));
+}
+
+/** "Chrome on Mac" from a user agent string. */
+function device_label(string $ua): string
+{
+    $browser = match (true) {
+        str_contains($ua, 'Edg/') => 'Edge',
+        str_contains($ua, 'Firefox/') => 'Firefox',
+        str_contains($ua, 'Chrome/') => 'Chrome',
+        str_contains($ua, 'Safari/') => 'Safari',
+        default => 'Browser',
+    };
+    $os = match (true) {
+        str_contains($ua, 'iPhone') => 'iPhone',
+        str_contains($ua, 'iPad') => 'iPad',
+        str_contains($ua, 'Android') => 'Android',
+        str_contains($ua, 'Mac OS') => 'Mac',
+        str_contains($ua, 'Windows') => 'Windows',
+        str_contains($ua, 'Linux') => 'Linux',
+        default => 'unknown device',
+    };
+    return "$browser on $os";
 }
 
 function sign_in(array $user): void
@@ -213,12 +275,14 @@ function sign_in(array $user): void
     $user = find_user((int) $user['id']); // pick up any session_version change
     $_SESSION['uid'] = (int) $user['id'];
     $_SESSION['sv'] = (int) $user['session_version'];
+    unset($_SESSION['dev_seen']);
     q("UPDATE users SET last_sign_in_at = ?, status = IF(status = 'invited', 'active', status) WHERE id = ?", [now_utc(), $user['id']]);
 }
 
 function sign_out(): void
 {
     session_boot();
+    q('DELETE FROM user_sessions WHERE sid_hash = ?', [session_hash()]);
     $_SESSION = [];
     session_regenerate_id(true);
 }

@@ -2,6 +2,7 @@
 // Magic link sign-in. Asking for a link and using one are both POSTs: opening the emailed
 // link shows a "Sign in" button first, so email scanners that prefetch links can't use it up.
 require __DIR__ . '/lib/auth.php';
+require __DIR__ . '/lib/catalog.php';
 
 $next = safe_next($_GET['next'] ?? $_POST['next'] ?? '');
 $token = (string) ($_GET['token'] ?? $_POST['token'] ?? '');
@@ -67,7 +68,7 @@ if (is_post()) {
         $sent = true; // same answer either way, so this can't be used to find accounts
         if (rate_limit('magic-email:' . $email, 5, 3600) && rate_limit('mail-ip:' . client_ip(), 20, 3600)) {
             $user = find_user_by_email($email);
-            if ($user && $user['status'] !== 'suspended') {
+            if ($user && $user['status'] !== 'suspended' && prefs($user)['magic_link']) {
                 $link = url('magic.php') . '?token=' . issue_token($user, 'magic', MAGIC_TTL);
                 if ($next !== url('')) {
                     $link .= '&next=' . rawurlencode($next);

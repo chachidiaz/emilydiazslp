@@ -57,9 +57,21 @@ function initials(string $name): string
     return strtoupper(mb_substr($first, 0, 1) . mb_substr($last, 0, 1));
 }
 
-/** Student top nav. $active: 'courses' | 'settings'. */
-function student_nav(string $active, string $userName): void
+/** Round avatar: the uploaded photo, or initials on blush. */
+function avatar(array $user, string $class = 'avatar', string $tag = 'span', string $attrs = ''): string
 {
+    $inner = !empty($user['avatar_file'])
+        ? '<img src="' . url('avatar.php') . '?u=' . (int) $user['id'] . '&v=' . e(substr($user['avatar_file'], 0, 8)) . '" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover">'
+        : e(initials($user['name']));
+    return "<$tag class=\"$class\"$attrs" . (!empty($user['avatar_file']) ? ' style="overflow:hidden;padding:0"' : '') . ">$inner</$tag>";
+}
+
+/** Student top nav. $active: 'courses' | 'settings'. */
+function student_nav(string $active, array|string $user): void
+{
+    if (is_string($user)) {
+        $user = ['id' => 0, 'name' => $user];
+    }
     $link = fn(string $key, string $label, string $href) =>
         '<a class="navlink' . ($active === $key ? ' active' : '') . '" href="' . e($href) . '"' . ($active === $key ? ' aria-current="page"' : '') . '>' . e($label) . '</a>';
     ?>
@@ -68,10 +80,11 @@ function student_nav(string $active, string $userName): void
   <nav class="nav-links" aria-label="Primary">
     <?= $link('courses', 'My courses', url('')) ?>
     <?= $link('settings', 'Settings', url('settings.php')) ?>
+    <?php if (($user['role'] ?? '') === 'admin' && !empty($user['email_verified_at'])): ?><a class="navlink" href="<?= url('admin/') ?>">Admin</a><?php endif; ?>
   </nav>
   <div class="nav-spacer"></div>
   <a class="navlink" href="<?= e(MAIN_SITE) ?>">Back to main site <?= icon('external', 16) ?></a>
-  <a class="avatar" href="<?= url('settings.php') ?>" aria-label="Your settings"><?= e(initials($userName)) ?></a>
+  <?= avatar($user, 'avatar', 'a', ' href="' . url('settings.php') . '" aria-label="Your settings"') ?>
 </header>
 <?php
 }
@@ -91,6 +104,9 @@ function student_footer(): void
       <a class="navlink" href="mailto:hello@emilydiazslp.com">Contact support</a>
       <a class="navlink" href="<?= e(MAIN_SITE) ?>/terms">Terms</a>
       <a class="navlink" href="<?= e(MAIN_SITE) ?>/privacy">Privacy</a>
+      <?php if (function_exists('current_user') && current_user()): ?>
+      <form method="post" action="<?= url('logout.php') ?>" style="display:inline"><?= csrf_field() ?><button type="submit" class="navlink" style="border:0;background:none;font:inherit;cursor:pointer">Sign out</button></form>
+      <?php endif; ?>
     </nav>
   </div>
 </footer>
@@ -237,4 +253,20 @@ function check_email_box(string $title, string $text, string $backHref): string
         . '<span class="done-mark">' . icon('magic', 32) . '</span>'
         . '<div><h1 class="serif title-xl" style="margin-bottom:12px">' . e($title) . '</h1><p class="muted" style="font-size:17px">' . e($text) . '</p></div>'
         . '<a class="btn btn-lg btn-block" href="' . e($backHref) . '">Back to sign in</a></div>';
+}
+
+/** "3 minutes ago", "2 days ago" from a UTC datetime string. */
+function time_ago(?string $utc): string
+{
+    if (!$utc) {
+        return 'never';
+    }
+    $s = max(0, time() - (int) strtotime($utc . ' UTC'));
+    foreach ([[86400 * 30, 'month'], [86400 * 7, 'week'], [86400, 'day'], [3600, 'hour'], [60, 'minute']] as [$unit, $label]) {
+        if ($s >= $unit) {
+            $n = intdiv($s, $unit);
+            return $n . ' ' . $label . ($n === 1 ? '' : 's') . ' ago';
+        }
+    }
+    return 'just now';
 }

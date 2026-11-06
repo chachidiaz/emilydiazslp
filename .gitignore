@@ -6,3 +6,7 @@ dist/
 # Course app: server-only settings and local mail log (secrets never committed)
 lab/apps/courses/data/config.php
 lab/apps/courses/data/mail.log
+lab/apps/courses/data/avatars/*
+!lab/apps/courses/data/avatars/.gitkeep
+lab/apps/courses/data/files/*
+!lab/apps/courses/data/files/.gitkeep
