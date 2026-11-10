@@ -55,7 +55,8 @@ textarea::placeholder{color:var(--ink-500)}
 .send[disabled]{opacity:.45;cursor:default;transform:none}
 
 .thanks{text-align:center;padding:16px 0 8px}
-.thanks .script{font-size:var(--text-script-md);margin:0 auto 12px}
+.thanks .script{font-size:clamp(72px,8vw,104px);margin:0 auto 4px;max-width:none}
+.thanks .send{margin-top:24px}
 .thanks p{margin:0 auto;max-width:34ch;line-height:var(--leading-loose)}
 
 @media (max-width:420px){.modal{padding:24px 20px 20px}.times .chip{flex-basis:100%}}
@@ -118,6 +119,7 @@ textarea::placeholder{color:var(--ink-500)}
     <div class="thanks" id="thanks" hidden>
       <p class="script">thank you!</p>
       <p>Your answers are in. I’ll use them to set the call schedule, and every call will be recorded for you.</p>
+      <button class="send close-window" type="button">close this window</button>
     </div>
   </div>
 </div>
@@ -140,9 +142,11 @@ textarea::placeholder{color:var(--ink-500)}
   }
 
   // A tab opened from an email can't always close itself; fall back to the main site.
-  document.querySelector('.close').addEventListener('click', function () {
-    window.close();
-    setTimeout(function () { location.href = 'https://emilydiazslp.com'; }, 150);
+  document.querySelectorAll('.close, .close-window').forEach(function (b) {
+    b.addEventListener('click', function () {
+      window.close();
+      setTimeout(function () { location.href = 'https://emilydiazslp.com'; }, 150);
+    });
   });
 
   form.addEventListener('submit', function (e) {
