@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Six Figure SLP Carousel Designer</title>
+<meta name="description" content="Design Six Figure SLP Instagram carousel slides in three steps.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<link rel="preload" href="fonts/made-tommy-soft-bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img id="brand-logo" alt="The Six Figure SLP" src="images/logo.png">
+    <div class="grow">
+      <h1>Carousel Designer</h1>
+      <p>Instagram carousel slides at 1080 × 1350, in Six Figure SLP brand style.</p>
+    </div>
+    <button class="btn small" id="reset-btn" type="button">Start a new carousel</button>
+  </header>
+
+  <nav class="steps" aria-label="Steps">
+    <button class="step-btn" data-step="1" type="button"><span class="n">1</span>Photo</button>
+    <button class="step-btn" data-step="2" type="button"><span class="n">2</span>Slide text</button>
+    <button class="step-btn" data-step="3" type="button"><span class="n">3</span>Preview &amp; download</button>
+  </nav>
+
+  <!-- STEP 1 -->
+  <section id="step-1" class="stage">
+    <div class="controls">
+      <div>
+        <h2>Step 1 · Upload the photo</h2>
+        <p class="lede">This photo goes behind every slide. In step 2 you can swap it out on any single slide.</p>
+      </div>
+      <label class="drop" id="drop-main" for="main-photo">
+        <input type="file" id="main-photo" accept="image/*">
+        <strong>Drop a photo here or click to choose</strong>
+        <span class="hint">JPG, PNG or WebP. Portrait photos crop best.</span>
+      </label>
+      <p class="status err" id="photo-status" role="status"></p>
+      <div class="group" id="main-photo-info" hidden>
+        <div class="photo-chip"><img id="main-thumb" alt=""><span class="nm" id="main-name"></span></div>
+      </div>
+      <div class="group">
+        <span class="label">Crop &amp; tone</span>
+        <div class="slider"><label for="main-zoom">Zoom</label><input type="range" id="main-zoom" min="100" max="250" value="100"><output id="main-zoom-o">100%</output></div>
+        <div class="slider"><label for="main-fx">Left ↔ right</label><input type="range" id="main-fx" min="0" max="100" value="50"><output id="main-fx-o">50</output></div>
+        <div class="slider"><label for="main-fy">Top ↕ bottom</label><input type="range" id="main-fy" min="0" max="100" value="50"><output id="main-fy-o">50</output></div>
+        <div class="slider"><label for="darkness">Darken photo</label><input type="range" id="darkness" min="0" max="75" value="30"><output id="darkness-o">30%</output></div>
+        <p class="hint">Darkening keeps white text readable on bright photos.</p>
+      </div>
+      <div class="group">
+        <span class="label">Branding on every slide</span>
+        <label class="check"><input type="checkbox" id="show-logo" checked> Show the Six Figure SLP logo</label>
+        <div class="row"><span class="sub">Logo color</span><div class="seg" id="logo-color"></div></div>
+        <label class="check"><input type="checkbox" id="show-handle" checked> Show the Instagram handle</label>
+        <div class="field"><label for="handle">Handle</label><input type="text" id="handle" value="@sixfigureslp"></div>
+      </div>
+      <div class="nav"><span></span><button class="btn primary" type="button" data-go="2">Next: add slide text →</button></div>
+    </div>
+    <div class="preview-col">
+      <canvas id="preview-1" width="1080" height="1350" aria-label="Preview of slide 1"></canvas>
+      <div class="cap"><span>Slide 1 preview</span><span>1080 × 1350</span></div>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section id="step-2" class="stage" hidden>
+    <div class="controls">
+      <div>
+        <h2>Step 2 · Write each slide</h2>
+        <p class="lede">Pick a slide below, type its text, then tap words to highlight or emphasize them. Add as many slides as you need.</p>
+      </div>
+      <div class="strip" id="strip"></div>
+
+      <div class="group">
+        <div class="row" style="justify-content:space-between">
+          <span class="label" id="slide-label">Slide 1 text</span>
+          <div class="row" style="gap:6px">
+            <button class="btn small" type="button" id="move-left" aria-label="Move slide left">←</button>
+            <button class="btn small" type="button" id="move-right" aria-label="Move slide right">→</button>
+            <button class="btn small" type="button" id="dup-slide">Duplicate</button>
+            <button class="btn small danger" type="button" id="del-slide">Delete</button>
+          </div>
+        </div>
+        <textarea id="slide-text" placeholder="Type the slide text. Press Enter to start a new line."></textarea>
+      </div>
+
+      <div class="group">
+        <span class="label">Highlight &amp; emphasize words</span>
+        <div class="row"><span class="sub">Tapping a word will</span>
+          <div class="seg" id="pick-mode">
+            <button type="button" data-mode="hl" aria-pressed="true">Highlight it</button>
+            <button type="button" data-mode="em" aria-pressed="false">Emphasize it</button>
+          </div>
+        </div>
+        <div class="words" id="words" aria-label="Words on this slide"></div>
+        <p class="hint" id="pick-hint">Highlight: tap any words to put a color block behind them. Tap again to remove.</p>
+      </div>
+
+      <div class="group">
+        <span class="label">Highlight color</span>
+        <div class="swatches" id="hl-colors"></div>
+      </div>
+
+      <div class="group">
+        <div class="row" style="justify-content:space-between"><span class="label">Emphasis</span><button class="btn small" type="button" id="clear-em">Remove emphasis</button></div>
+        <p class="hint" id="em-status">No word emphasized yet. Switch to "Emphasize it" and tap one word.</p>
+        <span class="sub">Graphic</span>
+        <div class="gfx" id="gfx"></div>
+        <span class="sub">Graphic color</span>
+        <div class="swatches" id="em-colors"></div>
+        <label class="check"><input type="checkbox" id="em-tint"> Color the word too</label>
+        <label class="check"><input type="checkbox" id="em-script"> Set the word in the Bringbold script font</label>
+      </div>
+
+      <div class="group">
+        <span class="label">Text style</span>
+        <div class="row"><span class="sub">Font</span><div class="seg" id="font-seg"></div></div>
+        <div class="row"><span class="sub">Color</span><div class="swatches" id="text-colors"></div></div>
+        <div class="slider"><label for="text-size">Size</label><input type="range" id="text-size" min="48" max="130" value="80"><output id="text-size-o">80</output></div>
+        <div class="row"><span class="sub">Position</span><div class="seg" id="vpos-seg"></div></div>
+        <div class="row"><span class="sub">Align</span><div class="seg" id="align-seg"></div></div>
+      </div>
+
+      <div class="group">
+        <span class="label">Background for this slide</span>
+        <div class="seg" id="bg-seg"></div>
+        <div id="bg-custom" class="controls" style="gap:12px" hidden>
+          <label class="drop" id="drop-slide" for="slide-photo" style="padding:16px">
+            <input type="file" id="slide-photo" accept="image/*">
+            <strong style="font-size:16px">Choose a photo for this slide only</strong>
+          </label>
+          <div class="photo-chip" id="slide-photo-info" hidden><img id="slide-thumb" alt=""><span class="nm" id="slide-photo-name"></span></div>
+          <div class="slider"><label for="s-zoom">Zoom</label><input type="range" id="s-zoom" min="100" max="250" value="100"><output id="s-zoom-o">100%</output></div>
+          <div class="slider"><label for="s-fx">Left ↔ right</label><input type="range" id="s-fx" min="0" max="100" value="50"><output id="s-fx-o">50</output></div>
+          <div class="slider"><label for="s-fy">Top ↕ bottom</label><input type="range" id="s-fy" min="0" max="100" value="50"><output id="s-fy-o">50</output></div>
+        </div>
+        <div id="bg-solid" hidden><div class="swatches" id="bg-colors"></div></div>
+      </div>
+
+      <div class="nav">
+        <button class="btn" type="button" data-go="1">← Back to photo</button>
+        <button class="btn primary" type="button" data-go="3">Next: preview &amp; download →</button>
+      </div>
+    </div>
+    <div class="preview-col">
+      <canvas id="preview-2" width="1080" height="1350" aria-label="Preview of the selected slide"></canvas>
+      <div class="cap"><span id="preview-2-cap">Slide 1 of 1</span><span>1080 × 1350</span></div>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section id="step-3" hidden>
+    <div class="controls">
+      <div>
+        <h2>Step 3 · Preview and download</h2>
+        <p class="lede">Swipe through the carousel the way it will look on Instagram. Download every slide in one ZIP, or save slides one at a time.</p>
+      </div>
+      <div class="row"><span class="sub">Export size</span><div class="seg" id="res-seg"></div></div>
+      <p class="hint">High resolution has the same 4:5 shape with twice the detail, so text stays crisp on any screen. Instagram accepts it and resizes it on upload.</p>
+      <div class="dl-bar">
+        <button class="btn primary" type="button" id="dl-all">Download all slides (ZIP)</button>
+        <button class="btn" type="button" data-go="2">← Edit slides</button>
+      </div>
+      <p class="status" id="dl-status" role="status"></p>
+      <div class="viewer">
+        <div class="frame">
+          <img id="view-img" alt="">
+          <button class="arrow prev" type="button" id="view-prev" aria-label="Previous slide">‹</button>
+          <button class="arrow next" type="button" id="view-next" aria-label="Next slide">›</button>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+      <div class="grid3" id="all-slides"></div>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="brand-assets.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
