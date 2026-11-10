@@ -21,13 +21,13 @@
       <h1>Carousel Designer</h1>
       <p>Instagram carousel slides at 1080 × 1350, in Six Figure SLP brand style.</p>
     </div>
-    <button class="btn small" id="reset-btn" type="button">Start a new carousel</button>
+    <button class="btn small" id="reset-btn" type="button"><span class="lg">Start a new carousel</span><span class="sm">New carousel</span></button>
   </header>
 
   <nav class="steps" aria-label="Steps">
     <button class="step-btn" data-step="1" type="button"><span class="n">1</span>Photo</button>
-    <button class="step-btn" data-step="2" type="button"><span class="n">2</span>Slide text</button>
-    <button class="step-btn" data-step="3" type="button"><span class="n">3</span>Preview &amp; download</button>
+    <button class="step-btn" data-step="2" type="button"><span class="n">2</span><span class="lg">Slide text</span><span class="sm">Text</span></button>
+    <button class="step-btn" data-step="3" type="button"><span class="n">3</span><span class="lg">Preview &amp; download</span><span class="sm">Download</span></button>
   </nav>
 
   <!-- STEP 1 -->
@@ -39,7 +39,7 @@
       </div>
       <label class="drop" id="drop-main" for="main-photo">
         <input type="file" id="main-photo" accept="image/*">
-        <strong>Drop a photo here or click to choose</strong>
+        <strong><span class="fine">Drop a photo here or click to choose</span><span class="coarse">Tap to choose a photo</span></strong>
         <span class="hint">JPG, PNG or WebP. Portrait photos crop best.</span>
       </label>
       <p class="status err" id="photo-status" role="status"></p>
@@ -166,6 +166,7 @@
       <p class="hint">High resolution has the same 4:5 shape with twice the detail, so text stays crisp on any screen. Instagram accepts it and resizes it on upload.</p>
       <div class="dl-bar">
         <button class="btn primary" type="button" id="dl-all">Download all slides (ZIP)</button>
+        <button class="btn" type="button" id="dl-zip" hidden>ZIP file</button>
         <button class="btn" type="button" data-go="2">← Edit slides</button>
       </div>
       <p class="status" id="dl-status" role="status"></p>

@@ -397,6 +397,23 @@ function showView() {
 }
 const fileName = (i) => `six-figure-slp-slide-${String(i + 1).padStart(2, "0")}.png`;
 
+/* Phones: the share sheet offers "Save to Photos" and Instagram, which a ZIP in Files can't. */
+const useShare = (() => {
+  try {
+    if (!matchMedia("(pointer: coarse)").matches || !navigator.canShare) return false;
+    return navigator.canShare({files: [new File([new Blob(["x"], {type: "image/png"})], "t.png", {type: "image/png"})]});
+  } catch (e) { return false; }
+})();
+async function shareFiles(files) {
+  const st = $("dl-status");
+  try {
+    await navigator.share({files});
+    st.className = "status ok"; st.textContent = files.length > 1 ? "Shared " + files.length + " slides." : "Shared " + files[0].name + ".";
+  } catch (e) {
+    if (e?.name === "AbortError") { st.className = "status"; st.textContent = ""; return; }
+    st.className = "status err"; st.textContent = "Your phone couldn't open the share sheet. Press and hold a slide image to save it instead.";
+  }
+}
 const downloadsP = (async () => { try { return window.claude?.use ? await window.claude.use("downloads") : null; } catch (e) { return null; } })();
 async function saveFile(name, blob) {
   const st = $("dl-status"); st.className = "status"; st.textContent = "Preparing " + name + "…";
@@ -409,6 +426,8 @@ async function saveFile(name, blob) {
     }
     return;
   }
+  // On phones, open the share sheet so slides can go straight to Photos or Instagram.
+  if (useShare && blob.type === "image/png") { await shareFiles([new File([blob], name, {type: "image/png"})]); return; }
   // On a regular website (outside the Claude artifact viewer) a plain download link works.
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
@@ -498,11 +517,27 @@ function wire() {
   $("view-next").addEventListener("click", () => { state.view = clamp(state.view + 1, 0, finals.length - 1); showView(); });
   let sx = null; const fr = document.querySelector(".viewer .frame");
   fr.addEventListener("pointerdown", e => sx = e.clientX);
+  fr.addEventListener("pointercancel", () => sx = null);
   fr.addEventListener("pointerup", e => { if (sx == null) return; const d = e.clientX - sx; sx = null; if (Math.abs(d) > 40) { state.view = clamp(state.view + (d < 0 ? 1 : -1), 0, finals.length - 1); showView(); } });
   document.addEventListener("keydown", e => { if (state.step !== 3 || e.target.closest("input,textarea")) return;
     if (e.key === "ArrowLeft") $("view-prev").click(); if (e.key === "ArrowRight") $("view-next").click(); });
 
+  if (useShare) {
+    $("dl-all").textContent = "Save all slides to Photos";
+    $("dl-zip").hidden = false;
+    $("dl-zip").addEventListener("click", () => zipAll());
+    document.querySelector("#step-3 .lede").textContent = "Swipe through the carousel the way it will look on Instagram. Tap Save all slides to Photos, then choose Save Images (or share straight to Instagram).";
+  }
+  // Let the pinned preview and bottom buttons get out of the way while the phone keyboard is open.
+  document.addEventListener("focusin", e => { if (e.target.matches("textarea, input[type=text]")) document.body.classList.add("typing"); });
+  document.addEventListener("focusout", e => { if (e.target.matches("textarea, input[type=text]")) document.body.classList.remove("typing"); });
   $("dl-all").addEventListener("click", async () => {
+    if (!useShare) return zipAll();
+    const st = $("dl-status");
+    if (!finals.length) { st.className = "status"; st.textContent = "Rendering slides…"; await finalsReady; }
+    await shareFiles(finals.map((f, i) => new File([f.blob], fileName(i), {type: "image/png"})));
+  });
+  const zipAll = async () => {
     const st = $("dl-status");
     if (!window.JSZip) { st.className = "status err"; st.textContent = "The ZIP tool didn't load. Use Save PNG under each slide instead."; return; }
     st.className = "status"; st.textContent = "Packing " + finals.length + " slides…";
@@ -510,7 +545,7 @@ function wire() {
     const zip = new JSZip(); finals.forEach((f, i) => zip.file(fileName(i), f.blob));
     const blob = await zip.generateAsync({type: "blob"});
     saveFile("six-figure-slp-carousel.zip", blob);
-  });
+  };
 }
 
 /* ---------- Boot ---------- */

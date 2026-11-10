@@ -148,3 +148,61 @@ textarea{resize:vertical;min-height:110px;font-family:var(--font-head);font-weig
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .status.ok{color:#9ad08f}}
 .dl-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+/* ---------- Phone layout ---------- */
+.sm,.coarse{display:none}
+@media (pointer:coarse){.fine{display:none}.coarse{display:inline}}
+button,label,input,.word,.thumb,.sw{touch-action:manipulation}
+.viewer .frame{touch-action:pan-y}
+@media (max-width:640px){
+  .lg{display:none}.sm{display:inline}
+  /* Header: one compact row */
+  .top{flex-wrap:nowrap;gap:12px;padding-block:14px 4px}
+  .top img{height:30px}
+  .top h1{font-size:19px}
+  .top p{display:none}
+  .top .btn{flex:none}
+  /* Step bar: three equal tabs that always fit */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding-block:8px;margin-bottom:14px}
+  .step-btn{justify-content:center;gap:6px;padding:5px 8px 5px 5px;font-size:14px}
+  .step-btn .n{width:26px;height:26px;font-size:13px}
+  /* Live preview stays pinned under the step bar while you scroll the controls */
+  .stage{gap:18px}
+  .preview-col{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 55px);z-index:4;max-width:none;background:var(--bg);padding-bottom:10px;gap:4px;
+    box-shadow:0 10px 12px -12px rgba(38,38,38,.35)}
+  .preview-col canvas{width:auto;height:min(34svh,300px);margin:0 auto;box-shadow:0 6px 18px rgba(38,38,38,.18)}
+  .preview-col .cap{justify-content:center;font-size:12px}
+  .preview-col .cap span:last-child{display:none}
+  /* While the keyboard is open, let the preview scroll away so the text box has room */
+  body.typing .preview-col{position:static;box-shadow:none}
+  h2{font-size:20px}
+  .group{padding:16px 14px}
+  .drop{padding:22px 14px}
+  /* Back / Next buttons stay reachable at the bottom of the screen */
+  .nav{position:sticky;bottom:0;z-index:4;background:var(--bg);margin-inline:-16px;padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px));border-top:1px solid var(--line);flex-wrap:nowrap}
+  .nav > *{flex:1;justify-content:center;text-align:center}
+  .nav > span:empty{display:none}
+  body.typing .nav{position:static;border-top:0}
+  .dl-bar .btn.primary{flex:1;justify-content:center}
+  .grid3{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .viewer .arrow{width:44px;height:44px}
+  .seg{display:flex;width:100%}
+  .seg button{flex:1 1 auto}
+  .row > .seg{width:auto;flex:1 1 230px}
+  .seg button{white-space:nowrap}
+}
+/* Bigger tap targets on touch screens */
+@media (pointer:coarse){
+  .btn{min-height:44px}
+  .btn.small{min-height:40px;padding:8px 12px;font-size:14px}
+  .seg button{min-height:42px;padding:8px 14px}
+  .sw{width:40px;height:40px}
+  .swatches{gap:10px}
+  .word{padding:8px 12px;font-size:16px}
+  .words{gap:8px}
+  .check{min-height:40px}
+  .check input{width:22px;height:22px}
+  input[type=range]{height:32px}
+  input[type=text],textarea{font-size:16px} /* 16px+ stops iOS zooming in on focus */
+  textarea{font-size:17px}
+}
