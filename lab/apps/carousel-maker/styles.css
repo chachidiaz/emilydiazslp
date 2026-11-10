@@ -52,6 +52,8 @@ button,input,select,textarea{font:inherit;color:inherit}
 .stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:32px;align-items:start}
 .controls{display:flex;flex-direction:column;gap:22px;min-width:0}
 .preview-col{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 84px);display:flex;flex-direction:column;gap:10px;min-width:0}
+.preview-pin{display:flex;flex-direction:column;gap:10px}
+.preview-col .bg-g{margin-top:8px}
 .preview-col canvas{width:100%;height:auto;aspect-ratio:4/5;max-width:100%;border-radius:10px;box-shadow:0 10px 30px rgba(38,38,38,.18);background:var(--charcoal);display:block}
 .preview-col .cap{font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums}
 @media (max-width:860px){.stage{grid-template-columns:minmax(0,1fr)}.preview-col{position:static;order:-1;max-width:420px;width:100%;margin:0 auto}}
@@ -150,7 +152,7 @@ textarea{resize:vertical;min-height:110px;font-family:var(--font-head);font-weig
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 
 /* ---------- Phone layout ---------- */
-.sm,.coarse{display:none}
+.sm,.coarse,.chg{display:none}
 @media (pointer:coarse){.fine{display:none}.coarse{display:inline}}
 button,label,input,.word,.thumb,.sw{touch-action:manipulation}
 .viewer .frame{touch-action:pan-y}
@@ -168,13 +170,26 @@ button,label,input,.word,.thumb,.sw{touch-action:manipulation}
   .step-btn .n{width:26px;height:26px;font-size:13px}
   /* Live preview stays pinned under the step bar while you scroll the controls */
   .stage{gap:18px}
-  .preview-col{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 55px);z-index:4;max-width:none;background:var(--bg);padding-bottom:10px;gap:4px;
+  /* Controls and preview become one column so pieces can be ordered around the preview */
+  .stage > .controls, .stage > .preview-col{display:contents}
+  .preview-pin{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 55px);z-index:4;background:var(--bg);margin-inline:-16px;padding:0 16px 10px;gap:4px;
     box-shadow:0 10px 12px -12px rgba(38,38,38,.35)}
+  /* Step 1: photo picker, then the pinned preview with crop sliders right under it */
+  #step-1 > .controls > *{order:7}
+  #step-1 .intro{order:1} #step-1 #drop-main{order:2} #step-1 #photo-status{order:3} #step-1 #main-photo-info{order:4} #step-1 .preview-pin{order:5} #step-1 .crop-g{order:6} #step-1 .nav{order:8}
+  /* Once a photo is in, the picker shrinks to a slim "change photo" button */
+  #step-1:has(#main-photo-info:not([hidden])) #drop-main{padding:12px 14px}
+  #step-1:has(#main-photo-info:not([hidden])) #drop-main :is(.hint,.fine,.coarse){display:none}
+  #step-1:has(#main-photo-info:not([hidden])) #drop-main .chg{display:inline}
+  #step-1:has(#main-photo-info:not([hidden])) #drop-main strong{font-size:16px}
+  /* Step 2: slide picker, background options, then the pinned preview above the text controls */
+  #step-2 > .controls > *{order:5}
+  #step-2 .intro{order:1} #step-2 #strip{order:2} #step-2 .bg-g{order:3} #step-2 .preview-pin{order:4} #step-2 .nav{order:9}
   .preview-col canvas{width:auto;height:min(34svh,300px);margin:0 auto;box-shadow:0 6px 18px rgba(38,38,38,.18)}
   .preview-col .cap{justify-content:center;font-size:12px}
   .preview-col .cap span:last-child{display:none}
   /* While the keyboard is open, let the preview scroll away so the text box has room */
-  body.typing .preview-col{position:static;box-shadow:none}
+  body.typing .preview-pin{position:static;box-shadow:none}
   h2{font-size:20px}
   .group{padding:16px 14px}
   .drop{padding:22px 14px}
@@ -186,6 +201,10 @@ button,label,input,.word,.thumb,.sw{touch-action:manipulation}
   .dl-bar .btn.primary{flex:1;justify-content:center}
   .grid3{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .viewer .arrow{width:44px;height:44px}
+  /* Compact sliders: label beside the slider so all four fit under the preview */
+  .slider{grid-template-columns:92px minmax(0,1fr) 40px;gap:8px}
+  .slider label{grid-column:auto;font-size:13px;line-height:1.2}
+  .crop-g{gap:6px}
   .seg{display:flex;width:100%}
   .seg button{flex:1 1 auto}
   .row > .seg{width:auto;flex:1 1 230px}

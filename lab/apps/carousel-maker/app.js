@@ -439,7 +439,15 @@ function wire() {
   document.querySelectorAll(".step-btn").forEach(b => b.addEventListener("click", () => goStep(+b.dataset.step)));
   document.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => goStep(+b.dataset.go)));
 
-  wireDrop($("drop-main"), $("main-photo"), f => readPhoto(f, setMain));
+  wireDrop($("drop-main"), $("main-photo"), f => readPhoto(f, (img, name) => {
+    setMain(img, name);
+    // On phones, bring the preview and crop sliders into view together.
+    if (matchMedia("(max-width: 640px)").matches) requestAnimationFrame(() => {
+      const pin = document.querySelector("#step-1 .preview-pin"), crop = document.querySelector("#step-1 .crop-g");
+      const top = crop.getBoundingClientRect().top + scrollY - pin.offsetHeight - document.querySelector(".steps").offsetHeight - 8;
+      window.scrollTo({top, behavior: "smooth"});
+    });
+  }));
   wireSlider("main-zoom", () => Math.round(state.main.crop.zoom * 100), v => state.main.crop.zoom = v / 100, v => v + "%");
   wireSlider("main-fx", () => Math.round(state.main.crop.fx * 100), v => state.main.crop.fx = v / 100, v => v);
   wireSlider("main-fy", () => Math.round(state.main.crop.fy * 100), v => state.main.crop.fy = v / 100, v => v);
