@@ -56,3 +56,9 @@ python3 src/build.py
 
 That rebuilds this `website/` folder and the single-file `carousel-designer.html` used for
 the Claude artifact.
+
+## Lab notes (lab.emilydiazslp.com)
+
+The live copy at `/apps/carousel-maker/` has phone-layout and iPhone fixes made directly in these
+files. The server caches CSS and JS for 7 days, so after changing `styles.css`, `app.js` or
+`brand-assets.js`, bump the `?v=` value on their links in `index.html`.

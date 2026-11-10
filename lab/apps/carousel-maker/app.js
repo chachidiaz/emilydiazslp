@@ -395,7 +395,7 @@ async function buildFinalNow() {
     const fig = document.createElement("figure"); const img = document.createElement("img"); img.src = f.url; img.alt = "Slide " + (i + 1);
     img.addEventListener("click", () => { state.view = i; showView(); });
     const cap = document.createElement("figcaption"); const t = document.createElement("span"); t.textContent = "Slide " + (i + 1);
-    const b = document.createElement("button"); b.type = "button"; b.className = "btn small"; b.textContent = "Save PNG";
+    const b = document.createElement("button"); b.type = "button"; b.className = "btn small"; b.textContent = useShare ? "Save to Photos" : "Save PNG";
     b.addEventListener("click", () => saveFile(fileName(i), f.blob));
     cap.append(t, b); fig.append(img, cap); grid.appendChild(fig);
   });
@@ -422,7 +422,7 @@ async function shareFiles(files) {
   const st = $("dl-status");
   try {
     await navigator.share({files});
-    st.className = "status ok"; st.textContent = files.length > 1 ? "Shared " + files.length + " slides." : "Shared " + files[0].name + ".";
+    st.className = "status ok"; st.textContent = "Done. If you tapped Save Image" + (files.length > 1 ? "s" : "") + ", " + (files.length > 1 ? "they're" : "it's") + " in your camera roll.";
   } catch (e) {
     if (e?.name === "AbortError") { st.className = "status"; st.textContent = ""; return; }
     st.className = "status err"; st.textContent = "Your phone couldn't open the share sheet. Press and hold a slide image to save it instead.";
@@ -546,9 +546,7 @@ function wire() {
 
   if (useShare) {
     $("dl-all").textContent = "Save all slides to Photos";
-    $("dl-zip").hidden = false;
-    $("dl-zip").addEventListener("click", () => zipAll());
-    document.querySelector("#step-3 .lede").textContent = "Swipe through the carousel the way it will look on Instagram. Tap Save all slides to Photos, then choose Save Images (or share straight to Instagram).";
+    document.querySelector("#step-3 .lede").textContent = "Swipe through the carousel the way it will look on Instagram. Tap Save all slides to Photos, then tap Save Images in the menu that opens. They land in your camera roll, ready for Instagram.";
   }
   // Let the pinned preview and bottom buttons get out of the way while the phone keyboard is open.
   document.addEventListener("focusin", e => { if (e.target.matches("textarea, input[type=text]")) document.body.classList.add("typing"); });
