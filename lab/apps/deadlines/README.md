@@ -59,8 +59,11 @@ Then open http://127.0.0.1:8000/apps/deadlines/. The router blocks `data/` and `
 
 - Needs PHP 8.1 or newer with the SQLite (PDO) extension. Both are on by default.
 - The first visit to `/apps/deadlines/` asks you to create the password. Do it right after the
-  first publish. To start over (forgotten password, or someone else got there first), delete
-  `data/deadlines.sqlite` in hPanel → File Manager. That also deletes all campaigns.
+  first publish. One password covers this app, the lab dashboard and survey results.
+- Forgotten password: in hPanel → File Manager, open `apps/deadlines/data/` and create an empty
+  file named `reset-password`. Then visit `/apps/deadlines/` and choose a new password. Only the
+  password is cleared; campaigns, timers and visitors stay. (Deleting `data/deadlines.sqlite`
+  also works but deletes all campaigns and restarts everyone's countdowns.)
 - The FTP deploy never touches `data/deadlines.sqlite`, so publishing keeps your data.
 - If the dashboard shows a red warning that your tracking data can be downloaded, the server
   isn't applying `data/.htaccess`. Fix that before sending traffic.

@@ -37,7 +37,22 @@ function dl_is_admin(): bool
 
 function dl_has_password(): bool
 {
+    dl_apply_password_reset();
     return dl_setting('admin_hash') !== null;
+}
+
+// Forgotten password: create an empty file named "reset-password" in data/ (hPanel → File Manager).
+// The next visit clears only the password, so the dashboard asks for a new one; campaigns and
+// visitors stay. Only someone with hosting access can do this, since data/ is blocked from the web.
+function dl_apply_password_reset(): void
+{
+    $flag = dirname(__DIR__) . '/data/reset-password';
+    // Remove the file first: if it can't be removed, don't reset, or every visit would reset again.
+    if (is_file($flag) && @unlink($flag)) {
+        dl_set_setting('admin_hash', null);
+        dl_set_setting('failed_logins', '0');
+        dl_set_setting('locked_until', '0');
+    }
 }
 
 function dl_set_password(string $password): void
