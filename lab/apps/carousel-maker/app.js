@@ -103,19 +103,33 @@ function lum(hex) { const n = parseInt(hex.slice(1), 16); const r = (n >> 16) / 
   const f = v => v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); return .2126 * f(r) + .7152 * f(g) + .0722 * f(b); }
 function onColor(hex) { return lum(hex) > .4 ? "#262626" : "#ffffff"; }
 function fontFor(slide, isEm) { const sz = slide.size; return (isEm && slide.emScript ? SCRIPT_CSS.replace("SIZE", Math.round(sz * 1.08)) : FONTS[slide.font].css.replace("SIZE", sz)); }
-function setSpacing(ctx, slide, isEm) { if ("letterSpacing" in ctx) ctx.letterSpacing = (slide.font === "tommy" && !(isEm && slide.emScript)) ? (-0.03 * slide.size).toFixed(1) + "px" : "0px"; }
+/* Letter spacing: Safari (iPhone) has no canvas letterSpacing, so there we space letters by hand
+   to get the same tracking and line breaks as every other browser. */
+const NATIVE_LS = (() => { try {
+  const c = document.createElement("canvas").getContext("2d"); if (!("letterSpacing" in c)) return false;
+  c.font = "20px sans-serif"; const a = c.measureText("abc").width; c.letterSpacing = "10px"; return c.measureText("abc").width > a + 5;
+} catch (e) { return false; } })();
+function setSpacing(ctx, slide, isEm) {
+  const v = (slide.font === "tommy" && !(isEm && slide.emScript)) ? +(-0.03 * slide.size).toFixed(1) : 0;
+  if (NATIVE_LS) ctx.letterSpacing = v + "px"; else ctx._ls = v;
+}
+function measureW(ctx, word) { const w = ctx.measureText(word).width; return NATIVE_LS ? w : w + (ctx._ls || 0) * [...word].length; }
+function drawWord(ctx, word, x, y) {
+  const ls = NATIVE_LS ? 0 : (ctx._ls || 0); if (!ls) return ctx.fillText(word, x, y);
+  let pre = ""; [...word].forEach((c, i) => { ctx.fillText(c, x + ctx.measureText(pre).width + i * ls, y); pre += c; });
+}
 
 function layout(ctx, slide) {
   const s = slide.size, maxW = W - 2 * MARGIN; let idx = 0; const lines = [];
   ctx.font = fontFor(slide, false); setSpacing(ctx, slide, false);
-  const space = ctx.measureText(" ").width + (slide.font === "tommy" ? s * 0.05 : 0);
+  const space = measureW(ctx, " ") + (slide.font === "tommy" ? s * 0.05 : 0);
   for (const para of tokens(slide.text)) {
     if (!para.length) { lines.push({items: [], w: 0}); continue; }
     let line = {items: [], w: 0};
     for (const word of para) {
       const isEm = idx === slide.emphasis;
       ctx.font = fontFor(slide, isEm); setSpacing(ctx, slide, isEm);
-      const w = ctx.measureText(word).width;
+      const w = measureW(ctx, word);
       let add = line.items.length ? space + w : w;
       if (line.items.length && line.w + add > maxW) { lines.push(line); line = {items: [], w: 0}; add = w; }
       line.items.push({word, idx, w, x: line.w + (line.items.length ? space : 0), isEm});
@@ -186,7 +200,7 @@ function render(canvas, slide, scale = 1) {
     for (const it of line.items) {
       ctx.font = fontFor(slide, it.isEm); setSpacing(ctx, slide, it.isEm);
       ctx.fillStyle = hl.has(it.idx) ? onColor(slide.hlColor) : (it.isEm && slide.emTint ? slide.emColor : slide.textColor);
-      ctx.fillText(it.word, x0 + it.x, b);
+      drawWord(ctx, it.word, x0 + it.x, b);
       if (it.isEm) emBox = {x: x0 + it.x, w: it.w, b};
     }
   });
