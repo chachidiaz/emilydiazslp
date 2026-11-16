@@ -22,4 +22,7 @@ designing or writing copy.
   When the user names an ID (e.g. "edit LP-002"), find the page with that grep. Fixed IDs: APP-001 deadline
   timers app (`lab/apps/deadlines/`), APP-002 its demo funnel, BR-001 design system, BR-002 website UI kit,
   BR-003 service page template (all under `lab/brand/`), plus the lab dashboard at `lab/admin/`.
+- Give every new page in `lab/` the Google Analytics tag (`G-JVTDYG6V1B`): run
+  `.github/scripts/add-ga-tag.sh <page.html>`, which puts it just before `</head>`. Older pages only
+  have it where the user asked (LP-001, LP-006, LP-007, LP-008); don't add it to the rest unless asked.
 - This repo is public: anything committed is visible on GitHub even before it is published.

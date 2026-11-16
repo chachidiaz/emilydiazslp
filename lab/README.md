@@ -32,6 +32,8 @@ is served at `/docs/intake-guide/`.
    `<meta name="lab-id" content="LP-004">` and `<meta name="lab-published" content="2026-11-02">` (`LP-` landing pages,
    `DOC-` docs, `ART-` artifacts; next unused number). The dashboard shows it, and it's how you point Claude at a page.
 4. Add a link to it in `lab/index.html`. (The dashboard at `/admin/` finds new pages on its own.)
+5. Add the Google Analytics tag (`G-JVTDYG6V1B`):
+   `.github/scripts/add-ga-tag.sh lab/landing-pages/fall-workshop/index.html`.
 
 ## Publishing
 
