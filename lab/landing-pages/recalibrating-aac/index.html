@@ -91,6 +91,36 @@ a{color:#F9B5A0}a:hover{color:#CC816A}
 .armed .grp.late.seen > div:nth-of-type(2){animation-delay:.5s}
 .armed .grp.late.seen > div:nth-of-type(3){animation-delay:.9s}}
 </style>
+<style>
+/* ---- Black Friday countdown bar (same bar as LP-006; ends Nov 20, 2026 11:59 pm CT) ---- */
+@font-face{font-family:"BF Tommy";src:url(/landing-pages/black-friday-2026/assets/fonts/MADE_Tommy_Soft_Regular.otf) format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"BF Tommy";src:url(/landing-pages/black-friday-2026/assets/fonts/MADE_Tommy_Soft_Bold.otf) format("opentype");font-weight:700;font-display:swap}
+@font-face{font-family:"BF Tommy";src:url(/landing-pages/black-friday-2026/assets/fonts/MADE_Tommy_Soft_Black.otf) format("opentype");font-weight:900;font-display:swap}
+.bf-bar{position:sticky;top:0;z-index:100;background:#743E5A;font-family:"BF Tommy",system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 8px 24px -12px rgba(20,16,20,.55)}
+.bf-bar__in{max-width:1240px;margin:0 auto;padding:14px 24px;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 24px}
+.bf-bar__live{display:contents}
+.bf-bar__label{font-size:15px;line-height:20px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#FFFFFF}
+.bf-bar__timer{display:flex;align-items:center;gap:8px}
+.bf-bar__unit{display:flex;align-items:baseline;gap:4px;padding:8px 12px;border-radius:8px;background:#141014}
+.bf-bar__num{font-size:24px;line-height:1;font-weight:900;color:#FFFFFF;font-variant-numeric:tabular-nums}
+.bf-bar__unit--s .bf-bar__num{color:#FFF2B1}
+.bf-bar__u{font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#CDBFC7}
+.bf-bar__info{font-size:15px;line-height:20px;font-weight:400;color:#F6D9E7}
+.bf-bar__code{font-weight:700;color:#FFF2B1}
+.bf-bar__ended{display:none;font-size:15px;line-height:20px;font-weight:700;color:#FFFFFF}
+@media (max-width: 640px){
+.bf-bar__in{padding:10px 16px;gap:8px 12px}
+.bf-bar__label{flex-basis:100%;text-align:center;font-size:13px;line-height:16px}
+.bf-bar__timer{gap:6px}
+.bf-bar__unit{padding:6px 8px}
+.bf-bar__num{font-size:20px}
+.bf-bar__u{font-size:11px}
+.bf-bar__when{display:none}
+.bf-bar__info{font-size:13px}
+}
+@media (max-width: 400px){.bf-bar__in{padding:10px 8px}.bf-bar__timer{gap:4px}.bf-bar__unit{padding:6px 6px;gap:2px}}
+html{scroll-padding-top:96px}
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVTDYG6V1B"></script>
 <script>
@@ -101,6 +131,23 @@ a{color:#F9B5A0}a:hover{color:#CC816A}
 </script>
 </head>
 <body>
+<!-- BLACK FRIDAY COUNTDOWN BAR (sticky) -->
+<div class="bf-bar" data-bfcd="bar" data-ended="hide">
+<div class="bf-bar__in">
+<div class="bf-bar__live" data-bfcd="live">
+<span class="bf-bar__label">Black Friday sale ends in</span>
+<div class="bf-bar__timer" role="timer" aria-label="Time left in the sale" data-bfcd="timer">
+<div class="bf-bar__unit"><span class="bf-bar__num" data-bfcd="days">00</span><span class="bf-bar__u">d</span></div>
+<div class="bf-bar__unit"><span class="bf-bar__num" data-bfcd="hours">00</span><span class="bf-bar__u">h</span></div>
+<div class="bf-bar__unit"><span class="bf-bar__num" data-bfcd="mins">00</span><span class="bf-bar__u">m</span></div>
+<div class="bf-bar__unit bf-bar__unit--s"><span class="bf-bar__num" data-bfcd="secs">00</span><span class="bf-bar__u">s</span></div>
+</div>
+<span class="bf-bar__info"><span class="bf-bar__when">Nov 20 · 11:59 pm CT · </span>Code <span class="bf-bar__code">BEFORE20</span></span>
+</div>
+<span class="bf-bar__ended" data-bfcd="ended">The Black Friday sale has ended. Thanks for shopping!</span>
+</div>
+</div>
+
 <div class="page motion" style="width: 100%; min-width: 0; background: #FFFDF8; font-family: Poppins, sans-serif; color: #4B4B4B; overflow-x: hidden">
 
 <!-- Header -->
@@ -430,6 +477,34 @@ a{color:#F9B5A0}a:hover{color:#CC816A}
     io2.observe(take);
   }
   root.classList.add('armed'); // hidden-until-seen styles only apply once JS is running
+})();
+</script>
+<script>
+// Black Friday countdown bar. When the sale ends the bar shows its ended message,
+// or hides itself if it has data-ended="hide".
+(function () {
+  var SALE_END = Date.parse('2026-11-20T23:59:59-06:00'); // Nov 20, 2026 11:59:59 pm CT (CST, UTC-6)
+  function $(k) { return document.querySelector('[data-bfcd="' + k + '"]'); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  var bar = $('bar'); if (!bar) return;
+  var timer;
+  function tick() {
+    var left = Math.max(0, SALE_END - Date.now());
+    var d = Math.floor(left / 86400000), h = Math.floor(left / 3600000) % 24,
+        m = Math.floor(left / 60000) % 60, s = Math.floor(left / 1000) % 60;
+    $('days').textContent = pad(d); $('hours').textContent = pad(h);
+    $('mins').textContent = pad(m); $('secs').textContent = pad(s);
+    $('timer').setAttribute('aria-label', d + ' days, ' + h + ' hours and ' + m + ' minutes left in the sale');
+    if (left <= 0) {
+      clearInterval(timer);
+      if (bar.getAttribute('data-ended') === 'hide') { bar.style.display = 'none'; }
+      else { $('live').style.display = 'none'; $('ended').style.display = 'inline'; }
+      document.documentElement.classList.add('bf-sale-ended');
+      window.dispatchEvent(new Event('resize'));
+    }
+  }
+  tick();
+  timer = setInterval(tick, 1000);
 })();
 </script>
 </body>
