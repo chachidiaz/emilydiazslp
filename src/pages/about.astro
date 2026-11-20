@@ -28,11 +28,7 @@ const logosRow2 = [
       <h2 class="story-title">I believe it can work<br />for you too.</h2>
       <div class="divider" aria-hidden="true"><span></span></div>
       <p class="story-text">
-        I’m an AAC Specialist, but I have a confession to make. I started working in this field like most SLPs do — with absolutely no education or training on complex communication needs or assistive technology. In 2015, I took over a caseload of students I had no clue how to treat. I constantly questioned my evaluations, my IEP goals, my interventions, and my knowledge about AAC. I wasn’t “learning on the job” either.
-        <b>I was failing.</b>
-        From grant writing, to lending libraries, to workshops and everything in between I somehow managed to take control of my caseload and fall in love with AAC.
-        I know from experience how it feels to know nothing about devices, have zero staff buy-in, and no time to train teachers and paraprofessionals. I also know that it’s possible to change and stop letting AAC scare you and stress you out.
-        <br /><span class="story-highlight">I share about what’s worked for me because I believe it can work for you, too.</span>
+        I’m an AAC Specialist, but I have a confession to make. I started working in this field like most SLPs do — with absolutely no education or training on complex communication needs or assistive technology. In 2015, I took over a caseload of students I had no clue how to treat. I constantly questioned my evaluations, my IEP goals, my interventions, and my knowledge about AAC. I wasn’t “learning on the job” either.{" "}<b>I was failing.</b>{" "}From grant writing, to lending libraries, to workshops and everything in between I somehow managed to take control of my caseload and fall in love with AAC. I know from experience how it feels to know nothing about devices, have zero staff buy-in, and no time to train teachers and paraprofessionals. I also know that it’s possible to change and stop letting AAC scare you and stress you out.{" "}<br /><span class="story-highlight">I share about what’s worked for me because I believe it can work for you, too.</span>
       </p>
     </div>
   </section>
@@ -186,7 +182,7 @@ const logosRow2 = [
     display: flex;
     align-items: center;
     gap: 20px;
-    padding: 0 10px;
+    padding: 10px;
   }
   .logo-row-1 { justify-content: space-evenly; }
   .logo-row-2 { justify-content: center; }
@@ -200,19 +196,19 @@ const logosRow2 = [
   .bio-inner {
     max-width: 1140px;
     margin: min(6vw, 68.4px) auto 0;
-    padding: 0 10px;
+    padding: 10px;
     display: flex;
     gap: 20px;
   }
-  .bio-photo { flex: 541 1 0; padding: 0 10px; min-width: 0; }
+  .bio-photo { flex: 0 0 calc((100% - 20px) * 541 / 1100); padding: 10px; min-width: 0; }
   .bio-photo img { display: block; width: 100%; }
   .bio-copy {
-    flex: 559 1 0;
+    flex: 1 1 0;
     min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 5px 0 0 56px;
+    padding: 15px 0 10px 56px;
     color: #fff;
   }
   .bio-title {
@@ -245,6 +241,7 @@ const logosRow2 = [
     line-height: 18px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    text-align: center;
     color: #fff;
   }
   .bio-btn svg { width: 18px; height: 18px; flex: none; fill: #fff; }

@@ -1,0 +1,221 @@
+---
+// "aac courses + guides". Rebuilt from the WordPress page "Courses" (/courses-2).
+// The old page's own stylesheet is no longer published, so the copy, images, links
+// and section order are the original's; the styling follows the rest of the site.
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const arrow = `<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>`;
+
+const products = [
+  {
+    kind: "PDF Download",
+    title: "The AAC Handbook",
+    body: "The AAC Handbook is a must-have digital resource full of simple handouts about a full range of AAC topics that do the explaining for you.",
+    image: "/images/handbook-scaled.webp",
+    width: 1629,
+    height: 1920,
+    href: "https://emilydiazslp.com/handbook-always",
+  },
+  {
+    kind: "Workshop",
+    title: "When AAC Isn't Working",
+    body: "Stop the cycle of AAC abandonment. This new protocol that identifies the system leaks and sparks a RESET that leads to successful AAC implementation.",
+    image: "/images/ipad-big.webp",
+    width: 1296,
+    height: 1110,
+    href: "https://emilydiazslp.com/when-aac-isnt-working-fast-action-discount",
+  },
+  {
+    kind: "Workshop",
+    title: "Introduction to AAC for GLP",
+    body: "A 2 hour training for parents and professionals to expand their knowledge about AAC best practices and how to support GLPs!",
+    image: "/images/emily-purple-blouse.webp",
+    width: 839,
+    height: 812,
+    href: "https://emilydiazslp.com/glp-workshop-evergreen",
+  },
+];
+---
+
+<BaseLayout title="Courses" description="AAC courses, workshops and guides from Emily Diaz, SLP: The AAC Assessment Hub, The AAC Handbook, When AAC Isn't Working and Introduction to AAC for GLP.">
+  <section class="hero">
+    <h1 class="headline">
+      The fast track to <span class="highlight">aac confidence<svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true"><path d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"/></svg></span> starts here.
+    </h1>
+  </section>
+
+  <section class="hub">
+    <div class="hub-inner">
+      <div class="hub-copy">
+        <p class="kind">Signature Course</p>
+        <h2 class="title">The AAC Assessment Hub</h2>
+        <p class="body">The AAC Assessment Hub provides a <strong>step-by-step process for conducting assessments</strong> from start to finish, along with data sheets, downloads, and more.</p>
+        <a class="learn" href="http://emilydiazslp.com/hub"><span>Learn More</span><span class="learn-icon" set:html={arrow} /></a>
+      </div>
+      <div class="hub-photo">
+        <img src="/images/emily-no-bg.webp" alt="Emily Diaz smiling" width="757" height="1133" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="products-inner">
+      {products.map((p) => (
+        <article class="card">
+          <div class="card-copy">
+            <p class="kind">{p.kind}</p>
+            <h2 class="title">{p.title}</h2>
+            <p class="body">{p.body}</p>
+          </div>
+          <div class="card-media">
+            <img src={p.image} alt="" width={p.width} height={p.height} loading="lazy" />
+            <a class="learn" href={p.href} aria-label={`Learn more about ${p.title}`}><span>Learn More</span><span class="learn-icon" set:html={arrow} /></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero: script headline with the old site's animated underline on "aac confidence" */
+  .hero {
+    padding: 90px 20px 70px;
+    background-image: linear-gradient(126deg, #FFF2F7 0%, #FFFCFD 100%);
+    text-align: center;
+  }
+  .headline {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 78px;
+    font-weight: 300;
+    line-height: 1.05;
+    color: #743E5A;
+  }
+  .highlight { position: relative; display: inline-block; color: #C45B8F; }
+  .highlight svg {
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    transform: translateX(-50%);
+    overflow: visible;
+    pointer-events: none;
+  }
+  .highlight path {
+    fill: none;
+    stroke: #F9B5A0;
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .highlight path { animation: draw 1.2s ease-out .3s both; }
+    @keyframes draw { from { stroke-dashoffset: 1500; } to { stroke-dashoffset: 0; } }
+  }
+
+  /* Shared text styles for every course */
+  .kind {
+    margin: 0 0 10px;
+    font-family: "Orange and Lemons Script", sans-serif;
+    font-size: 40px;
+    line-height: 1;
+    color: #C45B8F;
+  }
+  .title {
+    margin: 0 0 18px;
+    font-family: Poppins, sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+  }
+  .body {
+    margin: 0 0 30px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #54595F;
+  }
+  .learn {
+    display: inline-flex;
+    align-items: center;
+    padding: 20px 28px 21px 33px;
+    background: #C45B8F;
+    border-radius: 10px;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #fff;
+    transition: background-color .3s;
+  }
+  .learn:hover, .learn:focus-visible { background: #EA82B6; color: #fff; }
+  .learn-icon { display: inline-flex; margin-left: 27px; }
+  .learn-icon :global(svg) { width: 24px; height: 24px; fill: #fff; }
+
+  /* Signature course: copy left, cut-out photo right, on a plum band */
+  .hub { background: #743E5A; padding: 0 20px; }
+  .hub-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+  }
+  .hub-copy { flex: 1 1 55%; padding: 80px 10px; align-self: center; }
+  .hub .kind { color: #F9B5A0; }
+  .hub .title { color: #fff; font-size: 52px; }
+  .hub .body { color: #fff; font-size: 18px; max-width: 520px; }
+  .hub-photo { flex: 1 1 45%; display: flex; justify-content: center; padding-top: 40px; }
+  .hub-photo img { width: 100%; max-width: 400px; display: block; }
+
+  /* The other three: cards with copy on top and the product image + button below */
+  .products { padding: 90px 20px; background: #fff; }
+  .products-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 30px 34px;
+    background-image: linear-gradient(180deg, #FFF3F7 0%, #FFFDFE 100%);
+    border-radius: 14px;
+  }
+  .card .title { font-size: 30px; }
+  .card .body { font-size: 15px; }
+  .card-media { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .card-media img { width: 100%; height: 260px; object-fit: contain; display: block; }
+
+  @media (max-width: 1024px) {
+    .headline { font-size: 60px; }
+    .products-inner { grid-template-columns: 1fr; max-width: 640px; }
+    .card-media img { height: 300px; }
+  }
+  @media (max-width: 767px) {
+    .hero { padding: 50px 20px 46px; }
+    .headline { font-size: 44px; }
+    .highlight svg { bottom: -8px; }
+    .kind { font-size: 34px; }
+    .hub-inner { flex-direction: column; align-items: stretch; gap: 0; }
+    .hub-copy { padding: 50px 0 10px; text-align: center; }
+    .hub .title { font-size: 36px; }
+    .hub .body { font-size: 16px; margin-left: auto; margin-right: auto; }
+    .hub-photo img { max-width: 280px; }
+    .products { padding: 50px 20px; }
+    .card { padding: 32px 22px 28px; text-align: center; }
+    .card .title { font-size: 26px; }
+    .card-media img { height: 220px; }
+  }
+</style>
