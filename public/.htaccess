@@ -1,0 +1,18 @@
+# emilydiazslp.com (static Astro build). Replaces the old WordPress .htaccess.
+Options -Indexes
+DirectoryIndex index.html
+
+# Old WordPress address of the courses page
+Redirect 301 /courses-2 /courses/
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

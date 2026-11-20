@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Page not found">
+  <section class="nf">
+    <p class="eyebrow">Oops!</p>
+    <h1>page not found</h1>
+    <p>The page you're looking for isn't here. Try one of these instead:</p>
+    <p class="links">
+      <a href="/">home</a> · <a href="/about/">about me</a> · <a href="/aac-services/">aac services</a> ·
+      <a href="/courses/">aac courses + guides</a> · <a href="/contact/">contact me</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf {
+    padding: 100px 20px 120px;
+    text-align: center;
+    background-image: linear-gradient(180deg, #FFF3F7 0%, #FFFDFE 100%);
+    font-family: Poppins, sans-serif;
+    color: #54595F;
+  }
+  .eyebrow { font-weight: 700; font-size: 24px; color: #DA8DB5; margin: 0 0 10px; }
+  h1 { font-family: "Orange and Lemons Caps", sans-serif; font-size: 72px; color: #743E5A; margin-bottom: 24px; }
+  .links a { color: #C45B8F; }
+</style>

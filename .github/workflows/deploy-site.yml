@@ -1,0 +1,56 @@
+# Builds the Astro site (src/) and uploads it to emilydiazslp.com (Hostinger) over FTP.
+#
+# Manual only for now: GitHub → Actions → "Deploy site" → Run workflow.
+# It replaces what visitors see at emilydiazslp.com, so read README.md
+# ("Moving off WordPress") before the first run.
+#
+# Needs the same FTP secrets as the lab deploy (FTP_SERVER, FTP_USERNAME,
+# FTP_PASSWORD) plus SITE_FTP_SERVER_DIR: the folder on the server that
+# emilydiazslp.com serves (for example `public_html/`, or a fresh folder
+# you point the domain at in hPanel).
+name: Deploy site
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Normalize FTP settings
+        id: ftp
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          SITE_FTP_SERVER_DIR: ${{ secrets.SITE_FTP_SERVER_DIR }}
+        run: |
+          if [ -z "$SITE_FTP_SERVER_DIR" ]; then
+            echo "::error::Add the SITE_FTP_SERVER_DIR repository secret first (see README.md)."
+            exit 1
+          fi
+          host=$(printf '%s' "$FTP_SERVER" | tr -d '[:space:]' | sed -E 's#^[a-z]+://##; s#/.*$##')
+          dir=$(printf '%s' "$SITE_FTP_SERVER_DIR" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')
+          echo "host=$host" >> "$GITHUB_OUTPUT"
+          echo "dir=${dir%/}/" >> "$GITHUB_OUTPUT"
+
+      - name: Upload dist/ over FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ steps.ftp.outputs.host }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ steps.ftp.outputs.dir }}

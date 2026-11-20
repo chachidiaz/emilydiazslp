@@ -1,15 +1,93 @@
 ---
 import { site } from "../data/site";
-
-const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <p>&copy; {year} {site.title}</p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a class="footer-logo" href="/">
+        <img src="/images/Asset-4-1.png" alt="Emily Diaz, SLP" width="107" height="56" loading="lazy" />
+      </a>
+      <div class="footer-links">
+        <a href={site.social.instagram} aria-label="Instagram"><img src="/images/instagram.png" alt="" width="25" height="25" loading="lazy" /></a>
+        <a href={site.social.facebook} aria-label="Facebook"><img src="/images/facebook.png" alt="" width="25" height="25" loading="lazy" /></a>
+        <a href={site.social.youtube} aria-label="YouTube"><img src="/images/youtube.png" alt="" width="25" height="25" loading="lazy" /></a>
+        <span class="sep" aria-hidden="true">|</span>
+        <a href="https://courses.emilydiazslp.com/login" aria-label="Student login"><img src="/images/login.png" alt="" width="25" height="25" loading="lazy" /></a>
+        <a class="student-login" href={site.studentLogin}>Student Login</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">© 2024&nbsp; Emily Diaz, SLP | All rights Reserved.</p>
+      <p class="legal">
+        <a href="https://emilydiazslp.com/privacy-policy">Privacy Policy</a> |
+        <a href="https://emilydiazslp.com/terms">Terms of Use</a> |
+        <a href="https://emilydiazslp.com/website-disclaimer">Website Disclaimer</a>
+      </p>
+    </div>
+  </div>
 </footer>
 
 <style>
   .site-footer {
-    padding: 1rem 2rem;
+    position: relative;
+    padding: 30px 0;
+    background: #182433;
+    box-shadow: 0 -4px 21px -5px rgba(0, 0, 0, .5);
+  }
+  .footer-inner { max-width: 1140px; margin: 0 auto; padding: 10px; }
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
+    padding-bottom: 33.59px;
+    border-bottom: 1px solid #C7C7C7;
+  }
+  .footer-logo, .footer-links { flex: 1 1 0; display: flex; align-items: center; padding: 10px; }
+  .footer-logo img { width: 107px; }
+  .footer-links { justify-content: flex-end; gap: 20px; }
+  .footer-links img { width: 25px; height: 25px; display: block; }
+  .sep, .student-login {
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    color: #fff;
+  }
+  .sep { font-weight: 300; letter-spacing: -0.5px; }
+  .student-login { font-weight: 700; }
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+  }
+  .copyright {
+    margin: 0 0 6px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 13px;
+    color: #fff;
+    text-align: right;
+  }
+  .legal {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 11px;
+    font-weight: 200;
+    line-height: 16.5px;
+    color: #fff;
+  }
+  .legal a { color: #F9B5A0; font-weight: 700; }
+
+  @media (max-width: 767px) {
+    .site-footer { padding: 25px 20px; }
+    .footer-top { padding-bottom: 9.89px; }
+    .footer-logo, .footer-links { flex: 1 1 100%; }
+    .footer-logo img { width: 62px; }
+    .footer-links { flex-wrap: wrap; row-gap: 15px; }
+    .copyright { text-align: center; line-height: 19px; }
   }
 </style>

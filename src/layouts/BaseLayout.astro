@@ -10,17 +10,36 @@ interface Props {
 }
 
 const { title, description = site.description } = Astro.props;
+const fullTitle = title ? `${title} - ${site.title}` : site.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title ? `${title} | ${site.title}` : site.title}</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <link rel="icon" href="/images/emily-maroon-logo.webp" />
+    <!-- Brandon Grotesque (Adobe Fonts kit used by the old site) -->
+    <link rel="stylesheet" href="https://use.typekit.net/jzs1mxt.css" />
+    <!-- Google tag (same tag ID the WordPress site used) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-TWQZ763"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GT-TWQZ763');
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <Header />
     <main id="main">
       <slot />

@@ -1,0 +1,215 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Each service block: image side, copy and button. Order and copy match the old site.
+const services = [
+  {
+    title: "AAC Evaluations",
+    text: "Augmentative & Alternative Communication (AAC) can be a game changer in finding your child’s voice. This process starts with a 60-minute evaluation to explore different AAC options in a play-based environment and gather important information from the caregiver. The trial phase comes next where we will trial a few options over the span of 4-6 weeks before helping you navigate the funding process.",
+    button: "Book a free consult",
+    href: "https://emilydiazslp.com/evals",
+    image: "/images/shopping.png",
+    imageFirst: true,
+    variant: "first",
+  },
+  {
+    title: "Speech & Language Therapy",
+    text: "Our therapy services are individualized to meet your unique needs in the areas AAC, Gestalt Language Processing, and Social Communication. Session duration & frequency as well as goals are determined based on your unique plan of care. We provide services in-home and virtually in Arizona, Texas, and Indiana.",
+    button: "request more info",
+    href: "https://emilydiazslp.com/therapy-2",
+    image: "/images/heart.png",
+    imageFirst: false,
+    variant: "tint",
+  },
+  {
+    title: "School Contracts & Consulting",
+    text: "We contract with schools across the United States to provide training and support communication needs in the classroom setting. Our contracted services range from virtual trainings to in-person therapy & evaluations. We also provide support to families navigating the Individualized Educational Evaluation (IEE) process.",
+    button: "Request my Pricing and Info Guide",
+    href: "https://emilydiazslp.com/schoolcontracts",
+    image: "/images/school-bag.png",
+    imageFirst: true,
+    variant: "white",
+  },
+  {
+    title: "Professional Development & Speaking Engagements",
+    text: "Our live courses focus on equipping SLPs and related professions to confidently support individuals who use AAC and to learn more about gestalt language processing. We help SLPs learn how to implement evidence-based interventions and provide real-life tips and engaging, hands-on demonstrations.",
+    button: "click to Learn more",
+    href: "https://emilydiazslp.com/speaking-2",
+    image: "/images/speech.png",
+    imageFirst: false,
+    variant: "tint",
+    imageCenter: true,
+  },
+  {
+    title: "1:1 Coaching & Consultations",
+    text: "We offer next-level support for professionals and parents looking for individualized guidance with AAC. Choose from a 12-week coaching program or one-off consultation depending on your personal needs.",
+    button: "book a free consult",
+    href: "https://emilydiazslp.com/coaching",
+    image: "/images/job-interview.png",
+    imageFirst: true,
+    variant: "white",
+  },
+];
+---
+
+<BaseLayout title="AAC Services">
+  <section class="hero">
+    <div class="hero-inner">
+      <h2 class="eyebrow">How can I help?</h2>
+      <h1 class="hero-title">AAC Services</h1>
+    </div>
+  </section>
+
+  <div class="banner">
+    <h2>Let's tackle aac together</h2>
+  </div>
+
+  {services.map((s) => {
+    const image = (
+      <div class:list={["col", "col-image", { "image-pad": s.variant === "first", "image-center": s.imageCenter || s.variant === "first", "image-narrow": s.imageFirst && s.variant !== "first" }]}>
+        <img src={s.image} alt="" width="368" height="368" loading="lazy" />
+      </div>
+    );
+    return (
+      <section class:list={["service", `service--${s.variant}`]}>
+        <div class="row">
+          {s.imageFirst && image}
+          <div class="col col-text">
+            <h2 class="service-title">{s.title}</h2>
+            <div class="service-text"><p>{s.text}</p></div>
+            <div class="btn-wrap"><a class="service-btn" href={s.href}>{s.button}</a></div>
+          </div>
+          {!s.imageFirst && image}
+        </div>
+      </section>
+    );
+  })}
+</BaseLayout>
+
+<style>
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 0 115.19px;
+    background-image: linear-gradient(180deg, #FFF3F7 0%, #FFFDFE 100%);
+  }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: Poppins, sans-serif;
+    font-size: 33px;
+    font-weight: 800;
+    line-height: 33px;
+    letter-spacing: 0.3px;
+    color: #E192B9;
+  }
+  .hero-title {
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 200px;
+    font-weight: 400;
+    line-height: 120px;
+    letter-spacing: -1px;
+    color: #591C39;
+  }
+
+  .banner {
+    position: relative;
+    z-index: 1;
+    width: 52%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14.39px 57.59px;
+    background: #C45B8F;
+    border: 3px solid #fff;
+    transform: translateY(-49px) rotate(-1deg);
+  }
+  .banner h2 {
+    padding: 0 0 11px;
+    font-family: "Orange and Lemons Script", sans-serif;
+    font-size: 115px;
+    font-weight: 300;
+    line-height: 115px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .service { display: flex; flex-direction: column; padding: 59px 3% 61px 14%; }
+  .service--first { padding: 29px 0 71px; margin-top: -7px; background: #fff; }
+  .service--white { background: #fff; }
+  .service--tint { background: #FFF7FA; }
+  .row { display: flex; width: 100%; max-width: 1084px; margin: 0 auto; }
+  .col { display: flex; padding: 10px; min-width: 0; }
+  .col-text { flex: 0 0 542px; flex-direction: column; justify-content: center; gap: 20px; }
+  .col-image { flex: 0 0 542px; justify-content: flex-start; align-items: flex-start; }
+  .col-image.image-narrow { flex-basis: 498px; }
+  .col-image.image-center { justify-content: center; align-items: center; }
+  .col-image.image-pad { padding: 0 54.14px 0 0; }
+  .col-image img { width: 368px; height: auto; display: block; }
+
+  .service-title {
+    font-family: Poppins, sans-serif;
+    font-size: 33px;
+    font-weight: 800;
+    line-height: 33px;
+    letter-spacing: -0.5px;
+    color: #E192B9;
+  }
+  .service-text p {
+    margin: 0 0 14.4px;
+    font-family: Poppins, sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 28.5px;
+    color: #6F6F6F;
+  }
+  .service-btn {
+    display: inline-block;
+    padding: 26.06px;
+    background: #C45B8F;
+    border-radius: 3px;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: lowercase;
+    color: #fff;
+    transition: background-color .3s;
+  }
+  .service-btn:hover, .service-btn:focus-visible { background: #E064A2; color: #fff; }
+
+  @media (max-width: 1024px) {
+    .service { padding-left: 4%; padding-right: 4%; }
+    .col-text, .col-image, .col-image.image-narrow { flex: 1 1 50%; }
+    .col-image img { width: 100%; max-width: 368px; }
+    .hero-title { font-size: 156px; line-height: 93.6px; }
+    .banner { width: 80%; }
+    .banner h2 { font-size: 80px; line-height: 80px; white-space: normal; }
+  }
+
+  @media (max-width: 767px) {
+    .hero { padding: 19.5px 0 31.19px; }
+    .hero-inner { width: 100%; }
+    .hero-title { font-size: 156px; line-height: 93.6px; }
+    .banner { width: 100%; padding: 3.89px 15.59px; }
+    .banner h2 { font-size: 54px; line-height: 54px; padding-bottom: 5px; white-space: normal; }
+    .service, .service--first { padding: 20px 23.39px; }
+    .service--first { margin-top: 0; }
+    .row { flex-direction: column; }
+    .col-text, .col-image, .col-image.image-narrow { flex: none; width: 100%; }
+    .col-image.image-pad { padding: 0 0 0 0; }
+    .col-image img { width: 100%; max-width: none; }
+    .btn-wrap { text-align: center; }
+    .service-btn { padding: 16.16px; }
+  }
+</style>

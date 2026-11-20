@@ -1,0 +1,113 @@
+---
+// Promo bar with a live countdown, shown above the header.
+// Edit the text, link and end time in src/data/site.ts (saleBar).
+// It is left out of the build once the end time has passed, and hides itself
+// in the browser the moment the countdown reaches zero.
+import { site } from "../data/site";
+
+const bar = site.saleBar;
+const end = bar ? Date.parse(bar.endsAt) : 0;
+const show = bar && end > Date.now();
+---
+
+{show && (
+  <div class="sale-bar" data-end={end}>
+    <div class="sale-col sale-image">
+      <img src={bar.image} alt={bar.imageAlt} width="443" height="71" />
+    </div>
+    <div class="sale-col sale-countdown" aria-label="Time left in the sale">
+      <div class="cd-item"><span class="cd-digits" data-unit="days">00</span><span class="cd-label">Days</span></div>
+      <div class="cd-item"><span class="cd-digits" data-unit="hours">00</span><span class="cd-label">Hours</span></div>
+      <div class="cd-item"><span class="cd-digits" data-unit="minutes">00</span><span class="cd-label">Minutes</span></div>
+      <div class="cd-item"><span class="cd-digits" data-unit="seconds">00</span><span class="cd-label">Seconds</span></div>
+    </div>
+    <div class="sale-col sale-copy">
+      <p class="sale-text">{bar.message}</p>
+      <a class="sale-text sale-link" href={bar.href}>{bar.linkLabel}</a>
+    </div>
+  </div>
+)}
+
+<script>
+  const bar = document.querySelector<HTMLElement>(".sale-bar");
+  if (bar) {
+    const end = Number(bar.dataset.end);
+    const pad = (n: number) => String(n).padStart(2, "0");
+    const tick = () => {
+      const left = end - Date.now();
+      if (left <= 0) { bar.remove(); return; }
+      const s = Math.floor(left / 1000);
+      const parts: Record<string, number> = {
+        days: Math.floor(s / 86400),
+        hours: Math.floor((s % 86400) / 3600),
+        minutes: Math.floor((s % 3600) / 60),
+        seconds: s % 60,
+      };
+      bar.querySelectorAll<HTMLElement>("[data-unit]").forEach((el) => {
+        el.textContent = pad(parts[el.dataset.unit!]);
+      });
+      setTimeout(tick, 1000);
+    };
+    tick();
+  }
+</script>
+
+<style>
+  .sale-bar {
+    display: flex;
+    gap: 20px;
+    padding: 11px 42px 0 38px;
+    background-image: linear-gradient(162deg, #F9EFAA 0%, #FCABF1 100%);
+  }
+  .sale-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    min-width: 0;
+  }
+  .sale-image { flex: 544 1 0; align-items: flex-start; justify-content: flex-start; }
+  .sale-countdown { flex: 402 1 0; }
+  .sale-copy { flex: 374 1 0; }
+  .sale-image img { width: 443px; }
+  .sale-countdown { flex-direction: row; justify-content: center; gap: 0; }
+  .cd-item {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 26px;
+    margin: 0 4.5px;
+    background: #743E5A;
+    border-radius: 7px;
+    color: #fff;
+    font-family: "Tommy Soft", sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+  }
+  .cd-item:first-child { margin-left: 0; }
+  .cd-item:last-child { margin-right: 0; }
+  .cd-digits { font-size: 34px; }
+  .cd-label { font-size: 12px; margin-top: 4px; }
+  .sale-text {
+    margin: 0;
+    font-family: "Tommy Soft", sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #363636;
+  }
+  .sale-link { text-decoration: underline; }
+
+  @media (max-width: 767px) {
+    .sale-bar { flex-direction: column; gap: 20px; }
+    .sale-col { flex: none; }
+    .sale-image img { width: 245px; }
+    .cd-item { padding: 26px 0; }
+  }
+</style>

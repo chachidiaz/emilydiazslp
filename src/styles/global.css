@@ -1,9 +1,77 @@
-/* Site-wide base styles. Header and footer styles live in their own components. */
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
+/*
+  Site-wide base styles. Values are copied from the old WordPress/Elementor site
+  (Hello theme reset + the Elementor "kit") so the pages look the same.
+  Header and footer styles live in their own components.
+*/
+@import "./fonts.css";
+
+:root {
+  --plum: #743E5A;
+  --plum-nav: #743E59;
+  --plum-dark: #591C39;
+  --rose: #C45B8F;
+  --rose-light: #EA82B6;
+  --pink-text: #DA8DB5;
+  --blush-bg: #FFF3F7;
+  --blush-bg-end: #FFFDFE;
+  --peach: #F9B5A0;
+  --navy: #182433;
+  --body-grey: #54595F;
+  --content-width: 1140px;
 }
 
-main {
-  padding: 2rem;
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: inherit; line-height: 1; }
+p { margin: 0 0 .9rem; }
+p:last-child { margin-bottom: 0; }
+img { max-width: 100%; height: auto; border: none; vertical-align: middle; }
+a { color: var(--peach); font-weight: 700; text-decoration: none; }
+strong, b { font-weight: 700; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 1000;
+  background: #fff; color: var(--plum); padding: 12px 20px; font-family: Poppins, sans-serif;
+}
+.skip-link:focus { left: 12px; top: 12px; }
+
+/* Boxed inner width used by most sections (Elementor default: 1140px). */
+.boxed { width: 100%; max-width: var(--content-width); margin: 0 auto; }
+
+/* Shared button: the rose rectangle used across the site. */
+.btn {
+  display: inline-block;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  color: #fff;
+  background: var(--rose);
+  border-radius: 3px;
+  transition: background-color .3s, color .3s;
+}
+.btn:hover, .btn:focus-visible { color: #fff; }
+
+/* Fade-in used on the old site for some sections. */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in { animation: fadeIn 1.25s both; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+}
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
 }

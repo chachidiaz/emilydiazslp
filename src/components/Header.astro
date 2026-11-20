@@ -1,37 +1,296 @@
 ---
 import { site } from "../data/site";
+import { icons } from "./icons/Icons";
+import SaleBar from "./SaleBar.astro";
 
-const currentPath = Astro.url.pathname;
+const path = Astro.url.pathname.replace(/\/?$/, "/");
+const isActive = (href: string) => href.startsWith("/") && path === href;
 ---
 
+<SaleBar />
+
+<div class="utility-bar">
+  <a class="u-icon" href={site.social.facebook} aria-label="Facebook" set:html={icons.facebook} />
+  <a class="u-icon" href={site.social.instagram} aria-label="Instagram" set:html={icons.instagram} />
+  <a class="u-icon" href={site.social.youtube} aria-label="YouTube" set:html={icons.youtube} />
+  <span class="u-sep" aria-hidden="true">|</span>
+  <a class="u-icon" href={site.memberLogin} aria-label="Member login" set:html={icons.userCircle} />
+  <a class="u-login" href={site.memberLogin}>member login</a>
+</div>
+
+<!-- Desktop header -->
 <header class="site-header">
-  <a class="brand" href="/">{site.title}</a>
-  <nav aria-label="Main">
-    <ul>
-      {site.nav.map((item) => (
-        <li>
-          <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
+  <a class="logo" href="/">
+    <img src="/images/emily-maroon-logo.webp" alt="Emily Diaz, SLP" width="149" height="84" />
+  </a>
+  <div class="nav-card">
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        {site.nav.map((item) => (
+          <li class={item.children ? "has-sub" : undefined}>
+            <a
+              href={item.href}
+              class:list={["nav-link", { active: isActive(item.href) && !item.children }]}
+              aria-current={isActive(item.href) && !item.children ? "page" : undefined}
+              aria-haspopup={item.children ? "true" : undefined}
+            >
+              {item.label}
+              {item.children && <span class="caret" set:html={icons.caretDown} />}
+            </a>
+            {item.children && (
+              <ul class="sub-menu">
+                {item.children.map((child) => (
+                  <li><a href={child.href} aria-current={isActive(child.href) ? "page" : undefined}>{child.label}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="cta-wrap">
+      <a class="cta" href={site.freeResources}>
+        <span>Free AAC Resources</span>
+        <span class="cta-icon" set:html={icons.arrowRight} />
+      </a>
+    </div>
+  </div>
 </header>
 
+<!-- Mobile header -->
+<header class="mobile-header">
+  <a class="logo" href="/">
+    <img src="/images/emily-maroon-logo.webp" alt="Emily Diaz, SLP" width="90" height="51" />
+  </a>
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" set:html={icons.menu} />
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="menu-close" type="button" aria-label="Close menu" set:html={icons.close} />
+    <nav aria-label="Mobile">
+      {site.mobileNav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+  </div>
+</div>
+
+<script>
+  const menu = document.getElementById("mobile-menu")!;
+  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle")!;
+  const close = menu.querySelector<HTMLButtonElement>(".menu-close")!;
+  const setOpen = (open: boolean) => {
+    menu.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    (open ? close : toggle).focus();
+  };
+  toggle.addEventListener("click", () => setOpen(true));
+  close.addEventListener("click", () => setOpen(false));
+  menu.addEventListener("click", (e) => { if (e.target === menu) setOpen(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) setOpen(false); });
+</script>
+
 <style>
-  .site-header {
+  /* Plum utility bar: social icons + member login */
+  .utility-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 1rem 2rem;
+    gap: 20px;
+    padding: 7.19px 72px;
+    background: #743E5A;
+    min-height: 65px;
+  }
+  .u-icon { display: inline-flex; width: 25px; height: 25px; color: #fff; }
+  .u-icon :global(svg) { width: 25px; height: 25px; fill: currentColor; }
+  .u-sep { font-family: Karla, sans-serif; font-size: 24px; line-height: 36px; color: #fff; }
+  .u-login {
+    position: relative;
+    top: -3px;
+    font-family: Poppins, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 24px;
+    color: #fff;
+    text-decoration: underline;
   }
 
-  ul {
+  /* Desktop header */
+  .site-header {
     display: flex;
-    gap: 1.5rem;
-    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 80px;
+    padding: 14.39px 57.59px;
+    background-image: linear-gradient(150deg, #FFF3F7 33%, #FFFDFE 100%);
+  }
+  .site-header .logo { display: block; padding: 10px; flex: 0 0 auto; }
+  .site-header .logo img { width: 149px; display: block; }
+  .nav-card {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    background: #fff;
+    border-radius: 14px 8px 8px;
+  }
+  .main-nav { display: flex; align-items: flex-end; align-self: center; padding: 10px; }
+  .main-nav > ul { display: flex; list-style: none; margin: 0; padding: 0; }
+  .main-nav li { position: relative; display: flex; }
+  .nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 13px 11px;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.6px;
+    color: #743E59;
+    white-space: nowrap;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 3px;
+    background: #C45B8F;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .nav-link:hover, .nav-link:focus-visible, .nav-link.active { color: #C45B8F; }
+  .nav-link:hover::after, .nav-link.active::after { opacity: 1; }
+  .caret { display: inline-flex; width: 18px; height: 18px; margin-left: 11px; }
+  .caret :global(svg) { width: 11px; height: 18px; fill: currentColor; margin: auto; }
+  .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 50;
+    min-width: 12em;
     margin: 0;
     padding: 0;
+    list-style: none;
+    background: #743E5A;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s, visibility .2s;
+  }
+  .has-sub:hover .sub-menu, .has-sub:focus-within .sub-menu { visibility: visible; opacity: 1; }
+  .sub-menu li:not(:last-child) { border-bottom: 1px solid #fff; }
+  .sub-menu a {
+    display: flex;
+    padding: 13px 20px;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .sub-menu a:hover, .sub-menu a:focus-visible { background: #AE4F80; }
+  .cta-wrap { display: flex; justify-content: flex-end; padding: 10px 10px 10px 21px; }
+  .cta {
+    display: flex;
+    align-items: center;
+    padding: 20px 28px 21px 33px;
+    background: #C45B8F;
+    border-radius: 10px;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #fff;
+    white-space: nowrap;
+    transition: background-color .3s;
+  }
+  .cta:hover, .cta:focus-visible { background: #EA82B6; color: #fff; }
+  .cta-icon { display: inline-flex; margin-left: 27px; }
+  .cta-icon :global(svg) { width: 30px; height: 30px; fill: #fff; }
+
+  /* Mobile header */
+  .mobile-header {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    background: #FFF3F7;
+  }
+  .mobile-header .logo { padding: 20px 20px; }
+  .mobile-header .logo img { width: 90px; display: block; }
+  .menu-toggle {
+    display: inline-flex;
+    width: 39px;
+    height: 39px;
+    margin: 20px 20px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #000;
+    cursor: pointer;
+  }
+  .menu-toggle :global(svg) { width: 39px; height: 39px; fill: currentColor; }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .8);
+  }
+  .mobile-menu[hidden] { display: none; }
+  .mobile-menu-panel {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 12% 0 10%;
+    background: #FFF3F7;
+    box-shadow: 2px 8px 23px 3px rgba(0, 0, 0, .2);
+    animation: menuFade 1.2s both;
+  }
+  @keyframes menuFade { from { opacity: 0; } to { opacity: 1; } }
+  .mobile-menu-panel nav { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .mobile-menu-panel nav a {
+    padding-bottom: 5%;
+    font-family: Poppins, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: lowercase;
+    color: #C45B8F;
+  }
+  .menu-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #51719A;
+    cursor: pointer;
+  }
+  .menu-close :global(svg) { width: 30px; height: 48px; fill: currentColor; }
+
+  @media (max-width: 1024px) {
+    .site-header { padding: 14px 24px; }
+    .nav-link { font-size: 16px; padding: 13px 8px; }
+    .cta { padding: 16px 20px; font-size: 16px; }
+    .cta-icon { margin-left: 14px; }
+    .cta-icon :global(svg) { width: 22px; height: 22px; }
+  }
+  @media (max-width: 767px) {
+    .utility-bar { padding: 7.8px 19.5px; }
+    .site-header { display: none; }
+    .mobile-header { display: flex; }
   }
 </style>
