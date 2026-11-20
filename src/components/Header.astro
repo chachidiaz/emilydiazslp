@@ -281,16 +281,20 @@ const isActive = (href: string) => href.startsWith("/") && path === href;
   }
   .menu-close :global(svg) { width: 30px; height: 48px; fill: currentColor; }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1180px) {
     .site-header { padding: 14px 24px; }
+    .site-header .logo img { width: 120px; }
     .nav-link { font-size: 16px; padding: 13px 8px; }
     .cta { padding: 16px 20px; font-size: 16px; }
     .cta-icon { margin-left: 14px; }
     .cta-icon :global(svg) { width: 22px; height: 22px; }
   }
-  @media (max-width: 767px) {
-    .utility-bar { padding: 7.8px 19.5px; }
+  /* Tablets and phones use the compact header with the full-screen menu. */
+  @media (max-width: 1024px) {
     .site-header { display: none; }
     .mobile-header { display: flex; }
+  }
+  @media (max-width: 767px) {
+    .utility-bar { padding: 7.8px 19.5px; }
   }
 </style>

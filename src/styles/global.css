@@ -75,3 +75,6 @@ strong, b { font-weight: 700; }
   position: absolute !important; width: 1px; height: 1px; overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
 }
+
+/* Tilted banners and full-bleed shapes must never cause sideways scrolling. */
+main { overflow-x: clip; }
