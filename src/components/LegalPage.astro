@@ -1,0 +1,70 @@
+---
+// Layout shared by the Privacy Policy, Terms of Use and Website Disclaimer pages.
+// Styles match the old WordPress pages (Playfair Display title, Karla body text).
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/playfair.css";
+
+interface Props {
+  title: string;
+  /** The old site used an h2 for the Website Disclaimer title. */
+  headingTag?: "h1" | "h2";
+}
+
+const { title, headingTag = "h1" } = Astro.props;
+const Heading = headingTag;
+---
+
+<BaseLayout title={title}>
+  <section class="legal">
+    <div class="legal-inner">
+      <Heading class:list={["legal-title", `legal-title--${headingTag}`]}>{title}</Heading>
+      <div class="legal-text">
+        <slot />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal { margin: 6% 0; }
+  .legal-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .legal-title {
+    margin: 0;
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 300;
+    color: #591C39;
+    line-height: 1;
+  }
+  .legal-title--h1 { font-size: 74px; }
+  .legal-title--h2 { font-size: 49px; letter-spacing: -0.5px; }
+
+  .legal-text {
+    font-family: Karla, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #7A7A7A;
+  }
+  .legal-text :global(p) { margin: 0 0 14.4px; }
+  /* First paragraph sat inside an h1 on the old site, which gave it taller lines. */
+  .legal-text :global(p.intro) { margin: 8px 0 16px; line-height: 48px; }
+  .legal-text :global(.center) { text-align: center; }
+  .legal-text :global(h2) {
+    margin: 8px 0 16px;
+    font-family: "Playfair Display", sans-serif;
+    font-size: 49px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: #000;
+  }
+  .legal-text :global(strong) { font-weight: 700; }
+  .legal-text :global(a) { color: #F9B5A0; font-weight: 700; }
+</style>
