@@ -47,6 +47,19 @@ jobs:
           echo "dir=${dir%/}/new-site/" >> "$GITHUB_OUTPUT"
 
       - name: Upload preview over FTP
+        id: upload
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ steps.ftp.outputs.host }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ steps.ftp.outputs.dir }}
+
+      # Hostinger's FTP sometimes drops the connection; try once more.
+      - name: Retry upload
+        if: steps.upload.outcome == 'failure'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ steps.ftp.outputs.host }}
