@@ -63,7 +63,12 @@ npm run preview   # preview the built site
 These pages are a hand-built copy of the old WordPress/Elementor site (same copy,
 images, fonts and colors), with no WordPress or Elementor left in them.
 
-`.github/workflows/deploy-site.yml` builds the site and uploads `dist/` over FTP.
+**Preview:** every push to `main` that changes the site uploads a copy to
+https://lab.emilydiazslp.com/new-site/ (`.github/workflows/deploy-site-preview.yml`,
+using the lab's FTP login). That copy is hidden from search engines and doesn't send
+Google Analytics data. `scripts/rebase-dist.mjs` moves the build's links under `/new-site/`.
+
+**Going live:** `.github/workflows/deploy-site.yml` builds the site and uploads `dist/` over FTP.
 It only runs when started by hand (GitHub → Actions → **Deploy site** → Run workflow),
 because the first run replaces the live site. Before running it:
 

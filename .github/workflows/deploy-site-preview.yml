@@ -1,0 +1,56 @@
+# Uploads a preview copy of the new website to lab.emilydiazslp.com/new-site/
+# on every push to main that changes the site. The real domain is not touched;
+# that's "Deploy site" (deploy-site.yml), which only runs when started by hand.
+# Uses the lab's FTP secrets; the copy goes in a new-site/ folder inside the lab folder.
+name: Deploy site preview
+
+on:
+  push:
+    branches: [main]
+    paths: ["src/**", "public/**", "scripts/**", "astro.config.mjs", "package*.json", ".github/workflows/deploy-site-preview.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-site-preview
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build under /new-site/
+        env:
+          PUBLIC_PREVIEW: "1"
+          SITE_BASE: /new-site/
+        run: |
+          npm run build
+          node scripts/rebase-dist.mjs
+
+      - name: Normalize FTP settings
+        id: ftp
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+        run: |
+          host=$(printf '%s' "$FTP_SERVER" | tr -d '[:space:]' | sed -E 's#^[a-z]+://##; s#/.*$##')
+          dir=$(printf '%s' "$FTP_SERVER_DIR" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')
+          echo "host=$host" >> "$GITHUB_OUTPUT"
+          echo "dir=${dir%/}/new-site/" >> "$GITHUB_OUTPUT"
+
+      - name: Upload preview over FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ steps.ftp.outputs.host }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ steps.ftp.outputs.dir }}

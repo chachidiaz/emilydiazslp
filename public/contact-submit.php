@@ -70,9 +70,11 @@ $simple  = SIMPLE_FORMS[$formKey] ?? null;
 
 function back(string $status): void {
     global $inquiry, $simple;
-    $to = $inquiry ? $inquiry['page'] . '?' . $status . '=1#inquiry-form'
+    // The folder this script lives in ("" at the domain root, "/new-site" in the preview copy).
+    $base = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
+    $to = $base . ($inquiry ? $inquiry['page'] . '?' . $status . '=1#inquiry-form'
         : ($simple ? $simple['page'] . '?' . $status . '=1#' . $simple['anchor']
-                   : '/contact/?' . $status . '=1#general-contact-form');
+                   : '/contact/?' . $status . '=1#general-contact-form'));
     header('Location: ' . $to, true, 303);
     exit;
 }

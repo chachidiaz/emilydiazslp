@@ -12,6 +12,8 @@ interface Props {
 const { title, description = site.description } = Astro.props;
 const fullTitle = title ? `${title} - ${site.title}` : site.title;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// Preview copy (lab.emilydiazslp.com/new-site/): keep it out of search results and analytics.
+const isPreview = import.meta.env.PUBLIC_PREVIEW === "1";
 ---
 
 <!doctype html>
@@ -29,14 +31,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" href="/images/emily-maroon-logo.webp" />
     <!-- Brandon Grotesque (Adobe Fonts kit used by the old site) -->
     <link rel="stylesheet" href="https://use.typekit.net/jzs1mxt.css" />
+    {isPreview && <meta name="robots" content="noindex, nofollow" />}
     <!-- Google tag (same tag ID the WordPress site used) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-TWQZ763"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GT-TWQZ763');
-    </script>
+    {!isPreview && (
+      <Fragment>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=GT-TWQZ763"></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'GT-TWQZ763');
+        </script>
+      </Fragment>
+    )}
     <!-- Flodesk (forms and pop-ups), same as the old site -->
     <script is:inline>
       (function(w, d, t, h, s, n) {
