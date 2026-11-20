@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="lab-id" content="LP-011">
+<meta name="lab-published" content="2026-11-20">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intro to AAC for GLP | Workshop – Emily Diaz, SLP. | AAC Speech Therapist</title>
+<meta name="description" content="An Introduction to AAC for Gestalt Language Processors: a 2 hour training for parents and professionals to expand their knowledge about AAC best practices and how to support GLPs.">
+<link rel="icon" href="assets/logo.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla&family=Montserrat:wght@700;900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"OL Caps";src:url("assets/orangesandlemonscaps.woff") format("woff");font-display:swap}
+@font-face{font-family:"OL Script";src:url("assets/oranges-and-lemons-script.woff") format("woff");font-display:swap}
+:root{
+  --peach:#ffa882; --pink:#f68da3; --blush:#ffe4e1; --coral:#ff9a8c; --wine:#591c39;
+  --btn:#5c5b86; --btn-hover:#4a4970; --ink:#616161; --body:#7a7a7a; --salmon:#e77a5f;
+  --caps:"OL Caps", "Poppins", sans-serif; --script:"OL Script", cursive;
+  --sans:"Poppins", sans-serif; --grot:"Montserrat", "Poppins", sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.center{text-align:center}
+.caps{font-family:var(--caps);font-weight:300;letter-spacing:-.5px}
+.script{font-family:var(--script);font-weight:300;letter-spacing:-.5px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:24px;background:var(--btn);color:#fff;text-decoration:none;
+  font:700 32px/1 var(--sans);letter-spacing:3.8px;text-transform:uppercase;padding:45px 112px;border-radius:3px;
+  transition:background-color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
+.btn:hover{background:var(--btn-hover);transform:translateY(-2px);box-shadow:0 12px 28px rgba(40,30,70,.25)}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btn svg{width:28px;height:28px;fill:currentColor;flex:none}
+
+/* lists */
+.list{list-style:none;margin:0;padding:0}
+.list li{display:flex;gap:14px;align-items:flex-start}
+.list svg{flex:none;width:21px;height:21px}
+
+/* 1 hero */
+.hero{background:var(--peach) url("assets/top-bg-image-scaled.jpg") center/cover no-repeat;color:#fff;padding:60px 0 50px;text-align:center}
+.hero__lead{font-size:52px;line-height:56px;font-weight:300}
+.hero__lead b{font-weight:400}
+.hero__mock{width:683px;margin:-40px auto -70px}
+.hero__sub{font-size:38px;line-height:57px;font-weight:300;margin:0 0 28px}
+.hero__sub b{font-weight:700}
+
+/* 2 mistakes */
+.mistakes{padding:44px 0 170px;text-align:center}
+.emoji{font-size:49px;line-height:1.1}
+.mistakes h2.big{color:var(--salmon);font-size:46px;line-height:46px;font-weight:600;letter-spacing:-.5px;max-width:912px;margin:6px auto 30px}
+.x-list{display:inline-block;text-align:center}
+.x-list li{justify-content:center;font:400 22px/33px "Karla",sans-serif;color:#54595f;margin-bottom:14px;gap:10px;align-items:center}
+.x-list svg{fill:#f38383;width:16px;height:16px}
+.mistakes .nope{font:700 25px/25px var(--grot);text-transform:uppercase;letter-spacing:1.2px;color:#ff7a68;margin:22px 0 30px}
+.introducing{font-size:100px;line-height:100px;color:#7a7a7a;transform:rotate(-4deg);margin-bottom:0}
+
+/* 3 product */
+.product{background:var(--peach);color:#fff;text-align:center;padding:0 0 40px;position:relative}
+.product__logo{width:280px;margin:-150px auto 0;position:relative;z-index:2}
+.product h2.title{font-size:100px;line-height:66px;color:#500a0a;max-width:1000px;margin:48px auto 22px}
+.product .tag{font-size:29px;line-height:29px;font-weight:400;max-width:896px;margin:0 auto 70px}
+.product h2.learn{font-size:40px;line-height:40px;font-weight:600;letter-spacing:-.5px;margin-bottom:30px}
+.check-list{max-width:660px;margin:0 auto;text-align:left}
+.check-list li{font-size:26px;line-height:39px;margin-bottom:16px;align-items:center}
+.check-list svg{fill:#be500d}
+.product .bonus{font-size:28px;line-height:28px;font-weight:700;letter-spacing:-.5px;margin:40px 0 40px}
+.product__workbook{width:683px;margin:0 auto -60px;position:relative;z-index:2}
+
+/* 4 transform */
+.transform{background:var(--pink);color:#fff;text-align:center;padding:40px 0 64px}
+.transform .emoji{font-size:71px;line-height:55px;margin:24px 0 18px}
+.transform h2.headline{font-size:84px;line-height:55px;max-width:1140px;margin:0 auto 34px}
+.transform .copy{font-size:29px;line-height:36px;font-weight:300;letter-spacing:-.5px;max-width:1026px;margin:0 auto 20px}
+.transform__img{width:1050px;margin:0 auto}
+.price{font-size:59px;line-height:59px;font-weight:700;letter-spacing:-.5px;max-width:1000px;margin:40px auto 60px}
+
+/* 5 about */
+.about{padding:74px 0 60px}
+.about__grid{display:grid;grid-template-columns:445px 550px;gap:40px;justify-content:center;align-items:start}
+.about__photo{width:445px}
+.about__hi{font-size:29px;line-height:29px;font-weight:300;letter-spacing:-.5px;color:var(--ink);text-align:center;margin-top:8px}
+.about__name{font-size:112px;line-height:112px;color:var(--pink);text-align:center}
+.about__bio p{font-size:19px;line-height:28px;color:var(--body);margin-bottom:18px}
+
+/* 6 featured */
+.featured{padding:40px 0 80px;text-align:center}
+.featured h2{font-size:81px;line-height:81px;color:#ff7155;transform:rotate(-3deg);margin-bottom:50px}
+.logos{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 20px;max-width:880px;margin:0 auto;align-items:center;justify-items:center}
+.logos img{height:auto}
+
+/* 7 wondering */
+.wonder{background:var(--blush);padding:56px 0 70px;text-align:center}
+.wonder .eyebrow{font-size:53px;line-height:40px;color:var(--coral);transform:rotate(-3deg);display:inline-block}
+.wonder h2.q{font-size:53px;line-height:53px;font-weight:700;letter-spacing:-.5px;color:var(--ink)}
+.wonder .emoji{font-size:53px;line-height:53px;margin:22px 0 34px}
+.wonder .lead{font-size:37px;line-height:55px;font-weight:300;color:#5a5a5a;margin-bottom:22px}
+.wonder .lead b{font-weight:400}
+.yes-list,.no-list{max-width:660px;margin:0 auto 40px;text-align:left}
+.yes-list li,.no-list li{font-size:20px;line-height:30px;color:#575757;margin-bottom:14px}
+.yes-list svg,.no-list svg{fill:var(--coral);margin-top:4px}
+
+/* 8 imagine */
+.imagine{background:var(--coral);color:#fff;text-align:center;padding:20px 0 40px}
+.imagine__img{width:903px;margin:0 auto}
+.imagine h2.big{font-size:49px;line-height:49px;font-weight:800;letter-spacing:-.5px;max-width:1140px;margin:40px auto 40px}
+.imagine .copy{font-size:28px;line-height:34px;font-weight:300;max-width:760px;margin:0 auto 46px}
+.imagine h2.script{font-size:82px;line-height:82px;margin-bottom:40px;transform:rotate(-2deg)}
+.imagine .check-list{max-width:660px}
+.imagine .check-list li{font-size:20px;line-height:30px;margin-bottom:14px;align-items:flex-start}
+.imagine .check-list svg{fill:#eb3c24;margin-top:4px}
+.vline{width:2px;height:65px;background:#000;margin:40px auto}
+.imagine h2.cta{font-size:49px;line-height:49px;font-weight:700;letter-spacing:-.5px;margin-bottom:36px}
+
+/* 9 faq */
+.faq{padding:96px 0 74px}
+.faq h2{font:900 40px/40px var(--grot);letter-spacing:1.1px;text-transform:uppercase;color:#5a5a5a;text-align:center;margin-bottom:56px}
+.faq__list{max-width:1120px;margin:0 auto}
+.faq details{background:#f6f6f6;border-bottom:1px solid #d5d8dc}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:22px;font-size:22px;font-weight:600;color:#585858}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .caret{width:8px;height:14px;fill:#585858;flex:none;transition:transform .2s var(--ease)}
+.faq details[open] summary .caret{transform:rotate(90deg)}
+.faq summary:focus-visible{outline:3px solid rgba(92,91,134,.5);outline-offset:-3px}
+.faq .ans{background:#fdfdfd;padding:16px 22px 22px 42px;font-size:19px;line-height:1.6;color:#7a7a7a}
+
+/* 10 closing */
+.closing{background:var(--wine);padding:60px 0 60px;text-align:center}
+.closing img{width:202px;margin:0 auto 22px}
+
+/* 11 footer */
+.footer{background:#1e1e1e;color:#fff;padding:40px 20px 50px}
+.footer__top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer__top img{width:127px}
+.footer__links{font-size:16px;letter-spacing:.6px;line-height:24px}
+.footer__links a{color:#f9b5a0;font-weight:700;text-decoration:none}
+.footer__links a:hover{text-decoration:underline}
+.footer hr{border:0;border-top:1px solid rgba(255,255,255,.35);max-width:996px;margin:28px auto 34px}
+.footer__copy{text-align:center;font-size:16px;line-height:24px;letter-spacing:1.9px;text-transform:uppercase;font-weight:600}
+
+/* reveal */
+.js [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.js [data-reveal].is-visible{opacity:1;transform:none}
+.js [data-reveal-delay="1"]{transition-delay:.1s}
+.js [data-reveal-delay="2"]{transition-delay:.2s}
+.js [data-reveal-delay="3"]{transition-delay:.3s}
+/* keep rotated headings rotated */
+.js .introducing[data-reveal]{transform:translateY(18px) rotate(-4deg)}
+.js .introducing[data-reveal].is-visible{transform:rotate(-4deg)}
+.js .featured h2[data-reveal]{transform:translateY(18px) rotate(-3deg)}
+.js .featured h2[data-reveal].is-visible{transform:rotate(-3deg)}
+.js .imagine h2.script[data-reveal]{transform:translateY(18px) rotate(-2deg)}
+.js .imagine h2.script[data-reveal].is-visible{transform:rotate(-2deg)}
+.js .wonder .eyebrow[data-reveal]{transform:translateY(18px) rotate(-3deg)}
+.js .wonder .eyebrow[data-reveal].is-visible{transform:rotate(-3deg)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
+  .js .introducing[data-reveal]{transform:rotate(-4deg)!important}
+  .js .featured h2[data-reveal],.js .wonder .eyebrow[data-reveal]{transform:rotate(-3deg)!important}
+  .js .imagine h2.script[data-reveal]{transform:rotate(-2deg)!important}
+  .btn{transition:none}
+}
+
+/* tablet */
+@media (max-width:1024px){
+  .hero__lead{font-size:42px;line-height:48px}
+  .hero__sub{font-size:30px;line-height:44px}
+  .btn{font-size:24px;padding:34px 60px}
+  .product h2.title{font-size:72px;line-height:56px}
+  .transform h2.headline{font-size:62px;line-height:48px}
+  .about__grid{grid-template-columns:1fr 1.2fr}
+  .about__photo{width:100%}
+  .about__name{font-size:86px;line-height:90px}
+}
+/* mobile */
+@media (max-width:767px){
+  .wrap{padding:0 20px}
+  .hero{padding:40px 0 40px}
+  .hero__lead{font-size:28px;line-height:34px}
+  .hero__sub{font-size:22px;line-height:32px;margin-bottom:22px}
+  .btn{font-size:17px;letter-spacing:2px;padding:24px 22px;gap:12px;width:100%}
+  .btn svg{width:20px;height:20px}
+  .emoji{font-size:40px}
+  .mistakes h2.big{font-size:28px;line-height:32px}
+  .x-list{text-align:left}
+  .x-list li{font-size:17px;line-height:25px;justify-content:flex-start;align-items:flex-start}
+  .x-list svg{margin-top:5px}
+  .mistakes .nope{font-size:19px;line-height:24px}
+  .introducing{font-size:62px;line-height:66px}
+  .product__logo{width:200px;margin-top:-100px}
+  .mistakes{padding-bottom:120px}
+  .hero__mock{margin:-16px auto -50px}
+  .product h2.title{font-size:46px;line-height:40px;margin-top:30px}
+  .product .tag{font-size:20px;line-height:26px;margin-bottom:44px}
+  .product h2.learn{font-size:28px;line-height:32px}
+  .check-list li{font-size:18px;line-height:27px}
+  .product .bonus{font-size:22px;line-height:28px}
+  .product__workbook{margin-bottom:-40px}
+  .transform .emoji{font-size:52px}
+  .transform h2.headline{font-size:40px;line-height:36px}
+  .transform .copy{font-size:20px;line-height:28px}
+  .price{font-size:34px;line-height:40px;margin:30px auto 34px}
+  .about{padding:50px 0 40px}
+  .about__grid{grid-template-columns:1fr;gap:26px}
+  .about__photo{max-width:445px;margin:0 auto}
+  .about__name{font-size:68px;line-height:72px}
+  .about__bio p{font-size:17px;line-height:27px}
+  .featured h2{font-size:52px;line-height:56px;margin-bottom:34px}
+  .logos{grid-template-columns:repeat(2,1fr);gap:24px 16px}
+  .logos img{max-height:110px;width:auto}
+  .wonder .eyebrow{font-size:38px}
+  .wonder h2.q{font-size:34px;line-height:40px}
+  .wonder .lead{font-size:24px;line-height:34px}
+  .yes-list li,.no-list li{font-size:17px;line-height:26px}
+  .imagine{padding-top:40px}
+  .imagine h2.big{font-size:30px;line-height:36px}
+  .imagine .copy{font-size:20px;line-height:28px}
+  .imagine h2.script{font-size:56px;line-height:60px}
+  .imagine .check-list li{font-size:17px;line-height:26px}
+  .imagine h2.cta{font-size:32px;line-height:38px}
+  .faq{padding:60px 0 50px}
+  .faq h2{font-size:28px;line-height:34px;margin-bottom:34px}
+  .faq summary{font-size:17px;padding:18px 16px}
+  .faq .ans{font-size:16px;padding:12px 16px 18px 36px}
+  .footer__top{flex-direction:column;text-align:center}
+  .footer__links{font-size:14px}
+  .footer__copy{font-size:13px;letter-spacing:1.2px}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JVTDYG6V1B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVTDYG6V1B');
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 512 512"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 352 512"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></symbol>
+  <symbol id="i-xcircle" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></symbol>
+  <symbol id="i-tick" viewBox="0 0 512 512"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></symbol>
+  <symbol id="i-caret" viewBox="0 0 192 512"><path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"/></symbol>
+</svg>
+
+<!-- 1 · Hero -->
+<header class="hero">
+  <div class="wrap">
+    <p class="hero__lead" data-reveal><b>Expand your AAC &amp; GLP knowledge</b> without having to scour the internet or paying for expensive courses.</p>
+    <img class="hero__mock" src="assets/mock-design.webp" width="683" height="683" alt="An Introduction to AAC for Gestalt Language Processors with Emily Diaz, shown on a desktop monitor" data-reveal data-reveal-delay="1">
+    <p class="hero__sub" data-reveal>Spend just 2 hours with me and <b>leave with <i>simple</i> ideas you can implement tomorrow</b>.</p>
+    <div data-reveal><a class="btn" href="https://campus.emilydiazslp.com/checkout/intro-to-aac-for-gestalt-language-processors">I need this training! <svg><use href="#i-tick"/></svg></a></div>
+  </div>
+</header>
+
+<main>
+<!-- 2 · Mistakes -->
+<section class="mistakes">
+  <div class="wrap">
+    <div class="emoji" aria-hidden="true" data-reveal>😥</div>
+    <h2 class="big" data-reveal>I've see some BIG mistakes when it comes to customizing AAC for gestalt language processors</h2>
+    <ul class="list x-list">
+      <li data-reveal><svg aria-hidden="true"><use href="#i-x"/></svg><span>Completely changing the organization or layout of an AAC system</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-x"/></svg><span>Adding whole gestalts without regard for mitigations later on</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-x"/></svg><span>Ignoring or eliminating single words like core and fringe</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-x"/></svg><span>Embracing gestalt language processing without understanding AAC best practices</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-x"/></svg><span>Wondering if this is the best AAC system for your child</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-x"/></svg><span>Writing it off because there is no scientific research to back it up</span></li>
+    </ul>
+    <h2 class="nope" data-reveal>But we don't need to keep making these mistakes!</h2>
+    <h2 class="caps introducing" data-reveal>introducing...</h2>
+  </div>
+</section>
+
+<!-- 3 · Product -->
+<section class="product">
+  <div class="wrap">
+    <img class="product__logo" src="assets/logo.png" width="280" height="423" alt="An Introduction to AAC for Gestalt Language Processors with Emily Diaz" data-reveal>
+    <h2 class="caps title" data-reveal>An Introduction to AAC for<br>Gestalt Language Processors</h2>
+    <p class="tag" data-reveal>a 2 hour training for parents and professionals to expand their knowledge about AAC best practices and how to support GLPs!</p>
+    <h2 class="learn" data-reveal>In this training we'll learn...</h2>
+    <ul class="list check-list">
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>The Stages of Natural Language Acquisition &amp; how to use AAC to support each stage</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>Signs that may hint toward a non-speaker being a gestalt language processor</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>AAC scientific research and best practices for implementation</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>Customizing AAC apps like LAMP Words for Life, TouchChat, Proloquo2Go, and TD Snap</span></li>
+    </ul>
+    <h2 class="bonus" data-reveal>And you'll get instant access to the brand new workbook!</h2>
+    <img class="product__workbook" src="assets/workbook-mock.webp" width="683" height="683" alt="AAC for GLPs Support Toolkit workbook shown on a tablet" loading="lazy" data-reveal>
+  </div>
+</section>
+
+<!-- 4 · Transform -->
+<section class="transform">
+  <div class="wrap">
+    <div class="emoji" aria-hidden="true" data-reveal>🤯</div>
+    <h2 class="caps headline" data-reveal>confidently approach AAC for gestalt language processors without wondering if you're actually doing the "right thing."</h2>
+    <p class="copy" data-reveal>This information will transform the way you support kids at home and in the therapy room. You can feel excited about AAC again while opening a child's world to communication access.</p>
+    <a href="https://resources.emilydiazslp.com/training-intro-to-aac-for-glp/" data-reveal style="display:block"><img class="transform__img" src="assets/slps-love-it.webp" width="1050" height="910" alt="SLPs love it: testimonials around the training shown on a monitor and tablet" loading="lazy"></a>
+    <h2 class="price" data-reveal>Get instant access to the 2 hour training for just $67</h2>
+    <div data-reveal><a class="btn" href="https://campus.emilydiazslp.com/checkout/intro-to-aac-for-gestalt-language-processors">I ready to join <svg><use href="#i-tick"/></svg></a></div>
+  </div>
+</section>
+
+<!-- 5 · About -->
+<section class="about">
+  <div class="wrap about__grid">
+    <img class="about__photo" src="assets/img_6573.webp" width="445" height="667" alt="Emily Diaz, SLP" loading="lazy" data-reveal>
+    <div>
+      <p class="about__hi" data-reveal>A little about...</p>
+      <h2 class="script about__name" data-reveal>Emily Diaz, SLP.</h2>
+      <div class="about__bio" data-reveal>
+        <p>Emily Diaz, M.S. CCC-SLP is a certified speech-language pathologist with a passion for empowering individuals to find their voice. With a focus on neurodiversity affirming care and augmentative &amp; alternative communication (AAC), Emily offers valuable insight and support to clinicians, parents, and school districts.</p>
+        <p>Emily’s expertise extends to topics like managing AAC in the classroom, the importance of staff-buy in and dynamic coaching methods, and the nuances of gestalt language processing and AAC implementation strategies.</p>
+        <p>Having shared her knowledge at conferences and platforms, including Meaningful Speech, Bright Ideas Media, and SpeechPathologyPD.com, Emily stands as a beacon of expertise and innovation in the field of speech-language pathology. Discover the transformative impact of AAC with Emily Diaz, SLP.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Featured -->
+<section class="featured">
+  <div class="wrap">
+    <h2 class="caps" data-reveal>I've been featured at...</h2>
+    <div class="logos">
+      <img src="assets/navybluestar_region13logo-1024x188.png" width="235" height="43" alt="Region 13 Education Service Center" loading="lazy" data-reveal>
+      <img src="assets/talkingaac-logo-fullcolor-small_3.png" width="230" height="173" alt="Talking AAC" loading="lazy" data-reveal data-reveal-delay="1">
+      <img src="assets/reg14logo2010.webp" width="154" height="126" alt="Region 14 Education Service Center" loading="lazy" data-reveal data-reveal-delay="2">
+      <img src="assets/r17_logo_250.png" width="180" height="180" alt="Region 17 Education Service Center" loading="lazy" data-reveal data-reveal-delay="3">
+      <img src="assets/aac-in-the-cloud-1024x1024.jpeg" width="137" height="137" alt="AAC in the Cloud" loading="lazy" data-reveal>
+      <img src="assets/meaningful-speech-1024x576.jpeg" width="237" height="133" alt="Meaningful Speech" loading="lazy" data-reveal data-reveal-delay="1">
+      <img src="assets/briqht-logo-21f5ef1a17e4d9f7b2c1f30876dcb658-1024x657.png" width="170" height="109" alt="Bright Ideas Media" loading="lazy" data-reveal data-reveal-delay="2">
+      <img src="assets/speechtherapypd-logo.webp" width="254" height="44" alt="SpeechTherapyPD.com" loading="lazy" data-reveal data-reveal-delay="3">
+    </div>
+  </div>
+</section>
+
+<!-- 7 · Is this for me -->
+<section class="wonder">
+  <div class="wrap">
+    <h2 class="caps eyebrow" data-reveal>You might be wondering...</h2>
+    <h2 class="q" data-reveal>Is this training even for me?</h2>
+    <div class="emoji" aria-hidden="true" data-reveal>🤔</div>
+    <p class="lead" data-reveal>I think this is a <b>perfect 2 hour training for you</b> if…</p>
+    <ul class="list yes-list">
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>You're an SLP with kids on your caseload who aren't making progress with AAC</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>You're a parent who thinks their child might need AAC and/or might be a GLP</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>You are willing to adapt to learn new things and challenge "the way it's always been done"</span></li>
+    </ul>
+    <p class="lead" data-reveal>This training is <b>NOT</b> for you if…</p>
+    <ul class="list no-list" style="margin-bottom:0">
+      <li data-reveal><svg aria-hidden="true"><use href="#i-xcircle"/></svg><span>You only use one facet of the evidence based practice triad in your practice</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-xcircle"/></svg><span>You want a deep dive that includes topics like assessment, language sampling, etc.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8 · Imagine -->
+<section class="imagine">
+  <div class="wrap">
+    <a href="https://resources.emilydiazslp.com/training-intro-to-aac-for-glp/" data-reveal style="display:block"><img class="imagine__img" src="assets/mock-w-testis.webp" width="903" height="783" alt="Testimonials around the training shown on a monitor and tablet" loading="lazy"></a>
+    <h2 class="big" data-reveal>Don't let another kid join your caseload without knowing how to support AAC for gestalt language processors!</h2>
+    <p class="copy" data-reveal>The best way to help your students and families is to help yourself first. Get the knowledge and information you need to bring the best ideas to the table.</p>
+    <h2 class="script" data-reveal>Let's imagine together...</h2>
+    <ul class="list check-list">
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>Being able to recommend appropriate AAC customizations for GLPs</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>Making progress with your non-speaking or minimally speaking clients</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>Feeling confident when talking about the evidence based practice triad</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span>Becoming the go-to AAC &amp; GLP SLP for your clients and team</span></li>
+    </ul>
+    <div class="vline" aria-hidden="true"></div>
+    <h2 class="cta" data-reveal>Get instant access to the two hour training now</h2>
+    <div data-reveal><a class="btn" href="https://campus.emilydiazslp.com/checkout/intro-to-aac-for-gestalt-language-processors">I want the training <svg><use href="#i-tick"/></svg></a></div>
+  </div>
+</section>
+
+<!-- 9 · FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <h2 data-reveal>Frequently asked questions</h2>
+    <div class="faq__list" data-reveal>
+      <details><summary><svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg>Will this training be recorded for me to watch later?</summary><div class="ans"><p>This training will be recorded, offering you the flexibility to view it at your convenience. Your purchase includes lifetime access to the recorded content and any updates, allowing you to revisit and review the material whenever you choose.</p></div></details>
+      <details><summary><svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg>What is your refund policy?</summary><div class="ans"><p>Due to the digital nature of our training, we are unable to offer refunds. Once access to the digital content has been provided, it cannot be returned.</p></div></details>
+      <details><summary><svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg>Do you offer a CEU/PDH certificate for this training?</summary><div class="ans"><p>This workshop is eligible for 2 ASHA Professional Development Hours (PDHs). A certificate of completion will be provided to participants who successfully finish the workshop.</p></div></details>
+      <details><summary><svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg>Can I enroll my whole team under my purchase?</summary><div class="ans"><p>To ensure the integrity of our training program and provide personalized access, we kindly request that each individual participant be registered separately. We do not support enrolling entire teams under a single registration. This approach allows us to tailor the learning experience for each participant. If you have a group interested in our program, please guide each member to register individually.</p></div></details>
+      <details><summary><svg class="caret" aria-hidden="true"><use href="#i-caret"/></svg>Do you accept purchase orders?</summary><div class="ans"><p>We do not accept purchase orders as a method of payment. However, we encourage you to explore the possibility of reimbursement through your district. Many participants have successfully sought reimbursement for professional development expenses utilizing their certificate of completion and/or a receipt of purchase.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Closing CTA -->
+<section class="closing">
+  <div class="wrap">
+    <img src="assets/logo.png" width="202" height="305" alt="An Introduction to AAC for Gestalt Language Processors" loading="lazy" data-reveal>
+    <div data-reveal><a class="btn" href="https://campus.emilydiazslp.com/checkout/intro-to-aac-for-gestalt-language-processors">Get the training <svg><use href="#i-tick"/></svg></a></div>
+  </div>
+</section>
+</main>
+
+<!-- 11 · Footer -->
+<footer class="footer">
+  <div class="footer__top">
+    <img src="assets/asset-4-1.png" width="127" height="72" alt="Emily Diaz" loading="lazy">
+    <p class="footer__links"><a href="https://emilydiazslp.com/privacy-policy">Privacy Policy</a>&nbsp; &nbsp;|&nbsp; &nbsp;<a href="https://emilydiazslp.com/terms">Terms of Use</a>&nbsp; &nbsp;|&nbsp; &nbsp;<a href="https://emilydiazslp.com/website-disclaimer">Website Disclaimer</a></p>
+  </div>
+  <hr>
+  <p class="footer__copy">© 2024 Emily Diaz, SLP | All Rights Reserved.</p>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('[data-reveal]');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-visible')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-visible');io.unobserve(en.target)}});
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
