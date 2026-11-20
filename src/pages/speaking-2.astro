@@ -108,8 +108,10 @@ const formats = ["In-Person Speaking", "Virtual Speaking"];
   <section class="form-section" id="request-form">
     <div class="form-card">
       <h2 class="form-title">Speaking Request Inquiry Form</h2>
-      <form class="gf" action="/contact-submit.php" method="post" data-compose>
-        <input type="hidden" name="form" value="Speaking Request Inquiry (/speaking-2/)" />
+      <p class="form-status form-status-ok" data-status="sent" hidden>Thank you! Your inquiry was sent. We'll be in touch soon.</p>
+        <p class="form-status form-status-error" data-status="error" hidden>Sorry, something went wrong. Please check the required fields and try again.</p>
+        <form class="gf" action="/contact-submit.php" method="post" data-compose>
+        <input type="hidden" name="form" value="speaking" />
         <input type="hidden" name="topic" value="Speaking Request Inquiry" />
         <input type="hidden" name="message" value="" />
         <div class="hp" aria-hidden="true">
@@ -176,6 +178,8 @@ const formats = ["In-Person Speaking", "Virtual Speaking"];
 </BaseLayout>
 
 <script>
+  const q = new URLSearchParams(location.search);
+  document.querySelectorAll<HTMLElement>("[data-status]").forEach((el) => { el.hidden = !q.has(el.dataset.status!); });
   // "Select All" toggles every checkbox in its group (Gravity Forms behaviour).
   document.querySelectorAll<HTMLButtonElement>(".select-all").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -205,6 +209,9 @@ const formats = ["In-Person Speaking", "Virtual Speaking"];
 </script>
 
 <style>
+  .form-status { margin: 0 0 20px; padding: 14px 18px; border-radius: 6px; font-family: Poppins, sans-serif; font-size: 15px; }
+  .form-status-ok { background: #EAF6EC; color: #23602F; }
+  .form-status-error { background: #FDECEC; color: #9B1C1C; }
   /* Hero */
   .hero {
     display: flex;

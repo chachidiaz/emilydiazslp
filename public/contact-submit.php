@@ -57,13 +57,24 @@ const INQUIRY_FORMS = [
     ],
 ];
 
+// Simpler forms that post first_name, last_name, email, and a `message` the page
+// has already put together (coaching, speaking), or just a name + email
+// (free resources sign-up). `anchor` is where the visitor lands afterwards.
+const SIMPLE_FORMS = [
+    'coaching'       => ['subject' => '1:1 Coaching & Consult Inquiry', 'page' => '/coaching/', 'anchor' => 'inquiry-form'],
+    'speaking'       => ['subject' => 'Speaking Request Inquiry', 'page' => '/speaking-2/', 'anchor' => 'request-form'],
+    'free-resources' => ['subject' => 'Free AAC Resource Library sign-up', 'page' => '/free-resources/', 'anchor' => 'main'],
+];
+
 $formKey = (string)($_POST['form'] ?? '');
 $inquiry = INQUIRY_FORMS[$formKey] ?? null;
+$simple  = SIMPLE_FORMS[$formKey] ?? null;
 
 function back(string $status): void {
-    global $inquiry;
+    global $inquiry, $simple;
     $to = $inquiry ? $inquiry['page'] . '?' . $status . '=1#inquiry-form'
-                   : '/contact/?' . $status . '=1#general-contact-form';
+        : ($simple ? $simple['page'] . '?' . $status . '=1#' . $simple['anchor']
+                   : '/contact/?' . $status . '=1#general-contact-form');
     header('Location: ' . $to, true, 303);
     exit;
 }
@@ -106,6 +117,25 @@ if ($inquiry) {
     $who = trim(($values['parent_first'] ?? $values['name_first'] ?? '') . ' ' . ($values['parent_last'] ?? $values['name_last'] ?? ''));
     $subject = 'Website ' . $inquiry['subject'] . ($who !== '' ? ': ' . $clean($who) : '');
     $body = "New {$inquiry['subject']} from emilydiazslp.com{$inquiry['page']}\n\n" . implode("\n", $lines) . "\n";
+    $headers = [
+        'From: Emily Diaz SLP website <' . CONTACT_FROM . '>',
+        'Reply-To: ' . ($who !== '' ? $clean($who) . ' ' : '') . '<' . $clean($email) . '>',
+        'Content-Type: text/plain; charset=UTF-8',
+    ];
+    $ok = mail(CONTACT_RECIPIENT, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, implode("\r\n", $headers));
+    back($ok ? 'sent' : 'error');
+}
+
+if ($simple) {
+    $first = field('first_name', 100);
+    $last  = field('last_name', 100);
+    $email = field('email', 200);
+    $msg   = field('message', 10000);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) back('error');
+    $who = trim("{$first} {$last}");
+    $subject = 'Website ' . $simple['subject'] . ($who !== '' ? ': ' . $clean($who) : '');
+    $body = "New {$simple['subject']} from emilydiazslp.com{$simple['page']}\n\n"
+          . "Name: {$who}\nEmail: {$email}\n" . ($msg !== '' ? "\n{$msg}\n" : '');
     $headers = [
         'From: Emily Diaz SLP website <' . CONTACT_FROM . '>',
         'Reply-To: ' . ($who !== '' ? $clean($who) . ' ' : '') . '<' . $clean($email) . '>',

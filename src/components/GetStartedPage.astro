@@ -67,7 +67,7 @@ const isSchool = formKey === "school-contracts";
       <img class="gs-how-icon" src={stepsImage} alt={stepsImageAlt} width="197" height="197" />
       <h2 class="gs-how-title">How it works</h2>
       {rows.map((row, r) => (
-        <div class="gs-row">
+        <div class:list={["gs-row", { single: rows.length === 1 }]}>
           {row.map((step, i) => (
             <div class="gs-step">
               <img src={`/images/${stepIcons[r * 2 + i]}`} alt={`Step ${r * 2 + i + 1}`} width="75" height="74" loading="lazy" />
@@ -248,6 +248,7 @@ const isSchool = formKey === "school-contracts";
   }
   .gs-row { display: flex; width: 100%; align-items: flex-start; }
   .gs-row + .gs-row { margin-top: 30px; }
+  .gs-row.single { margin-bottom: 30px; }
   .gs-step {
     flex: 0 0 50%;
     display: flex;
@@ -385,11 +386,11 @@ const isSchool = formKey === "school-contracts";
   .check input { width: 14px; height: 14px; margin: 0; accent-color: #C45B8F; }
   .select-all {
     margin-top: 10px;
-    padding: 8px 10px;
+    padding: 11px 14px;
     border: 1px solid #C45B8F;
     border-radius: 4px;
     background: #fff;
-    font: 400 14px/1 Poppins, sans-serif;
+    font: 400 15px/1 Poppins, sans-serif;
     color: #C45B8F;
     cursor: pointer;
   }
@@ -453,12 +454,14 @@ const isSchool = formKey === "school-contracts";
   /* Phones */
   @media (max-width: 767px) {
     .gs-hero { padding: 6%; }
-    .gs-tagline { margin-bottom: 0; font-size: 34px; line-height: 38px; top: 0; }
-    .gs-title { margin-bottom: 24px; padding-top: 22px; font-size: min(var(--title-size), 17vw); line-height: 0.95; }
+    .gs-hero { gap: 14px; }
+    .gs-tagline { margin-bottom: 0; font-size: 46px; line-height: 48px; }
+    .gs-title { margin-bottom: 10px; padding-top: 0; font-size: min(var(--title-size), 84px); line-height: 0.85; }
     .gs-how-inner { margin-top: 0; padding: 30px 5% 0; }
     .gs-how-icon { width: 150px; }
     .gs-how-title { padding: 0 0 10px; transform: none; font-size: 46px; line-height: 50px; }
     .gs-row { flex-direction: column; gap: 30px; }
+    .gs-row.single { margin-bottom: 0; }
     .gs-step { padding: 0 10px; }
     .gs-step-text.poppins-19, .gs-step-text.poppins-18 { font-size: 16px; line-height: 26px; }
     .gs-step-text.worksans-20 { font-size: 17px; line-height: 27px; }

@@ -37,8 +37,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <!-- Right: inquiry form -->
       <div class="form-card" id="inquiry-form">
         <h2 class="form-title">1:1 Coaching &amp; Consult Inquiry</h2>
+        <p class="form-status form-status-ok" data-status="sent" hidden>Thank you! Your inquiry was sent. We'll be in touch soon.</p>
+        <p class="form-status form-status-error" data-status="error" hidden>Sorry, something went wrong. Please check the required fields and try again.</p>
         <form class="gf" action="/contact-submit.php" method="post" data-compose>
-          <input type="hidden" name="form" value="1:1 Coaching & Consult Inquiry (/coaching/)" />
+          <input type="hidden" name="form" value="coaching" />
           <input type="hidden" name="topic" value="1:1 Coaching & Consult Inquiry" />
           <input type="hidden" name="message" value="" />
           <div class="hp" aria-hidden="true">
@@ -103,6 +105,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <script>
+  const q = new URLSearchParams(location.search);
+  document.querySelectorAll<HTMLElement>("[data-status]").forEach((el) => { el.hidden = !q.has(el.dataset.status!); });
   // The site's mail handler (contact-submit.php) takes name, email, topic and
   // message. Fold this form's extra fields into the message before sending.
   document.querySelectorAll<HTMLFormElement>("form[data-compose]").forEach((form) => {
@@ -122,6 +126,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </script>
 
 <style>
+  .form-status { margin: 0 0 20px; padding: 14px 18px; border-radius: 6px; font-family: Poppins, sans-serif; font-size: 15px; }
+  .form-status-ok { background: #EAF6EC; color: #23602F; }
+  .form-status-error { background: #FDECEC; color: #9B1C1C; }
   .hero {
     display: block;
     padding: 5% 0 13%;
