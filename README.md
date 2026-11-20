@@ -25,7 +25,7 @@ src/
     └── 404.astro               ← "page not found"
 public/                    ← files copied as-is
 ├── images/  fonts/  videos/   ← assets copied from the old WordPress site
-├── contact-submit.php     ← sends the contact form by email (Hostinger runs PHP)
+├── contact-submit.php     ← emails the contact and inquiry forms to hello@emilydiazslp.com (Hostinger runs PHP)
 └── .htaccess              ← redirects and caching
 ```
 
@@ -80,3 +80,7 @@ because the first run replaces the live site. Before running it:
    redirect in `public/.htaccess`. The sales pages now live on lab.emilydiazslp.com.
 5. If the server has other non-WordPress folders (for example `aac-hub/`), keep them when
    clearing out WordPress.
+
+Every page loads the same Flodesk and Deadline Funnel scripts as the old site
+(`src/layouts/BaseLayout.astro`). The free resource library sign-up on `/free-resources/`
+is the Flodesk form that fed the "Resource Library" segment; change its look in Flodesk.

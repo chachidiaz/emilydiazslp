@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 // Recreation of https://emilydiazslp.com/free-resources (Elementor page 3764).
-// The old sign-up form was an Elementor Pro form handled inside WordPress.
-// It now posts to /contact-submit.php with form=free-resources (see that file).
+// The sign-up is the Flodesk form that fed the "Resource Library" segment on the
+// old library pages (form 5e69135eba215b002c9838a4), so new sign-ups keep getting
+// Flodesk's library email. Its look is edited in Flodesk, not here.
 ---
 
 <BaseLayout
@@ -16,34 +17,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="intro">
           <p><b>I’ve put together all of my free resources into one library for easy and life time access.</b> Once I publish a new freebie, it automatically gets added here! You can download however much you need whenever you want. Gain access today!</p>
         </div>
-        <p class="status status-ok" id="freebies-sent" hidden>Thank you! Check your inbox for your link to the library.</p>
-        <p class="status status-error" id="freebies-error" hidden>Something went wrong. Please check your email address and try again.</p>
-        <form class="freebies-form" action="/contact-submit.php" method="post" aria-label="Get the free AAC resource library">
-          <input type="hidden" name="form" value="free-resources" />
-          <div class="hp" aria-hidden="true">
-            <label for="fr-website">Website</label>
-            <input id="fr-website" type="text" name="website" tabindex="-1" autocomplete="off" />
-          </div>
-          <label class="visually-hidden" for="fr-name">First Name</label>
-          <input id="fr-name" class="field" type="text" name="first_name" placeholder="First Name" autocomplete="given-name" />
-          <label class="visually-hidden" for="fr-email">Email</label>
-          <input id="fr-email" class="field" type="email" name="email" placeholder="Email" required autocomplete="email" />
-          <div class="btn-wrap">
-            <button class="submit" type="submit">Get the Freebies</button>
-          </div>
-        </form>
+        <div class="flodesk-form" id="fd-form-5e69135eba215b002c9838a4"></div>
+        <script is:inline>
+          window.fd('form', {
+            formId: '5e69135eba215b002c9838a4',
+            containerEl: '#fd-form-5e69135eba215b002c9838a4'
+          });
+        </script>
       </div>
     </div>
   </section>
 </BaseLayout>
 
-<script>
-  const q = new URLSearchParams(location.search);
-  if (q.has("sent")) document.getElementById("freebies-sent")!.hidden = false;
-  if (q.has("error")) document.getElementById("freebies-error")!.hidden = false;
-</script>
-
 <style>
+  .flodesk-form { max-width: 520px; min-height: 120px; }
   .library {
     position: relative;
     display: flex;

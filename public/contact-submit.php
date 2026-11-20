@@ -11,7 +11,7 @@
 // ---------------------------------------------------------------------------
 // WHO GETS THE MESSAGES — change this to the inbox that should receive them.
 // ---------------------------------------------------------------------------
-const CONTACT_RECIPIENT = 'CHANGE-ME@emilydiazslp.com';
+const CONTACT_RECIPIENT = 'hello@emilydiazslp.com';
 
 // Address the email is sent from. Use an address on this domain so mail
 // isn't marked as spam (Hostinger: create it under Emails, or keep no-reply).
@@ -58,12 +58,10 @@ const INQUIRY_FORMS = [
 ];
 
 // Simpler forms that post first_name, last_name, email, and a `message` the page
-// has already put together (coaching, speaking), or just a name + email
-// (free resources sign-up). `anchor` is where the visitor lands afterwards.
+// has already put together (coaching, speaking). `anchor` is where the visitor lands afterwards.
 const SIMPLE_FORMS = [
     'coaching'       => ['subject' => '1:1 Coaching & Consult Inquiry', 'page' => '/coaching/', 'anchor' => 'inquiry-form'],
     'speaking'       => ['subject' => 'Speaking Request Inquiry', 'page' => '/speaking-2/', 'anchor' => 'request-form'],
-    'free-resources' => ['subject' => 'Free AAC Resource Library sign-up', 'page' => '/free-resources/', 'anchor' => 'main'],
 ];
 
 $formKey = (string)($_POST['form'] ?? '');
