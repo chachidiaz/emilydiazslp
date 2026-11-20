@@ -1,8 +1,11 @@
 <?php
 /*
- * Handles the "General Contact Form" on /contact/.
- * Sends the message by email, then sends the visitor back to /contact/
- * with ?sent=1 (worked) or ?error=1 (missing fields or mail failure).
+ * Handles the website's forms and sends each one by email:
+ *  - the "General Contact Form" on /contact/ (no `form` field), and
+ *  - the inquiry forms listed in INQUIRY_FORMS below (they post a hidden
+ *    `form` field with their key).
+ * Afterwards the visitor goes back to the form's page with ?sent=1 (worked)
+ * or ?error=1 (missing fields or mail failure).
  */
 
 // ---------------------------------------------------------------------------
@@ -14,8 +17,54 @@ const CONTACT_RECIPIENT = 'CHANGE-ME@emilydiazslp.com';
 // isn't marked as spam (Hostinger: create it under Emails, or keep no-reply).
 const CONTACT_FROM = 'no-reply@emilydiazslp.com';
 
+// Inquiry forms on the service pages. `fields` lists every field in the order
+// it appears in the email (POST name => label); `required` must be filled in.
+const INQUIRY_FORMS = [
+    'aac-evaluation' => [
+        'subject'  => 'AAC Evaluation Inquiry',
+        'page'     => '/evals/',
+        'fields'   => [
+            'client_first' => "Client's first name", 'client_last' => "Client's last name",
+            'client_dob' => "Client's DOB",
+            'parent_first' => "Parent/Guardian's first name", 'parent_last' => "Parent/Guardian's last name",
+            'email' => 'Email', 'phone' => 'Phone', 'location' => 'Location',
+            'details' => "What they're looking for",
+        ],
+        'required' => ['client_first', 'client_last', 'client_dob', 'parent_first', 'parent_last', 'email', 'location', 'details'],
+    ],
+    'speech-therapy' => [
+        'subject'  => 'Speech Therapy Inquiry',
+        'page'     => '/therapy-2/',
+        'fields'   => [
+            'client_first' => "Client's first name", 'client_last' => "Client's last name",
+            'client_dob' => "Client's DOB",
+            'parent_first' => "Parent/Guardian's first name", 'parent_last' => "Parent/Guardian's last name",
+            'email' => 'Email', 'phone' => 'Phone', 'location' => 'Location',
+            'details' => "What they're looking for",
+        ],
+        'required' => ['client_first', 'client_last', 'client_dob', 'parent_first', 'parent_last', 'email', 'location', 'details'],
+    ],
+    'school-contracts' => [
+        'subject'  => 'School Contracts Inquiry',
+        'page'     => '/schoolcontracts/',
+        'fields'   => [
+            'name_first' => 'First name', 'name_last' => 'Last name',
+            'email' => 'Email', 'phone' => 'Phone',
+            'district' => 'School district / organization',
+            'interests' => "Would like more information about",
+        ],
+        'required' => ['email'],
+    ],
+];
+
+$formKey = (string)($_POST['form'] ?? '');
+$inquiry = INQUIRY_FORMS[$formKey] ?? null;
+
 function back(string $status): void {
-    header('Location: /contact/?' . $status . '=1#general-contact-form', true, 303);
+    global $inquiry;
+    $to = $inquiry ? $inquiry['page'] . '?' . $status . '=1#inquiry-form'
+                   : '/contact/?' . $status . '=1#general-contact-form';
+    header('Location: ' . $to, true, 303);
     exit;
 }
 
@@ -34,6 +83,38 @@ function field(string $name, int $max = 500): string {
     return mb_substr($v, 0, $max);
 }
 
+// Strip line breaks from anything that ends up in a header.
+$clean = fn(string $s): string => preg_replace('/[\r\n]+/', ' ', $s);
+
+if ($inquiry) {
+    $lines = [];
+    $values = [];
+    foreach ($inquiry['fields'] as $name => $label) {
+        $raw = $_POST[$name] ?? '';
+        $v = is_array($raw)
+            ? implode(', ', array_map(fn($x) => mb_substr(trim((string)$x), 0, 200), $raw))
+            : field($name, $name === 'details' ? 10000 : 300);
+        $values[$name] = $v;
+        $lines[] = $name === 'details' ? "\n{$label}:\n{$v}" : "{$label}: {$v}";
+    }
+    foreach ($inquiry['required'] as $name) {
+        if (($values[$name] ?? '') === '') back('error');
+    }
+    $email = $values['email'] ?? '';
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) back('error');
+
+    $who = trim(($values['parent_first'] ?? $values['name_first'] ?? '') . ' ' . ($values['parent_last'] ?? $values['name_last'] ?? ''));
+    $subject = 'Website ' . $inquiry['subject'] . ($who !== '' ? ': ' . $clean($who) : '');
+    $body = "New {$inquiry['subject']} from emilydiazslp.com{$inquiry['page']}\n\n" . implode("\n", $lines) . "\n";
+    $headers = [
+        'From: Emily Diaz SLP website <' . CONTACT_FROM . '>',
+        'Reply-To: ' . ($who !== '' ? $clean($who) . ' ' : '') . '<' . $clean($email) . '>',
+        'Content-Type: text/plain; charset=UTF-8',
+    ];
+    $ok = mail(CONTACT_RECIPIENT, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, implode("\r\n", $headers));
+    back($ok ? 'sent' : 'error');
+}
+
 $first   = field('first_name', 100);
 $last    = field('last_name', 100);
 $email   = field('email', 200);
@@ -49,9 +130,6 @@ if ($first === '' || $last === '' || $topic === '' || $message === ''
     || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     back('error');
 }
-
-// Strip line breaks from anything that ends up in a header.
-$clean = fn(string $s): string => preg_replace('/[\r\n]+/', ' ', $s);
 
 $subject = 'Website contact form: ' . $clean($topic);
 $body = "New message from the contact form on emilydiazslp.com\n\n"

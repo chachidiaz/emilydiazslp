@@ -1,0 +1,338 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="1:1 Coaching & Mentorship"
+  description="AAC coaching and one-off consultations for parents and professionals, with Emily Diaz, SLP."
+>
+  <!-- Pink band behind the overlapping columns -->
+  <section class="hero" aria-hidden="true"></section>
+
+  <section class="options-wrap">
+    <div class="options-inner">
+      <!-- Left: coaching options -->
+      <div class="options-col">
+        <h1 class="page-title">1:1 Coaching &amp; consults</h1>
+        <h2 class="options-label">Coaching Options</h2>
+
+        <div class="option">
+          <h3 class="option-title">12 Week AAC Coaching Program</h3>
+          <p class="option-price">$750 (3 installments of $250)</p>
+          <div class="option-text">
+            <p>AAC coaching is offered to both parents and professionals who are seeking ongoing support. Whether it’s a specific skill you’d like to learn more about (e.g. AAC assessment, AAC implementation) or you just need some help getting started with AAC, coaching can be a good fit.</p>
+            <p>Over the course of 12-weeks, we will meet biweekly for six sessions completely customized to your personal and/or professional goals. In-between sessions, you have access to private messaging for “in-the-moment” support and guidance. You also get complimentary access to The AAC Handbook and the original Managing AAC in the Classroom workshop recording.</p>
+          </div>
+        </div>
+
+        <div class="option">
+          <h3 class="option-title">One-Off AAC Consultation</h3>
+          <p class="option-price">$127</p>
+          <div class="option-text">
+            <p>A one-off consultation is a better fit if you just want to “pick my brain” or make sure you have all your ducks in a row. These 50 minute sessions fly by quickly! Topics typically range from AAC, gestalt language processing, and private practice start-up.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: inquiry form -->
+      <div class="form-card" id="inquiry-form">
+        <h2 class="form-title">1:1 Coaching &amp; Consult Inquiry</h2>
+        <form class="gf" action="/contact-submit.php" method="post" data-compose>
+          <input type="hidden" name="form" value="1:1 Coaching & Consult Inquiry (/coaching/)" />
+          <input type="hidden" name="topic" value="1:1 Coaching & Consult Inquiry" />
+          <input type="hidden" name="message" value="" />
+          <div class="hp" aria-hidden="true">
+            <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <fieldset class="field">
+            <legend class="field-label">Name</legend>
+            <div class="name-row">
+              <span class="name-part">
+                <input type="text" id="co-first" name="first_name" autocomplete="given-name" required />
+                <label for="co-first" class="sub-label">First</label>
+              </span>
+              <span class="name-part">
+                <input type="text" id="co-last" name="last_name" autocomplete="family-name" required />
+                <label for="co-last" class="sub-label">Last</label>
+              </span>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label class="field-label" for="co-email">Email</label>
+            <input type="email" id="co-email" name="email" autocomplete="email" required />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="co-location">Where are you located? <span class="req">(Required)</span></label>
+            <input type="text" id="co-location" data-part="Location" aria-describedby="co-location-desc" required />
+            <div class="field-desc" id="co-location-desc">City, State, and Country</div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="co-phone">Phone</label>
+            <input type="tel" id="co-phone" data-part="Phone" autocomplete="tel" />
+          </div>
+
+          <fieldset class="field">
+            <legend class="field-label">I'm interested in...</legend>
+            <div class="choices" data-part="Interested in">
+              <label class="choice"><input type="checkbox" value="12-Week AAC Coaching Program" /> 12-Week AAC Coaching Program</label>
+              <label class="choice"><input type="checkbox" value="One-Off Consultation" /> One-Off Consultation</label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <img class="faq-icon" src="/images/qa.png" alt="" width="120" height="120" loading="lazy" />
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-text">
+      <p><strong>1. Are these sessions virtual or in-person?</strong></p>
+      <p>Stand-alone coaching and consultations are conducted virtually.</p>
+      <p><strong>2. Which states and/or countries do you provided these services to?</strong></p>
+      <p>Coaching, consultations, and professional mentorship services can be provided internationally. We’ve supported parents and professionals across the United States, United Arab Emirates, and the United Kingdom.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // The site's mail handler (contact-submit.php) takes name, email, topic and
+  // message. Fold this form's extra fields into the message before sending.
+  document.querySelectorAll<HTMLFormElement>("form[data-compose]").forEach((form) => {
+    form.addEventListener("submit", () => {
+      const lines: string[] = [];
+      form.querySelectorAll<HTMLElement>("[data-part]").forEach((el) => {
+        const name = el.dataset.part!;
+        let value = "";
+        if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) value = el.value.trim();
+        else value = [...el.querySelectorAll<HTMLInputElement>("input:checked")].map((i) => i.value).join(", ");
+        lines.push(`${name}: ${value || "-"}`);
+      });
+      const formName = (form.querySelector<HTMLInputElement>('input[name="form"]')!).value;
+      form.querySelector<HTMLInputElement>('input[name="message"]')!.value = `Form: ${formName}\n\n${lines.join("\n")}`;
+    });
+  });
+</script>
+
+<style>
+  .hero {
+    display: block;
+    padding: 5% 0 13%;
+    min-height: 259px;
+    background-image: linear-gradient(79deg, #FFF3F7 0%, #FFFDFE 100%);
+  }
+
+  .options-wrap { background: #fff; }
+  .options-inner {
+    display: flex;
+    align-items: stretch;
+    max-width: 1248px;
+    margin: 0 auto;
+  }
+
+  /* Left column (pulled up over the pink band, as on the old site) */
+  .options-col {
+    flex: 0 0 594px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 10px;
+    transform: translateY(-219px);
+  }
+  .page-title {
+    margin: 0 0 23px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 109px;
+    font-weight: 400;
+    line-height: .6em;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #743E5A;
+    text-shadow: 3px 2px 0 #fff;
+  }
+  .options-label {
+    margin: 0;
+    padding: 29.2px;
+    background: #C45B8F;
+    transform: translateX(12px);
+    font-family: Poppins, sans-serif;
+    font-size: 37px;
+    font-weight: 900;
+    line-height: 37px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #fff;
+  }
+  .option {
+    width: 87%;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .option-title {
+    font-family: Poppins, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+  }
+  .option-price {
+    margin: 5px 0 20px;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    color: #F9B5A0;
+  }
+  .option-text p { margin: 0 0 14.4px; color: #7A7A7A; font-size: 16px; line-height: 24px; }
+  .option-text { padding-bottom: 10px; }
+
+  /* Right column: the form card */
+  .form-card {
+    flex: 0 0 654px;
+    padding: 63px 62.39px 0;
+    background: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
+    transform: translateY(-244px);
+    margin-bottom: 0;
+  }
+  .form-title {
+    margin: 0 0 20px;
+    font-family: "Orange and Lemon Upright", sans-serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 52px;
+    letter-spacing: -0.5px;
+    color: #3F3F3F;
+  }
+
+  /* Gravity-Forms-style fields: underline inputs */
+  .gf { display: flex; flex-direction: column; gap: 16px; padding-top: 14px; }
+  .gf .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .field { margin: 0 0 3px; padding: 0; border: 0; min-width: 0; }
+  .field-label {
+    display: block;
+    margin: 0 0 8px;
+    padding: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    color: #000;
+  }
+  legend.field-label { line-height: 21px; }
+  .req { font-size: 13px; font-weight: 400; font-style: italic; color: #C02B0A; }
+  .gf input[type="text"], .gf input[type="email"], .gf input[type="tel"], .gf textarea {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 8px;
+    border: 0;
+    border-bottom: 1px solid #908EC7;
+    border-radius: 0;
+    background: #fff;
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #6A6A6A;
+  }
+  .gf input:focus-visible { outline: 2px solid #908EC7; outline-offset: 2px; }
+  .name-row { display: flex; gap: 11px; }
+  .name-part { flex: 1 1 0; min-width: 0; }
+  .sub-label {
+    display: block;
+    padding-top: 5px;
+    font-family: Poppins, sans-serif;
+    font-size: 13px;
+    line-height: 13px;
+    color: #000;
+  }
+  .field-desc { padding-top: 13px; font-family: "Work Sans", sans-serif; font-size: 12px; line-height: 18px; color: #858585; }
+  .choices { display: flex; flex-direction: column; gap: 11px; padding-top: 7px; }
+  .choice {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: Poppins, sans-serif;
+    font-size: 13px;
+    line-height: 13px;
+    color: #000;
+    cursor: pointer;
+  }
+  .choice input { width: 13px; height: 13px; margin: 0; }
+  .submit {
+    width: 199px;
+    margin: 9px 0 0;
+    padding: 10.58px 0;
+    border: 0;
+    border-radius: 3px;
+    background: #FFB98D;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .submit:hover, .submit:focus-visible { background: #F9A577; }
+
+  /* FAQ */
+  .faq {
+    position: relative;
+    margin-top: -86.4px;
+    padding: 0 2% 72px;
+    background: #743E5A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .faq-icon { width: 120px; transform: translateY(-61px); margin-bottom: -50px; }
+  .faq-title {
+    max-width: 873px;
+    font-family: Poppins, sans-serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 52px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #fff;
+  }
+  .faq-text { width: 100%; max-width: 873px; padding: 10px 10px 0; }
+  .faq-text p { margin: 0 0 14.4px; font-family: Poppins, sans-serif; font-size: 20px; line-height: 30px; color: #fff; }
+
+  @media (max-width: 1280px) {
+    .options-inner { padding: 0 20px; }
+    .options-col { flex: 1 1 47%; }
+    .form-card { flex: 1 1 53%; padding: 63px 40px 40px; }
+  }
+  @media (max-width: 1024px) {
+    .page-title { font-size: 80px; }
+    .form-title { font-size: 42px; line-height: 46px; }
+  }
+
+  @media (max-width: 767px) {
+    .hero { min-height: 0; padding: 19.5px 0 30px; }
+    .options-inner { flex-direction: column; padding: 0; }
+    .options-col { flex: none; padding: 0 10px 0 0; transform: none; margin-top: -30px; }
+    .page-title { font-size: 64px; margin-bottom: 12px; }
+    .options-label { margin: 0 5% 0 1%; padding: 17px; font-size: 29px; line-height: 29px; transform: none; }
+    .option { width: 100%; }
+    .form-card { flex: none; margin-top: 31px; padding: 42px 19.5px 40px; transform: none; }
+    .form-title { font-size: 44px; line-height: 48px; }
+    .name-row { flex-direction: column; gap: 16px; }
+    .faq { margin-top: 60px; padding: 0 6% 6%; }
+    .faq-title { font-size: 44px; line-height: 48px; }
+  }
+</style>
