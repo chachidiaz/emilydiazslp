@@ -1,0 +1,32 @@
+---
+import GetStartedPage from "../components/GetStartedPage.astro";
+
+const steps = [
+  {
+    title: "Initial Evaluation",
+    body: "<p>If your child does not have a current evaluation and/or school IEP, we will likely recommend an initial evaluation. This helps identify areas of strength and areas of need before creating an individualized plan of care for therapy.</p><p>*We can begin right away if your child has a current evaluation and/or school IEP.</p>",
+  },
+  {
+    title: "Start Therapy",
+    body: "<p>After the initial evaluation, we’ll schedule out our therapy sessions. Therapy can take place conveniently in your home or virtually!</p>",
+  },
+];
+
+const faq = `<p><b>Do you accept our insurance plan?</b></p><p>While we are currently out-of-network with insurance plans and Medicaid, we offer complimentary Superbills and guidance for submitting to your insurance for reimbursement. This allows us to focus on providing the best and most individualized services possible without having to worry whether or not your insurance plan will cover a specific therapy or cap you at a certain number of sessions.</p><p><b>What type of speech therapy services do you offer?</b></p><p>We currently provide therapy services to support individuals with AAC, gestalt language processing, social communication skills, speech-language delay, and fluency/stuttering.</p><p><b>Where do you provide speech therapy?</b></p><p>We provide in-person and virtual services. Our in-person services are conveniently provided in the comfort of your home and even at your child’s daycare or therapy center. We are licensed to provide virtual services in both Texas and Indiana. In-person services are provided across Central Texas.</p><p><b>Can I observe my child’s therapy sessions?</b></p><p>We always appreciate parent involvement! In fact, parent coaching is a big part of speech therapy in many cases. Parents and siblings are always welcome to participate as communication partners in therapy sessions.</p>`;
+---
+
+<GetStartedPage
+  pageTitle="Speech Therapy | Emily Diaz, SLP"
+  description="Individualized speech therapy for AAC, gestalt language processing, social communication and more, in your home or virtually."
+  title="Speech therapy"
+  stepsImage="/images/timeline.png"
+  steps={steps}
+  stepText="poppins-18"
+  readyText="Fill out the Therapy Inquiry form below to begin the process. Our office will reach out to schedule next steps."
+  formTitle="Speech Therapy Inquiry Form"
+  formKey="speech-therapy"
+  formSize="small"
+  submitWidth={237}
+  faq={faq}
+  mobileFormPad="4%"
+/>

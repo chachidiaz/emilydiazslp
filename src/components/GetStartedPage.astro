@@ -53,7 +53,6 @@ const rows: Step[][] = [];
 for (let i = 0; i < steps.length; i += 2) rows.push(steps.slice(i, i + 2));
 const stepIcons = ["one-circle.png", "two-circle.png", "three-circle.png", "four-circle.png"];
 const isSchool = formKey === "school-contracts";
-const req = <span class="req">(Required)</span>;
 ---
 
 <BaseLayout title={pageTitle} description={description}>
@@ -89,7 +88,7 @@ const req = <span class="req">(Required)</span>;
     </div>
   </section>
 
-  <section class="gs-form-section">
+  <section class="gs-form-section" style={`--pad:${mobileFormPad}`}>
     <div class="gs-card" id="inquiry-form">
       <h2 class="gs-form-title">{formTitle}</h2>
       <p class="gs-msg ok" id="form-sent" hidden>Thank you! Your inquiry has been sent. We'll be in touch soon.</p>
@@ -127,33 +126,33 @@ const req = <span class="req">(Required)</span>;
         ) : (
           <>
             <fieldset class="field">
-              <legend class="label">Client's Name {req}</legend>
+              <legend class="label">Client's Name <span class="req">(Required)</span></legend>
               <div class="split">
                 <label class="sub"><input type="text" name="client_first" required />First</label>
                 <label class="sub"><input type="text" name="client_last" required />Last</label>
               </div>
             </fieldset>
             <label class="field">
-              <span class="label">Client's DOB {req}</span>
+              <span class="label">Client's DOB <span class="req">(Required)</span></span>
               <input type="text" name="client_dob" inputmode="numeric" required />
               <span class="desc">MM/DD/YYYY</span>
             </label>
             <fieldset class="field">
-              <legend class="label">Parent/Guardian's Name {req}</legend>
+              <legend class="label">Parent/Guardian's Name <span class="req">(Required)</span></legend>
               <div class="split">
                 <label class="sub"><input type="text" name="parent_first" autocomplete="given-name" required />First</label>
                 <label class="sub"><input type="text" name="parent_last" autocomplete="family-name" required />Last</label>
               </div>
             </fieldset>
-            <label class="field"><span class="label">Email {req}</span><input type="email" name="email" autocomplete="email" required /></label>
+            <label class="field"><span class="label">Email <span class="req">(Required)</span></span><input type="email" name="email" autocomplete="email" required /></label>
             <label class="field"><span class="label">Phone</span><input type="tel" name="phone" autocomplete="tel" placeholder="(XXX) XXX-XXXX" /></label>
             <label class="field">
-              <span class="label">Where are you located? {req}</span>
+              <span class="label">Where are you located? <span class="req">(Required)</span></span>
               <input type="text" name="location" required />
               <span class="desc">City, State, Country</span>
             </label>
             <label class="field">
-              <span class="label">Please share details about what you're looking for. {req}</span>
+              <span class="label">Please share details about what you're looking for. <span class="req">(Required)</span></span>
               <textarea name="details" rows="10" required></textarea>
             </label>
           </>
@@ -197,24 +196,23 @@ const req = <span class="req">(Required)</span>;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
     padding: 8% 0;
     background-image: linear-gradient(142deg, #FFF3F7 0%, #FFFFFF 100%);
     text-align: center;
   }
   .gs-tagline {
-    margin: 0 0 -2%;
+    margin: 0 0 -8px;
     font-family: Poppins, sans-serif;
     font-size: 43px;
     font-weight: 300;
     line-height: 43px;
     letter-spacing: -0.5px;
     color: #C45B8F;
-    position: relative;
-    top: -4px;
   }
   .gs-title {
-    margin: 0 0 4%;
-    padding-top: 26px;
+    margin: 0 0 26px;
+    padding-top: 0;
     font-family: "Orange and Lemons Caps", sans-serif;
     font-size: var(--title-size);
     font-weight: 400;
@@ -400,7 +398,7 @@ const req = <span class="req">(Required)</span>;
     width: var(--submit-w);
     max-width: 100%;
     margin-top: 30px;
-    padding: 12px 0;
+    padding: 15.7px 0;
     border: 0;
     border-radius: 0;
     background: #FFB98D;

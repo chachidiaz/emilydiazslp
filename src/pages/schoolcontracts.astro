@@ -1,0 +1,35 @@
+---
+import GetStartedPage from "../components/GetStartedPage.astro";
+
+const steps = [
+  {
+    title: "Request more information",
+    body: "<p>This is an easy first step! Fill out the form below to ensure we have availability and resources to meet the needs of your school district.</p>",
+  },
+  {
+    title: "Receive my pricing guide",
+    body: "<p>I’ll send you a copy of my comprehensive pricing guide with all the available options on how I can support the needs of your district.</p>",
+  },
+  {
+    title: "Schedule a call",
+    body: "<p>If everything aligns well, we’ll hop on a call to discuss the details of your district’s policies and procedures for contracting.</p>",
+  },
+  {
+    title: "Formally submit bid to your school district",
+    body: "<p>The final step is ensuring a winning bid and purchase order for services!</p>",
+  },
+];
+---
+
+<GetStartedPage
+  pageTitle="School Contracts | Emily Diaz, SLP"
+  description="Speech and language services, AAC evaluations and consulting for school districts across the United States."
+  title="school contracts"
+  titleSize={148}
+  stepsImage="/images/school-bag.png"
+  steps={steps}
+  stepText="worksans-20"
+  readyText="Fill out the School Contracts Inquiry form below to begin the process."
+  formTitle="School contracts Inquiry Form"
+  formKey="school-contracts"
+/>

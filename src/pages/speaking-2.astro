@@ -1,0 +1,534 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const presentations = [
+  {
+    img: "/images/managing-aac-website-1024x1024.png",
+    title: "Managing AAC in the Classroom: Strategies for Implementation and Buy-in Tips & Tricks",
+    text: "Communication doesn’t just happen during speech therapy! This course will help you consider how to train & support classroom professionals so they feel confident in following through with implementing AAC even when you’re not there. We have rounded up the best tips & tricks for buy-in and evidence-based practices for AAC coaching and implementation for improving AAC outcomes in the classroom.",
+  },
+  {
+    img: "/images/intro-to-aac-for-gestalt-1024x1024.png",
+    title: "Introduction to AAC for Gestalt Language Processors",
+    text: "This course will address what we know (and still don’t know) about everyday clinical practice for our AAC users that are gestalt language processors. It will cover both family and professional experiences while also addressing the research, identifying speaking/nonspeaking GLPs, AAC app feature matching, the theory of programming, and implementation.",
+  },
+  {
+    img: "/images/aac-for-teams-1024x1024.png",
+    title: "AAC for Teams: Built for Paras, Teachers, SLPs, and Other Related Professionals",
+    text: "This course will provide foundational knowledge about AAC that is important for all team members to know. It will cover the basics ranging from what is AAC, different types of AAC, how to use AAC, common misconceptions, best practice for collaboration, AAC in the IEP, assessment and funding options, and more!",
+  },
+  {
+    img: "/images/Intro-to-AAC-Assessment-Funding.png",
+    title: "Introduction to AAC Assessment & Funding",
+    text: "Choosing the right AAC system is only half the battle — securing the funding to get it into a client’s hands is just as important. In this 3-hour workshop, you’ll learn how to confidently complete an AAC assessment from start to finish, make informed device recommendations, and navigate the often-complicated world of funding. We’ll break down the assessment process, feature matching, and essential documentation, while demystifying school, insurance, and private pay funding options. You’ll leave with practical tools, clear steps, and the confidence to guide your clients from evaluation to implementation without unnecessary delays.",
+  },
+];
+
+const logosRow1 = [
+  { src: "/images/NavyBlueStar_Region13Logo-1024x188.png", alt: "Region 13 Education Service Center", w: 280 },
+  { src: "/images/talkingaac-logo-fullcolor-small_3.png", alt: "#TalkingAAC", w: 245 },
+  { src: "/images/reg14logo2010.jpg", alt: "Region 14 Education Service Center", w: 184 },
+  { src: "/images/r17_logo_250.png", alt: "Region 17 Education Service Center", w: 192 },
+];
+const logosRow2 = [
+  { src: "/images/aac-in-the-cloud-1024x1024.jpeg", alt: "AAC in the Cloud", w: 160 },
+  { src: "/images/meaningful-speech-1024x576.jpeg", alt: "Meaningful Speech", w: 247 },
+  { src: "/images/BRIQHT-Logo-21f5ef1a17e4d9f7b2c1f30876dcb658-1024x657.png", alt: "Bright Ideas Media", w: 198 },
+  { src: "/images/speechtherapypd-logo.png", alt: "SpeechTherapyPD.com", w: 296 },
+];
+
+const topics = ["Managing AAC in the Classroom", "Introduction to AAC for GLP", "AAC for Teams", "Intro to AAC Assessment & Funding", "Other Not Listed"];
+const formats = ["In-Person Speaking", "Virtual Speaking"];
+---
+
+<BaseLayout
+  title="Speaking & Professional Development"
+  description="Book Emily Diaz, SLP to speak: AAC presentations for schools, districts and conferences."
+>
+  <section class="hero">
+    <p class="hero-eyebrow">Let's get started with</p>
+    <h1 class="hero-title">Speaking &amp; professional Development</h1>
+  </section>
+
+  <section class="presentations">
+    <img class="speech-icon" src="/images/speech.png" alt="" width="166" height="166" />
+    <div class="pres-inner">
+      <h2 class="pres-heading">Available Presentations</h2>
+      {presentations.map((p) => (
+        <article class="pres-row">
+          <div class="pres-img"><img src={p.img} alt="" width="492" height="492" loading="lazy" /></div>
+          <div class="pres-copy">
+            <h3 class="pres-title">{p.title}</h3>
+            <p class="pres-hours">3 HOURS</p>
+            <p class="pres-text">{p.text}</p>
+          </div>
+        </article>
+      ))}
+      <div class="featured-title-wrap">
+        <h2 class="featured-title">I've been featured at...</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="logo-row logo-row-1">
+      {logosRow1.map((l) => <img src={l.src} alt={l.alt} style={`--w:${l.w}px`} loading="lazy" />)}
+    </div>
+    <div class="logo-row logo-row-2">
+      {logosRow2.map((l) => <img src={l.src} alt={l.alt} style={`--w:${l.w}px`} loading="lazy" />)}
+    </div>
+    <div class="divider" aria-hidden="true"><span></span></div>
+    <h2 class="ready-title">Ready to get started?</h2>
+    <p class="ready-text">Fill out the <a href="#request-form">Speaking Request Inquiry form</a> below to begin the process.</p>
+    <a class="circle-btn" href="#request-form" aria-label="Go to the Speaking Request Inquiry form">
+      <img src="/images/circle-button.png" alt="" width="108" height="108" />
+    </a>
+  </section>
+
+  <section class="about-emily">
+    <div class="about-inner">
+      <div class="about-img">
+        <img src="/images/emily-edited.png" alt="Emily Diaz laughing" width="521" height="762" loading="lazy" />
+      </div>
+      <div class="about-copy">
+        <h2 class="about-title">About Emily</h2>
+        <div class="about-text">
+          <p>Emily Diaz, M.S. CCC-SLP is a certified speech-language pathologist with a passion for empowering individuals to find their voice. With a focus on neurodiversity affirming care and augmentative &amp; alternative communication (AAC), Emily offers valuable insight and support to clinicians, parents, and school districts.</p>
+          <p>Emily’s expertise extends to topics like managing AAC in the classroom, the importance of staff-buy in and dynamic coaching methods, and the nuances of gestalt language processing and AAC implementation strategies.</p>
+          <p>Having shared her knowledge at conferences and platforms, including Meaningful Speech, Bright Ideas Media, and SpeechPathologyPD.com, Emily stands as a beacon of expertise and innovation in the field of speech-language pathology. Discover the transformative impact of AAC with Emily Diaz, SLP.</p>
+        </div>
+        <a class="about-btn" href="/about/">
+          <svg viewBox="0 0 320 512" aria-hidden="true"><path d="M302.189 329.126H196.105l55.831 135.993c3.889 9.428-.555 19.999-9.444 23.999l-49.165 21.427c-9.165 4-19.443-.571-23.332-9.714l-53.053-129.136-86.664 89.138C18.729 472.71 0 463.554 0 447.977V18.299C0 1.899 19.921-6.096 30.277 5.443l284.412 292.542c11.472 11.179 3.007 31.141-12.5 31.141z"/></svg>
+          Learn more about Emily
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section" id="request-form">
+    <div class="form-card">
+      <h2 class="form-title">Speaking Request Inquiry Form</h2>
+      <form class="gf" action="/contact-submit.php" method="post" data-compose>
+        <input type="hidden" name="form" value="Speaking Request Inquiry (/speaking-2/)" />
+        <input type="hidden" name="topic" value="Speaking Request Inquiry" />
+        <input type="hidden" name="message" value="" />
+        <div class="hp" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <fieldset class="field">
+          <legend class="field-label">Name</legend>
+          <div class="name-row">
+            <span class="name-part">
+              <input type="text" id="sp-first" name="first_name" autocomplete="given-name" required />
+              <label for="sp-first" class="sub-label">First</label>
+            </span>
+            <span class="name-part">
+              <input type="text" id="sp-last" name="last_name" autocomplete="family-name" required />
+              <label for="sp-last" class="sub-label">Last</label>
+            </span>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="field-label" for="sp-email">Email</label>
+          <input type="email" id="sp-email" name="email" autocomplete="email" required />
+        </div>
+
+        <fieldset class="field">
+          <legend class="field-label">I'd like more information about</legend>
+          <div class="choices" data-part="More information about">
+            {topics.map((t) => <label class="choice"><input type="checkbox" value={t} /> {t}</label>)}
+          </div>
+          <button type="button" class="select-all">Select All</button>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="field-label">I'm interested in...</legend>
+          <div class="choices" data-part="Interested in">
+            {formats.map((t) => <label class="choice"><input type="checkbox" value={t} /> {t}</label>)}
+          </div>
+          <button type="button" class="select-all">Select All</button>
+        </fieldset>
+
+        <div class="field">
+          <label class="field-label" for="sp-details">Please share some details about your audience and list some preferences for dates.</label>
+          <textarea id="sp-details" rows="10" data-part="Audience and preferred dates"></textarea>
+        </div>
+
+        <button type="submit" class="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="faq">
+    <img class="faq-icon" src="/images/qa.png" alt="" width="120" height="120" loading="lazy" />
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-text">
+      <p><b>1. Do your courses offer CEUs?</b></p>
+      <p>Organizations are able to submit a request for CEUs to ASHA or their state association. We are happy to fill out the necessary paperwork for this. Otherwise, these courses are offered for Professional Development Hours (PDHs).</p>
+      <p><b>2. Do you present in-person or virtually?</b></p>
+      <p>We present both in-person and virtually. Please request a quote and for more information about availability.</p>
+      <p><b>3. Where else have you presented before?</b></p>
+      <p>We have presented for Educational Service Centers across Texas, school districts &amp; clinics across the United States, <a href="http://SpeechTherapyPD.com" target="_blank" rel="noopener noreferrer">SpeechTherapyPD.com</a>, SLP Toolkit Summer Camp, Bright Ideas Media Online Conferences, and more!</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // "Select All" toggles every checkbox in its group (Gravity Forms behaviour).
+  document.querySelectorAll<HTMLButtonElement>(".select-all").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const boxes = [...btn.closest("fieldset")!.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')];
+      const allOn = boxes.every((b) => b.checked);
+      boxes.forEach((b) => (b.checked = !allOn));
+      btn.textContent = allOn ? "Select All" : "Deselect All";
+    });
+  });
+
+  // The site's mail handler (contact-submit.php) takes name, email, topic and
+  // message. Fold this form's extra fields into the message before sending.
+  document.querySelectorAll<HTMLFormElement>("form[data-compose]").forEach((form) => {
+    form.addEventListener("submit", () => {
+      const lines: string[] = [];
+      form.querySelectorAll<HTMLElement>("[data-part]").forEach((el) => {
+        const name = el.dataset.part!;
+        let value = "";
+        if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) value = el.value.trim();
+        else value = [...el.querySelectorAll<HTMLInputElement>("input:checked")].map((i) => i.value).join(", ");
+        lines.push(`${name}: ${value || "-"}`);
+      });
+      const formName = (form.querySelector<HTMLInputElement>('input[name="form"]')!).value;
+      form.querySelector<HTMLInputElement>('input[name="message"]')!.value = `Form: ${formName}\n\n${lines.join("\n")}`;
+    });
+  });
+</script>
+
+<style>
+  /* Hero */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 8% 0;
+    background-image: linear-gradient(142deg, #FFF3F7 0%, #FFFFFF 100%);
+    text-align: center;
+  }
+  .hero-eyebrow {
+    margin: 0 0 -1.2%;
+    font-family: Poppins, sans-serif;
+    font-size: 43px;
+    font-weight: 300;
+    line-height: 43px;
+    letter-spacing: -0.5px;
+    color: #C45B8F;
+  }
+  .hero-title {
+    margin: 0 0 40px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 109px;
+    font-weight: 400;
+    line-height: .6em;
+    letter-spacing: -1px;
+    color: #743E5A;
+    text-shadow: 3px 2px 0 #fff;
+  }
+
+  /* Presentations */
+  .presentations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -86.4px;
+  }
+  .speech-icon { position: relative; width: 166px; }
+  .pres-inner {
+    width: 100%;
+    max-width: 1063px;
+    margin-top: 65px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pres-heading {
+    padding: 10.6px 10.6px 63.8px;
+    transform: translateX(12px);
+    font-family: Poppins, sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #743E5A;
+  }
+  .pres-row { display: flex; gap: 20px; padding: 10px; }
+  .pres-row:last-of-type { padding: 10px 10px 10px; }
+  .pres-img, .pres-copy { flex: 1 1 0; min-width: 0; padding: 10px 10px 0; }
+  .pres-img img { width: 100%; display: block; }
+  .pres-copy { display: flex; flex-direction: column; gap: 20px; }
+  .pres-title {
+    font-family: Poppins, sans-serif;
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 34px;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+  }
+  .pres-hours {
+    margin: 0;
+    font-family: brandon-grotesque, sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 25px;
+    letter-spacing: 1.6px;
+    color: #F3CAB1;
+  }
+  .pres-text { margin: 0; font-family: "Work Sans", sans-serif; font-size: 20px; line-height: 30px; color: #7A7A7A; }
+
+  .featured-title-wrap { padding-top: 42.5px; }
+  .featured-title {
+    transform: rotate(-3deg);
+    font-family: "Orange and Lemons Script", sans-serif;
+    font-size: 96px;
+    font-weight: 300;
+    line-height: 96px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #908EC7;
+  }
+
+  /* Logos + call to action */
+  .featured {
+    max-width: 981px;
+    margin: 0 auto;
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .logo-row { display: flex; align-items: center; gap: 20px; padding: 0 10px; }
+  .logo-row-1 { justify-content: space-evenly; }
+  .logo-row-2 { justify-content: center; }
+  .logo-row img { width: var(--w); flex: 0 1 auto; min-width: 0; }
+  .divider { margin: 29px 0 -40px; padding: 15px 0; }
+  .divider span { display: block; width: 2px; height: 120px; margin: 0 auto; background: #51719A; }
+  .ready-title {
+    margin: 0 0 39px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 109px;
+    font-weight: 400;
+    line-height: .6em;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #743E5A;
+    text-shadow: 3px 2px 0 #fff;
+  }
+  .ready-text {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 34px;
+    text-align: center;
+    color: #743E5A;
+  }
+  .ready-text a { color: #743E5A; font-weight: 700; }
+  .circle-btn { position: relative; z-index: 1; align-self: center; width: 11%; margin-bottom: -6%; }
+  .circle-btn img { width: 100%; display: block; }
+
+  /* About Emily */
+  .about-emily { padding: 5% 0 8%; background: #FFF3F7; }
+  .about-inner {
+    display: flex;
+    max-width: 1140px;
+    margin: 6% auto 0;
+    padding: 0 10px;
+  }
+  .about-img { flex: 0 0 541px; padding: 10px; }
+  .about-img img { width: 100%; display: block; }
+  .about-copy { flex: 1 1 0; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding: 5px 0 0 56px; }
+  .about-title {
+    margin: -18px 0 -15px;
+    transform: rotate(-4deg);
+    font-family: "Orange and Lemon Upright", sans-serif;
+    font-size: 131px;
+    font-weight: 400;
+    line-height: 131px;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+  }
+  .about-text p { margin: 0 0 14.4px; font-family: "Work Sans", sans-serif; font-size: 18px; line-height: 27px; color: #7A7A7A; }
+  .about-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 30.2px;
+    border-radius: 3px;
+    background: #C45B8F;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    transition: background-color .3s;
+  }
+  .about-btn:hover, .about-btn:focus-visible { background: #EA82B6; color: #fff; }
+  .about-btn svg { width: 11px; height: 18px; fill: #fff; }
+
+  /* Form */
+  .form-section {
+    padding: 8.5% 11%;
+    background: #fff url("/images/IMG_6199.jpg") center / cover;
+  }
+  .form-card {
+    max-width: 981px;
+    margin: 0 auto;
+    padding: 98.09px;
+    background: #fff;
+    box-shadow: 0 0 28px 5px rgba(0, 0, 0, .33);
+  }
+  .form-title {
+    margin: 0 0 20px;
+    font-family: Poppins, sans-serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+  }
+  .gf { display: flex; flex-direction: column; gap: 16px; padding-top: 14px; }
+  .gf .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .field { margin: 0 0 3px; padding: 0; border: 0; min-width: 0; }
+  .field-label {
+    display: block;
+    margin: 0 0 8px;
+    padding: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    color: #000;
+  }
+  legend.field-label { line-height: 21px; }
+  .gf input[type="text"], .gf input[type="email"], .gf textarea {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 8px;
+    border: 0;
+    border-bottom: 1px solid #9A98CD;
+    border-radius: 0;
+    background: #fff;
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #6A6A6A;
+  }
+  .gf textarea { height: 288px; resize: vertical; }
+  .gf input:focus-visible, .gf textarea:focus-visible { outline: 2px solid #9A98CD; outline-offset: 2px; }
+  .name-row { display: flex; gap: 15px; }
+  .name-part { flex: 1 1 0; min-width: 0; }
+  .sub-label { display: block; padding-top: 5px; font-family: Poppins, sans-serif; font-size: 13px; line-height: 13px; color: #000; }
+  .choices { display: flex; flex-direction: column; gap: 11px; padding-top: 7px; }
+  .choice { display: flex; align-items: center; gap: 5px; font-family: Poppins, sans-serif; font-size: 13px; line-height: 13px; color: #000; cursor: pointer; }
+  .choice input { width: 13px; height: 13px; margin: 0; }
+  .select-all {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: 1px solid #CC3366;
+    border-radius: 3px;
+    background: transparent;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #CC3366;
+    cursor: pointer;
+  }
+  .select-all:hover, .select-all:focus-visible { background: #CC3366; color: #fff; }
+  .submit {
+    width: 243px;
+    margin-top: 9px;
+    padding: 15.69px 0;
+    border: 0;
+    border-radius: 3px;
+    background: #FFB98D;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .submit:hover, .submit:focus-visible { background: #F9A577; }
+
+  /* FAQ */
+  .faq {
+    position: relative;
+    margin-top: -86.4px;
+    padding: 0 2% 72px;
+    background: #743E5A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .faq-icon { width: 120px; transform: translateY(-61px); margin-bottom: -50px; }
+  .faq-title {
+    max-width: 873px;
+    font-family: Poppins, sans-serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 52px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #fff;
+  }
+  .faq-text { width: 100%; max-width: 873px; padding: 10px 10px 0; }
+  .faq-text p { margin: 0 0 14.4px; font-family: Poppins, sans-serif; font-size: 20px; line-height: 30px; color: #fff; }
+  .faq-text a { background: #EFEFFF; color: #F9B5A0; font-size: 19px; line-height: 31px; font-weight: 700; }
+
+  @media (max-width: 1100px) {
+    .pres-inner, .featured { padding: 0 20px; }
+    .about-img { flex-basis: 45%; }
+    .hero-title, .ready-title { font-size: 84px; }
+    .about-title { font-size: 100px; line-height: 110px; }
+    .form-card { padding: 60px; }
+  }
+
+  @media (max-width: 767px) {
+    .hero { padding: 6%; }
+    .hero-eyebrow { font-size: 40px; line-height: 44px; margin: 0; }
+    .hero-title { font-size: 66px; margin-bottom: 20px; }
+    .presentations { margin-top: -10px; }
+    .speech-icon { width: 120px; }
+    .pres-inner { margin-top: 30px; padding: 5px; }
+    .pres-heading { font-size: 40px; line-height: 40px; padding: 10px 10px 30px; transform: none; }
+    .pres-row { flex-direction: column; gap: 0; padding: 0; }
+    .pres-copy { padding-top: 30px; }
+    .pres-title { font-size: 30px; line-height: 32px; }
+    .pres-row + .pres-row { margin-top: 30px; }
+    .featured-title { font-size: 64px; line-height: 64px; }
+    .logo-row { flex-direction: column; }
+    .logo-row img { width: min(var(--w), 100%); }
+    .ready-title { font-size: 72px; margin-bottom: 24px; }
+    .ready-text { font-size: 26px; line-height: 30px; padding: 0 10px; }
+    .circle-btn { width: 50px; margin-bottom: -25px; }
+    .about-emily { padding: 60px 0 40px; }
+    .about-inner { flex-direction: column; margin-top: 0; padding: 0 10px; }
+    .about-img { flex: none; }
+    .about-copy { padding: 6%; }
+    .about-title { font-size: 90px; line-height: 100px; margin: 0; }
+    .about-btn { padding: 20px; font-size: 16px; }
+    .form-section { padding: 3%; }
+    .form-card { padding: 40px 20px; }
+    .form-title { font-size: 36px; line-height: 40px; }
+    .name-row { flex-direction: column; gap: 16px; }
+    .faq { margin-top: 0; padding: 0 6% 6%; }
+    .faq-icon { margin-bottom: -40px; }
+    .faq-title { font-size: 44px; line-height: 48px; }
+  }
+</style>

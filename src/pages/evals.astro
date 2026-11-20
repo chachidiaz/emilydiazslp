@@ -1,0 +1,129 @@
+---
+import GetStartedPage from "../components/GetStartedPage.astro";
+
+const plans = [
+  {
+    name: "Insurance Evaluation",
+    note: "*Available to Texas and Arizona residents only",
+    price: "$500",
+    items: [
+      "Loaner/trial device support",
+      "50 minute evaluation session",
+      "2x 25 minute check-in sessions",
+      "Comprehensive insurance funding report with tailored recommendation",
+    ],
+    footnote: "Superbill available upon request",
+  },
+  {
+    name: "STAP Evaluation (age 5+)",
+    note: "*Texas residents only",
+    price: "$375",
+    items: [
+      "Loaner/trial device support",
+      "50 minute evaluation session",
+      "2x 25 minute check-in sessions",
+      "Completed STAP application packet with tailored recommendation",
+    ],
+  },
+  {
+    name: "Self-Purchase Consultation",
+    note: "*Available worldwide",
+    price: "$250",
+    items: [
+      "Loaner/trial device support",
+      "2x 25 minute consult sessions to discuss AAC app options & features",
+      "Guidance for selecting and self-purchasing an AAC app +",
+    ],
+  },
+];
+
+const steps = [
+  {
+    title: "Pre-Assessment Intake & Interview",
+    body: "<p>We’ll begin by establishing team members by considering the input of all stakeholders: teachers, parents, therapists, child, etc. Then, review current communication skills &amp; future needs.</p>",
+  },
+  {
+    title: "Feature Matching & Access Method",
+    body: "<p>After thorough review, we’ll determine which access method is most appropriate and consider any specific features and/or accessories that the child may need.</p>",
+  },
+  {
+    title: "Dynamic AAC Device Trials",
+    body: "<p>After obtaining a device, we’ll begin trials for at least 6-8 weeks and collect data to make any necessary changes to the system as we go. We’ll provide lots of modeling during this time.</p>",
+  },
+  {
+    title: "Funding & Creating an Implementation Plan",
+    body: "<p>Equipped with data, we’ll seek out funding options for 4 devices. Then, create a plan for all stakeholders to continue implementing AAC best practices.</p>",
+  },
+];
+
+const faq = `<p><strong>1. Who benefits from an AAC evaluation?</strong></p><p>Anyone who cannot meet their communication needs with verbal speech (“mouth words”) alone. AAC can be beneficial for nonspeaking individuals, minimally speaking individuals, and unreliably speaking individuals. Common diagnoses we work with include: Autism, Down Syndrome, Cerebral Palsy, Intellectual Disability, Degenerative Diseases and more.</p><p><strong>2. How do you choose an AAC device?</strong></p><p>There are many options to consider during the evaluation process. Your evaluator will typically consider 3-5 different devices/programs and discuss them with you. The best options will be trialed during the 4-6 week evaluation timeline. We often consider systems like TobiiDynavox Snap + Core, Saltillo TouchChat WordPower, PRC LAMP Words for Life, and AssistiveWare Proloquo &amp; Proloquo2Go.</p><p><strong>3. How much does an AAC evaluation cost?</strong></p><p>Our AAC evaluations are a flat-rate of $500 and include the initial session (~60 minutes), two follow-up sessions (~30 minutes), a loaner device, and funding application over the span of 4-6 weeks. While this service is out-of-network, we provide complimentary Superbills and guidance for submitting to your insurance for reimbursement. We cannot work with Medicare recipients at this time.</p><p><strong>4. How much does an AAC device cost?</strong></p><p>You have a few options for funding your AAC device that we will discuss. Out-of-pocket cost ranges from around $350-600 when choosing an iPad + app. Most insurance plans will cover AAC devices as “durable medical equipment” after your deductible is met. Texas also has a state voucher program that covers the full cost (waitlist is currently 8-10 months). We will discuss the best option for you.</p><p><strong>5. I still have more questions, who do I contact?</strong></p><p>To learn more about our AAC evaluations, please submit an evaluation request form above.</p>`;
+---
+
+<GetStartedPage
+  pageTitle="AAC Evaluations | Emily Diaz, SLP"
+  description="Comprehensive AAC evaluations, personalized device recommendations, and help navigating the funding process."
+  title="AAC evaluations"
+  stepsImage="/images/timeline.png"
+  steps={steps}
+  readyText="Fill out the AAC Evaluation Inquiry form below to begin the process."
+  formTitle="AAC Evaluation Inquiry Form"
+  formKey="aac-evaluation"
+  faq={faq}
+>
+  <div slot="hero" class="evals-intro">
+    <p class="intro">
+      We offer comprehensive AAC evaluations, personalized device recommendations, and assistance navigating the
+      funding process to help individuals access the communication tools they need. I’m here to make AAC more
+      accessible, streamlined, and successful for you and your family.
+    </p>
+    <div class="plans">
+      {plans.map((plan) => (
+        <div class="plan">
+          <h2 class="plan-name">{plan.name}</h2>
+          <p class="plan-note">{plan.note}</p>
+          <p class="plan-price">{plan.price}</p>
+          <ul class="plan-items">{plan.items.map((item) => <li>{item}</li>)}</ul>
+          {plan.footnote && <p class="plan-foot"><em>{plan.footnote}</em></p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</GetStartedPage>
+
+<style>
+  .evals-intro { width: 100%; padding: 10px 10px 30px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .intro {
+    width: 73%;
+    margin: 0 0 62px;
+    font: 400 21px/37px Poppins, sans-serif;
+    color: #5C5C5C;
+    text-align: center;
+  }
+  .plans { display: flex; gap: 20px; width: 100%; max-width: 1408px; padding: 10px; text-align: left; }
+  .plan { flex: 1 1 0; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding: 10px; }
+  .plan-name {
+    font: 700 29px/29px Poppins, sans-serif;
+    letter-spacing: -0.5px;
+    color: #C45B8F;
+  }
+  .plan-note { margin: 0; font: 400 15px/1.2 Poppins, sans-serif; color: #7A7A7A; }
+  .plan-price { margin: 0; font: 300 33px/33px Poppins, sans-serif; letter-spacing: -0.5px; color: #535277; }
+  .plan-items { margin: 0; padding-left: 40px; font: 400 19px/28.5px Poppins, sans-serif; color: #7A7A7A; }
+  .plan-foot { margin: 0; font: 400 15px/1.5 Poppins, sans-serif; color: #7A7A7A; }
+
+  @media (max-width: 1024px) {
+    .intro { width: 90%; font-size: 19px; line-height: 32px; }
+    .plans { flex-wrap: wrap; }
+    .plan { flex: 1 1 280px; }
+    .plan-name { font-size: 25px; line-height: 28px; }
+    .plan-items { font-size: 17px; line-height: 26px; }
+  }
+  @media (max-width: 767px) {
+    .evals-intro { padding: 0; }
+    .intro { width: 100%; max-width: 368px; font-size: 17px; line-height: 1.5em; }
+    .plans { flex-direction: column; padding: 0; gap: 30px; }
+    .plan { flex: none; padding: 0 0 0 4px; gap: 14px; }
+    .plan-name { font-size: 25px; }
+    .plan-items { padding-left: 22px; font-size: 16px; line-height: 24px; }
+  }
+</style>
