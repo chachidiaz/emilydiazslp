@@ -112,12 +112,13 @@ const packages = [
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     padding: 8% 0 5%;
     background-image: linear-gradient(98deg, #FFF2F7 0%, #FEFCFD 100%);
     text-align: center;
   }
   .hero-title {
-    margin: 0 0 -2%;
+    margin: 0 0 -25px;
     font-family: "Orange and Lemon Upright", sans-serif;
     font-size: 182px;
     font-weight: 300;
@@ -125,7 +126,7 @@ const packages = [
     color: #C45B8F;
   }
   .hero-sub {
-    margin: 0 0 4%;
+    margin: 0 0 35px;
     font-family: Poppins, sans-serif;
     font-size: 44px;
     font-weight: 300;
@@ -133,7 +134,7 @@ const packages = [
     letter-spacing: -1px;
     color: #E192B9;
   }
-  .hero-sub b { font-weight: 700; }
+  .hero-sub b { font-weight: 400; }
   .hero-text {
     width: 47%;
     font-family: Poppins, sans-serif;
@@ -148,8 +149,7 @@ const packages = [
   .struggle-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; }
   .hands { width: 135px; }
   .battle {
-    margin: 0;
-    padding: 1.5% 0;
+    margin: 34px 0;
     font-family: Poppins, sans-serif;
     font-size: 51px;
     font-weight: 300;
@@ -157,7 +157,7 @@ const packages = [
     color: #C45B8F;
     text-align: center;
   }
-  .battle b { font-weight: 700; }
+  .battle b { font-weight: 400; }
   .maybe {
     font-family: Poppins, sans-serif;
     font-size: 37px;
@@ -180,6 +180,7 @@ const packages = [
   .sad-icon { flex: none; display: inline-flex; width: 27px; margin: 7px 3.4px 0; padding-inline-end: 6px; box-sizing: content-box; }
   .sad-icon :global(svg) { width: 27px; height: 27px; fill: #C45B8F; }
   .sad-list strong { font-weight: 700; }
+  .sad-list li > span:last-child { padding-left: 5px; }
 
   /* Plum/rose band */
   .ready {
@@ -187,7 +188,7 @@ const packages = [
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding: 7%;
+    padding: 6% 7%;
     background: #C45B8F;
     text-align: center;
   }
@@ -202,14 +203,14 @@ const packages = [
   }
   .ready-sub {
     width: 85%;
-    margin: 3% 1% 1%;
+    margin: 31px 10px 10px;
     font-family: Poppins, sans-serif;
     font-size: 28px;
     font-weight: 300;
     line-height: 38px;
     color: #fff;
   }
-  .ready-sub b { font-weight: 700; }
+  .ready-sub b { font-weight: 400; }
 
   /* Packages */
   .packages { padding: 5% 0 4%; }
@@ -256,7 +257,7 @@ const packages = [
     background: #fff;
     box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .15);
   }
-  .card-icon { display: flex; justify-content: center; }
+  .card-icon { display: flex; justify-content: center; padding-bottom: 7px; }
   .card-icon :global(svg) { height: var(--size); width: auto; fill: #5C5B86; }
   .card-title {
     font-family: Poppins, sans-serif;
@@ -277,7 +278,7 @@ const packages = [
     text-align: center;
   }
   .card-intro {
-    margin: 0;
+    margin: 0 0 14.4px;
     font-family: Poppins, sans-serif;
     font-size: 19px;
     line-height: 1.5;
@@ -295,6 +296,7 @@ const packages = [
   }
   .check-list li:not(:last-child) { padding-bottom: 8px; }
   .check-list li:not(:first-child) { margin-top: 8px; }
+  .check-list li > span:last-child { padding-left: 11px; }
   .check { flex: none; display: inline-flex; width: 22px; margin-top: 3px; padding-inline-end: 6px; box-sizing: content-box; }
   .check :global(svg) { width: 22px; height: 22px; fill: #908EC7; }
   .book {
@@ -336,7 +338,7 @@ const packages = [
     .hero-sub { font-size: 30px; line-height: 1; margin-bottom: 20px; }
     .hero-text { width: 100%; max-width: 894px; font-size: 18px; }
     .struggle { margin-top: -11%; padding: 0 6% 14%; }
-    .battle { font-size: 45px; line-height: .7em; padding: 10px 0; }
+    .battle { font-size: 45px; line-height: .7em; margin: 10px 0; }
     .maybe { font-size: 50px; }
     .sad-list { width: 100%; max-width: 785px; }
     .ready { padding: 7%; }
