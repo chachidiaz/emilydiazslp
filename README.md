@@ -74,6 +74,9 @@ because the first run replaces the live site. Before running it:
    would otherwise keep answering requests.
 3. Add the repository secret `SITE_FTP_SERVER_DIR` with that folder (e.g. `public_html/`).
    The FTP login secrets are shared with the lab deploy.
-4. Pages that were not in the menu (free resources, therapy, coaching, school contracts,
-   privacy policy, terms, website disclaimer) still link to their old WordPress
-   addresses. Rebuild them here before switching, or they will stop working.
+4. The old WordPress addresses that duplicated a page (`/aac-evals-2`, `/speech-therapy`,
+   `/speaking`, `/1-1-coaching`, `/privacy-policy-2`, `/courses-2`) and the course sales
+   pages (`/hub`, `/handbook-always`, `/glp-workshop-evergreen`, `/when-aac-isnt-working…`)
+   redirect in `public/.htaccess`. The sales pages now live on lab.emilydiazslp.com.
+5. If the server has other non-WordPress folders (for example `aac-hub/`), keep them when
+   clearing out WordPress.

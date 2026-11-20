@@ -20,14 +20,14 @@ export const site = {
   ],
   // Mobile (full-screen) menu, same order as the old site.
   mobileNav: [
-    { label: "Free AAC Resources", href: "https://emilydiazslp.com/free-resources" },
+    { label: "Free AAC Resources", href: "/free-resources/" },
     { label: "About Me", href: "/about/" },
     { label: "Services", href: "/aac-services/" },
     { label: "aac courses + guides", href: "/courses/" },
     { label: "business coaching", href: "/business-coaching/" },
     { label: "Contact Me", href: "/contact/" },
   ],
-  freeResources: "https://emilydiazslp.com/free-resources",
+  freeResources: "/free-resources/",
   memberLogin: "http://learn.emilydiazslp.com/login",
   studentLogin: "https://learn.emilydiazslp.com",
   social: {

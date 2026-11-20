@@ -2,8 +2,18 @@
 Options -Indexes
 DirectoryIndex index.html
 
-# Old WordPress address of the courses page
+# Old WordPress addresses
 Redirect 301 /courses-2 /courses/
+RedirectMatch 301 ^/aac-evals-2/?$ /evals/
+RedirectMatch 301 ^/speech-therapy/?$ /therapy-2/
+RedirectMatch 301 ^/speaking/?$ /speaking-2/
+RedirectMatch 301 ^/1-1-coaching/?$ /coaching/
+RedirectMatch 301 ^/privacy-policy-2/?$ /privacy-policy/
+# Course sales pages now live on lab.emilydiazslp.com
+RedirectMatch 301 ^/hub/?$ https://lab.emilydiazslp.com/landing-pages/aac-assessment-hub/always-on.html
+RedirectMatch 301 ^/handbook-always/?$ https://lab.emilydiazslp.com/landing-pages/handbook/
+RedirectMatch 301 ^/glp-workshop-evergreen/?$ https://lab.emilydiazslp.com/landing-pages/glp-workshop/
+RedirectMatch 301 ^/when-aac-isnt-working(-evergreen|-fast-action-discount)?/?$ https://lab.emilydiazslp.com/landing-pages/when-aac-isnt-working/
 
 ErrorDocument 404 /404.html
 
