@@ -7,11 +7,12 @@ import { site } from "../data/site";
 
 const bar = site.saleBar;
 const end = bar ? Date.parse(bar.endsAt) : 0;
-const show = bar && end > Date.now();
+// In `npm run dev` it always shows (at 00 once expired) so the layout can be checked.
+const show = bar && (end > Date.now() || import.meta.env.DEV);
 ---
 
 {show && (
-  <div class="sale-bar" data-end={end}>
+  <div class="sale-bar" data-end={end} data-dev={import.meta.env.DEV ? "1" : undefined}>
     <div class="sale-col sale-image">
       <img src={bar.image} alt={bar.imageAlt} width="443" height="71" />
     </div>
@@ -35,7 +36,7 @@ const show = bar && end > Date.now();
     const pad = (n: number) => String(n).padStart(2, "0");
     const tick = () => {
       const left = end - Date.now();
-      if (left <= 0) { bar.remove(); return; }
+      if (left <= 0) { if (!bar.dataset.dev) bar.remove(); return; }
       const s = Math.floor(left / 1000);
       const parts: Record<string, number> = {
         days: Math.floor(s / 86400),
