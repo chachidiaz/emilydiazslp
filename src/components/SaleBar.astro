@@ -105,9 +105,13 @@ const show = bar && (end > Date.now() || import.meta.env.DEV);
   }
   .sale-link { text-decoration: underline; }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     .sale-bar { flex-direction: column; gap: 20px; }
     .sale-col { flex: none; }
+    .sale-countdown { width: 100%; max-width: 420px; margin: 0 auto; }
+    .sale-image { align-items: center; }
+  }
+  @media (max-width: 767px) {
     .sale-image img { width: 245px; }
     .cd-item { padding: 26px 0; }
   }

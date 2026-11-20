@@ -171,7 +171,7 @@ const logosBottom = [
   .hero-voice {
     margin: 20px 0 18px !important;
     font-family: "Orange and Lemons Script", sans-serif;
-    font-size: 30em;
+    font-size: min(30em, 33.3vw);
     line-height: 82px;
     letter-spacing: -0.5px;
     color: #591C39;
@@ -506,12 +506,14 @@ const logosBottom = [
     transition: background-color .3s;
   }
   .about-btn:hover { background: #EA82B6; }
-  .about-photo { flex: 1 1 auto; padding: 10px; }
+  .about-photo { flex: 1 1 0; min-width: 0; padding: 10px; }
   .about-photo img { width: 100%; display: block; }
 
   /* ---------- Tablet ---------- */
   @media (max-width: 1024px) {
     .hero-buttons { flex-wrap: wrap; }
+    .hero-copy { padding-right: 4%; }
+    .hero-text { padding: 12px 10px 12px 10px; margin-left: 10px !important; }
     .hero-btn { font-size: 18px; padding-left: 28px; padding-right: 28px; }
     .services { flex-wrap: wrap; }
     .service { flex: 1 1 280px; }
@@ -519,6 +521,7 @@ const logosBottom = [
     .video-text { font-size: 34px; line-height: 48px; }
     .about { padding: 60px 40px; }
     .about-quote { font-size: 64px; line-height: 40px; }
+    .about-btn { padding: 24px 40px; white-space: nowrap; }
     .logo-row { flex-wrap: wrap; }
   }
 
@@ -548,27 +551,28 @@ const logosBottom = [
     .ready-sub { font-size: 2.9em; }
     .ready-image { display: none; }
 
-    .services { flex-direction: column; gap: 20px; padding: 40px 15.6px 0; }
+    .services { flex-direction: column; gap: 60px; padding: 40px 15.6px 20px; }
+    .learn-more { margin-top: 20px; }
     .service { flex: none; padding: 10px; }
-    .service-head { flex-direction: column; align-items: center; gap: 20px; min-height: 0; padding-top: 0; }
+    .service-head { flex-direction: column; align-items: center; gap: 20px; min-height: 0; padding: 0; }
     .service-icon { padding-top: 0; }
     .service-icon :global(svg) { width: 42px; height: 42px; }
     .service h3 { align-self: stretch; padding: 0 10px; }
     .service:first-child h3 { padding: 0; }
     .service:nth-child(2) .learn-more { align-self: center; }
 
-    .video-band { min-height: 0; padding: 20px 23.4px; }
+    .video-band { min-height: 0; padding: 40px 23.4px 20px; }
     .ready-banner { display: none; }
     .video-text { margin: 0 0 14.4px; font-size: 27.3px; line-height: 30.03px; }
     .video-btn { margin: 0 0 30px; padding: 30px; }
 
-    .orgs { padding: 32px 0 32px; }
+    .orgs { padding: 32px 0 40px; }
     .orgs h2 { font-size: 61px; line-height: 42.7px; }
-    .logo-row { flex-wrap: wrap; row-gap: 20px; }
+    .logo-row { flex-wrap: wrap; row-gap: 50px; margin-top: 20px; }
     .logo-row img { width: var(--m); max-width: 100%; }
 
     .about { padding: 11.7px; }
-    .about-card { flex-direction: column; padding: 20px 22px 20px; gap: 20px; }
+    .about-card { flex-direction: column; padding: 20px 22px 30px; gap: 40px; }
     .about-copy { flex: none; }
     .about-photo { order: -1; padding: 0 10px; }
     .about-eyebrow { font-size: 68px; }
