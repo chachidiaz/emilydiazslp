@@ -2,4 +2,5 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://emilydiazslp.com",
+  devToolbar: { enabled: false },
 });

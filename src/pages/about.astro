@@ -1,0 +1,337 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const logosRow1 = [
+  { src: "/images/NavyBlueStar_Region13Logo-1024x188.png", alt: "Region 13 Education Service Center", w: 235, mw: 126 },
+  { src: "/images/talkingaac-logo-fullcolor-small_3.png", alt: "#TalkingAAC", w: 230, mw: 320 },
+  { src: "/images/reg14logo2010.jpg", alt: "Region 14 Education Service Center", w: 154, mw: 83 },
+  { src: "/images/r17_logo_250.png", alt: "Region 17 Education Service Center", w: 180, mw: 250 },
+];
+const logosRow2 = [
+  { src: "/images/aac-in-the-cloud-1024x1024.jpeg", alt: "AAC in the Cloud", w: 137, mw: 179 },
+  { src: "/images/meaningful-speech-1024x576.jpeg", alt: "Meaningful Speech", w: 237, mw: 331 },
+  { src: "/images/BRIQHT-Logo-21f5ef1a17e4d9f7b2c1f30876dcb658-1024x657.png", alt: "Bright Ideas Media", w: 170, mw: 222 },
+  { src: "/images/speechtherapypd-logo.png", alt: "SpeechTherapyPD.com", w: 254, mw: 331 },
+];
+---
+
+<BaseLayout title="About">
+  <!-- Hero: Emily over the big "emily" script -->
+  <section class="about-hero">
+    <img src="/images/about-pg-emily.webp" alt="Emily Diaz holding an iPad" width="984" height="1206" />
+  </section>
+
+  <!-- Story -->
+  <section class="story">
+    <div class="story-inner">
+      <h2 class="story-eyebrow">I share about what's worked for me because...</h2>
+      <h2 class="story-title">I believe it can work<br />for you too.</h2>
+      <div class="divider" aria-hidden="true"><span></span></div>
+      <p class="story-text">
+        I’m an AAC Specialist, but I have a confession to make. I started working in this field like most SLPs do — with absolutely no education or training on complex communication needs or assistive technology. In 2015, I took over a caseload of students I had no clue how to treat. I constantly questioned my evaluations, my IEP goals, my interventions, and my knowledge about AAC. I wasn’t “learning on the job” either.
+        <b>I was failing.</b>
+        From grant writing, to lending libraries, to workshops and everything in between I somehow managed to take control of my caseload and fall in love with AAC.
+        I know from experience how it feels to know nothing about devices, have zero staff buy-in, and no time to train teachers and paraprofessionals. I also know that it’s possible to change and stop letting AAC scare you and stress you out.
+        <br /><span class="story-highlight">I share about what’s worked for me because I believe it can work for you, too.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Full-width photo -->
+  <div class="photo-band" role="img" aria-label="Emily sitting with her laptop"></div>
+
+  <!-- Featured at -->
+  <section class="featured">
+    <div class="featured-inner">
+      <h2 class="featured-title">I've been featured at...</h2>
+      <div class="logo-row logo-row-1">
+        {logosRow1.map((l) => (
+          <img src={l.src} alt={l.alt} style={`--w:${l.w}px;--mw:${l.mw}px`} loading="lazy" />
+        ))}
+      </div>
+      <div class="logo-row logo-row-2">
+        {logosRow2.map((l) => (
+          <img src={l.src} alt={l.alt} style={`--w:${l.w}px;--mw:${l.mw}px`} loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional bio -->
+  <section class="bio">
+    <div class="bio-inner">
+      <div class="bio-photo">
+        <img src="/images/emily-edited.png" alt="Emily Diaz smiling" width="640" height="937" loading="lazy" />
+      </div>
+      <div class="bio-copy">
+        <h2 class="bio-title">Professional Bio</h2>
+        <div class="bio-text">
+          <p>Emily Diaz, M.S. CCC-SLP is a certified speech-language pathologist with a passion for empowering individuals to find their voice. With a focus on neurodiversity affirming care and augmentative &amp; alternative communication (AAC), Emily offers valuable insight and support to clinicians, parents, and school districts. </p>
+          <p>Emily’s expertise extends to topics like managing AAC in the classroom, the importance of staff-buy in and dynamic coaching methods, and the nuances of gestalt language processing and AAC implementation strategies. </p>
+          <p>Having shared her knowledge at conferences and platforms, including Meaningful Speech, Bright Ideas Media, and SpeechPathologyPD.com, Emily stands as a beacon of expertise and innovation in the field of speech-language pathology. Discover the transformative impact of AAC with Emily Diaz, SLP.</p>
+        </div>
+        <div>
+          <a class="bio-btn" href="/aac-services/">
+            <svg aria-hidden="true" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M302.189 329.126H196.105l55.831 135.993c3.889 9.428-.555 19.999-9.444 23.999l-49.165 21.427c-9.165 4-19.443-.571-23.332-9.714l-53.053-129.136-86.664 89.138C18.729 472.71 0 463.554 0 447.977V18.299C0 1.899 19.921-6.096 30.277 5.443l284.412 292.542c11.472 11.179 3.007 31.141-12.5 31.141z"></path></svg>
+            <span>see the full list of services</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A little more about Emily -->
+  <section class="more">
+    <div class="more-inner">
+      <div class="more-card">
+        <h2 class="more-eyebrow">SLP, Mom, Wife &amp; more</h2>
+        <h2 class="more-title">A little more about Emily</h2>
+        <ul class="more-list">
+          <li>My kids have an 8 year age gap</li>
+          <li>Coffee order: vanilla almond milk latte, half sweet</li>
+          <li>Most likely to be found roaming Target aisles</li>
+          <li>Big Little League Baseball fan right now</li>
+          <li>I thrive on routines &amp; systems</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h2 { letter-spacing: -0.5px; }
+
+  /* Hero */
+  .about-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 558px;
+    background-image: url("/images/emily-background-dark.webp"), linear-gradient(130deg, #FFF3F7 0%, #FFFDFE 100%);
+    background-position: center center, 0 0;
+    background-repeat: no-repeat;
+    background-size: auto, auto;
+  }
+  .about-hero img { display: block; width: 495px; }
+
+  /* Story */
+  .story {
+    background: #743E5A;
+    padding: 7vw 0 6vw;
+  }
+  .story-inner {
+    max-width: 816px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    color: #fff;
+  }
+  .story-eyebrow {
+    font-family: "Orange and Lemon Upright", sans-serif;
+    font-size: 43px;
+    font-weight: 100;
+    line-height: 43px;
+    letter-spacing: 1.6px;
+    transform: rotate(-2deg);
+    max-width: 488px;
+    margin: 0 auto;
+  }
+  .story-title {
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 118px;
+    font-weight: 300;
+    line-height: 66px;
+  }
+  .divider { padding: 15px 0; }
+  .divider span { display: block; width: 2px; height: 120px; margin: 0 auto; background: #fff; }
+  .story-text {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+  }
+  .story-highlight { background-color: #908EC7; }
+
+  /* Photo band */
+  .photo-band {
+    min-height: 707px;
+    background: url("/images/emily-sitting-horizontal-scaled.jpg") center center / cover no-repeat;
+  }
+  @media (min-width: 1025px) {
+    .photo-band { background-attachment: fixed; }
+  }
+
+  /* Featured */
+  .featured { padding: 6vw 0; }
+  .featured-inner {
+    max-width: 879px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .featured-title {
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 81px;
+    font-weight: 300;
+    line-height: 81px;
+    color: #FF7155;
+    text-align: center;
+    transform: rotate(-2deg);
+  }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 10px;
+  }
+  .logo-row-1 { justify-content: space-evenly; }
+  .logo-row-2 { justify-content: center; }
+  .logo-row img { width: var(--w); flex: 0 1 auto; min-width: 0; }
+
+  /* Bio */
+  .bio {
+    background: #C45B8F;
+    padding: 5vw 0 8vw;
+  }
+  .bio-inner {
+    max-width: 1140px;
+    margin: min(6vw, 68.4px) auto 0;
+    padding: 0 10px;
+    display: flex;
+    gap: 20px;
+  }
+  .bio-photo { flex: 541 1 0; padding: 0 10px; min-width: 0; }
+  .bio-photo img { display: block; width: 100%; }
+  .bio-copy {
+    flex: 559 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5px 0 0 56px;
+    color: #fff;
+  }
+  .bio-title {
+    font-family: "Orange and Lemon Upright", sans-serif;
+    font-size: 131px;
+    font-weight: 400;
+    line-height: 131px;
+    text-align: center;
+    transform: rotate(-4deg);
+    white-space: nowrap;
+  }
+  .bio-text p {
+    margin: 0 0 14.4px;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+  }
+  .bio-text p:last-child { margin-bottom: 0; }
+  .bio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 100%;
+    padding: 30.2px;
+    background: #743E5A;
+    border-radius: 3px;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .bio-btn svg { width: 18px; height: 18px; flex: none; fill: #fff; }
+
+  /* More about Emily */
+  .more {
+    min-height: 723px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px;
+    background: url("/images/IMG_6642-scaled.jpg") center center / cover no-repeat;
+  }
+  .more-inner {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .more-card {
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 57px 0;
+    background: #743E5A;
+    text-align: center;
+  }
+  .more-eyebrow {
+    font-family: "Orange and Lemons Script", sans-serif;
+    font-size: 45px;
+    font-weight: 400;
+    line-height: 45px;
+    color: #FFB98D;
+  }
+  .more-title {
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 92px;
+    font-weight: 300;
+    line-height: 52px;
+    color: #fff;
+  }
+  .more-list {
+    width: 85%;
+    margin: 0;
+    padding-left: 40px;
+    text-align: left;
+    font-family: "Work Sans", sans-serif;
+    font-size: 17px;
+    line-height: 25.5px;
+    color: #fff;
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .bio-title { font-size: 100px; line-height: 100px; }
+    .bio-copy { padding-left: 30px; }
+    .more-card { width: 60%; }
+    .story-inner, .featured-inner { padding: 0 24px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .about-hero { background-position: center center, 0 0; }
+    .about-hero img { width: 100%; }
+
+    .story { padding: 8vw 6vw 6vw; }
+    .story-inner { padding: 0; }
+    .story-eyebrow { line-height: 0.8em; }
+    .story-title { font-size: 91px; line-height: 0.5em; }
+
+    .featured { padding: 5vw; }
+    .featured-inner { padding: 0; }
+    .featured-title { line-height: 0.6em; }
+    .logo-row { flex-direction: column; }
+    .logo-row img { width: var(--mw); max-width: 100%; }
+
+    .bio { padding: 5vw 0 8vw; }
+    .bio-inner { flex-direction: column; margin-top: 6vw; }
+    .bio-photo, .bio-copy { flex: none; }
+    .bio-copy { padding: 6%; }
+    .bio-title { font-size: 107px; line-height: 0.5em; white-space: normal; }
+    .bio-btn { padding: 19.5px; }
+
+    .more-card { width: 100%; padding: 18.5px 0; }
+    .more-list { width: 100%; }
+  }
+</style>

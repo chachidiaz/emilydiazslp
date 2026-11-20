@@ -1,0 +1,371 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Where each "click here" goes (same targets as the old site).
+const options = [
+  { icon: "/images/shopping.png", text: "To learn more and inquire about AAC Evaluations", href: "https://emilydiazslp.com/aac-evals-2" },
+  { icon: "/images/heart.png", text: "If you're interested in Therapy for you or another person", href: "https://emilydiazslp.com/speech-therapy" },
+  { icon: "/images/speech.png", text: "To book me for a speaking engagement or professional development", href: "https://emilydiazslp.com/speaking" },
+  { icon: "/images/job-interview.png", text: "To learn more about my availability and options for 1:1 consults and coaching", href: "https://emilydiazslp.com/1-1-coaching" },
+];
+
+const topics = [
+  "Trouble accessing course materials",
+  "I have a questions not answered anywhere else",
+  "I have another tech (not AAC) related question",
+];
+
+const arrowCircle = `<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256zm72 20v-40c0-6.6 5.4-12 12-12h116v-67c0-10.7 12.9-16 20.5-8.5l99 99c4.7 4.7 4.7 12.3 0 17l-99 99c-7.6 7.6-20.5 2.2-20.5-8.5v-67H140c-6.6 0-12-5.4-12-12z"/></svg>`;
+---
+
+<BaseLayout title="Contact" description="Contact Emily Diaz, SLP — AAC evaluations, therapy, speaking, coaching, or a general question.">
+  <section class="hero">
+    <h2 class="hero-kicker">I can't wait to hear from you!</h2>
+    <h1 class="hero-title">Contact me</h1>
+  </section>
+
+  <section class="specific">
+    <div class="specific-inner">
+      <img class="chat" src="/images/chat.png" alt="" width="197" height="197" />
+      <h2 class="specific-title">Looking for something specific?</h2>
+      <div class="options">
+        {options.map((o) => (
+          <div class="option">
+            <img src={o.icon} alt="" width="75" height="75" loading="lazy" />
+            <h3>{o.text}</h3>
+            <a class="click-here" href={o.href}>
+              <span class="ch-icon" set:html={arrowCircle} />
+              <span>click here</span>
+            </a>
+          </div>
+        ))}
+      </div>
+      <div class="divider" aria-hidden="true"><span></span></div>
+      <h2 class="different">Have a different question?</h2>
+      <p class="different-sub">Fill out the general form below to send me a message directly to my inbox.</p>
+      <a class="down" href="#general-contact-form" aria-label="Jump to the contact form">
+        <img src="/images/circle-button.png" alt="" width="110" height="110" />
+      </a>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="form-card" id="general-contact-form">
+      <h2 class="form-title">General Contact Form</h2>
+
+      <p class="form-message success" id="form-sent" hidden>
+        Thank you! Your message has been sent. I'll get back to you as soon as I can.
+      </p>
+      <p class="form-message error" id="form-error" hidden>
+        Sorry, your message didn't go through. Please check the required fields and try again.
+      </p>
+
+      <form class="contact-form" action="/contact-submit.php" method="post">
+        <fieldset class="field">
+          <legend class="label">Name <span class="req">(Required)</span></legend>
+          <div class="name-row">
+            <span class="sub">
+              <input type="text" name="first_name" id="first_name" autocomplete="given-name" required />
+              <label for="first_name">First</label>
+            </span>
+            <span class="sub">
+              <input type="text" name="last_name" id="last_name" autocomplete="family-name" required />
+              <label for="last_name">Last</label>
+            </span>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="label" for="email">Email <span class="req">(Required)</span></label>
+          <input type="email" name="email" id="email" autocomplete="email" required />
+        </div>
+
+        <fieldset class="field">
+          <legend class="label">This email is about... <span class="req">(Required)</span></legend>
+          <div class="choices">
+            {topics.map((t, i) => (
+              <label class="choice">
+                <input type="radio" name="topic" value={t} required={i === 0} />
+                <span>{t}</span>
+              </label>
+            ))}
+            <label class="choice">
+              <input type="radio" name="topic" value="Other" />
+              <span>Other</span>
+            </label>
+          </div>
+          <input type="text" name="topic_other" class="other" placeholder="Other" aria-label="Other (please describe)" />
+        </fieldset>
+
+        <div class="field">
+          <label class="label" for="message">What can we help you with? <span class="req">(Required)</span></label>
+          <textarea name="message" id="message" rows="10" required></textarea>
+        </div>
+
+        <!-- Spam trap: people never see or fill this in. -->
+        <div class="hp" aria-hidden="true">
+          <label for="website">Leave this empty</label>
+          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="footer">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const show = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.hidden = false;
+    document.getElementById("general-contact-form")?.scrollIntoView();
+  };
+  if (params.has("sent")) show("form-sent");
+  else if (params.has("error")) show("form-error");
+</script>
+
+<style>
+  /* Hero */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8% 0;
+    background-image: linear-gradient(126deg, #FFF2F7 0%, #FFFCFD 100%);
+    text-align: center;
+  }
+  .hero-kicker {
+    margin-bottom: -22px;
+    font-family: Poppins, sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #C45B8F;
+  }
+  .hero-title {
+    position: relative;
+    margin: 42px 0 22px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 179px;
+    font-weight: 400;
+    line-height: 0.6em;
+    letter-spacing: -1px;
+    text-shadow: 3px 2px 0 #fff;
+    color: #591C39;
+  }
+
+  /* Looking for something specific? */
+  .specific-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    margin: -100px auto 0;
+  }
+  .chat { width: 197px; display: block; }
+  .specific-title {
+    margin-top: 20px;
+    padding: 10px 10px 60px;
+    transform: translateX(12px);
+    font-family: Poppins, sans-serif;
+    font-size: 59px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+    text-align: center;
+  }
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    row-gap: 50px;
+  }
+  .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 40px;
+    text-align: center;
+  }
+  .option img { width: 75px; height: 75px; display: block; }
+  .option h3 {
+    font-family: Poppins, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+  }
+  .click-here {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+    padding: 12.59px;
+    border-bottom: 2px solid #EA82B6;
+    border-radius: 0 0 1px 0;
+    font-family: Poppins, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #EA82B6;
+    transition: color .3s, border-color .3s;
+  }
+  .ch-icon { display: inline-flex; width: 17px; height: 17px; }
+  .ch-icon :global(svg) { width: 17px; height: 17px; fill: currentColor; }
+  .click-here:hover, .click-here:focus-visible { color: #51719A; }
+  .divider { width: 100%; padding: 15px 0; margin: 29px 0 -40px; }
+  .divider span { display: block; width: 2px; height: 120px; margin: 0 auto; background: #51719A; }
+  .different {
+    width: 100%;
+    margin: 40px 0 -11px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 114px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #EA82B6;
+    text-align: center;
+  }
+  .different-sub {
+    margin: 20px 0 40px;
+    padding: 0 13%;
+    font-family: "Work Sans", sans-serif;
+    font-size: 35px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #636363;
+    text-align: center;
+  }
+  .down { display: block; width: 110px; margin-bottom: -58px; }
+  .down img { width: 110px; display: block; }
+
+  /* Form section over the photo background */
+  .form-section {
+    position: relative;
+    z-index: 1;
+    padding: 11% 11%;
+    background: #fff url("/images/IMG_6199.jpg") center / cover no-repeat;
+  }
+  .form-card {
+    max-width: 981px;
+    margin: 0 auto;
+    padding: 10%;
+    background: #fff;
+    box-shadow: 0 0 28px 5px rgba(0, 0, 0, .33);
+    scroll-margin-top: 40px;
+  }
+  .form-title {
+    margin-bottom: 20px;
+    font-family: Poppins, sans-serif;
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #EA82B6;
+  }
+  .form-message {
+    margin: 0 0 24px;
+    padding: 14px 18px;
+    border-radius: 3px;
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .form-message.success { background: #EAF6EC; color: #1E5631; border: 1px solid #A6D4B0; }
+  .form-message.error { background: #FCEBEA; color: #9B1C12; border: 1px solid #E8B4AE; }
+
+  .contact-form { font-family: Poppins, sans-serif; color: #000; }
+  .field { margin: 0 0 28px; padding: 0; border: 0; min-width: 0; }
+  .label {
+    display: block;
+    margin: 0 0 8px;
+    padding: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #000;
+  }
+  .req { font-size: 13px; font-weight: 400; font-style: italic; color: #C02B0A; }
+  .name-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .sub { display: flex; flex-direction: column; }
+  .sub label { margin-top: 6px; font-size: 13px; line-height: 1.3; }
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #686E77;
+    border-radius: 3px;
+    background: #fff;
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6A6A6A;
+    text-indent: 5px;
+  }
+  .contact-form input[type="text"], .contact-form input[type="email"] { height: 39px; }
+  .contact-form textarea { height: 288px; resize: vertical; text-indent: 0; padding-left: 13px; }
+  .contact-form input::placeholder { color: #6A6A6A; opacity: 1; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid #EA82B6; outline-offset: 1px; }
+  .choices { display: flex; flex-direction: column; gap: 8px; margin: 18px 0 18px; }
+  .choice { display: flex; align-items: center; gap: 6px; font-size: 13px; line-height: 16px; cursor: pointer; }
+  .choice input { width: 13px; height: 13px; margin: 0; accent-color: #743E5A; }
+  .other { margin-top: 0; }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .footer { padding-top: 16px; }
+  .footer button {
+    width: 100px;
+    padding: 18px 0;
+    border: 0;
+    border-radius: 3px;
+    background: #FFB98D;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  .footer button:hover, .footer button:focus-visible { opacity: .85; }
+
+  @media (max-width: 1024px) {
+    .specific-inner { padding: 0 20px; }
+    .specific-title { font-size: 48px; }
+    .different { font-size: 96px; }
+    .different-sub { font-size: 30px; padding: 0 6%; }
+  }
+
+  @media (max-width: 767px) {
+    .hero { padding: 6%; }
+    .hero-kicker { font-size: 44px; margin-bottom: 0; }
+    .hero-title { margin: 32px 0 12px; font-size: 109px; }
+    .specific-inner { margin-top: 0; padding: 0; }
+    .specific-title { margin-top: 20px; padding: 4px 0 20px; transform: none; font-size: 44px; }
+    .options { grid-template-columns: 1fr; row-gap: 31px; }
+    .option { padding: 0 15.59px; }
+    .click-here { padding: 10.75px; }
+    .different { margin: 40px 0 -11px; font-size: 91px; line-height: 0.7em; }
+    .different-sub { margin: 32px 0 20px; padding: 0 13%; font-size: 35px; }
+    .down { width: 43px; margin-bottom: -15px; }
+    .down img { width: 43px; }
+    .form-section { padding: 3%; }
+    .form-card { padding: 6%; }
+    .name-row { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>

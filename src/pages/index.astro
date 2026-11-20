@@ -1,7 +1,579 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const heart = `<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>`;
+const user = `<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>`;
+const school = `<svg viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0 224v272c0 8.84 7.16 16 16 16h80V192H32c-17.67 0-32 14.330-32 32zm360-48h-24v-40c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v64c0 4.42 3.58 8 8 8h48c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8zm137.75-63.96l-160-106.67a32.02 32.02 0 0 0-35.5 0l-160 106.670A32.002 32.002 0 0 0 128 138.66V512h128V368c0-8.84 7.16-16 16-16h96c8.84 0 16 7.16 16 16v144h128V138.67c0-10.7-5.35-20.7-14.25-26.63zM320 256c-44.18 0-80-35.82-80-80s35.82-80 80-80 80 35.82 80 80-35.82 80-80 80zm288-64h-64v320h80c8.84 0 16-7.16 16-16V224c0-17.67-14.33-32-32-32z"/></svg>`;
+const arrow = `<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zM140 300h116v70.9c0 10.7 13 16.1 20.5 8.5l114.3-114.9c4.7-4.7 4.7-12.2 0-16.9l-114.3-115c-7.6-7.6-20.5-2.2-20.5 8.5V212H140c-6.6 0-12 5.4-12 12v64c0 6.6 5.4 12 12 12z"/></svg>`;
+
+const services = [
+  {
+    icon: heart,
+    title: "Evaluations & therapy services",
+    text: "Our services are focused on supporting adult and pediatric augmentative & alternative communication (AAC), gestalt language processing, social communication skills, and other speech/language needs like stuttering, speech sound disorders, and language delays.",
+    href: "https://emilydiazslp.com/therapy-2",
+  },
+  {
+    icon: user,
+    title: "1:1 Coaching Packages",
+    text: "Communication partner interventions are critical when it comes to understanding AAC implementation or the framework of gestalt language processing. By working together 1:1 over the span of 12 weeks, we can help you become a more confident communication partner.",
+    href: "https://emilydiazslp.com/coaching",
+  },
+  {
+    icon: school,
+    title: "School Contracts + Consulting",
+    text: "We provide special education services through school contracts for speech and language services, assistive technology policies & procedures development, classroom support, team training and AAC evaluations & implementation, and Independent Educational Evaluations (IEE).",
+    href: "https://emilydiazslp.com/schoolcontracts",
+  },
+];
+
+const logosTop = [
+  { src: "NavyBlueStar_Region13Logo-1024x188.png", alt: "Region 13 Education Service Center", w: 235 },
+  { src: "talkingaac-logo-fullcolor-small_3.png", alt: "Talking AAC", w: 230 },
+  { src: "reg14logo2010.jpg", alt: "Region 14 Education Service Center", w: 154 },
+  { src: "r17_logo_250.png", alt: "Region 17 Education Service Center", w: 180 },
+];
+const logosBottom = [
+  { src: "aac-in-the-cloud-1024x1024.jpeg", alt: "AAC in the Cloud", w: 137 },
+  { src: "meaningful-speech-1024x576.jpeg", alt: "Meaningful Speech", w: 237 },
+  { src: "BRIQHT-Logo-21f5ef1a17e4d9f7b2c1f30876dcb658-1024x657.png", alt: "Bright Ideas Media", w: 170 },
+  { src: "speechtherapypd-logo.png", alt: "SpeechTherapyPD.com", w: 254 },
+];
 ---
 
 <BaseLayout>
-  <div style="height:400px"></div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="/images/emily-no-bg-white.webp" alt="Emily Diaz smiling and holding an iPad" width="507" height="622" fetchpriority="high" />
+    </div>
+    <div class="hero-copy">
+      <h1 class="visually-hidden">Everyone deserves a voice. We can help find it.</h1>
+      <p class="hero-pre" aria-hidden="true">Everyone deserves a</p>
+      <p class="hero-voice" aria-hidden="true">voice.</p>
+      <p class="hero-find" aria-hidden="true">We can help find it.</p>
+      <p class="hero-text">Our practice values neurodiversity affirming services and specializes in providing support for AAC, social communication, &amp; gestalt language processing. Whether it’s therapy or consulting, we are committed to making your journey feel more comfortable and helping you feel more confident.</p>
+      <div class="hero-buttons">
+        <a class="hero-btn hero-btn-fill" href="https://emilydiazslp.com/free-resources">Resources for SLPs</a>
+        <a class="hero-btn hero-btn-line" href="/aac-services/">Services for Families</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plum intro -->
+  <section class="intro">
+    <h2 class="intro-title">We know how challenging it can be to navigate unique &amp; complex communication needs.</h2>
+    <p class="intro-text">There’s a lot out there when it comes to learning about topics like communication devices, echolalia, and language delays. You could spend hours researching it all yourself and hopping from therapist to therapist… or you could let us guide you along the way.</p>
+    <span class="intro-divider" aria-hidden="true"></span>
+  </section>
+
+  <!-- Ready to work together -->
+  <section class="ready pattern">
+    <div class="ready-copy">
+      <h2 class="ready-title">Ready to work together?</h2>
+      <p class="ready-sub">Here's how I can help.</p>
+    </div>
+    <div class="ready-image">
+      <img src="/images/ipad-mock-1024x1024.png" alt="AAC communication board on an iPad" width="1024" height="1024" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="services pattern">
+    {services.map((s) => (
+      <div class="service">
+        <div class="service-head">
+          <span class="service-icon" set:html={s.icon} />
+          <h3>{s.title}</h3>
+        </div>
+        <p>{s.text}</p>
+        <a class="learn-more" href={s.href}><span>Learn more</span><span class="lm-icon" set:html={arrow} /></a>
+      </div>
+    ))}
+  </section>
+
+  <!-- Video band -->
+  <section class="video-band">
+    <video class="bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="/videos/bg-video.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay" aria-hidden="true"></div>
+    <div class="ready-banner"><h2>we're ready and available to help.</h2></div>
+    <p class="video-text">With years of experience, and being a leader in the field, we offer a full range of AAC solutions to fit any need.</p>
+    <a class="video-btn" href="/aac-services/">See a full list of services</a>
+  </section>
+
+  <!-- Organizations -->
+  <section class="orgs">
+    <h2>I've worked with these incredible organizations</h2>
+    <div class="logo-row">
+      {logosTop.map((l) => <img src={`/images/${l.src}`} alt={l.alt} style={`width:${l.w}px`} loading="lazy" />)}
+    </div>
+    <div class="logo-row">
+      {logosBottom.map((l) => <img src={`/images/${l.src}`} alt={l.alt} style={`width:${l.w}px`} loading="lazy" />)}
+    </div>
+  </section>
+
+  <!-- About Emily -->
+  <section class="about">
+    <div class="about-card">
+      <div class="about-copy">
+        <p class="about-eyebrow">about emily</p>
+        <h2 class="about-quote">"Im just a human trying to make a connection to other humans."</h2>
+        <p class="about-text">Hey there, it’s Emily! I’m a speech-language pathologist with a passion for complex communicators and a desire to build connection and confidence through AAC. I’ve worked in public schools, residential treatment centers, and private practice since 2015 with kids and young adults who just want to be loved &amp; heard.</p>
+        <a class="about-btn" href="/about/">More about Emily</a>
+      </div>
+      <div class="about-photo">
+        <img src="/images/emily-professional-scaled.jpg" alt="Emily Diaz holding an iPad" width="1709" height="2560" loading="lazy" />
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    min-height: 520px;
+    padding-top: 28.8px;
+    background-image: linear-gradient(107deg, #FFF3F7 0%, #FFFDFE 100%);
+    overflow: hidden;
+  }
+  .hero-photo {
+    flex: 0 0 46%;
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 10px 0;
+    text-align: right;
+  }
+  .hero-photo img { width: 79%; margin-bottom: -1%; display: block; }
+  .hero-copy {
+    flex: 1 1 auto;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: 1060px;
+    padding: 0 11% 7% 0;
+  }
+  .hero-copy p { margin: 0; }
+  .hero-pre {
+    margin-left: 2% !important;
+    font-family: "Orange and Lemon Upright", sans-serif;
+    font-size: 6.3vw;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #E192B9;
+  }
+  .hero-voice {
+    margin: 20px 0 3% !important;
+    font-family: "Orange and Lemons Script", sans-serif;
+    font-size: 30em;
+    line-height: 82px;
+    letter-spacing: -0.5px;
+    color: #591C39;
+    transform: rotate(-4deg);
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-find {
+    margin: 5% 0 0 5% !important;
+    font-family: "Orange and Lemons Script", sans-serif;
+    font-size: 5vw;
+    line-height: 1;
+    color: #E192B9;
+  }
+  .hero-text {
+    margin: 20px 0 0 4% !important;
+    padding: 2% 9% 2% 3%;
+    font-family: Poppins, sans-serif;
+    font-size: 17px;
+    line-height: 25.5px;
+    color: #303030;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 0;
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+  .hero-btn {
+    display: inline-block;
+    margin: 3px 4px 0 0;
+    font-family: Poppins, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    white-space: nowrap;
+    transition: background-color .3s, color .3s;
+  }
+  .hero-btn-fill {
+    padding: 28px 45px;
+    background: #F4C7DE;
+    color: #591C39;
+    border-radius: 16px;
+    letter-spacing: -0.2px;
+  }
+  .hero-btn-fill:hover { background: #EDB1CF; }
+  .hero-btn-line {
+    margin: 4px 19px 0 0;
+    padding: 25px 45px;
+    border: 2px solid #C45B8F;
+    border-radius: 15px;
+    color: #C45B8F;
+    letter-spacing: -0.1px;
+  }
+  .hero-btn-line:hover { background: #C45B8F; color: #fff; }
+
+  /* ---------- Plum intro ---------- */
+  .intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 86.4px 43.2px;
+    background: #743E5A;
+    text-align: center;
+  }
+  .intro-title {
+    max-width: 785px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 73.44px;
+    font-weight: 300;
+    line-height: 58.75px;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+  .intro-text {
+    max-width: 785px;
+    margin: 20px 0 14.4px;
+    font-family: Poppins, sans-serif;
+    font-size: 22px;
+    line-height: 33px;
+    color: #fff;
+  }
+  .intro-divider { display: block; width: 2px; height: 100px; margin: 21px 0 15px; background: #fff; }
+
+  /* ---------- Pattern sections ---------- */
+  .pattern {
+    background-image: url("/images/pattern-bg.jpg");
+    background-repeat: repeat;
+    background-size: 30% auto;
+  }
+  @media (min-width: 1025px) {
+    .pattern { background-attachment: fixed; }
+  }
+  .ready { display: flex; min-height: 357px; }
+  .ready-copy {
+    flex: 0 0 55.2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+  }
+  .ready-title {
+    width: 76%;
+    margin-top: 50px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 8.9vw;
+    font-weight: 300;
+    line-height: 78px;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+    transform: rotate(-3deg);
+  }
+  .ready-sub {
+    width: 75%;
+    margin: 20px 0 0;
+    font-family: "Orange and Lemon Upright", sans-serif;
+    font-size: 4.3vw;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #C45B8F;
+  }
+  .ready-image { position: relative; flex: 1 1 auto; }
+  .ready-image img {
+    position: absolute;
+    width: 35vw;
+    max-width: none;
+    left: calc(105px - 17.5vw);
+    top: calc(168px - 17.5vw);
+    transform: rotate(-22deg);
+    z-index: 2;
+  }
+
+  .services {
+    display: flex;
+    gap: 20px;
+    padding: 0 43.2px 122px;
+  }
+  .service {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+  .service-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    min-height: 80px;
+    padding-top: 10px;
+  }
+  .service-icon { display: inline-flex; flex: 0 0 auto; padding-top: 9px; }
+  .service-icon :global(svg) { width: 36px; height: 36px; fill: #C45B8F; }
+  .service h3 {
+    font-family: Poppins, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+    color: #591C39;
+  }
+  .service p {
+    margin: 20px 0 14.4px;
+    font-family: Poppins, sans-serif;
+    font-size: 17px;
+    line-height: 25.5px;
+    color: #5C5C5C;
+  }
+  .learn-more {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding: 0 3px 7px;
+    border-bottom: 2px solid #C45B8F;
+    font-family: brandon-grotesque, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 15px;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    color: #C45B8F;
+  }
+  .lm-icon { display: inline-flex; }
+  .lm-icon :global(svg) { width: 15px; height: 15px; fill: #C45B8F; }
+
+  /* ---------- Video band ---------- */
+  .video-band {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 6% 7.3%;
+    min-height: 648px;
+    text-align: center;
+  }
+  .bg-video, .video-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .bg-video { object-fit: cover; z-index: 0; }
+  .video-overlay { background: #000; opacity: .66; z-index: 1; }
+  .video-band > :not(video):not(.video-overlay) { position: relative; z-index: 2; }
+  .ready-banner {
+    width: 100%;
+    max-width: 1142px;
+    margin-top: -63px;
+    padding: 10px;
+    background: #C45B8F;
+    border-radius: 12px;
+    box-shadow: 4px 10px 17px -4px rgba(0, 0, 0, .5);
+    transform: rotate(-1deg);
+  }
+  .ready-banner h2 {
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 86.4px;
+    font-weight: 400;
+    line-height: 86.4px;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+  .video-text {
+    max-width: 1080px;
+    margin: 128px 0 14.4px;
+    font-family: Poppins, sans-serif;
+    font-size: 46.08px;
+    font-weight: 700;
+    line-height: 69.12px;
+    letter-spacing: -1.3px;
+    color: #fff;
+  }
+  .video-btn {
+    margin-top: 20px;
+    padding: 30px 80px;
+    background: #C45B8F;
+    border-radius: 4px;
+    font-family: Poppins, sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    transition: background-color .3s;
+  }
+  .video-btn:hover { background: #EA82B6; }
+
+  /* ---------- Organizations ---------- */
+  .orgs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 97px 20px 97px;
+    background: #fff;
+  }
+  .orgs h2 {
+    max-width: 879px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 62px;
+    font-weight: 300;
+    line-height: 62px;
+    letter-spacing: 1.6px;
+    text-align: center;
+    color: #C45B8F;
+  }
+  .logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 879px;
+    padding: 10px 10px;
+    margin-top: 10px;
+  }
+  .logo-row:last-child { margin-top: 20px; }
+  .logo-row img { flex: 0 1 auto; min-width: 0; height: auto; }
+
+  /* ---------- About Emily ---------- */
+  .about {
+    display: flex;
+    justify-content: center;
+    padding: 115px 144px;
+    background: #793F5D;
+  }
+  .about-card {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1152px;
+    padding: 52px 57.6px;
+    background: #fff;
+  }
+  .about-copy { flex: 0 0 calc(50% - 10px); display: flex; flex-direction: column; }
+  .about-eyebrow {
+    margin: 0;
+    font-family: "Orange and Lemons Script", sans-serif;
+    font-size: 60.48px;
+    font-weight: 300;
+    line-height: 75px;
+    letter-spacing: -0.5px;
+    color: #C45B8F;
+  }
+  .about-quote {
+    margin-top: 20px;
+    font-family: "Orange and Lemons Caps", sans-serif;
+    font-size: 89.28px;
+    font-weight: 300;
+    line-height: 45px;
+    letter-spacing: -0.5px;
+    color: #743E5A;
+  }
+  .about-text {
+    max-width: 490px;
+    margin: 20px 0 14.4px;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    color: #7A7A7A;
+  }
+  .about-btn {
+    align-self: flex-start;
+    margin-top: 20px;
+    padding: 30px 80px;
+    background: #C45B8F;
+    border-radius: 4px;
+    font-family: Poppins, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    color: #fff;
+    transition: background-color .3s;
+  }
+  .about-btn:hover { background: #EA82B6; }
+  .about-photo { flex: 1 1 auto; padding: 10px; }
+  .about-photo img { width: 100%; display: block; }
+
+  /* ---------- Tablet ---------- */
+  @media (max-width: 1024px) {
+    .hero-buttons { flex-wrap: wrap; }
+    .hero-btn { font-size: 18px; padding-left: 28px; padding-right: 28px; }
+    .services { flex-wrap: wrap; }
+    .service { flex: 1 1 280px; }
+    .ready-banner h2 { font-size: 60px; line-height: 64px; }
+    .video-text { font-size: 34px; line-height: 48px; }
+    .about { padding: 60px 40px; }
+    .about-quote { font-size: 64px; line-height: 40px; }
+    .logo-row { flex-wrap: wrap; }
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 767px) {
+    .hero { flex-direction: column; align-items: stretch; gap: 20px; padding-top: 7.8px; }
+    .hero-photo { flex: none; justify-content: center; padding: 10px; }
+    .hero-photo img { width: 79%; margin: 0 0 0 auto; }
+    .hero-copy { padding: 0; align-items: stretch; text-align: center; }
+    .hero-pre { margin: 0 !important; font-size: 3.6em; line-height: .6em; }
+    .hero-voice { justify-content: center; margin: 20px 0 0 !important; font-size: 17em; height: 91px; }
+    .hero-find { margin: 20px 0 0 !important; font-size: 3.3em; line-height: .6em; padding: 12px 70px 0; }
+    .hero-text { margin: 20px 0 0 !important; padding: 2% 7% 2% 7%; text-align: center; }
+    .hero-buttons { flex-direction: column; align-items: center; padding: 0 10px 14px; margin-top: 20px; }
+    .hero-btn-fill, .hero-btn-line { margin: 13px; }
+    .hero-btn { font-size: 22px; }
+    .hero-btn-fill { padding: 28px 45px; }
+    .hero-btn-line { padding: 25px 45px; }
+
+    .intro { padding: 31.2px; }
+    .intro-title { font-size: 47px; line-height: 32.9px; }
+    .intro-text { font-size: 19px; line-height: 28.5px; }
+
+    .ready { flex-direction: column; min-height: 0; padding: 23.4px; }
+    .ready-copy { flex: none; align-items: center; }
+    .ready-title { width: 76%; margin-top: 0; font-size: 5.6em; line-height: .6em; }
+    .ready-sub { font-size: 2.9em; }
+    .ready-image { display: none; }
+
+    .services { flex-direction: column; gap: 20px; padding: 0 15.6px 0; }
+    .service { flex: none; padding: 10px; }
+    .service-head { flex-direction: column; align-items: center; gap: 20px; min-height: 0; padding-top: 0; }
+    .service-icon { padding-top: 0; }
+    .service-icon :global(svg) { width: 42px; height: 42px; }
+    .service h3 { align-self: stretch; padding: 0 10px; }
+    .service:first-child h3 { padding: 0; }
+    .service:nth-child(2) .learn-more { align-self: center; }
+
+    .video-band { min-height: 0; padding: 20px 23.4px; }
+    .ready-banner { display: none; }
+    .video-text { margin: 0 0 14.4px; font-size: 27.3px; line-height: 30.03px; }
+    .video-btn { margin: 0 0 30px; padding: 30px; }
+
+    .orgs { padding: 32px 0 32px; }
+    .orgs h2 { font-size: 61px; line-height: 42.7px; }
+    .logo-row { flex-wrap: wrap; row-gap: 20px; }
+    .logo-row img { max-width: 250px; }
+
+    .about { padding: 11.7px; }
+    .about-card { flex-direction: column; padding: 20px 22px 20px; gap: 20px; }
+    .about-copy { flex: none; }
+    .about-photo { order: -1; padding: 0 10px; }
+    .about-eyebrow { font-size: 68px; }
+    .about-quote { font-size: 57px; line-height: 39.9px; }
+    .about-btn { padding: 20px 32px 25px 22px; }
+  }
+</style>
