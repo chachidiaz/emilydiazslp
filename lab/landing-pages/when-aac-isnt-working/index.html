@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="lab-id" content="LP-010">
+<meta name="lab-published" content="2026-11-20">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When AAC Isn’t Working | Workshop by Emily Diaz, SLP</title>
+<meta name="description" content="Join the workshop and stop the cycle of AAC abandonment. Get the AAC RESET Protocol that identifies the system leaks and leads to successful AAC implementation.">
+<link rel="icon" href="assets/isntowkring-logo.webp">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=Lexend+Exa:wght@300;400;500;600&family=Manrope:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Oranges And Lemons Upright";src:url("assets/oranges-and-lemons-script-upright.woff") format("woff");font-display:swap}
+:root{
+  --purple:#8c60b1;      /* hero overlay */
+  --ink-purple:#574678;  /* big headings */
+  --lilac:#a96db3;       /* eyebrows */
+  --violet:#8b5fb1;      /* FAQ title, closing heading */
+  --coral:#ff9a8c;
+  --orange:#f28029;
+  --sand:#f0ebe5;
+  --gray:#7a7a7a;
+  --navy:#182433;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  --wide:"Lexend Exa",system-ui,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--gray);background:#fff;-webkit-font-smoothing:antialiased}
+img,svg,video{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+b,strong{font-weight:700}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}
+.narrow{max-width:780px}
+.center{text-align:center}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;font-family:var(--wide);font-weight:600;font-size:20px;letter-spacing:1.4px;text-transform:uppercase;color:#fff;text-decoration:none;background-image:linear-gradient(188deg,var(--coral) 0%,var(--orange) 63%);border-radius:3px;padding:26px 52px 26px 60px;transition:transform .2s var(--ease),box-shadow .2s var(--ease),filter .2s var(--ease);box-shadow:0 6px 18px rgba(242,128,41,.18)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(242,128,41,.28);filter:saturate(1.08)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn svg{width:.65em;height:.65em;fill:currentColor;flex:none}
+.btn--lg{font-size:24px;padding:30px 60px 30px 70px}
+.btn:focus-visible{outline:3px solid rgba(140,96,177,.5);outline-offset:3px}
+
+.eyebrow{font-family:var(--wide);font-weight:600;font-size:17.6px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac)}
+.display{font-family:var(--serif);font-weight:300;font-size:75px;line-height:1.1;color:var(--ink-purple);letter-spacing:-.01em}
+.lead{font-size:20.8px;line-height:1.6;color:var(--gray)}
+.lead p+p{margin-top:16px}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:#910a0a;color:#fff;padding:128px 6% 86px;text-align:center}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::before{content:"";position:absolute;inset:0;background:var(--purple);opacity:.88;z-index:1}
+.hero>.wrap{position:relative;z-index:2}
+.hero__logo{width:290px;margin:0 auto 32px}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:67.2px;line-height:1.1;letter-spacing:-.015em}
+.hero h1 b{font-weight:600}
+.hero__sub{max-width:740px;margin:32px auto 36px;font-size:25.6px;line-height:1.3}
+
+/* Problem */
+.problem{padding:120px 0 96px}
+.problem .display{margin:14px 0 50px}
+.problem .lead{text-align:left;max-width:730px;margin:0 auto}
+.script{font-family:"Oranges And Lemons Upright","Brush Script MT",cursive;font-weight:300;font-size:96px;line-height:1;color:var(--coral);transform:rotate(-4deg);margin:90px 0 26px}
+.arrow{width:42px;height:48px;margin:0 auto;fill:var(--coral)}
+html.js .arrow.is-visible{animation:nudge 2.4s var(--ease) .8s infinite}
+@keyframes nudge{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(8px)}}
+
+/* Intro */
+.intro{background:var(--sand);border-top:1px solid #1d1d1d;border-bottom:1px solid #1d1d1d;padding:78px 0 130px}
+.intro .display{margin:16px 0 22px}
+.intro .lead{max-width:830px;margin:0 auto}
+.intro__for{font-family:var(--wide);font-weight:500;font-size:22.4px;line-height:1.35;letter-spacing:.05em;text-transform:uppercase;color:#8d61b1;max-width:760px;margin:44px auto 60px}
+.intro__for b{font-weight:600}
+.mock{width:839px;margin:0 auto}
+.intro__note{font-family:var(--serif);font-weight:300;font-size:30.4px;line-height:1.3;color:#8c619f;max-width:800px;margin:20px auto 0}
+.intro__note b{font-weight:600}
+.price{font-family:var(--serif);font-weight:300;font-size:62.4px;line-height:1.2;color:var(--ink-purple);margin:70px 0 44px}
+.price__nw{white-space:nowrap}
+.price__amt{position:relative;display:inline-block;color:#a985c6;margin-left:.3em;padding:0 .04em}
+.price__amt svg{position:absolute;left:-10%;top:-4%;width:120%;height:114%;overflow:visible;fill:none;stroke:#8a5caf;stroke-width:6;stroke-linecap:round;stroke-dasharray:1500;stroke-dashoffset:1500}
+html:not(.js) .price__amt svg,.price__amt.is-visible svg{transition:stroke-dashoffset 1.4s var(--ease) .5s;stroke-dashoffset:0}
+
+/* Learn */
+.learn{padding:84px 0 100px}
+.learn h2{font-family:var(--wide);font-weight:300;font-size:28.8px;letter-spacing:.06em;text-transform:uppercase;color:#1d1d1d;text-align:center;margin-bottom:56px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;max-width:1200px;margin:0 auto}
+.card{text-align:center}
+.card .ic{height:68px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.card .ic svg{height:64px;width:auto}
+.ic--fill svg path{fill:var(--coral)}
+.card h3{font-family:var(--serif);font-weight:300;font-size:28.8px;line-height:1.05;color:#000;margin-bottom:22px}
+.card p{font-size:19.2px;line-height:1.5;color:#525252}
+
+/* FAQ */
+.faq{background:var(--sand);padding:72px 0 64px}
+.faq h2{font-family:var(--wide);font-weight:400;font-size:33px;letter-spacing:.13em;text-transform:uppercase;color:var(--violet);text-align:center;margin-bottom:48px}
+.faq__list{display:grid;gap:13px}
+.faq details{background:#fff;border:1px solid #dcd6d0;border-radius:16px;transition:box-shadow .2s var(--ease)}
+.faq details:hover{box-shadow:0 6px 20px rgba(87,70,120,.08)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:22px 22px;font-weight:700;font-size:19px;color:#3b3b3b}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"";flex:none;width:12px;height:12px;background:linear-gradient(#d4645a,#d4645a) center/12px 2.5px no-repeat,linear-gradient(#d4645a,#d4645a) center/2.5px 12px no-repeat;transition:transform .25s var(--ease)}
+.faq details[open] summary::before{background:linear-gradient(#1d1d1d,#1d1d1d) center/12px 2.5px no-repeat;transform:rotate(180deg)}
+.faq details[open] summary{color:#1d1d1d}
+.faq__a{padding:6px 30px 26px;font-size:17.6px;line-height:1.6;color:#3b3b3b}
+.faq details[open] .faq__a{animation:faqIn .35s var(--ease)}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.faq__a a{color:var(--violet)}
+
+/* Close */
+.close{padding:88px 0 64px}
+.close h2{font-family:var(--serif);font-weight:300;font-size:51.2px;line-height:1.2;color:var(--violet)}
+.close .sub{font-family:var(--wide);font-weight:300;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:var(--violet);margin:12px 0 64px}
+
+/* Footer */
+.footer{background:var(--navy);color:#fff;font-family:"Poppins",sans-serif;padding:48px 0 70px;box-shadow:0 -12px 22px rgba(0,0,0,.1)}
+.footer__top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 10px 40px;border-bottom:1px solid rgba(255,255,255,.75)}
+.footer__logo{width:107px}
+.footer__nav{display:flex;align-items:center;gap:20px}
+.footer__nav img{width:25px;height:25px;transition:transform .2s var(--ease)}
+.footer__nav a:hover img{transform:translateY(-2px)}
+.footer__nav .sep{font-weight:300;margin:0 2px}
+.footer__login{display:flex;align-items:center;gap:20px;font-weight:600;text-decoration:none;font-size:16px}
+.footer__bottom{text-align:right;padding:18px 20px 0;font-size:13px;font-weight:600}
+.footer__links{font-size:11px;margin-top:6px;color:#7a7a7a}
+.footer__links a{color:var(--coral);text-decoration:none}
+.footer__links a:hover{text-decoration:underline}
+
+/* Scroll reveal */
+html.js [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+html.js [data-reveal].is-visible{opacity:1;transform:none}
+html.js [data-reveal-delay="1"]{transition-delay:.1s}
+html.js [data-reveal-delay="2"]{transition-delay:.2s}
+html.js [data-reveal-delay="3"]{transition-delay:.3s}
+html.js .script[data-reveal]{transform:rotate(-4deg) translateY(18px)}
+html.js .script[data-reveal].is-visible{transform:rotate(-4deg)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  html.js [data-reveal],html.js .script[data-reveal]{opacity:1;transform:none;transition:none}
+  html.js .script[data-reveal]{transform:rotate(-4deg)}
+  .price__amt svg{stroke-dashoffset:0;transition:none!important}
+  html.js .arrow.is-visible{animation:none}
+  .btn,.faq details[open] .faq__a{transition:none;animation:none}
+}
+
+/* Responsive */
+@media (max-width:1024px){
+  .display{font-size:58px}
+  .hero h1{font-size:54px}
+  .script{font-size:76px}
+  .cards{gap:36px}
+}
+@media (max-width:767px){
+  .wrap{padding:0 20px}
+  .hero{padding:72px 0 64px}
+  .hero__logo{width:210px;margin-bottom:26px}
+  .hero h1{font-size:38px}
+  .hero__sub{font-size:19px;margin:22px auto 28px}
+  .btn,.btn--lg{display:block;text-align:center;font-size:14px;line-height:1.4;letter-spacing:.6px;padding:20px 18px;width:100%}
+  .btn svg{display:inline-block;vertical-align:-1px;margin-right:8px}
+  .eyebrow{font-size:13px;letter-spacing:.16em}
+  .display{font-size:42px}
+  .lead{font-size:17.6px}
+  .problem{padding:72px 0 64px}
+  .problem .display{margin-bottom:32px}
+  .script{font-size:52px;margin:60px 0 20px}
+  .intro{padding:60px 0 80px}
+  .intro__for{font-size:16px;margin:32px auto 36px}
+  .intro__note{font-size:22px}
+  .price{font-size:38px;margin:48px 0 32px}
+  .learn{padding:64px 0 56px}
+  .learn h2{font-size:20px;margin-bottom:40px}
+  .cards{grid-template-columns:1fr;gap:48px}
+  .card h3{font-size:26px}
+  .card p{font-size:17px}
+  .faq{padding:56px 0 48px}
+  .faq h2{font-size:22px;letter-spacing:.12em;margin-bottom:32px}
+  .faq summary{font-size:16.5px;padding:18px}
+  .faq__a{padding:4px 20px 22px;font-size:16px}
+  .close{padding:64px 0 48px}
+  .close h2{font-size:34px}
+  .close .sub{font-size:15px;margin-bottom:40px}
+  .footer{padding:40px 0 48px}
+  .footer__top{flex-direction:column;padding:0 0 32px}
+  .footer__bottom{text-align:center;padding:18px 0 0}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JVTDYG6V1B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVTDYG6V1B');
+</script>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <img class="poster" src="assets/hero-poster.jpg" alt="" aria-hidden="true">
+  <video autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <img class="hero__logo" src="assets/isntowkring-logo.webp" width="290" height="229" alt="When AAC Isn’t Working: a pop-up workshop from Emily Diaz" data-reveal>
+    <h1 data-reveal data-reveal-delay="1">A <b>practical reset</b> for stalled AAC use</h1>
+    <p class="hero__sub" data-reveal data-reveal-delay="2"><b>Join the workshop and stop the cycle of AAC abandonment. Get the brand new protocol&nbsp;</b>that identifies the system leaks and <b>sparks a RESET</b> that leads to <b>successful AAC</b> implementation.</p>
+    <div data-reveal data-reveal-delay="3"><a class="btn" href="#whats-inside"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>What's inside the workshop</a></div>
+  </div>
+</header>
+
+<main>
+<section class="problem">
+  <div class="wrap center">
+    <p class="eyebrow" data-reveal>It's no secret, friend.</p>
+    <h2 class="display" data-reveal>We've all been there.</h2>
+    <div class="lead" data-reveal>
+      <p><b>You fought for a robust system</b>, but between dead batteries, programming glitches, and trying to model during a chaotic session, <strong>the device you fought so hard for starts feeling more like a chore than a voice.</strong> When the daily grind outweighs the wins, it’s no wonder 60% of systems end up abandoned in the first year.</p>
+      <p><strong>That’s not a reflection of the student’s potential. </strong>It’s just what happens when the <strong>gap between the person and the tool becomes too much to manage alone.</strong></p>
+    </div>
+    <p class="script" data-reveal>Let's turn the device back into a voice.</p>
+    <div data-reveal><svg aria-hidden="true" class="arrow" aria-hidden="true" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"></path></svg></div>
+  </div>
+</section>
+
+<section class="intro" id="whats-inside">
+  <div class="wrap center">
+    <p class="eyebrow" data-reveal>Introducing the workshop for the action-takers</p>
+    <h2 class="display" data-reveal>"When AAC Isn't Working"</h2>
+    <p class="lead" data-reveal><b>This isn’t just another “AAC buy-in” workshop</b> with the same recycled info in a shiny, new package.This workshop is for the SLPs who are <b>tired of “waiting for it to click”.</b></p>
+    <h3 class="intro__for" data-reveal>This is for <b>the problem-solvers who lead</b> when everyone else is ready to pack it up.</h3>
+    <img class="mock" src="assets/mock-no-call.webp" width="1243" height="796" alt="When AAC Isn't Working workshop on a desktop screen, with the AAC RESET Rubric and full slide deck download" loading="lazy" data-reveal>
+    <p class="intro__note" data-reveal>"When AAC Isn't Working" is a <b>self-paced, life-time access workshop.</b></p>
+    <h3 class="price" data-reveal>Get the workshop <span class="price__nw">for<span class="price__amt" data-reveal>$67<svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true"><path d="M325,18C228.7-8.3,118.5,8.3,78,21C22.4,38.4,4.6,54.6,5.6,77.6c1.4,32.4,52.2,54,142.6,63.7 c66.2,7.1,212.2,7.5,273.5-8.3c64.4-16.6,104.3-57.6,33.8-98.2C386.7-4.9,179.4-1.4,126.3,20.7"/></svg></span></span></h3>
+    <div data-reveal><a class="btn btn--lg" href="https://campus.emilydiazslp.com/checkout/when-aac-isnt-working"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>Get the workshop for $67</a></div>
+  </div>
+</section>
+
+<section class="learn">
+  <div class="wrap">
+    <h2 data-reveal>Here's what you'll learn...</h2>
+    <div class="cards">
+      <article class="card" data-reveal data-reveal-delay="1">
+        <div class="ic ic--fill"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 496 496.00935"><path d="m137.972656 98.679688c-15.128906 5.714843-25.96875 20.226562-25.96875 37.328124 0 6.585938 1.753906 12.714844 4.585938 18.203126-12 4.613281-20.585938 16.183593-20.585938 29.796874 0 13.617188 8.585938 25.183594 20.585938 29.800782-2.832032 5.488281-4.585938 11.617187-4.585938 18.199218 0 17.105469 10.839844 31.617188 25.96875 37.328126-1.199218 3.351562-1.96875 6.914062-1.96875 10.671874 0 17.648438 14.351563 32 32 32 3.984375 0 7.761719-.824218 11.28125-2.152343 5.183594 10.699219 16.054688 18.152343 28.71875 18.152343 17.648438 0 32-14.351562 32-32v-224c0-17.644531-14.351562-32-32-32-12.664062 0-23.535156 7.457032-28.71875 18.152344-3.519531-1.328125-7.296875-2.152344-11.28125-2.152344-17.648437 0-32 14.355469-32 32 0 3.761719.769532 7.320313 1.96875 10.671876zm30.03125-26.671876c8.824219 0 16 7.175782 16 16h16c0-7.6875-2.839844-14.664062-7.375-20.183593 1.855469-6.78125 8.007813-11.816407 15.375-11.816407 8.824219 0 16 7.175782 16 16v224c0 8.824219-7.175781 16-16 16-7.367187 0-13.519531-5.03125-15.375-11.816406 4.535156-5.519531 7.375-12.492187 7.375-20.183594h-16c0 8.824219-7.175781 16-16 16-8.824218 0-16-7.175781-16-16 0-8.824218 7.175782-16 16-16v-16c-7.792968 0-14.847656 2.914063-20.398437 7.554688-11.136719-2.074219-19.601563-11.824219-19.601563-23.554688 0-13.230468 10.769532-24 24-24 13.234375 0 24 10.769532 24 24h16c0-22.054687-17.941406-40-40-40-9.039062 0-17.296875 3.128907-24 8.210938v-.210938c-8.824218 0-16-7.175781-16-16 0-8.824218 7.175782-16 16-16v-.207031c6.703125 5.082031 14.960938 8.207031 24 8.207031 22.058594 0 40-17.941406 40-40h-16c0 13.234376-10.765625 24-24 24-13.230468 0-24-10.765624-24-24 0-11.726562 8.464844-21.476562 19.601563-23.550781 5.550781 4.640625 12.605469 7.550781 20.398437 7.550781v-16c-8.824218 0-16-7.175781-16-16 0-8.824218 7.175782-16 16-16zm0 0"></path><path d="m328.003906 56.007812c-3.984375 0-7.757812.824219-11.277344 2.152344-5.1875-10.695312-16.058593-18.152344-28.722656-18.152344-17.648437 0-32 14.355469-32 32v224c0 17.648438 14.351563 32 32 32 12.664063 0 23.535156-7.453124 28.722656-18.152343 3.519532 1.328125 7.292969 2.152343 11.277344 2.152343 17.648438 0 32-14.351562 32-32 0-3.757812-.765625-7.320312-1.96875-10.671874 15.128906-5.710938 25.96875-20.222657 25.96875-37.328126 0-6.582031-1.75-12.710937-4.582031-18.199218 12-4.617188 20.582031-16.183594 20.582031-29.800782 0-13.613281-8.582031-25.183593-20.582031-29.796874 2.832031-5.488282 4.582031-11.617188 4.582031-18.203126 0-17.101562-10.839844-31.613281-25.96875-37.328124 1.203125-3.351563 1.96875-6.910157 1.96875-10.671876 0-17.644531-14.351562-32-32-32zm40 80c0 13.234376-10.765625 24-24 24-13.230468 0-24-10.765624-24-24h-16c0 22.058594 17.945313 40 40 40 9.039063 0 17.296875-3.125 24-8.207031v.207031c8.824219 0 16 7.175782 16 16 0 8.824219-7.175781 16-16 16v.210938c-6.703125-5.082031-14.960937-8.210938-24-8.210938-22.054687 0-40 17.945313-40 40h16c0-13.230468 10.769532-24 24-24 13.234375 0 24 10.769532 24 24 0 11.730469-8.464844 21.480469-19.597656 23.554688-5.554688-4.640625-12.609375-7.554688-20.402344-7.554688v16c8.824219 0 16 7.175782 16 16 0 8.824219-7.175781 16-16 16-8.824218 0-16-7.175781-16-16h-16c0 7.691407 2.839844 14.664063 7.375 20.183594-1.855468 6.785156-8.007812 11.816406-15.375 11.816406-8.824218 0-16-7.175781-16-16v-224c0-8.824218 7.175782-16 16-16 7.367188 0 13.519532 5.035157 15.375 11.816407-4.535156 5.519531-7.375 12.496093-7.375 20.183593h16c0-8.824218 7.175782-16 16-16 8.824219 0 16 7.175782 16 16 0 8.824219-7.175781 16-16 16v16c7.792969 0 14.847656-2.910156 20.402344-7.550781 11.132812 2.074219 19.597656 11.824219 19.597656 23.550781zm0 0"></path><path d="m373.980469 49.898438c-37.382813-35.136719-86.34375-52.753907-137.726563-49.519532l.992188 15.964844c46.949218-2.917969 91.636718 13.136719 125.78125 45.210938 34.160156 32.101562 52.976562 75.597656 52.976562 122.453124 0 56.464844-28.144531 108.824219-75.289062 140.066407-16.261719 10.78125-28.566406 26.160156-36.148438 43.933593h-113.457031c-7.6875-17.902343-20.039063-33.390624-36.328125-44.269531-48.585938-32.472656-76.503906-86.703125-74.6875-145.089843l-15.992188-.496094c-1.992187 63.9375 28.589844 123.335937 81.792969 158.882812 11.75 7.855469 21.132813 18.550782 27.671875 30.972656h-21.5625v16h27.945313c1.550781 5.183594 2.792969 10.496094 3.421875 16h-15.367188v16h16v24c0 4.425782 3.585938 8 8 8h8c0 26.472657 21.527344 48 48 48s48-21.527343 48-48h8c4.417969 0 8-3.574218 8-8v-24h16v-16h-15.4375c.566406-5.496093 1.695313-10.824218 3.214844-16h28.222656v-16h-21.910156c6.445312-12.285156 15.773438-22.847656 27.464844-30.589843 51.621094-34.234375 82.445312-91.578125 82.445312-153.410157 0-50.574218-21.152344-99.460937-58.023437-134.109374zm-125.976563 430.109374c-17.648437 0-32-14.351562-32-32h64c0 17.648438-14.351562 32-32 32zm48-48h-96v-16h96zm.570313-32h-97.210938c-.535156-5.445312-1.398437-10.796874-2.710937-16h102.410156c-1.273438 5.195313-2.011719 10.570313-2.488281 16zm0 0"></path><path d="m56.003906 56.007812c17.648438 0 32 14.355469 32 32 0 4.425782 3.585938 8 8 8 4.417969 0 8-3.574218 8-8 0-17.644531 14.351563-32 32-32 4.417969 0 8-3.574218 8-8 0-4.421874-3.582031-8-8-8-17.648437 0-32-14.351562-32-32 0-4.421874-3.582031-7.9999995-8-7.9999995-4.414062 0-8 3.5781255-8 7.9999995 0 17.648438-14.351562 32-32 32-4.414062 0-8 3.578126-8 8 0 4.425782 3.585938 8 8 8zm40-21.496093c3.554688 5.34375 8.152344 9.945312 13.496094 13.496093-5.34375 3.554688-9.941406 8.152344-13.496094 13.496094-3.550781-5.34375-8.152344-9.941406-13.496094-13.496094 5.34375-3.550781 9.945313-8.152343 13.496094-13.496093zm0 0"></path><path d="m88.003906 136.007812c4.417969 0 8-3.574218 8-8 0-4.421874-3.582031-8-8-8-17.648437 0-32-14.351562-32-32 0-4.421874-3.582031-8-8-8-4.414062 0-8 3.578126-8 8 0 17.648438-14.351562 32-32 32-4.414062 0-7.99999975 3.578126-7.99999975 8 0 4.425782 3.58593775 8 7.99999975 8 17.648438 0 32 14.355469 32 32 0 4.425782 3.585938 8 8 8 4.417969 0 8-3.574218 8-8 0-17.644531 14.351563-32 32-32zm-40 5.496094c-3.550781-5.34375-8.152344-9.941406-13.496094-13.496094 5.34375-3.550781 9.9375-8.152343 13.496094-13.496093 3.554688 5.34375 8.152344 9.9375 13.496094 13.496093-5.34375 3.554688-9.941406 8.152344-13.496094 13.496094zm0 0"></path></svg></div>
+        <h3>How to dismantle the myths of "readiness"</h3>
+        <p>Identify and correct the common misconceptions that lead to systems being tucked away in backpacks or swapped for “simpler” versions that limit a child’s potential.</p>
+      </article>
+      <article class="card" data-reveal data-reveal-delay="2">
+        <div class="ic ic--fill"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" id="Icons" viewBox="0 0 74 74"><path d="m3 60h68v2h-68z"></path><path d="m64 62h-12a1 1 0 0 1 -1-1v-4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1zm-11-2h10v-2h-10z"></path><path d="m61 58h-6a1 1 0 0 1 -1-1v-10h2v9h4v-9h2v10a1 1 0 0 1 -1 1z"></path><path d="m62 43h-2v-29h-4v29h-2v-30a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"></path><path d="m22 62h-12a1 1 0 0 1 -1-1v-4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1zm-11-2h10v-2h-10z"></path><path d="m20 43h-2v-29h-4v29h-2v-30a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"></path><path d="m19 58h-6a1 1 0 0 1 -1-1v-10h2v9h4v-9h2v10a1 1 0 0 1 -1 1z"></path><path d="m37 36c-16.72 0-18.975-22.68-19-22.91l2-.181c.015.211 2.106 21.091 17 21.091s16.985-20.88 17-21.091l2 .181c-.025.23-2.28 22.91-19 22.91z"></path><path d="m70.458 33.562c-9.024-5.823-10.4-19.876-10.453-20.472l1.995-.181c.012.136 1.346 13.682 9.545 18.972z"></path><path d="m3.542 33.562-1.084-1.681c8.213-5.3 9.533-18.836 9.545-18.971l1.997.18c-.059.596-1.434 14.649-10.458 20.472z"></path><path d="m71 48h-68a1 1 0 0 1 -1-1v-4a1 1 0 0 1 1-1h68a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1zm-67-2h66v-2h-66z"></path><path d="m48 29.01h2v13.99h-2z"></path><path d="m42 33.8h2v9.2h-2z"></path><path d="m36 35h2v8h-2z"></path><path d="m30 33.8h2v9.2h-2z"></path><path d="m24 29.01h2v13.99h-2z"></path></svg></div>
+        <h3>How to bridge the implementation gap</h3>
+        <p>Analyze the four critical “leaks” in the environment, people, technology, and data that cause even the most robust systems to fail.</p>
+      </article>
+      <article class="card" data-reveal data-reveal-delay="3">
+        <div class="ic"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"><g><path d="m155.224 80.576-8.013-48.08c-.756-4.538 4.409-7.678 8.09-4.918L204.4 64.403a5.1 5.1 0 0 0 7.139-1.02L251.92 9.54c2.04-2.72 6.119-2.72 8.159 0l40.382 53.842a5.1 5.1 0 0 0 7.139 1.02l49.1-36.825c3.68-2.76 8.846.38 8.09 4.918l-21.72 130.317M168.93 162.812l-7.766-46.593M320.7 227.894v-31.445c0-18.577-15.06-33.637-33.637-33.637h0a81.208 81.208 0 0 1 57.422 23.785l27.512 27.512a81.208 81.208 0 0 1 23.785 57.422v0c0-18.577-15.06-33.637-33.637-33.637H330.7c-5.523 0-10-4.477-10-10zM116.219 463.22v31.28c0 5.523 4.477 10 10 10h259.562c5.523 0 10-4.477 10-10V271.531v0M234.261 162.812H126.219c-5.523 0-10 4.477-10 10V428.22M287.063 162.812h-17.802" style="stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" fill="none" stroke="#ff9a8c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" data-original="#000000" opacity="1"></path><path d="M395.781 271.531v-98.719c0-5.523-4.477-10-10-10h-98.719M209.406 271.531h139.782M162.812 318.125h186.376M162.812 364.719h186.376M162.812 411.312h139.782M226.266 42.318 203.58 24.132c-2.744-2.2-6.842-.954-7.897 2.402l-7.798 24.804M285.614 42.414l22.806-18.282c2.744-2.2 6.842-.954 7.897 2.402l7.777 24.736M252.197 74.08l-19.94 23.361a5 5 0 0 0 0 6.492l19.94 23.361a5 5 0 0 0 7.606 0l19.94-23.361a5 5 0 0 0 0-6.492l-19.94-23.361a5 5 0 0 0-7.606 0z" style="stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" fill="none" stroke="#ff9a8c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" data-original="#000000" opacity="1"></path></g></svg></div>
+        <h3>How to master the AAC RESET Protocol</h3>
+        <p>Walk away with a diagnostic, rubric-based framework to troubleshoot breakdowns and apply clear fixes instead of giving up.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2 data-reveal>Frequently Asked Questions</h2>
+    <div class="faq__list">
+      <details open data-reveal><summary>When will I get access to the workshop?</summary><div class="faq__a"><p>You have complete and instant access to the workshop upon purchase.</p></div></details>
+      <details data-reveal><summary>What's the refund policy?</summary><div class="faq__a"><p>Due to the digital nature of the product, we have a strict no refund policy. We hope you understand!</p></div></details>
+      <details data-reveal><summary>Will I receive a certificate upon completion?</summary><div class="faq__a"><p>Absolutely! Every one of our courses comes with a certificate of completion for your records. There will be instructions inside the course to access your certificate.</p></div></details>
+      <details data-reveal><summary>Will I earn any PDHs from this workshop?</summary><div class="faq__a"><p>Yup. This workshop is worth 2 ASHA PDHs.</p></div></details>
+      <details data-reveal><summary>Can I purchase with a purchase order?</summary><div class="faq__a"><p>We gladly accept purchase orders on licenses of five or more. To fill out a purchase order request, <a href="https://emilydiazslp.com/when-acc-po-request">click here.</a></p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap center">
+    <h2 data-reveal>Imagine if struggling didn't mean AAC Failure.</h2>
+    <p class="sub" data-reveal>Join the workshop and get the aac reset protocol</p>
+    <div data-reveal><a class="btn" href="https://campus.emilydiazslp.com/checkout/when-aac-isnt-working"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>Get the workshop for $67</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <img class="footer__logo" src="assets/asset-4-1.png" width="107" height="61" alt="Emily Diaz">
+      <nav class="footer__nav" aria-label="Social and login">
+        <a href="http://instagram.com/emilydiazslp" aria-label="Instagram"><img src="assets/instagram.png" alt=""></a>
+        <a href="https://www.facebook.com/emilydiazslp" aria-label="Facebook"><img src="assets/facebook.png" alt=""></a>
+        <a href="https://www.youtube.com/channel/UC3wNhAhCTvW2--ZiEkhKTuQ" aria-label="YouTube"><img src="assets/youtube.png" alt=""></a>
+        <span class="sep" aria-hidden="true">|</span>
+        <a class="footer__login" href="https://learn.emilydiazslp.com"><img src="assets/login.png" alt="">Student Login</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 Emily Diaz, SLP | All rights Reserved.</p>
+      <p class="footer__links"><a href="https://emilydiazslp.com/privacy-policy">Privacy Policy</a> | <a href="https://emilydiazslp.com/terms">Terms of Use</a> | <a href="https://emilydiazslp.com/website-disclaimer">Website Disclaimer</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('[data-reveal]');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-visible')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-visible');io.unobserve(en.target)}});
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+  document.querySelectorAll('.arrow').forEach(function(a){io.observe(a)});
+  var v=document.querySelector('.hero video');
+  if(v&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause()}
+})();
+</script>
+</body>
+</html>

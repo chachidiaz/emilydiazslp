@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="lab-id" content="LP-009">
+<meta name="lab-published" content="2026-11-20">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get The AAC Handbook – Emily Diaz, SLP. | AAC Speech Therapist</title>
+<meta name="description" content="The AAC Handbook is a must-have digital resource full of simple handouts about a full range of AAC topics that do the explaining for you. 40 pages for $47.">
+<link rel="icon" href="assets/handbook-mockup.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Montserrat:wght@600;700;800;900&family=Playfair+Display:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --peach:#ffb98d;
+  --lavender:#d6d6ea;
+  --periwinkle:#9a98cd;
+  --indigo:#5c5b86;
+  --wine:#591c39;
+  --coral:#ff7c5f;
+  --coral-shadow:#ab361d;
+  --off-white:#fafafa;
+  --ink:#2d2d2d;
+  --grey:#7a7a7a;
+  --grey-dark:#5a5a5a;
+  --list-ink:#54595f;
+  --serif:"Playfair Display", Georgia, serif;
+  --body:"Karla", system-ui, sans-serif;
+  --display:"Montserrat", "Helvetica Neue", Arial, sans-serif; /* stands in for brandon-grotesque */
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--body);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+
+.section{padding:80px 20px}
+.wrap{max-width:1120px;margin:0 auto;text-align:center}
+.narrow{max-width:724px;margin:0 auto}
+
+.mockup{width:414px;max-width:78%;margin:0 auto}
+
+/* ---------- Shared type ---------- */
+.serif-xl{font-family:var(--serif);font-weight:800;font-size:71px;line-height:1;letter-spacing:-.5px;color:#555}
+.serif-md{font-family:var(--serif);font-weight:300;font-size:28px;line-height:1.15;letter-spacing:-.5px;color:#555}
+.caps{font-family:var(--display);text-transform:uppercase}
+
+/* Price headline with hand-drawn circle */
+.price{font-family:var(--serif);font-weight:700;font-size:43px;line-height:1.2;color:#fff;margin-top:36px}
+.price .amt{position:relative;display:inline-block;font-weight:300;padding:0 4px}
+.price svg{position:absolute;left:-8%;top:-14%;width:116%;height:128%;overflow:visible;pointer-events:none}
+.price svg{fill:none;stroke:#e5242b;stroke-width:6;stroke-linecap:round;stroke-dasharray:1600;stroke-dashoffset:0}
+html.js .price svg{stroke-dashoffset:1600}
+html.js .price.is-visible svg{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s var(--ease) .35s}
+.price--dark{color:#494949}
+
+/* CTA button */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;width:600px;max-width:100%;
+  padding:40px 30px;border-radius:6px;background:var(--coral);color:#fff;text-decoration:none;
+  font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:2px;line-height:1.15;text-transform:uppercase;
+  box-shadow:0 3px 0 0 var(--coral-shadow);margin-top:28px;transition:transform .2s var(--ease),filter .2s var(--ease),box-shadow .2s var(--ease)}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 6px 0 0 var(--coral-shadow)}
+.btn:active{transform:translateY(1px);box-shadow:0 1px 0 0 var(--coral-shadow)}
+.btn svg{width:26px;height:26px;flex:none;fill:currentColor}
+.btn--lilac{background:var(--periwinkle);box-shadow:0 3px 0 0 rgba(101,73,140,.91)}
+.btn--lilac:hover{box-shadow:0 6px 0 0 rgba(101,73,140,.91)}
+
+.sub-links{margin-top:22px;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.6px;color:#fff;line-height:1.6}
+.sub-links a{text-decoration:none}
+.sub-links a:hover{text-decoration:underline}
+.sub-links--indigo a{color:var(--indigo)}
+.sub-links--grey a{color:#545454}
+.sub-links--peach a{color:#f9b5a0}
+
+/* Icon lists */
+.ilist{list-style:none;padding:0;margin:28px auto 0;display:grid;gap:10px;font-family:var(--body);font-size:20px;line-height:30px;color:var(--list-ink)}
+.ilist li{display:flex;align-items:flex-start;gap:14px;text-align:left}
+.ilist svg{width:21px;height:21px;flex:none;margin-top:5px}
+.ilist--x{width:max-content;max-width:100%}
+.ilist--x li{justify-content:center}
+.ilist--x svg{fill:#f38383;width:16px;height:16px;margin-top:8px}
+.ilist--check{max-width:680px}
+.ilist--check svg{fill:#545454}
+.ilist--light{color:#fff}
+.ilist--light svg{fill:var(--peach)}
+
+/* ---------- 1. Hero ---------- */
+.hero{background:var(--peach);padding-top:70px;padding-bottom:70px}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:67px;line-height:1;letter-spacing:-1.5px;color:#fff;margin-top:36px}
+.hero .gets-it{font-family:var(--display);font-weight:600;font-size:34px;letter-spacing:4.4px;color:#4b4b4b;margin-top:22px}
+.hero .lede{font-family:var(--body);font-size:25px;line-height:1.5;color:var(--ink);text-transform:uppercase;max-width:800px;margin:38px auto 0}
+.hero .lede b{font-weight:700}
+
+/* ---------- 2. Problem ---------- */
+.problem{padding-top:56px;padding-bottom:40px}
+.problem .emoji{font-size:49px;line-height:1}
+.problem h2{font-family:var(--serif);font-weight:300;font-size:49px;line-height:1;letter-spacing:-.5px;color:var(--indigo);max-width:912px;margin:14px auto 0}
+.problem .turn{font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:1.2px;line-height:1.1;color:var(--indigo);margin-top:46px}
+.introducing{font-family:Arial,"Helvetica Neue",sans-serif;font-weight:300;font-size:74px;line-height:1;letter-spacing:-.5px;color:var(--periwinkle);margin-top:30px;display:inline-block;transform:rotate(-6deg)}
+.down-arrow{display:block;width:30px;height:30px;margin:4px auto 0;fill:var(--periwinkle)}
+html.js .down-arrow.is-visible{animation:nudge 2.4s var(--ease) 1s infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ---------- 3. Product ---------- */
+.product{background:var(--lavender)}
+.product .serif-xl{margin-top:40px}
+.pill{display:inline-block;background:var(--peach);color:#fff;font-family:var(--display);font-weight:800;font-size:26px;line-height:1;letter-spacing:4.9px;text-transform:uppercase;padding:26px 56px;margin-top:40px;max-width:672px}
+.product .serif-md{margin-top:40px}
+.product .ilist{margin-top:22px}
+.product .more{margin-top:30px}
+.product .price{margin-top:14px}
+
+/* ---------- Testimonials ---------- */
+.testi{background:var(--off-white);padding-top:76px;padding-bottom:40px}
+.testi .stars{width:116px;margin:0 auto}
+.testi h2{font-family:var(--display);font-weight:800;font-size:36px;line-height:1;letter-spacing:1.1px;text-transform:uppercase;color:var(--grey-dark);margin-top:12px}
+.testi blockquote{margin:30px auto 0;max-width:724px;font-family:var(--body);font-size:19px;line-height:1.9;color:var(--grey)}
+.testi cite{display:block;font-style:normal;font-family:var(--serif);font-weight:300;font-size:22px;letter-spacing:-.5px;color:var(--grey-dark);margin-top:30px}
+
+/* ---------- About ---------- */
+.about{padding-top:60px;padding-bottom:0}
+.about .grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;max-width:1120px;margin:0 auto}
+.about .photo{width:550px;max-width:100%;justify-self:center}
+.about .copy{text-align:center;padding-bottom:70px;max-width:560px}
+.about .copy h2{font-family:var(--serif);font-weight:300;font-size:29px;letter-spacing:-.5px;color:#616161}
+.about .sig{width:429px;max-width:90%;margin:10px auto 26px}
+.about .copy p{font-family:var(--body);font-size:21px;line-height:1.7;color:var(--grey);text-align:left;margin-top:14px}
+
+/* ---------- Featured ---------- */
+.featured{background:var(--peach);padding-top:44px;padding-bottom:56px}
+.featured h2{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:2.2px;color:#4e4e4e;text-transform:uppercase}
+.featured img{width:1120px;margin:50px auto 0}
+
+/* ---------- Wine band ---------- */
+.wine{background:var(--wine)}
+.wine .serif-xl{margin-top:40px;color:#fff}
+.wine .lede{font-family:var(--body);font-size:28px;line-height:1.5;color:#fff;max-width:760px;margin:40px auto 0}
+.wine .serif-md{color:#fff;margin-top:40px}
+
+/* ---------- FAQ ---------- */
+.faq{padding-top:110px;padding-bottom:80px}
+.faq h2{font-family:var(--display);font-weight:800;font-size:36px;line-height:1;letter-spacing:1.1px;text-transform:uppercase;color:var(--grey-dark)}
+.faq .list{margin:50px auto 0;max-width:1120px;text-align:left;border-top:1px solid #d5d8dc}
+.faq details{border-bottom:1px solid #d5d8dc;background:#f6f6f6}
+.faq summary{cursor:pointer;list-style:none;padding:22px 38px;position:relative;font-family:var(--serif);font-size:24px;color:var(--periwinkle);transition:color .2s var(--ease)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"";position:absolute;left:20px;top:50%;margin-top:-5px;border:5px solid transparent;border-left:6px solid #555;transform-origin:3px 5px;transition:transform .25s var(--ease)}
+.faq details[open] summary::before{transform:rotate(90deg)}
+.faq summary:hover{color:var(--indigo)}
+.faq .answer{background:#fdfdfd;padding:15px 38px 22px;font-family:var(--body);font-size:16px;line-height:1.6;color:var(--grey)}
+.faq .answer p+p,.faq .answer p+ul,.faq .answer ul+p{margin-top:12px}
+.faq .answer ul{margin:8px 0 0;padding-left:22px}
+html.js .faq details[open] .answer{animation:faqIn .35s var(--ease)}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ---------- Closing ---------- */
+.closing{padding-top:56px;padding-bottom:60px}
+.closing .price{margin-top:0}
+.closing .serif-md{color:#fff;margin-top:6px}
+
+/* ---------- Scroll reveal ---------- */
+html.js [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+html.js [data-reveal].is-visible{opacity:1;transform:none}
+html.js [data-reveal-delay="1"]{transition-delay:.08s}
+html.js [data-reveal-delay="2"]{transition-delay:.16s}
+html.js [data-reveal-delay="3"]{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  html.js [data-reveal]{opacity:1;transform:none;transition:none}
+  html.js .price svg{stroke-dashoffset:0;transition:none}
+  html.js .down-arrow.is-visible,html.js .faq details[open] .answer{animation:none}
+  .btn{transition:none}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .hero h1{font-size:56px}
+  .serif-xl{font-size:56px}
+  .about .grid{grid-template-columns:1fr;gap:10px}
+  .about .copy{order:-1;padding-bottom:30px;margin:0 auto}
+  .about .photo{width:440px}
+}
+@media (max-width:767px){
+  .section{padding:56px 18px}
+  .hero{padding-top:44px;padding-bottom:50px}
+  .hero h1{font-size:42px;letter-spacing:-1px;margin-top:26px}
+  .hero .gets-it{font-size:22px;letter-spacing:3px;margin-top:16px}
+  .hero .lede{font-size:19px;margin-top:24px}
+  .price{font-size:32px;margin-top:28px}
+  .btn{padding:26px 22px;font-size:19px;letter-spacing:1.6px;gap:12px}
+  .btn svg{width:22px;height:22px}
+  .sub-links{font-size:14px}
+  .sub-links .sep{display:none}
+  .sub-links a{display:block}
+  .problem h2{font-size:36px}
+  .problem .turn{font-size:20px;margin-top:34px}
+  .introducing{font-size:54px}
+  .ilist{font-size:17px;line-height:26px}
+  .ilist--x svg{margin-top:6px}
+  .ilist--check svg,.ilist--light svg{width:19px;height:19px;margin-top:4px}
+  .serif-xl{font-size:40px;line-height:1.05}
+  .serif-md{font-size:23px}
+  .pill{font-size:17px;letter-spacing:3px;padding:18px 22px;line-height:1.25}
+  .testi{padding-top:52px}
+  .testi h2,.faq h2{font-size:28px;line-height:1.15}
+  .testi blockquote{font-size:17px;line-height:1.8}
+  .testi cite{font-size:20px}
+  .about .copy p{font-size:18px}
+  .about .copy h2{font-size:26px}
+  .featured h2{font-size:24px}
+  .featured img{margin-top:30px}
+  .wine .lede{font-size:21px;margin-top:28px}
+  .faq{padding-top:64px}
+  .faq .list{margin-top:32px}
+  .faq summary{font-size:19px;padding:18px 16px 18px 34px}
+  .faq summary::before{left:14px}
+  .faq .answer{padding:14px 18px 20px}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JVTDYG6V1B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVTDYG6V1B');
+</script>
+</head>
+<body>
+<!-- shared icon symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="x" viewBox="0 0 352 512"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></symbol>
+  <symbol id="check" viewBox="0 0 512 512"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></symbol>
+  <symbol id="hand" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 0 7 4.5v8.36l-.73-.6a2.48 2.48 0 0 0-3.36.17 2.5 2.5 0 0 0-.1 3.42l4.03 4.6A4.5 4.5 0 0 0 10.22 22H16a5 5 0 0 0 5-5v-5a2.5 2.5 0 0 0-3.62-2.24A2.5 2.5 0 0 0 14.5 8.3 2.5 2.5 0 0 0 12 7.13V4.5A2.5 2.5 0 0 0 9.5 2Zm0 1.8c.39 0 .7.31.7.7V12a.9.9 0 0 0 1.8 0V9.5a.7.7 0 0 1 1.4 0V12a.9.9 0 0 0 1.8 0v-1.5a.7.7 0 0 1 1.4 0V12a.9.9 0 0 0 1.8 0 .7.7 0 0 1 1.4 0v5a3.2 3.2 0 0 1-3.2 3.2h-5.78a2.7 2.7 0 0 1-2.03-.92l-4.03-4.6a.7.7 0 0 1 .03-.96.68.68 0 0 1 .93-.05L7.6 15.8A.9.9 0 0 0 8.8 15.1V4.5c0-.39.31-.7.7-.7Z"/></symbol>
+  <symbol id="circle" viewBox="0 0 500 150"><path d="M325,18C228.7-8.3,118.5,8.3,78,21C22.4,38.4,4.6,54.6,5.6,77.6c1.4,32.4,52.2,54,142.6,63.7 c66.2,7.1,212.2,7.5,273.5-8.3c64.4-16.6,104.3-57.6,33.8-98.2C386.7-4.9,179.4-1.4,126.3,20.7"/></symbol>
+</svg>
+
+
+<!-- 1. Hero -->
+<section class="section hero">
+  <div class="wrap">
+    <img class="mockup" data-reveal src="assets/handbook-mockup.png" width="800" height="800" alt="The AAC Handbook: simple handouts for caregivers and clinicians, by Emily Diaz, M.S., CCC-SLP">
+    <h1 data-reveal data-reveal-delay="1">Feeling stuck explaining AAC?</h1>
+    <p class="gets-it caps" data-reveal data-reveal-delay="2">I totally get it.</p>
+    <p class="lede" data-reveal>The AAC Handbook is a must-have digital resource full of simple handouts about a full range of AAC topics that <b>do the explaining for you.</b></p>
+    <h3 class="price" data-reveal>Get the 40 page AAC Handbook for <span class="amt">$47<svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true"><use href="#circle"/></svg></span></h3>
+    <div data-reveal>
+      <a class="btn btn--lilac" href="https://campus.emilydiazslp.com/checkout/the-aac-handbook">
+        <svg aria-hidden="true"><use href="#hand"/></svg>
+        <span>Yes! I want the handbook!</span>
+      </a>
+    </div>
+    <p class="sub-links sub-links--indigo" data-reveal><a href="https://resources.emilydiazslp.com/the-aac-handbook-spanish/">GET THE SPANISH VERSION</a> <span class="sep">|</span> <a href="https://resources.emilydiazslp.com/the-aac-handbook-bundle/">GET THE BUNDLE FOR ONLY $87</a></p>
+  </div>
+</section>
+
+<!-- 2. Problem -->
+<section class="section problem">
+  <div class="wrap">
+    <p class="emoji" data-reveal aria-hidden="true">😥</p>
+    <h2 data-reveal>I know... AAC can be a challenge, especially when you're just starting out!</h2>
+    <ul class="ilist ilist--x">
+      <li data-reveal><svg aria-hidden="true"><use href="#x"/></svg><span>Parents emailing you with a thousand questions</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#x"/></svg><span>Teachers jumping to hand-over-hand prompting</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#x"/></svg><span>Not enough time to train every communication partner</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#x"/></svg><span>Constantly needing to dispel myths about AAC</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#x"/></svg><span>Wondering if this is the best AAC system for your child</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#x"/></svg><span>Difficulty communicating with other professionals</span></li>
+    </ul>
+    <h2 class="turn caps" data-reveal>But I've put together a resource that will help with all of it!</h2>
+    <div data-reveal>
+      <p class="introducing">introducing...</p>
+    </div>
+    <svg class="down-arrow" data-reveal viewBox="0 0 448 512" aria-hidden="true"><path d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"/></svg>
+  </div>
+</section>
+
+<!-- 3. Product -->
+<section class="section product">
+  <div class="wrap">
+    <img class="mockup" style="width:437px" data-reveal src="assets/handbook-mockup.png" width="800" height="800" alt="The AAC Handbook cover">
+    <h2 class="serif-xl" data-reveal>The AAC Handbook</h2>
+    <div data-reveal><h2 class="pill">Simple handouts for caregivers &amp; clinicians</h2></div>
+    <h2 class="serif-md" data-reveal>Here are some topics inside...</h2>
+    <ul class="ilist ilist--check">
+      <li data-reveal><svg aria-hidden="true"><use href="#check"/></svg><span>"4 Common AAC Myths Busted" so you can nip those doubts right in the bud.</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#check"/></svg><span>"AAC Prompting Hierarchy" so you can make sure everyone is honoring bodily autonomy.</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#check"/></svg><span>"AAC &amp; Gestalt Language Processing" so you can stay informed on hot topics in the field.</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#check"/></svg><span>"Communication Passport" so you can pass along important information about your child's AAC.</span></li>
+    </ul>
+    <h2 class="serif-md more" data-reveal>and many many more!</h2>
+    <h3 class="price price--dark" data-reveal>Get the 40 page AAC Handbook for <span class="amt">$47<svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true"><use href="#circle"/></svg></span></h3>
+    <div data-reveal>
+      <a class="btn" href="https://campus.emilydiazslp.com/checkout/the-aac-handbook"><svg aria-hidden="true"><use href="#hand"/></svg><span>Yes! I want the handbook!</span></a>
+    </div>
+    <p class="sub-links sub-links--grey" data-reveal><a href="https://resources.emilydiazslp.com/the-aac-handbook-spanish/">GET THE SPANISH VERSION</a> <span class="sep">|</span> <a href="https://resources.emilydiazslp.com/the-aac-handbook-bundle/">GET THE BUNDLE FOR ONLY $87</a></p>
+  </div>
+</section>
+
+<!-- 4. Testimonial -->
+<section class="section testi">
+  <div class="wrap">
+    <img class="stars" data-reveal src="assets/five-stars.png" width="630" height="105" alt="Five stars">
+    <h2 data-reveal>"You NEED this handbook!"</h2>
+    <blockquote data-reveal>“If you work with AAC users/learners, want to learn more about AAC, are a parent of an AAC user/learner, or work with AAC in ANY capacity.- you NEED this handbook! Emily has covered all the questions, while providing helpful tips and resources – truly a comprehensive resource! I can’t wait to use and share these resources with the professionals and families I work with. Thank you Emily for providing this one stop shop resource!”</blockquote>
+    <cite data-reveal>-Megan Stewart, MS CCC-SLP</cite>
+  </div>
+</section>
+
+<!-- 5. About -->
+<section class="section about">
+  <div class="grid">
+    <img class="photo" data-reveal src="assets/emily-photo.webp" width="800" height="800" alt="Emily Diaz smiling and holding a red mug">
+    <div class="copy">
+      <h2 data-reveal>Published by</h2>
+      <img class="sig" data-reveal src="assets/emily-diaz-signature.png" width="800" height="204" alt="Emily Diaz, slp.">
+      <p data-reveal>Hey there, I’m Emily. You might know me from Instagram where I share about all things AAC!</p>
+      <p data-reveal>I’ve presented at conferences like #TalkingAAC and AAC in the Cloud &amp; I’ve trained hundreds of SLPs in my best-selling workshop Managing AAC in the Classroom.</p>
+      <p data-reveal>I own a private practice and exclusively support AAC needs in Texas &amp; provide parent coaching nation-wide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Featured -->
+<section class="section featured">
+  <div class="wrap">
+    <h2 data-reveal>I've been featured in...</h2>
+    <img data-reveal src="assets/featured-in.webp" width="1600" height="303" alt="AAC in the Cloud, True Confessions podcast, PrAACtical AAC, #TalkingAAC and Kent ISD">
+  </div>
+</section>
+
+<!-- 7. Testimonial -->
+<section class="section testi">
+  <div class="wrap">
+    <img class="stars" data-reveal src="assets/five-stars.png" width="630" height="105" alt="Five stars">
+    <h2 data-reveal>"This is a must have resource"</h2>
+    <blockquote data-reveal>“Emily has provided a set of AAC handouts that are clear and concise. They answer all of your AAC questions and provide a clear starting point for different AAC content areas. The handouts are perfect to share with families and professionals alike. This is a must have resource for all speech therapists working with AAC users!!”</blockquote>
+    <cite data-reveal>-Lauren Greenlief MS CCC-SLP</cite>
+  </div>
+</section>
+
+<!-- 8. Wine band -->
+<section class="section wine">
+  <div class="wrap">
+    <img class="mockup" style="width:437px" data-reveal src="assets/handbook-mockup.png" width="800" height="800" alt="The AAC Handbook cover">
+    <h2 class="serif-xl" data-reveal>Ready to get rid of the endless Google searches?</h2>
+    <p class="lede" data-reveal>Find all the information you need to share about AAC with your teams right here in The AAC Handbook.</p>
+    <h2 class="serif-md" data-reveal>Need some ideas for how to use The AAC Handbook? Check these out:</h2>
+    <ul class="ilist ilist--check ilist--light">
+      <li data-reveal><svg aria-hidden="true"><use href="#check"/></svg><span>Include a few pages in an AAC welcome packet for families new to AAC to help start the conversation</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#check"/></svg><span>Send pages to your child's new teacher before sending your AAC device to school</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#check"/></svg><span>Use pages to guide consultations with parents &amp; teachers and help answer questions</span></li>
+      <li data-reveal><svg aria-hidden="true"><use href="#check"/></svg><span>Answer your own questions! Search the table of contents for topics instead of searching on Facebook or Google.</span></li>
+    </ul>
+    <h3 class="price" data-reveal>Get the 40 page AAC Handbook for <span class="amt">$47<svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true"><use href="#circle"/></svg></span></h3>
+    <div data-reveal>
+      <a class="btn" href="https://campus.emilydiazslp.com/checkout/the-aac-handbook"><svg aria-hidden="true"><use href="#hand"/></svg><span>Yes! I want the handbook!</span></a>
+    </div>
+    <p class="sub-links sub-links--peach" data-reveal><a href="https://resources.emilydiazslp.com/the-aac-handbook-spanish/">GET THE SPANISH VERSION</a> <span class="sep">|</span> <a href="https://resources.emilydiazslp.com/the-aac-handbook-bundle/">GET THE BUNDLE FOR ONLY $87</a></p>
+  </div>
+</section>
+
+<!-- 9. Testimonial -->
+<section class="section testi">
+  <div class="wrap">
+    <img class="stars" data-reveal src="assets/five-stars.png" width="630" height="105" alt="Five stars">
+    <h2 data-reveal>"It covers it all."</h2>
+    <blockquote data-reveal>“This handout is the guide and foundation to AAC. It can be utilized by providers and caregivers. It is done with simplistic, easy to understand terms, but capturing the evidence and implementation needed for practical AAC. From who’s a candidate, to where to start, and how to see communication grow, it covers it all. Thank you Emily for creating an easy and accessible tool to help service providers and caregivers facilitate communication!”</blockquote>
+    <cite data-reveal>-Taylor Musick MS CCC-SLP</cite>
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section class="section faq">
+  <div class="wrap">
+    <h2 data-reveal>Frequently asked questions</h2>
+    <div class="list" data-reveal>
+      <details>
+        <summary>What other topics are covered in the handbook?</summary>
+        <div class="answer">
+          <p><strong>Here is the full list of topics:</strong></p>
+          <ul>
+            <li>A General Overview of AAC</li><li>Different Types of AAC Technology</li><li>4 Common AAC Myths Busted</li><li>Aided Language Stimulation</li><li>AAC Prompting Hierarchy</li><li>Communication Bill of Rights</li><li>Stimming and AAC</li><li>Gestalt Language Processing</li><li>Overview of AAC Evaluation Process</li><li>STAP Process for Funding SGDs (Texas only)</li><li>Ready to Use High Tech AAC</li><li>Dear Parent/Dear Teacher Letters</li><li>AAC Affirmations List</li><li>Communication Passport</li><li>Shared Reading Strategies</li><li>Managing Multiple Symbols Sets in One Classroom</li><li>Descriptive Teaching Model</li><li>4 AAC Competency Areas</li><li>Sample AAC Goal Bank</li><li>Parents: Questions to Ask Your New SLP</li><li>5 Most Common AAC Apps Descriptions</li><li>4 Types of AAC Access Methods</li><li>Least Dangerous Assumption</li><li>Balancing Core &amp; Fringe Vocabulary</li><li>Motor Planning &amp; Selecting a Grid Size</li><li>What if Your Child “Isn’t Interested” in AAC?</li><li>Why Not PECS?</li><li>AAC Self Rating Survey</li><li>Beyond Requesting – Communicative Functions</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>What is your refund policy?</summary>
+        <div class="answer"><p>Because of the digital nature of this product, we cannot offer refunds on this product.</p></div>
+      </details>
+      <details>
+        <summary>What payments methods do you accept?</summary>
+        <div class="answer"><p>You can pay entirely online via Credit Card or PayPal.</p></div>
+      </details>
+      <details>
+        <summary>Can I send copies to my team?</summary>
+        <div class="answer">
+          <p>One purchase of the Handbook is good for <em>one license</em> so please don’t send copies to your SLP team or upload to any cloud storage (such as Google Drive) to share. Please purchase multiple licenses if you wish to share with your team of SLPs.</p>
+          <p>You can, however,</p>
+          <ul>
+            <li>Use this product for you and your caseload</li>
+            <li>Email/print these documents to hand out to other professionals (e.g. teachers, paraprofessionals, OTs) for the purpose of educating them on the topic of AAC.</li>
+            <li>Email/print portions of this resources home to parents and caregivers.</li>
+            <li>Upload these to a private, secured place on the internet.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Do you offer discounts so I can buy multiple licenses for my team?</summary>
+        <div class="answer"><p>Absolutely! For SLP teams of 10 or more, we’ll give you a bulk discount of 15%. Just email <a href="mailto:hello@emilydiazslp.com?subject=Bulk%20Discount">hello@emilydiazslp.com</a> with the subject line “Bulk Discount” and we’ll walk you through the process.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 11. Closing -->
+<section class="section wine closing">
+  <div class="wrap">
+    <h3 class="price" data-reveal>Get the 40 page AAC Handbook for <span class="amt">$47<svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true"><use href="#circle"/></svg></span></h3>
+    <h2 class="serif-md" data-reveal>The AAC Handbook is available in both English &amp; Spanish!</h2>
+    <div data-reveal>
+      <a class="btn" href="https://campus.emilydiazslp.com/checkout/the-aac-handbook"><svg aria-hidden="true"><use href="#hand"/></svg><span>Yes! I want the handbook!</span></a>
+    </div>
+    <p class="sub-links sub-links--peach" data-reveal><a href="https://resources.emilydiazslp.com/the-aac-handbook-spanish/">GET THE SPANISH VERSION</a> <span class="sep">|</span> <a href="https://resources.emilydiazslp.com/the-aac-handbook-bundle/">GET THE BUNDLE FOR ONLY $87</a></p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('[data-reveal]');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-visible')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-visible');io.unobserve(en.target)}})
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
