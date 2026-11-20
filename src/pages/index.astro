@@ -28,16 +28,16 @@ const services = [
 ];
 
 const logosTop = [
-  { src: "NavyBlueStar_Region13Logo-1024x188.png", alt: "Region 13 Education Service Center", w: 235 },
-  { src: "talkingaac-logo-fullcolor-small_3.png", alt: "Talking AAC", w: 230 },
-  { src: "reg14logo2010.jpg", alt: "Region 14 Education Service Center", w: 154 },
-  { src: "r17_logo_250.png", alt: "Region 17 Education Service Center", w: 180 },
+  { src: "NavyBlueStar_Region13Logo-1024x188.png", alt: "Region 13 Education Service Center", w: 235, m: 141 },
+  { src: "talkingaac-logo-fullcolor-small_3.png", alt: "Talking AAC", w: 230, m: 300 },
+  { src: "reg14logo2010.jpg", alt: "Region 14 Education Service Center", w: 154, m: 93 },
+  { src: "r17_logo_250.png", alt: "Region 17 Education Service Center", w: 180, m: 250 },
 ];
 const logosBottom = [
-  { src: "aac-in-the-cloud-1024x1024.jpeg", alt: "AAC in the Cloud", w: 137 },
-  { src: "meaningful-speech-1024x576.jpeg", alt: "Meaningful Speech", w: 237 },
-  { src: "BRIQHT-Logo-21f5ef1a17e4d9f7b2c1f30876dcb658-1024x657.png", alt: "Bright Ideas Media", w: 170 },
-  { src: "speechtherapypd-logo.png", alt: "SpeechTherapyPD.com", w: 254 },
+  { src: "aac-in-the-cloud-1024x1024.jpeg", alt: "AAC in the Cloud", w: 137, m: 200 },
+  { src: "meaningful-speech-1024x576.jpeg", alt: "Meaningful Speech", w: 237, m: 330 },
+  { src: "BRIQHT-Logo-21f5ef1a17e4d9f7b2c1f30876dcb658-1024x657.png", alt: "Bright Ideas Media", w: 170, m: 248 },
+  { src: "speechtherapypd-logo.png", alt: "SpeechTherapyPD.com", w: 254, m: 370 },
 ];
 ---
 
@@ -106,10 +106,10 @@ const logosBottom = [
   <section class="orgs">
     <h2>I've worked with these incredible organizations</h2>
     <div class="logo-row">
-      {logosTop.map((l) => <img src={`/images/${l.src}`} alt={l.alt} style={`width:${l.w}px`} loading="lazy" />)}
+      {logosTop.map((l) => <img src={`/images/${l.src}`} alt={l.alt} style={`--w:${l.w}px;--m:${l.m}px`} loading="lazy" />)}
     </div>
     <div class="logo-row">
-      {logosBottom.map((l) => <img src={`/images/${l.src}`} alt={l.alt} style={`width:${l.w}px`} loading="lazy" />)}
+      {logosBottom.map((l) => <img src={`/images/${l.src}`} alt={l.alt} style={`--w:${l.w}px;--m:${l.m}px`} loading="lazy" />)}
     </div>
   </section>
 
@@ -157,7 +157,7 @@ const logosBottom = [
     flex-direction: column;
     justify-content: flex-end;
     max-width: 1060px;
-    padding: 0 11% 7% 0;
+    padding: 0 11% 42px 0;
   }
   .hero-copy p { margin: 0; }
   .hero-pre {
@@ -169,27 +169,27 @@ const logosBottom = [
     color: #E192B9;
   }
   .hero-voice {
-    margin: 20px 0 3% !important;
+    margin: 20px 0 18px !important;
     font-family: "Orange and Lemons Script", sans-serif;
     font-size: 30em;
     line-height: 82px;
     letter-spacing: -0.5px;
     color: #591C39;
     transform: rotate(-4deg);
-    height: 100px;
+    height: 82px;
     display: flex;
     align-items: center;
   }
   .hero-find {
-    margin: 5% 0 0 5% !important;
+    margin: 50px 0 0 30px !important;
     font-family: "Orange and Lemons Script", sans-serif;
     font-size: 5vw;
     line-height: 1;
     color: #E192B9;
   }
   .hero-text {
-    margin: 20px 0 0 4% !important;
-    padding: 2% 9% 2% 3%;
+    margin: 20px 0 0 24px !important;
+    padding: 12px 54px 12px 18px;
     font-family: Poppins, sans-serif;
     font-size: 17px;
     line-height: 25.5px;
@@ -278,7 +278,6 @@ const logosBottom = [
   }
   .ready-title {
     width: 76%;
-    margin-top: 50px;
     font-family: "Orange and Lemons Caps", sans-serif;
     font-size: 8.9vw;
     font-weight: 300;
@@ -317,14 +316,14 @@ const logosBottom = [
     flex: 1 1 0;
     display: flex;
     flex-direction: column;
-    padding: 10px 20px;
+    padding: 0 10px;
   }
   .service-head {
     display: flex;
     align-items: flex-start;
-    gap: 24px;
+    gap: 34px;
     min-height: 80px;
-    padding-top: 10px;
+    padding: 10px 10px 0;
   }
   .service-icon { display: inline-flex; flex: 0 0 auto; padding-top: 9px; }
   .service-icon :global(svg) { width: 36px; height: 36px; fill: #C45B8F; }
@@ -368,7 +367,7 @@ const logosBottom = [
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 6% 7.3%;
+    padding: 0 6% 0;
     min-height: 648px;
     text-align: center;
   }
@@ -448,7 +447,7 @@ const logosBottom = [
     margin-top: 10px;
   }
   .logo-row:last-child { margin-top: 20px; }
-  .logo-row img { flex: 0 1 auto; min-width: 0; height: auto; }
+  .logo-row img { flex: 0 1 auto; width: var(--w); min-width: 0; height: auto; }
 
   /* ---------- About Emily ---------- */
   .about {
@@ -465,7 +464,7 @@ const logosBottom = [
     padding: 52px 57.6px;
     background: #fff;
   }
-  .about-copy { flex: 0 0 calc(50% - 10px); display: flex; flex-direction: column; }
+  .about-copy { flex: 0 0 50%; display: flex; flex-direction: column; }
   .about-eyebrow {
     margin: 0;
     font-family: "Orange and Lemons Script", sans-serif;
@@ -534,7 +533,7 @@ const logosBottom = [
     .hero-find { margin: 20px 0 0 !important; font-size: 3.3em; line-height: .6em; padding: 12px 70px 0; }
     .hero-text { margin: 20px 0 0 !important; padding: 2% 7% 2% 7%; text-align: center; }
     .hero-buttons { flex-direction: column; align-items: center; padding: 0 10px 14px; margin-top: 20px; }
-    .hero-btn-fill, .hero-btn-line { margin: 13px; }
+    .hero-btn-fill, .hero-btn-line { margin: 13px 13px 26px; }
     .hero-btn { font-size: 22px; }
     .hero-btn-fill { padding: 28px 45px; }
     .hero-btn-line { padding: 25px 45px; }
@@ -543,13 +542,13 @@ const logosBottom = [
     .intro-title { font-size: 47px; line-height: 32.9px; }
     .intro-text { font-size: 19px; line-height: 28.5px; }
 
-    .ready { flex-direction: column; min-height: 0; padding: 23.4px; }
+    .ready { flex-direction: column; min-height: 0; padding: 23.4px 23.4px 40px; }
     .ready-copy { flex: none; align-items: center; }
     .ready-title { width: 76%; margin-top: 0; font-size: 5.6em; line-height: .6em; }
     .ready-sub { font-size: 2.9em; }
     .ready-image { display: none; }
 
-    .services { flex-direction: column; gap: 20px; padding: 0 15.6px 0; }
+    .services { flex-direction: column; gap: 20px; padding: 40px 15.6px 0; }
     .service { flex: none; padding: 10px; }
     .service-head { flex-direction: column; align-items: center; gap: 20px; min-height: 0; padding-top: 0; }
     .service-icon { padding-top: 0; }
@@ -566,7 +565,7 @@ const logosBottom = [
     .orgs { padding: 32px 0 32px; }
     .orgs h2 { font-size: 61px; line-height: 42.7px; }
     .logo-row { flex-wrap: wrap; row-gap: 20px; }
-    .logo-row img { max-width: 250px; }
+    .logo-row img { width: var(--m); max-width: 100%; }
 
     .about { padding: 11.7px; }
     .about-card { flex-direction: column; padding: 20px 22px 20px; gap: 20px; }

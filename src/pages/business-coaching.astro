@@ -326,7 +326,7 @@ const packages = [
   .book-chachi .book-label { color: #fca48c; }
 
   @media (max-width: 1024px) {
-    .hero-title { font-size: 120px; }
+    .hero-title { font-size: 120px; margin-bottom: -16px; }
     .hero-text { width: 70%; }
     .ready-title { font-size: 90px; line-height: 60px; }
     .book-label { font-size: 24px; }
@@ -334,22 +334,21 @@ const packages = [
 
   @media (max-width: 767px) {
     .hero { padding: 7% 7% 14%; }
-    .hero-title { margin-bottom: 0; font-size: 62px; line-height: .7em; padding-bottom: 12px; }
-    .hero-sub { font-size: 30px; line-height: 1; margin-bottom: 20px; }
-    .hero-text { width: 100%; max-width: 894px; font-size: 18px; }
+    .hero-title { margin-bottom: -7px; font-size: 62px; line-height: .7em; }
+    .hero-sub { margin-bottom: 13px; font-size: 54px; }
+    .hero-text { width: 100%; max-width: 894px; }
     .struggle { margin-top: -11%; padding: 0 6% 14%; }
-    .battle { font-size: 45px; line-height: .7em; margin: 10px 0; }
+    .battle { margin: 10px 0; font-size: 45px; line-height: .7em; }
     .maybe { font-size: 50px; }
     .sad-list { width: 100%; max-width: 785px; }
-    .ready { padding: 7%; }
+    .ready { padding: 6% 7%; }
     .ready-title { max-width: 356px; font-size: 60px; line-height: .7em; }
-    .ready-sub { width: 100%; max-width: 614px; font-size: 22px; line-height: 1.5em; }
+    .ready-sub { width: 100%; max-width: 614px; margin: 10px 3px 3px; font-size: 22px; line-height: 1.5em; }
     .packages { padding: 9% 6% 0; }
-    .help-script { font-size: 60px; }
     .packages-title { font-size: 33px; }
     .packages-text { width: 100%; max-width: 451px; }
     .grid { grid-template-columns: 1fr; }
-    .book { flex-wrap: wrap; }
+    .book { flex-wrap: wrap; gap: 0; }
     .book-img { flex-basis: 100%; }
     .book-img img { width: 55%; }
     .book-label { justify-content: center; text-align: center; font-size: 28px; }
