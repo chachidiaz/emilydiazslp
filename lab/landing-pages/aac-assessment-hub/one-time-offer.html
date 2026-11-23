@@ -140,8 +140,22 @@ html:not(.dc-ready) #dc-root{visibility:hidden}
   gtag('js', new Date());
   gtag('config', 'G-JVTDYG6V1B');
 </script>
+<script src="/apps/deadlines/timer.js" defer></script>
+<script>
+/* The deadline timer is a fixed bar at the top of the screen; keep the page's
+   sticky announcement bar just below it instead of underneath it. */
+document.addEventListener('deadline:loaded', function () {
+  function fit() {
+    var bar = document.querySelector('.dlt-bar'), top = document.querySelector('.topbar');
+    if (top) top.style.top = (bar ? bar.offsetHeight : 0) + 'px';
+  }
+  fit(); setTimeout(fit, 500);
+  window.addEventListener('resize', fit);
+});
+</script>
 </head>
 <body>
+<div data-deadline-timer="gopjelib"></div>
 <div id="dc-root">
 <div class="page-scale" style="padding: clamp(8px, 1.4vw, 20px); font-family: 'Tommy', sans-serif; color: #743e5a; background: #f6d9e7">
 <div style="background-color: #ffffff; background-image: radial-gradient(55% 38% at 12% 4%, #ff81a038 0%, #ff81a000 100%), radial-gradient(50% 36% at 90% 8%, #ffa28340 0%, #ffa28300 100%), radial-gradient(85% 55% at 50% 22%, #f6d9e7b3 0%, #ffefe966 45%, #ffffff00 100%); background-repeat: no-repeat; background-size: 100% 1500px; border-radius: clamp(24px, 3vw, 44px); overflow: clip">
