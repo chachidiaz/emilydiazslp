@@ -251,3 +251,8 @@ a.page-name:hover { color: var(--accent); }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* Forgot password steps under the login form */
+.login-card .forgot { font-size: 14px; color: var(--text-muted, inherit); }
+.login-card .forgot summary { cursor: pointer; text-decoration: underline; }
+.login-card .forgot ol { margin: 8px 0 0; padding-left: 1.25em; display: grid; gap: 6px; }

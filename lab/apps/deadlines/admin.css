@@ -165,3 +165,8 @@ td.url { white-space: normal; word-break: break-all; }
 @media (min-width: 901px) and (min-height: 820px) {
   .preview-card { position: sticky; top: 88px; z-index: 6; box-shadow: var(--shadow-md); }
 }
+
+/* Forgot password steps under the login form */
+.forgot { margin-top: var(--space-4); font-size: var(--text-small, 0.9rem); }
+.forgot summary { cursor: pointer; text-decoration: underline; }
+.forgot ol { margin: 8px 0 0; padding-left: 1.25em; display: grid; gap: 6px; }

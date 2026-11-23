@@ -447,7 +447,7 @@ function toast_markup(): void
 <?php
 }
 
-if (!dl_has_password()) {
+if (!dl_has_password() || dl_reset_requested()) {
     header('Location: /apps/deadlines/');
     exit;
 }
@@ -469,6 +469,7 @@ if (!dl_is_admin()) {
       <span class="input"><input type="password" name="password" required autofocus autocomplete="current-password"></span>
     </label>
     <button class="btn btn-primary" name="action" value="login">Log in</button>
+    <?= forgot_password_help() ?>
   </form>
 </main>
 <?php toast_markup(); ?>

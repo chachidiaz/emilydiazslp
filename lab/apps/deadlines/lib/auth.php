@@ -40,9 +40,27 @@ function dl_has_password(): bool
     return dl_setting('admin_hash') !== null;
 }
 
+// Forgot-password reset: create data/reset-password.txt in hPanel's File Manager and the
+// next visit to /apps/deadlines/ asks for a new password. Only someone with hosting access can
+// make that file, and it's deleted as soon as the new password is saved. No data is lost.
+const DL_RESET_FILE = __DIR__ . '/../data/reset-password.txt';
+
+function dl_reset_requested(): bool
+{
+    return is_file(DL_RESET_FILE);
+}
+
+// Removes the reset file. False if it couldn't be deleted, so the reset stays closed.
+function dl_finish_reset(): bool
+{
+    return !is_file(DL_RESET_FILE) || (@unlink(DL_RESET_FILE) && !is_file(DL_RESET_FILE));
+}
+
 function dl_set_password(string $password): void
 {
     dl_set_setting('admin_hash', password_hash($password, PASSWORD_DEFAULT));
+    dl_set_setting('failed_logins', '0');
+    dl_set_setting('locked_until', '0');
 }
 
 function dl_login(string $password): bool|string
@@ -87,4 +105,14 @@ function dl_check_csrf(): void
         http_response_code(400);
         exit('Your session expired. Go back, refresh the page and try again.');
     }
+}
+
+// "Forgot your password?" steps, shown under both login forms.
+function forgot_password_help(): string
+{
+    return '<details class="forgot"><summary>Forgot your password?</summary>'
+        . '<ol><li>Log in to Hostinger and open hPanel → File Manager for lab.emilydiazslp.com.</li>'
+        . '<li>Go to <code>apps/deadlines/data/</code> and create a new file named <code>reset-password.txt</code> (it can be empty).</li>'
+        . '<li>Open <a href="/apps/deadlines/">/apps/deadlines/</a> and choose a new password. The file is deleted for you, and nothing else changes.</li></ol>'
+        . '</details>';
 }

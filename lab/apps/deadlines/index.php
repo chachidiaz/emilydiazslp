@@ -114,14 +114,16 @@ function create_demo(): int
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = post('action');
 
-    if ($action === 'setup' && !dl_has_password()) {
+    if ($action === 'setup' && (!dl_has_password() || dl_reset_requested())) {
         dl_check_csrf();
+        $reset = dl_has_password();
         $pw = (string) ($_POST['password'] ?? '');
         if (strlen($pw) < 10) go('', 'Use at least 10 characters.');
         if ($pw !== (string) ($_POST['password2'] ?? '')) go('', 'The two passwords don\'t match.');
+        if (!dl_finish_reset()) go('', 'Couldn\'t delete data/reset-password.txt. Delete it in File Manager, then create it again and retry.');
         dl_set_password($pw);
         dl_login($pw);
-        go('', 'You\'re all set. Start by creating a campaign.');
+        go('', $reset ? 'Your new password is saved. The reset file is gone.' : 'You\'re all set. Start by creating a campaign.');
     }
 
     if ($action === 'login') {
@@ -355,13 +357,20 @@ function embed_code(array $t): string
 
 // --- setup + login ---
 
-if (!dl_has_password()) {
-    head('Set up');
+if (!dl_has_password() || dl_reset_requested()) {
+    $resetting = dl_has_password();
+    head($resetting ? 'Reset password' : 'Set up');
     ?>
     <section class="card narrow">
+      <?php if ($resetting): ?>
+      <p class="eyebrow">Password reset</p>
+      <h1>Choose a new password</h1>
+      <p>Your campaigns, people and lab pages stay as they are. This works for the deadline timers and the lab admin.</p>
+      <?php else: ?>
       <p class="eyebrow">First-time setup</p>
       <h1>Create your password</h1>
       <p>This password protects your campaigns and the list of people in them. You'll use it every time you log in here.</p>
+      <?php endif; ?>
       <form method="post" class="stack">
         <?= csrf_field() ?>
         <label>Password <input type="password" name="password" minlength="10" required autocomplete="new-password"></label>
@@ -385,6 +394,7 @@ if (!dl_is_admin()) {
         <label>Password <input type="password" name="password" required autofocus autocomplete="current-password"></label>
         <button class="btn" name="action" value="login">log in</button>
       </form>
+      <?= forgot_password_help() ?>
     </section>
     <?php
     foot();
